@@ -1,0 +1,297 @@
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">Ketikkan pesan...</string>
+    <string name="message_not_sent_short">Pesan tidak terkirim</string>
+    <string name="message_not_sent_touch_retry">Belum terkirim. Ketuk untuk mencoba lagi.</string>
+    <string name="message_sending_error">Pesan Anda kepada \'%s\' tidak terkirim</string>
+    <string name="add_person">Tambahkan Kontak</string>
+    <string name="attachment">Lampiran</string>
+    <string name="no_conversations_found">Tidak ada percakapan yang ditemukan</string>
+    <string name="no_personal_conversations_found">Tidak ada percakapan pribadi yang ditemukan</string>
+    <string name="no_otp_messages_found">Tidak ada pesan OTP yang ditemukan</string>
+    <string name="no_transaction_messages_found">Tidak ada pesan transaksi yang ditemukan</string>
+    <string name="no_offer_messages_found">Tidak ada pesan penawaran yang ditemukan</string>
+    <string name="start_conversation">Mulai percakapan</string>
+    <string name="reply">Balas</string>
+    <string name="loading_messages">Memuat pesan...</string>
+    <string name="txt_draft">Draf</string>
+    <string name="sending">Mengirim...</string>
+    <string name="pin_conversation">Pin ke atas</string>
+    <string name="unpin_conversation">Lepaskan pin</string>
+    <string name="add_contact_or_number">Tambahkan Kontak atau Nomor...</string>
+    <string name="suggestions">Saran</string>
+    <string name="channel_received_sms">SMS yang Diterima</string>
+    <string name="new_message">Pesan baru</string>
+    <string name="mark_as_read">Tandai sebagai Sudah Dibaca</string>
+    <string name="mark_as_unread">Tandai sebagai Belum Dibaca</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d percakapan</item>
+        <item quantity="other">%d percakapan</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d pesan</item>
+        <item quantity="other">%d pesan</item>
+    </plurals>
+    <string name="lock_screen_visibility">Tampilan pemberitahuan layar kunci</string>
+    <string name="sender_and_message">Pengirim dan pesan</string>
+    <string name="sender_only">Hanya pengirim</string>
+    <string name="import_messages">Impor pesan</string>
+    <string name="app_import">Impor</string>
+
+    <string name="ad_attribution">iklan</string>
+    <string name="txt_transition_1">Transisi 1</string>
+    <string name="txt_more">Lebih</string>
+    <string name="txt_copy">Salin</string>
+
+
+    <string name="invalid_destination">Alamat tujuan tidak valid.</string>
+    <string name="service_not_activated">Layanan tidak diaktifkan pada jaringan.</string>
+    <string name="service_message_not_found">Pesan kedaluwarsa atau tidak tersedia.</string>
+    <string name="service_network_problem">Tidak dapat mengirim karena masalah jaringan.</string>
+    <string name="message_queued">Saat ini tidak dapat mengirim pesan Anda. Pesan akan dikirim saat layanan tersedia.</string>
+    <string name="download_later">Tidak dapat mengunduh saat ini. Coba lagi nanti.</string>
+    <string name="no_apn">Tidak ada APN yang ditentukan untuk aplikasi ini, Anda perlu mengatur di pengaturan!</string>
+    <string name="no_subject">(Tanpa subjek)</string>
+    <string name="unknown_sender">Pengirim tidak dikenal</string>
+    <string name="dl_failure_notification">Tidak dapat mengunduh pesan</string>
+
+    <string name="ok">OK</string>
+    <string name="txt_sender_does_not_support_replies">Pengirim tidak mendukung balasan</string>
+    <string name="backup_and_restore">Cadangkan dan Pulihkan</string>
+    <string name="backup_now">Cadangkan Sekarang</string>
+    <string name="are_you_sure_you_want_to_import_sms_">Apakah Anda yakin ingin mengimpor pesan?</string>
+    <string name="no_backup_available">Tidak ada cadangan tersedia</string>
+    <string name="backups">Cadangan</string>
+    <string name="message_backup">/Pesan/Cadangan</string>
+    <string name="backing_up_messages">Mencadangkan pesan</string>
+    <string name="importing_messages">Pemulihan Pesan</string>
+    <string name="txt_next">Berikutnya</string>
+
+
+    <string name="txt_please_grant_notification_permission_from_app_settings">Mohon izinkan izin pemberitahuan dari Pengaturan Aplikasi</string>
+    <string name="text_intro_title3">Atur Aplikasi Default</string>
+
+    <string name="text_dec_default_app">Untuk mengirim atau menerima pesan, Anda harus mengaturnya sebagai aplikasi default. Apakah Anda ingin pesan menjadi aplikasi default Anda?</string>
+
+    <string name="text_header_notification">Izin Pemberitahuan</string>
+    <string name="text_desc_notification">Sebuah izin diperlukan ketika Aplikasi Pesan menerima pemberitahuan pesan, Anda harus mengizinkan izin tersebut.</string>
+
+    <string name="term_privacy">Dengan bergabung, Anda setuju dengan Kebijakan Privasi dan Ketentuan Penggunaan kami.</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="terms_of_use">Ketentuan Penggunaan</string>
+
+    <string name="cancel">Batal</string>
+    <string name="nothing">Tidak Ada</string>
+    <string name="invalid_file_format">Format file tidak valid</string>
+    <string name="an_error_occurred">Terjadi kesalahan: %s</string>
+    <string name="no_app_found">Tidak ada aplikasi yang valid ditemukan</string>
+    <string name="copy_to_clipboard">Salin ke papan klip</string>
+    <string name="copy_number_to_clipboard">Salin nomor ke papan klip</string>
+    <string name="copied_to_clipboard">Disalin ke papan klip</string>
+    <string name="dial_number">Panggil nomor</string>
+    <string name="number">Nomor</string>
+    <string name="no_contacts_found">Tidak ada kontak ditemukan</string>
+    <string name="request_the_required_permissions">Minta izin yang diperlukan</string>
+    <string name="no_access_to_contacts">Aplikasi tidak dapat mengakses kontak Anda</string>
+
+    <!-- Jenis Tampilan -->
+    <!-- Nomor Terblokir -->
+    <string name="manage_blocked_numbers">Kelola nomor yang diblokir</string>
+    <string name="not_blocking_anyone">Anda tidak memblokir siapa pun.</string>
+    <string name="add_a_blocked_number">Tambahkan nomor yang diblokir</string>
+    <string name="block_number">Blokir nomor</string>
+    <string name="blocked_numbers">Nomor yang diblokir</string>
+    <string name="menu_export_blocked_numbers">Ekspor nomor yang diblokir</string>
+    <string name="menu_import_blocked_numbers">Impor nomor yang diblokir</string>
+    <string name="must_make_default_dialer">Anda harus membuat aplikasi ini sebagai aplikasi dialer default untuk menggunakan nomor yang diblokir.</string>
+    <string name="set_as_default">Atur sebagai default</string>
+    <string name="block_confirmation">Apakah Anda yakin ingin memblokir "%s"?</string>
+
+
+
+    <!-- Favorites -->
+    <string name="favorites">Favorit</string>
+
+    <!-- Pencarian -->
+    <string name="search">Cari</string>
+    <string name="type_2_characters">Ketik minimal 2 karakter untuk memulai pencarian.</string>
+
+    <!-- Filter -->
+    <string name="no_items_found">Tidak ada item yang ditemukan.</string>
+
+    <!-- Izin -->
+
+    <!-- Pembaruan Nama -->
+    <string name="filename_without_txt">Nama File (tanpa .txt)</string>
+
+    <!-- Salin / Pindah -->
+    <string name="copying">Menyalin...</string>
+    <string name="moving">Memindahkan...</string>
+    <string name="could_not_create_folder">Tidak dapat membuat folder %s</string>
+    <string name="could_not_create_file">Tidak dapat membuat file %s</string>
+
+    <!-- Buat baru -->
+    <string name="create_new_folder">Buat folder baru</string>
+    <string name="name_taken">Sebuah file atau folder dengan nama tersebut sudah ada</string>
+    <string name="invalid_name">Nama mengandung karakter yang tidak valid</string>
+    <string name="empty_name">Silakan masukkan nama</string>
+    <string name="unknown_error_occurred">Terjadi kesalahan tidak diketahui</string>
+
+    <!-- Konflik operasi file -->
+    <string name="file_already_exists">File \"%s\" sudah ada</string>
+    <string name="folder_already_exists">Folder \"%s\" sudah ada</string>
+    <string name="merge">Gabungkan</string>
+    <string name="keep_both">Simpan keduanya</string>
+    <string name="overwrite">Timpa</string>
+    <string name="skip">Lewati</string>
+    <string name="apply_to_all">Terapkan ke semua</string>
+
+    <!-- Pemilih file -->
+    <string name="select_folder">Pilih folder</string>
+    <string name="select_file">Pilih file</string>
+    <string name="confirm_storage_access_title">Konfirmasi akses penyimpanan eksternal</string>
+    <string name="confirm_storage_access_text">Silakan pilih folder teratas dari kartu SD pada layar berikutnya, untuk memberikan akses tulis</string>
+    <string name="confirm_storage_access_text_sd">Jika Anda tidak melihat kartu SD, coba ini</string>
+    <string name="confirm_storage_access_android_text">Mohon izinkan aplikasi mengakses penyimpanan yang dipilih pada layar berikutnya dengan menekan \'Gunakan folder ini\' di bagian bawah.</string>
+
+    <plurals name="items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d item</item>
+    </plurals>
+
+    <string name="select_storage">Pilih penyimpanan</string>
+    <string name="internal">Internal</string>
+    <string name="sd_card">Kartu SD</string>
+    <string name="root">Root</string>
+    <string name="wrong_root_selected">Folder yang salah dipilih, silakan pilih folder utama dari kartu SD Anda</string>
+    <string name="sd_card_usb_same">Jalur kartu SD dan perangkat USB tidak bisa sama</string>
+
+
+    <string name="theme">Tema</string>
+
+    <string name="delete">Hapus</string>
+    <string name="share">Bagikan</string>
+    <string name="share_via">Bagikan via</string>
+    <string name="select_all">Pilih semua</string>
+    <string name="select_text">Pilih teks</string>
+    <string name="maximum_share_reached">Anda tidak dapat membagikan konten sebanyak ini sekaligus</string>
+    <string name="add_number_to_contact">Tambahkan nomor ke kontak</string>
+
+    <string name="proceed_with_deletion">Apakah Anda yakin ingin melanjutkan penghapusan?</string>
+    <string name="deletion_confirmation">Apakah Anda yakin ingin menghapus %s?</string>
+    <!-- Apakah Anda yakin ingin memindahkan 3 item ke Keranjang Sampah? -->
+    <string name="yes">Ya</string>
+
+    <string name="settings">Pengaturan</string>
+    <string name="customize_notifications">Sesuaikan pemberitahuan</string>
+    <string name="use_english_language">Gunakan bahasa Inggris</string>
+    <string name="font_size">Ukuran font</string>
+    <string name="small">Kecil</string>
+    <string name="medium">Sedang</string>
+    <string name="large">Besar</string>
+    <string name="extra_large">Ekstra besar</string>
+    <string name="use_24_hour_time_format">Gunakan format waktu 24 jam</string>
+    <string name="settings_exported_successfully">Pengaturan diekspor dengan sukses</string>
+
+    <string name="importing_successful">Impor berhasil</string>
+    <string name="exporting_successful">Pencadangan berhasil</string>
+    <string name="exporting_failed">Pencadangan gagal</string>
+    <string name="importing_some_entries_failed">Impor beberapa entri gagal</string>
+    <string name="no_entries_for_exporting">Tidak ada entri yang ditemukan untuk diekspor</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">Silakan pilih folder teratas dari perangkat USB pada layar berikutnya, untuk memberikan akses</string>
+    <string name="wrong_root_selected_usb">Folder yang salah dipilih, silakan pilih folder utama dari perangkat USB Anda</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        Sepertinya versi aplikasi Anda rusak. Silakan unduh versi asli <a href="%s">di sini</a>.
+    ]]>
+</string>
+
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">Untuk mengirim atau menerima SMS, Anda harus\nmenetapkannya sebagai aplikasi default. Tetapkan sebagai default</string>
+    <string name="app_continue">Lanjutkan</string>
+    <string name="app_language">Bahasa</string>
+    <string name="app_message">Pesan</string>
+    <string name="app_search_number_name">Cari Nomor, Nama &amp; Lainnya</string>
+    <string name="app_all">Semua</string>
+    <string name="app_personal">Pribadi</string>
+    <string name="app_otps">OTPs</string>
+    <string name="app_transactions">Transaksi</string>
+    <string name="app_offers">Penawaran</string>
+    <string name="app_inbox">Kotak Masuk</string>
+    <string name="app_archived">Diarsipkan</string>
+    <string name="app_block">Blokir</string>
+    <string name="app_backup_restore">Cadangkan dan Pulihkan</string>
+    <string name="app_setting">Pengaturan</string>
+    <string name="app_rate_us">Beri Rating</string>
+    <string name="app_privacy_policy">Kebijakan Privasi</string>
+    <string name="app_appearance">Tampilan</string>
+    <string name="app_theme">Tema</string>
+    <string name="app_font_size">Ukuran Font</string>
+    <string name="app_use_system_font">Gunakan Font Sistem</string>
+    <string name="app_general">Umum</string>
+    <string name="app_auto_compress_mms_attachments">Lampiran MMS Kompres Otomatis</string>
+    <string name="app_sync_message">Sinkronkan Pesan</string>
+    <string name="app_about_message_sms">Tentang Pesan SMS</string>
+    <string name="app_system">Sistem</string>
+    <string name="app_light_mode">Mode Terang</string>
+    <string name="app_dark_mode">Mode Gelap</string>
+    <string name="app_small">Kecil</string>
+    <string name="app_normal">Normal</string>
+    <string name="app_large">Besar</string>
+    <string name="app_extra_large">Ekstra Besar</string>
+    <string name="app_re_sync_message_with_native_database">Sinkronkan Kembali Pesan Anda dengan Database SMS Asli Android</string>
+    <string name="app_automatic">Otomatis</string>
+    <string name="app_100_kb">100 KB</string>
+    <string name="app_200_kb">200 KB</string>
+    <string name="app_300_kb">300 KB</string>
+    <string name="app_600_kb">600 KB</string>
+    <string name="app_1000_kb">1000 KB</string>
+    <string name="app_2000_kb">2000 KB</string>
+    <string name="app_no_compression">Tanpa Kompresi</string>
+    <string name="app_auto_compress">Kompres Otomatis</string>
+    <string name="app_are_your_sure_to_want_to_exit">Apakah Anda yakin ingin keluar?</string>
+    <string name="app_yes">Ya</string>
+    <string name="app_not_now">Nanti</string>
+    <string name="app_new_conversation">Percakapan Baru</string>
+    <string name="app_write_a_message">Tulis pesan....</string>
+    <string name="app_notification">Pemberitahuan</string>
+    <string name="app_delete_conversation">Hapus percakapan</string>
+    <string name="app_contact">Kontak</string>
+    <string name="app_detail">Detail</string>
+    <string name="app_delete">Hapus</string>
+    <string name="app_delete_message">Apakah Anda yakin ingin menghapus percakapan ini?</string>
+    <string name="app_cancel">Batal</string>
+    <string name="app_block_confirmation">Apakah Anda yakin ingin memblokir \"%s\"?</string>
+    <string name="app_last_backup">Cadangan Terakhir</string>
+    <string name="app_restore">Pulihkan</string>
+    <string name="app_select_a_backup">Pilih cadangan</string>
+    <string name="app_backup_message">Saat ini, Hanya SMS yang Didukung oleh Cadangan dan Pulihkan. Dukungan MMS dan Cadangan Terjadwal akan Segera Datang!</string>
+    <string name="app_export_message">Ekspor Pesan</string>
+    <string name="app_export_message_description">Apakah Anda yakin ingin mengekspor pesan?</string>
+    <string name="app_export">Ekspor</string>
+    <string name="app_tap_to_customize">Ketuk untuk menyesuaikan</string>
+    <string name="app_notification_preview">Pratinjau Pemberitahuan</string>
+    <string name="app_wake_screen">Hidupkan Layar</string>
+    <string name="app_show_name_and_message">Tampilkan nama dan pesan</string>
+    <string name="app_show_name">Tampilkan nama</string>
+    <string name="app_hide_contents">Sembunyikan konten</string>
+    <string name="app_block_number">Blokir Nomor</string>
+    <string name="app_unarchived">Bukan Diarsipkan</string>
+    <string name="app_premium_upgrade">Upgrade Premium</string>
+    <string name="app_no_advertising">Tidak Ada Iklan</string>
+    <string name="app_super_fast_service">Layanan Super Cepat</string>
+    <string name="app_unlimited_photo_enhancing">Peningkatan Foto Tanpa Batas</string>
+    <string name="app_all_feature_available">Semua Fitur Tersedia</string>
+    <string name="app_subscription_terms">Syarat Langganan</string>
+    <string name="app_subscription_description">Langganan akan diperbarui secara otomatis dengan harga yang sama dan untuk jangka waktu yang sama. Anda dapat mengelola dan membatalkan langganan kapan saja di pengaturan Google Play. Langganan akan diperbarui secara otomatis dengan harga yang sama dan untuk jangka waktu yang sama.</string>
+    <string name="app_no_archive_message_found">Tidak ditemukan pesan yang diarsipkan.</string>
+    <string name="app_your_arhived_conversation_appear_here">Percakapan Anda yang Diarsipkan Akan Muncul Di Sini</string>
+    <string name="app_exit_app">Keluar Aplikasi</string>
+
+
+
+</resources>

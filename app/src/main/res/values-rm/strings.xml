@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">Tscherner ina messadi…</string>
+    <string name="message_not_sent_short">Messadi betg tramess</string>
+    <string name="message_not_sent_touch_retry">Betg tramess. Tocca per sajettar anc ina giada.</string>
+    <string name="message_sending_error">Tscherner vost messadi a \'%s\' na stat betg tramess</string>
+    <string name="add_person">Addebatter persuna</string>
+    <string name="attachment">Attachament</string>
+    <string name="no_conversations_found">Nagin chattà da chattas vegnì chattà</string>
+    <string name="no_personal_conversations_found">Nagin chattà persunal vegnì chattà</string>
+    <string name="no_otp_messages_found">Nagins messadis OTP vegnan chattads</string>
+    <string name="no_transaction_messages_found">Nagins messadis da transacziun vegnan chattads</string>
+    <string name="no_offer_messages_found">Nagins messadis d\'offerta vegnan chattads</string>
+    <string name="start_conversation">Iniziar ina chatta</string>
+    <string name="reply">Respundair</string>
+    <string name="loading_messages">Chargiament da messadis…</string>
+    <string name="txt_draft">Schizz</string>
+    <string name="sending">Enviament…</string>
+    <string name="pin_conversation">Fixar en l\'aura</string>
+    <string name="unpin_conversation">Liberar</string>
+    <string name="add_contact_or_number">Addebatter contact u nummer…</string>
+    <string name="suggestions">Sugestiuns</string>
+    <string name="channel_received_sms">SMS chattà</string>
+    <string name="new_message">Nov messadi</string>
+    <string name="mark_as_read">Marcar sco leghì</string>
+    <string name="mark_as_unread">Marcar sco na leghì</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d chattà</item>
+        <item quantity="other">%d chattas</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d messadi</item>
+        <item quantity="other">%d messadis</item>
+    </plurals>
+    <string name="lock_screen_visibility">Visivladad da notificaziun dal scherm bloccà</string>
+    <string name="sender_and_message">Remittent e messadi</string>
+    <string name="sender_only">Nizzegià il remittent</string>
+    <string name="app_import">Importar</string>
+
+    <string name="ad_attribution">ad</string>
+    <string name="txt_transition_1">Transiziun 1</string>
+    <string name="txt_more">Davart</string>
+    <string name="txt_copy">Cussegliar</string>
+
+
+    <string name="invalid_destination">Destinaziun invalida.</string>
+    <string name="service_not_activated">Servetsch n\'activà sin la retschada.</string>
+    <string name="service_message_not_found">Messadi expirà u betg disponibel.</string>
+    <string name="service_network_problem">Betg pussaivel d\'inviar pervi da problemas cun la retschada.</string>
+    <string name="message_queued">Actualmain n\'èsi betg pussaivel d\'inviar il to messadi. Quai vegn fatg quand il servetsch è disponibel.</string>
+    <string name="download_later">Betg pussaivel da dar giu ussa. Prova pli tard.</string>
+    <string name="no_apn">Nagin APN specifitgà per l\'app. T\'èn obligà da configurar quai en las tschertgas!</string>
+    <string name="no_subject">(Nagin object)</string>
+    <string name="unknown_sender">Remettur naginusch.</string>
+    <string name="dl_failure_notification">Betg pussaivel da dar giu il messadi </string>
+
+    <string name="ok">OK</string>
+    <string name="txt_sender_does_not_support_replies">Il remettur na sustegna nagin returs.</string>
+    <string name="backup_and_restore">Backup e restaurescha</string>
+    <string name="backup_now">Backup ussa</string>
+    <string name="are_you_sure_you_want_to_import_sms_">T\'es ti segir che ti vulias importar messadis?</string>
+    <string name="no_backup_available">Nagin backup disponibel</string>
+    <string name="backups">Backups</string>
+    <string name="message_backup">/Messadi/Backup</string>
+    <string name="backing_up_messages">Backup da messadis</string>
+    <string name="importing_messages">Restaurar messadis</string>
+    <string name="txt_next">Avant</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">Conceda per plaschair la permissiun da notificaziun d\'App en las tschertgas d\'App</string>
+
+    <string name="text_intro_title3">App predefinida</string>
+
+    <string name="text_dec_default_app">Per trair u daventar messadis, ti müssas prender questa app sco app predefinida. Vulias ti ch\'ils messadis vegnan l\'App predefinida?</string>
+
+    <string name="text_header_notification">Permissiun da notificaziun</string>
+    <string name="text_desc_notification">Per trair u daventar messadis, ti müssas conceder la permissiun per notificaziuns d\'App.</string>
+
+    <string name="term_privacy">Cun entrar ti consents nus a nossas clausulas da protecziun da datas e las cundiziuns d\'utilisaziun.</string>
+    <string name="privacy_policy">Clausulas da protecziun da datas</string>
+    <string name="terms_of_use">Cundiziuns d\'utilisaziun</string>
+
+    <string name="cancel">Annullar</string>
+    <string name="nothing">Nagin</string>
+    <string name="invalid_file_format">Furmadi da datas nagina valida</string>
+    <string name="an_error_occurred">Ina errur è succedida: %s</string>
+    <string name="no_app_found">Nagin App valida chattada</string>
+    <string name="copy_to_clipboard">Cussegliar en l\'ufferenza</string>
+    <string name="copy_number_to_clipboard">Cussegliar il nummer en l\'ufferenza</string>
+    <string name="copied_to_clipboard">Cusseglià en l\'ufferenza</string>
+    <string name="dial_number">Chiamar nummer</string>
+    <string name="number">Nummer</string>
+    <string name="no_contacts_found">Nagins contacts chattads</string>
+    <string name="request_the_required_permissions">Cunvida las permissiuns necessarias</string>
+    <string name="no_access_to_contacts">L\'app na po betg acceder als contacts</string>
+
+    <!-- Types da vista -->
+
+    <!-- Numers bloccads -->
+    <string name="manage_blocked_numbers">Administrar nums bloccads</string>
+    <string name="not_blocking_anyone">Ti na blocchis nagin.</string>
+    <string name="add_a_blocked_number">Agid\'ina numer bloccà</string>
+    <string name="block_number">Blocchar nummer</string>
+    <string name="blocked_numbers">Numers bloccads</string>
+    <string name="menu_export_blocked_numbers">Exportar nums bloccads</string>
+    <string name="menu_import_blocked_numbers">Importar nums bloccads</string>
+    <string name="must_make_default_dialer">Ti mussas far questa app l\'app predefinida per blocchar nums.</string>
+    <string name="set_as_default">Suttacumandar sco predefinida</string>
+    <string name="block_confirmation">T\'esch ti segir che ti vulias blocchar \"%s\"?</string>
+
+    <!-- Favorites -->
+    <string name="favorites">Favorites</string>
+
+    <!-- Search -->
+    <string name="search">Search</string>
+    <string name="type_2_characters">Digita almain 2 caracters per avair inizià la tschertga.</string>
+
+    <!-- Filters -->
+    <string name="no_items_found">Nagins objects chattads.</string>
+
+    <!-- Permissions -->
+
+    <!-- Renaming -->
+    <string name="filename_without_txt">Nom da file (sin .txt)</string>
+
+    <!-- Copy / Move -->
+    <string name="copying">Cupiar…</string>
+    <string name="moving">Mover…</string>
+    <string name="could_not_create_folder">Nagut pudeva vegnir creat en la furma da %s</string>
+    <string name="could_not_create_file">Nagut pudeva vegnir creat sco file %s</string>
+
+    <!-- Create new -->
+    <string name="create_new_folder">Crear nov dossiers</string>
+    <string name="name_taken">In file u dossiers cun quel num exista gia.</string>
+    <string name="invalid_name">Il num contegna caracters nagina vala.</string>
+    <string name="empty_name">Entra in num, per plaschair.</string>
+    <string name="unknown_error_occurred">Ina errur nunenconuschida è succedida</string>
+
+    <!-- File operation conflicts -->
+    <string name="file_already_exists">Il file \"%s\" exists gia</string>
+    <string name="folder_already_exists">Il dossiers \"%s\" exists gia</string>
+    <string name="merge">Mesemblar</string>
+    <string name="keep_both">Mantegnair entrambs</string>
+    <string name="overwrite">Superscriar</string>
+    <string name="skip">Saltar</string>
+    <string name="apply_to_all">Applicar sin tut</string>
+
+    <!-- File picker -->
+    <string name="select_folder">Selleccionar in dossiers</string>
+    <string name="select_file">Selleccionar in file</string>
+    <string name="confirm_storage_access_title">Confirmar l\'access a la memor externa</string>
+    <string name="confirm_storage_access_text">Permess plaschair la scelta dal dossiers principal sur la charta SD tar la proschima pagina per dar giu il dossiers.</string>
+    <string name="confirm_storage_access_text_sd">Sche tu na vesias betg la charta SD, vescha quest</string>
+    <string name="confirm_storage_access_android_text">Permess la pussanza da sfruttar la storta selecziunada sut la charta SD sut la proschima pagina cun far \'Utilisar quels dossiers\' sut il fund.</string>
+
+    <plurals name="items">
+        <item quantity="one">%d object</item>
+        <item quantity="other">%d objects</item>
+    </plurals>
+
+    <string name="select_storage">Selleccionar la storta</string>
+    <string name="internal">Intern</string>
+    <string name="sd_card">Charta SD</string>
+    <string name="root">Root</string>
+    <string name="wrong_root_selected">Dossiers errads sellecziunads. Per plaschair sellecciona il dossiers principal da la tua charta SD.</string>
+    <string name="sd_card_usb_same">Las vias da la charta SD e dal device USB na pon betg esser las medemas.</string>
+
+    <string name="theme">Tem</string>
+
+    <string name="delete">Stizzar</string>
+    <string name="share">Partir</string>
+    <string name="share_via">Partir via</string>
+    <string name="select_all">Selleccionar tut</string>
+    <string name="select_text">Selleccionar il text</string>
+    <string name="maximum_share_reached">Tus na possis betg partir quest sum tant grond en ina giada.</string>
+    <string name="add_number_to_contact">Agidair in num a la contacta</string>
+
+    <string name="proceed_with_deletion">Es ti segir che ti vuls proceder cun la stizzaziun?</string>
+    <string name="deletion_confirmation">Es ti segir che ti vuls stizzar %s?</string>
+    <!-- Es ti segir che ti vuls mover 3 objects en il Recycle Bin? -->
+    <string name="yes">Giu</string>
+
+    <string name="settings">Settings</string>
+    <string name="customize_notifications">Customisar las notificaziuns</string>
+    <string name="use_english_language">Utilisar la lingua ingleisa</string>
+    <string name="font_size">Mida dal charakter</string>
+    <string name="small">Suttil</string>
+    <string name="medium">Medi</string>
+    <string name="large">Grond</string>
+    <string name="extra_large">Extra grond</string>
+    <string name="use_24_hour_time_format">Utilisar il format da temp en las 24 uras</string>
+    <string name="settings_exported_successfully">Settings exportadas cun success</string>
+
+    <string name="importing_successful">Importaziun cumplettada cun success</string>
+    <string name="exporting_successful">Backup cumplettà cun success</string>
+    <string name="exporting_failed">Backup n\'è betg riuschì</string>
+    <string name="importing_some_entries_failed">Importaziun d\'algunas entredas n\'è betg riuschida</string>
+    <string name="no_entries_for_exporting">Nagins objects per exportar chattads</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">Permess per plaschair la scelta dal dossiers principal dal device USB sur la proxima pagina per dar access</string>
+    <string name="wrong_root_selected_usb">Dossiers errads sellecziunads. Per plaschair sellecciona il dossiers principal dal to device USB.</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        Semblescha che la versiun da l\'app saja corrumpida. Per plaschair bajetga la versiun originala <a href="%s">qua</a>.
+    ]]>
+</string>
+
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">Per mandar u receber in SMS, dovras \nconfigurar quest sco l\'applicaziun predefinida.</string>
+    <string name="app_continue">Continuar</string>
+    <string name="app_language">Lingua</string>
+    <string name="app_message">Messagis</string>
+    <string name="app_search_number_name">Cherchar Numers, Noms &amp; Plin</string>
+    <string name="app_all">Tuts</string>
+    <string name="app_personal">Persunal</string>
+    <string name="app_otps">OTP</string>
+    <string name="app_transactions">Transacziuns</string>
+    <string name="app_offers">Offertas</string>
+    <string name="app_inbox">Casella d\'entrada</string>
+    <string name="app_archived">Archivats</string>
+    <string name="app_block">Bloccar</string>
+    <string name="app_backup_restore">Backup e Restaura</string>
+    <string name="app_setting">Configuraziuns</string>
+    <string name="app_rate_us">Valutar-nus</string>
+    <string name="app_privacy_policy">Politica da Privatetg</string>
+    <string name="app_appearance">Aspect</string>
+    <string name="app_theme">Tem</string>
+    <string name="app_font_size">Mida da la scrittura</string>
+    <string name="app_use_system_font">Utilisar la scrittura dal system</string>
+    <string name="app_general">General</string>
+    <string name="app_auto_compress_mms_attachments">Attachaments MMS Compress automatich</string>
+    <string name="app_sync_message">Sync Messagis</string>
+    <string name="app_about_message_sms">A propi da SMS</string>
+    <string name="app_system">Systema</string>
+    <string name="app_light_mode">Modalitad clera</string>
+    <string name="app_dark_mode">Modalitad scura</string>
+    <string name="app_small">Pic</string>
+    <string name="app_normal">Normal</string>
+    <string name="app_large">Grond</string>
+    <string name="app_extra_large">Extra grond</string>
+    <string name="app_re_sync_message_with_native_database">Re-Sync voss messagis cun la banca dad SMS nativa Android</string>
+    <string name="app_automatic">Automatic</string>
+    <string name="app_100_kb">100 KB</string>
+    <string name="app_200_kb">200 KB</string>
+    <string name="app_300_kb">300 KB</string>
+    <string name="app_600_kb">600 KB</string>
+    <string name="app_1000_kb">1000 KB</string>
+    <string name="app_2000_kb">2000 KB</string>
+    <string name="app_no_compression">Negin compressiun</string>
+    <string name="app_auto_compress">Compress automatic</string>
+    <string name="app_are_your_sure_to_want_to_exit">Es ti segir che ti vuls sortir?</string>
+    <string name="app_yes">Giu</string>
+    <string name="app_not_now">Nagut ussa</string>
+    <string name="app_new_conversation">Nova chatta</string>
+    <string name="app_write_a_message">Scriver in messadi....</string>
+    <string name="app_notification">Notificaziun</string>
+    <string name="app_delete_conversation">Stizzar chatta</string>
+    <string name="app_contact">Contacts</string>
+    <string name="app_detail">Detagls</string>
+    <string name="app_delete">Stizzar</string>
+    <string name="app_delete_message">Es ti segir ch\'ins deve stizzar quest chatta?</string>
+    <string name="app_cancel">Cancellar</string>
+    <string name="app_block_confirmation">Es ti segir ch\'ins deve bloccar \"%s\"?</string>
+    <string name="app_last_backup">Ultim backup</string>
+    <string name="app_restore">Restaurar</string>
+    <string name="app_select_a_backup">Sellecziunar in backup</string>
+    <string name="app_backup_message">Actualmain, uss vegn sustenì be SMS dad Backup e Restaura. Sustegn per MMS ed backups planisads vegnan cun avair!</string>
+    <string name="app_export_message">Exportar messadi</string>
+    <string name="app_export_message_description">Es ti segir ch\'ins deve exportar messadis?</string>
+    <string name="app_export">Exportar</string>
+    <string name="app_tap_to_customize">Toccar per personalisar</string>
+    <string name="app_notification_preview">Previsiun da notificaziun</string>
+    <string name="app_wake_screen">Despertar il display</string>
+    <string name="app_show_name_and_message">Mussar num e messadi</string>
+    <string name="app_show_name">Mussar num</string>
+    <string name="app_hide_contents">Sguardar contenids</string>
+    <string name="app_block_number">Bloccar num</string>
+    <string name="app_unarchived">Nagin archiv</string>
+    <string name="app_premium_upgrade">Actualisaziun Premium</string>
+    <string name="app_no_advertising">Nagut publicitad</string>
+    <string name="app_super_fast_service">Servetschs super velochs</string>
+    <string name="app_unlimited_photo_enhancing">Migliuraziun da fotografia illimitada</string>
+    <string name="app_all_feature_available">Tut las funcziuns disponiblas</string>
+    <string name="app_subscription_terms">Cundiziuns d\'abunament</string>
+    <string name="app_subscription_description">L\'abunament vegn autumaticamain renovà al medem pretsch e per la medema durada. Vus po esser administrà e disdir l\'abunament en mintga temp en las configuraziuns da Google Play. L\'abunament vegn autumaticamain renovà al medem pretsch e per la medema durada.</string>
+    <string name="app_no_archive_message_found">Nagin messadi archivià chattà.</string>
+    <string name="app_your_arhived_conversation_appear_here">Conversațiile dvs. arhivate vor apărea aici</string>
+    <string name="app_exit_app">Ieșiți din aplicație</string>
+
+
+
+</resources>

@@ -1,0 +1,7 @@
+package messenger.messages.messaging.sms.chat.meet.subscription;
+
+public class PurchaseUtility {
+
+    public static final String PRODUCT_ID = "sms_subs";
+    public static final String LICENSE_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkCx8517hMVzIaUae5zRa/PgDWMagQkALAOn7d5XVKLc6ylE6LHjAkzr4VBxsax0uYYSm8tPPkyeu7b52UWiDAIhEmQXklPCY1Ci5oPLBwNbp2BIw8bGQfRupBrDRSg6esrjzDr7ZNukyD3o4DNmPRQQO1jpH2nl8CFpMHR3fpz65HXu5i4f1Z652UtfbiCpA1RXGENVSQU+SEhqIZ7qJ4DZfP/ObB+6yMDm6CjhnoqIbjy09DobLLD44fhXsn80scnrup7RtpY9FWM3aLj+EwILhD2zPi5xcec1yA+/OFyBiT1gM7jJywMQo1YMyRAvYMrYQYenZufRN2KdXG6mdlwIDAQAB";
+}

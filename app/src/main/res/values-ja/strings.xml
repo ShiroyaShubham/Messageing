@@ -1,0 +1,300 @@
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">メッセージを入力してください…</string>
+    <string name="message_not_sent_short">メッセージは送信されませんでした</string>
+    <string name="message_not_sent_touch_retry">送信されません。タッチして再試行します。</string>
+    <string name="message_sending_error">「%s」へのメッセージは送信されていません</string>
+    <string name="add_person">人物を追加</string>
+    <string name="attachment">アタッチメント</string>
+    <string name="no_conversations_found">会話は見つかりませんでした</string>
+    <string name="no_personal_conversations_found">個人的な会話は見つかりませんでした</string>
+    <string name="no_otp_messages_found">OTP メッセージが見つかりませんでした</string>
+    <string name="no_transaction_messages_found">トランザクションメッセージが見つかりませんでした</string>
+    <string name="no_offer_messages_found">オファーメッセージが見つかりませんでした</string>
+    <string name="start_conversation">会話を始める</string>
+    <string name="reply">返事</string>
+    <string name="loading_messages">メッセージを読み込んでいます…</string>
+    <string name="txt_draft">下書き</string>
+    <string name="sending">送信…</string>
+    <string name="pin_conversation">上部にピン留めする</string>
+    <string name="unpin_conversation">Unpin</string>
+    <string name="add_contact_or_number">連絡先または番号を追加…</string>
+    <string name="suggestions">提案</string>
+    <string name="channel_received_sms">受信したSMS</string>
+    <string name="new_message">新しいメッセージ</string>
+    <string name="mark_as_read">既読にする</string>
+    <string name="mark_as_unread">未読としてマーク</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d 件の会話</item>
+        <item quantity="other">%d 件の会話</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d メッセージ</item>
+        <item quantity="other">%d 件のメッセージ</item>
+    </plurals>
+    <string name="lock_screen_visibility">ロック画面の通知の可視性</string>
+    <string name="sender_and_message">送信者とメッセージ</string>
+    <string name="sender_only">送信者のみ</string>
+    <string name="app_import">メッセージ</string>
+
+    <string name="ad_attribution">広告</string>
+    <string name="txt_transition_1">遷移 1</string>
+    <string name="txt_more">もっと</string>
+    <string name="txt_copy">コピー</string>
+
+
+    <string name="invalid_destination">宛先アドレスが無効です。</string>
+    <string name="service_not_activated">サービスがネットワーク上でアクティブ化されていません。</string>
+    <string name="service_message_not_found">メッセージの有効期限が切れているか、利用できません。</string>
+    <string name="service_network_problem">ネットワークの問題により送信できませんでした。</string>
+    <string name="message_queued">現在メッセージを送信できません。サービスが利用可能になり次第、お送りいたします。</string>
+    <string name="download_later">現在ダウンロードできません。あとでもう一度試してみてください。</string>
+    <string name="no_apn">アプリに APN が指定されていません。設定で設定する必要があります。</string>
+    <string name="no_subject">（件名なし）</string>
+    <string name="unknown_sender">不明な送信者</string>
+    <string name="dl_failure_notification">メッセージをダウンロードできませんでした</string>
+
+    <string name="ok">わかりました</string>
+    <string name="txt_sender_does_not_support_replies">送信者は返信をサポートしていません</string>
+    <string name="backup_and_restore">バックアップと復元</string>
+    <string name="backup_now">今すぐバックアップ</string>
+    <string name="are_you_sure_you_want_to_import_sms_">メッセージをインポートしてもよろしいですか\?</string>
+    <string name="no_backup_available">利用可能なバックアップがありません</string>
+    <string name="backups">バックアップ</string>
+    <string name="message_backup">/メッセージ/バックアップ</string>
+    <string name="backing_up_messages">メッセージのバックアップ</string>
+    <string name="importing_messages">メッセージを復元する</string>
+    <string name="txt_next">次</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">アプリ設定から通知許可を与えてください</string>
+
+
+    <string name="text_intro_title3">デフォルトのアプリを設定する</string>
+
+
+    <string name="text_dec_default_app">メッセージを送受信するには、それをデフォルトのアプリケーションとして設定する必要があります。メッセージをデフォルトのアプリケーションにしますか\?</string>
+
+    <string name="text_header_notification">通知の許可</string>
+    <string name="text_desc_notification">メッセージ アプリがメッセージ通知を受信する場合は権限が必要です。権限を許可する必要があります。</string>
+
+
+    <string name="term_privacy">参加すると、当社のプライバシー ポリシーと利用規約に同意したものとみなされます。</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="terms_of_use">利用規約</string>
+
+    <string name="cancel">キャンセル</string>
+    <string name="nothing">何もない</string>
+    <string name="invalid_file_format">無効なファイル形式です</string>
+    <string name="an_error_occurred">エラーが発生しました: %s</string>
+    <string name="no_app_found">有効なアプリが見つかりません</string>
+    <string name="copy_to_clipboard">クリップボードにコピー</string>
+    <string name="copy_number_to_clipboard">番号をクリップボードにコピー</string>
+    <string name="copied_to_clipboard">クリップボードにコピーされました</string>
+    <string name="dial_number">番号をダイヤル</string>
+    <string name="number">番号</string>
+    <string name="no_contacts_found">連絡先が見つかりませんでした</string>
+    <string name="request_the_required_permissions">必要な権限をリクエストする</string>
+    <string name="no_access_to_contacts">アプリは連絡先にアクセスできませんでした</string>
+
+    <!-- View types -->
+
+    <!-- Blocked numbers -->
+    <string name="manage_blocked_numbers">ブロックされた番号を管理する</string>
+    <string name="not_blocking_anyone">あなたは誰もブロックしていません。</string>
+    <string name="add_a_blocked_number">ブロックされた番号を追加する</string>
+    <string name="block_number">ブロック番号</string>
+    <string name="blocked_numbers">ブロックされた番号</string>
+    <string name="menu_export_blocked_numbers">ブロックされた番号をエクスポートする</string>
+    <string name="menu_import_blocked_numbers">ブロックされた番号をインポートする</string>
+    <string name="must_make_default_dialer">ブロックされた番号を使用するには、このアプリをデフォルトのダイヤラー アプリにする必要があります。</string>
+    <string name="set_as_default">デフォルトとして設定</string>
+    <string name="block_confirmation">「%s」をブロックしてもよろしいですか\?</string>
+
+    <!-- Favorites -->
+    <string name="favorites">お気に入り</string>
+
+    <!-- Search -->
+    <string name="search">検索</string>
+    <string name="type_2_characters">検索を開始するには、少なくとも 2 文字を入力してください。</string>
+
+    <!-- Filters -->
+    <string name="no_items_found">項目は見つかりませんでした。</string>
+
+    <!-- Permissions -->
+
+    <!-- Renaming -->
+    <string name="filename_without_txt">ファイル名 (.txt なし)</string>
+
+    <!-- Copy / Move -->
+    <string name="copying">コピー中…</string>
+    <string name="moving">移動中…</string>
+    <string name="could_not_create_folder">フォルダー %s を作成できませんでした</string>
+    <string name="could_not_create_file">ファイル %s を作成できませんでした</string>
+
+    <!-- Create new -->
+    <string name="create_new_folder">新しいフォルダーを作成する</string>
+    <string name="name_taken">その名前のファイルまたはフォルダーはすでに存在します</string>
+    <string name="invalid_name">名前に無効な文字が含まれています</string>
+    <string name="empty_name">名前を入力してください</string>
+    <string name="unknown_error_occurred">不明なエラーが発生しました</string>
+
+    <!-- File operation conflicts -->
+    <string name="file_already_exists">ファイル「%s」はすでに存在します</string>
+    <string name="folder_already_exists">フォルダ「%s」はすでに存在します</string>
+    <string name="merge">マージ</string>
+    <string name="keep_both">両方とも保管しておいてください</string>
+    <string name="overwrite">上書き</string>
+    <string name="skip">スキップ</string>
+    <string name="apply_to_all">すべてに適用</string>
+
+    <!-- File picker -->
+    <string name="select_folder">フォルダーを選択</string>
+    <string name="select_file">ファイルを選択</string>
+    <string name="confirm_storage_access_title">外部ストレージへのアクセスを確認</string>
+    <string name="confirm_storage_access_text">書き込みアクセスを許可するには、次の画面でSDカードのトップフォルダーを選択してください</string>
+    <string name="confirm_storage_access_text_sd">SDカードが表示されない場合は、これをお試しください</string>
+    <string name="confirm_storage_access_android_text">次の画面で、選択したストレージへのアクセスを許可するために、下部の「このフォルダーを使用」を押してください。</string>
+
+    <plurals name="items">
+        <item quantity="one">%d アイテム</item>
+        <item quantity="other">%d アイテム</item>
+    </plurals>
+
+    <string name="select_storage">ストレージを選択</string>
+    <string name="internal">内部</string>
+    <string name="sd_card">SDカード</string>
+    <string name="root">ルート</string>
+    <string name="wrong_root_selected">間違ったフォルダーが選択されました。SDカードのメインフォルダーを選択してください</string>
+    <string name="sd_card_usb_same">SDカードとUSBデバイスのパスは同じにできません</string>
+
+
+    <string name="theme">テーマ</string>
+
+
+    <string name="delete">削除</string>
+    <string name="share">共有</string>
+    <string name="share_via">経由で共有</string>
+    <string name="select_all">すべて選択</string>
+    <string name="select_text">テキストを選択</string>
+    <string name="maximum_share_reached">一度にこの程度のコンテンツを共有できません</string>
+    <string name="add_number_to_contact">連絡先に番号を追加</string>
+
+
+    <string name="proceed_with_deletion">削除を続行しますか？</string>
+    <string name="deletion_confirmation">%s を削除してもよろしいですか？</string>
+    <!-- 3つのアイテムをゴミ箱に移動しますか？ -->
+    <string name="yes">はい</string>
+
+
+    <string name="settings">設定</string>
+    <string name="customize_notifications">通知をカスタマイズ</string>
+    <string name="use_english_language">英語を使用</string>
+    <string name="font_size">フォントサイズ</string>
+    <string name="small">小</string>
+    <string name="medium">中</string>
+    <string name="large">大</string>
+    <string name="extra_large">特大</string>
+    <string name="use_24_hour_time_format">24時間形式を使用</string>
+    <string name="settings_exported_successfully">設定が正常にエクスポートされました</string>
+
+    <string name="importing_successful">インポートが成功しました</string>
+    <string name="exporting_successful">バックアップが成功しました</string>
+    <string name="exporting_failed">エクスポートに失敗しました</string>
+    <string name="importing_some_entries_failed">一部のエントリのインポートに失敗しました</string>
+    <string name="no_entries_for_exporting">エクスポートするエントリが見つかりませんでした</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">次の画面で、アクセスを許可するためにUSBデバイスのトップフォルダーを選択してください</string>
+    <string name="wrong_root_selected_usb">間違ったフォルダーが選択されました。USBデバイスのメインフォルダーを選択してください</string>
+
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        アプリのバージョンが壊れているようです。オリジナルのバージョンを<a href="%s">こちら</a>からダウンロードしてください。
+    ]]>
+</string>
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">SMS を送受信するには、デフォルトアプリとして設定する必要があります。デフォルトアプリに設定</string>
+    <string name="app_continue">続行</string>
+    <string name="app_language">言語</string>
+    <string name="app_message">メッセージ</string>
+    <string name="app_search_number_name">番号、名前、その他を検索</string>
+    <string name="app_all">すべて</string>
+    <string name="app_personal">個人</string>
+    <string name="app_otps">OTP</string>
+    <string name="app_transactions">取引</string>
+    <string name="app_offers">オファー</string>
+    <string name="app_inbox">受信トレイ</string>
+    <string name="app_archived">アーカイブ済み</string>
+    <string name="app_block">ブロック</string>
+    <string name="app_backup_restore">バックアップとリストア</string>
+    <string name="app_setting">設定</string>
+    <string name="app_rate_us">評価する</string>
+    <string name="app_privacy_policy">プライバシーポリシー</string>
+    <string name="app_appearance">外観</string>
+    <string name="app_theme">テーマ</string>
+    <string name="app_font_size">フォントサイズ</string>
+    <string name="app_use_system_font">システムフォントを使用</string>
+    <string name="app_general">一般</string>
+    <string name="app_auto_compress_mms_attachments">MMS 添付ファイルの自動圧縮</string>
+    <string name="app_sync_message">メッセージの同期</string>
+    <string name="app_about_message_sms">Message SMS について</string>
+    <string name="app_system">システム</string>
+    <string name="app_light_mode">ライトモード</string>
+    <string name="app_dark_mode">ダークモード</string>
+    <string name="app_small">小</string>
+    <string name="app_normal">標準</string>
+    <string name="app_large">大</string>
+    <string name="app_extra_large">特大</string>
+    <string name="app_re_sync_message_with_native_database">メッセージをネイティブ Android SMS データベースと再同期</string>
+    <string name="app_automatic">自動</string>
+    <string name="app_100_kb">100 KB</string>
+    <string name="app_200_kb">200 KB</string>
+    <string name="app_300_kb">300 KB</string>
+    <string name="app_600_kb">600 KB</string>
+    <string name="app_1000_kb">1000 KB</string>
+    <string name="app_2000_kb">2000 KB</string>
+    <string name="app_no_compression">圧縮なし</string>
+    <string name="app_auto_compress">自動圧縮</string>
+    <string name="app_are_your_sure_to_want_to_exit">終了してもよろしいですか？</string>
+    <string name="app_yes">はい</string>
+    <string name="app_not_now">今はしない</string>
+    <string name="app_new_conversation">新しい会話</string>
+    <string name="app_write_a_message">メッセージを書く...</string>
+    <string name="app_notification">通知</string>
+    <string name="app_delete_conversation">会話を削除</string>
+    <string name="app_contact">連絡先</string>
+    <string name="app_detail">詳細</string>
+    <string name="app_delete">削除</string>
+    <string name="app_delete_message">この会話を削除してもよろしいですか？</string>
+    <string name="app_cancel">キャンセル</string>
+    <string name="app_block_confirmation">「%s」をブロックしてもよろしいですか？</string>
+    <string name="app_last_backup">最終バックアップ</string>
+    <string name="app_restore">リストア</string>
+    <string name="app_select_a_backup">バックアップを選択</string>
+    <string name="app_backup_message">現在、バックアップとリストアはSMSのみサポートされています。MMS サポートと定期的なバックアップは近日公開予定です！</string>
+    <string name="app_export_message">メッセージをエクスポート</string>
+    <string name="app_export_message_description">メッセージをエクスポートしますか？</string>
+    <string name="app_export">エクスポート</string>
+    <string name="app_tap_to_customize">タップしてカスタマイズ</string>
+    <string name="app_notification_preview">通知のプレビュー</string>
+    <string name="app_wake_screen">画面を起こす</string>
+    <string name="app_show_name_and_message">名前とメッセージを表示</string>
+    <string name="app_show_name">名前を表示</string>
+    <string name="app_hide_contents">内容を非表示</string>
+    <string name="app_block_number">番号をブロック</string>
+    <string name="app_unarchived">アーカイブ解除</string>
+    <string name="app_premium_upgrade">プレミアムアップグレード</string>
+    <string name="app_no_advertising">広告なし</string>
+    <string name="app_super_fast_service">超高速サービス</string>
+    <string name="app_unlimited_photo_enhancing">無制限の写真の向上</string>
+    <string name="app_all_feature_available">すべての機能が利用可能</string>
+    <string name="app_subscription_terms">定期購読条件</string>
+    <string name="app_subscription_description">定期購読は同じ価格と期間で自動的に更新されます。 Google Playの設定でいつでも定期購読を管理およびキャンセルできます。 定期購読は同じ価格と期間で自動的に更新されます。</string>
+    <string name="app_no_archive_message_found">アーカイブされたメッセージが見つかりません。</string>
+    <string name="app_your_arhived_conversation_appear_here">アーカイブされた会話がここに表示されます</string>
+    <string name="app_exit_app">アプリを終了する</string>
+
+
+
+</resources>

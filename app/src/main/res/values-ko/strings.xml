@@ -1,0 +1,293 @@
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">메시지 입력...</string>
+    <string name="message_not_sent_short">메시지 전송 실패</string>
+    <string name="message_not_sent_touch_retry">전송되지 않았습니다. 다시 시도하려면 터치하세요.</string>
+    <string name="message_sending_error">\'%s\'님에게 보내는 메시지가 전송되지 않았습니다</string>
+    <string name="add_person">사람 추가</string>
+    <string name="attachment">첨부</string>
+    <string name="no_conversations_found">대화 내용을 찾을 수 없습니다</string>
+    <string name="no_personal_conversations_found">개인 대화 내용을 찾을 수 없습니다</string>
+    <string name="no_otp_messages_found">OTP 메시지를 찾을 수 없습니다</string>
+    <string name="no_transaction_messages_found">거래 메시지를 찾을 수 없습니다</string>
+    <string name="no_offer_messages_found">제공 메시지를 찾을 수 없습니다</string>
+    <string name="start_conversation">대화 시작</string>
+    <string name="reply">답장</string>
+    <string name="loading_messages">메시지 로드 중...</string>
+    <string name="txt_draft">임시 보관</string>
+    <string name="sending">전송 중...</string>
+    <string name="pin_conversation">상단에 고정</string>
+    <string name="unpin_conversation">고정 해제</string>
+    <string name="add_contact_or_number">연락처 또는 번호 추가...</string>
+    <string name="suggestions">제안</string>
+    <string name="channel_received_sms">받은 SMS</string>
+    <string name="new_message">새 메시지</string>
+    <string name="mark_as_read">읽음으로 표시</string>
+    <string name="mark_as_unread">읽지 않음으로 표시</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d개의 대화</item>
+        <item quantity="other">%d개의 대화</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d개의 메시지</item>
+        <item quantity="other">%d개의 메시지</item>
+    </plurals>
+    <string name="lock_screen_visibility">잠금 화면 알림 표시</string>
+    <string name="sender_and_message">송신자 및 메시지</string>
+    <string name="sender_only">송신자만</string>
+    <string name="import_messages">메시지 가져오기</string>
+    <string name="app_import">메시지</string>
+
+    <string name="ad_attribution">광고</string>
+    <string name="txt_transition_1">전환 1</string>
+    <string name="txt_more">더보기</string>
+    <string name="txt_copy">복사</string>
+
+
+    <string name="invalid_destination">유효하지 않은 수신 주소입니다.</string>
+    <string name="service_not_activated">네트워크에서 서비스가 활성화되지 않았습니다.</string>
+    <string name="service_message_not_found">메시지가 만료되었거나 사용할 수 없습니다.</string>
+    <string name="service_network_problem">네트워크 문제로 전송할 수 없습니다.</string>
+    <string name="message_queued">현재 메시지를 보낼 수 없습니다. 서비스 이용 가능 시 전송됩니다.</string>
+    <string name="download_later">지금은 다운로드할 수 없습니다. 나중에 다시 시도하세요.</string>
+    <string name="no_apn">앱에 지정된 APN이 없습니다. 설정에서 설정해야 합니다!</string>
+    <string name="no_subject">(제목 없음)</string>
+    <string name="unknown_sender">알 수 없는 발신자</string>
+    <string name="dl_failure_notification">메시지를 다운로드할 수 없습니다</string>
+
+    <string name="ok">확인</string>
+    <string name="txt_sender_does_not_support_replies">송신자가 답장을 지원하지 않습니다</string>
+    <string name="backup_and_restore">백업 및 복원</string>
+    <string name="backup_now">지금 백업</string>
+    <string name="are_you_sure_you_want_to_import_sms_">메시지를 가져오시겠습니까?</string>
+    <string name="no_backup_available">백업을 사용할 수 없습니다</string>
+    <string name="backups">백업</string>
+    <string name="message_backup">/Message/백업</string>
+    <string name="backing_up_messages">메시지 백업 중</string>
+    <string name="importing_messages">메시지 복원 중</string>
+    <string name="txt_next">다음</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">앱 설정에서 알림 권한을 허용해주세요</string>
+
+    <string name="text_intro_title3">기본 앱 설정</string>
+    <string name="text_dec_default_app">메시지를 보내거나 받으려면 이것을 기본 애플리케이션으로 설정해야 합니다. 메시지를 기본 애플리케이션으로 설정하시겠습니까?</string>
+    <string name="text_header_notification">알림 권한</string>
+    <string name="text_desc_notification">메시지 앱이 알림을 수신할 때 권한이 필요합니다. 권한을 허용해야 합니다.</string>
+
+    <string name="term_privacy">가입함으로써 개인정보 보호정책과 이용 약관에 동의합니다.</string>
+    <string name="privacy_policy">개인정보 보호정책</string>
+    <string name="terms_of_use">이용 약관</string>
+
+    <string name="cancel">취소</string>
+    <string name="nothing">없음</string>
+    <string name="invalid_file_format">잘못된 파일 형식</string>
+    <string name="an_error_occurred">오류가 발생했습니다: %s</string>
+    <string name="no_app_found">유효한 앱을 찾을 수 없습니다</string>
+    <string name="copy_to_clipboard">클립보드에 복사</string>
+    <string name="copy_number_to_clipboard">전화번호를 클립보드에 복사</string>
+    <string name="copied_to_clipboard">클립보드에 복사됨</string>
+    <string name="dial_number">전화 걸기</string>
+    <string name="number">번호</string>
+    <string name="no_contacts_found">연락처를 찾을 수 없습니다</string>
+    <string name="request_the_required_permissions">필요한 권한을 요청하세요</string>
+    <string name="no_access_to_contacts">앱이 연락처에 액세스할 수 없습니다</string>
+
+    <!-- View types -->
+
+    <!-- Blocked numbers -->
+    <string name="manage_blocked_numbers">차단된 번호 관리</string>
+    <string name="not_blocking_anyone">아무도 차단되어 있지 않습니다.</string>
+    <string name="add_a_blocked_number">차단된 번호 추가</string>
+    <string name="block_number">번호 차단</string>
+    <string name="blocked_numbers">차단된 번호</string>
+    <string name="menu_export_blocked_numbers">차단된 번호 내보내기</string>
+    <string name="menu_import_blocked_numbers">차단된 번호 가져오기</string>
+    <string name="must_make_default_dialer">차단된 번호를 사용하려면 이 앱을 기본 다이얼러 앱으로 설정해야 합니다.</string>
+    <string name="set_as_default">기본으로 설정</string>
+    <string name="block_confirmation">\"%s\"(을)를 차단하시겠습니까?</string>
+
+    <!-- Favorites -->
+    <string name="favorites">즐겨찾기</string>
+
+    <!-- Search -->
+    <string name="search">검색</string>
+    <string name="type_2_characters">검색을 시작하려면 최소한 2자 이상 입력하세요.</string>
+
+    <!-- Filters -->
+    <string name="no_items_found">아이템을 찾을 수 없습니다.</string>
+
+    <!-- Permissions -->
+
+    <!-- Renaming -->
+    <string name="filename_without_txt">파일명 (.txt 제외)</string>
+
+    <!-- Copy / Move -->
+    <string name="copying">복사 중…</string>
+    <string name="moving">이동 중…</string>
+    <string name="could_not_create_folder">%s 폴더를 만들 수 없습니다</string>
+    <string name="could_not_create_file">%s 파일을 만들 수 없습니다</string>
+
+    <!-- Create new -->
+    <string name="create_new_folder">새 폴더 만들기</string>
+    <string name="name_taken">해당 이름의 파일 또는 폴더가 이미 존재합니다</string>
+    <string name="invalid_name">이름에 유효하지 않은 문자가 포함되어 있습니다</string>
+    <string name="empty_name">이름을 입력해주세요</string>
+    <string name="unknown_error_occurred">알 수 없는 오류가 발생했습니다</string>
+
+    <!-- File operation conflicts -->
+    <string name="file_already_exists">\"%s\" 파일이 이미 존재합니다</string>
+    <string name="folder_already_exists">\"%s\" 폴더가 이미 존재합니다</string>
+    <string name="merge">병합</string>
+    <string name="keep_both">모두 유지</string>
+    <string name="overwrite">덮어쓰기</string>
+    <string name="skip">건너뛰기</string>
+    <string name="apply_to_all">모두에 적용</string>
+
+    <!-- File picker -->
+    <string name="select_folder">폴더 선택</string>
+    <string name="select_file">파일 선택</string>
+    <string name="confirm_storage_access_title">외부 저장소 액세스 확인</string>
+    <string name="confirm_storage_access_text">쓰기 액세스를 부여하려면 다음 화면에서 SD 카드의 최상위 폴더를 선택하세요.</string>
+    <string name="confirm_storage_access_text_sd">SD 카드가 표시되지 않으면 다음을 시도하세요</string>
+    <string name="confirm_storage_access_android_text">다음 화면에서 선택한 저장소에 대한 앱 액세스를 허용하려면 하단의 \'이 폴더 사용\'을 눌러주세요.</string>
+
+    <plurals name="items">
+        <item quantity="one">%d 항목</item>
+        <item quantity="other">%d 항목</item>
+    </plurals>
+
+    <string name="select_storage">저장소 선택</string>
+    <string name="internal">내부</string>
+    <string name="sd_card">SD 카드</string>
+    <string name="root">루트</string>
+    <string name="wrong_root_selected">잘못된 폴더가 선택되었습니다. SD 카드의 메인 폴더를 선택하세요.</string>
+    <string name="sd_card_usb_same">SD 카드 및 USB 장치 경로는 동일할 수 없습니다</string>
+
+    <string name="theme">테마</string>
+
+    <string name="delete">삭제</string>
+    <string name="share">공유</string>
+    <string name="share_via">공유 대상</string>
+    <string name="select_all">모두 선택</string>
+    <string name="select_text">텍스트 선택</string>
+    <string name="maximum_share_reached">한 번에 이렇게 많은 콘텐츠를 공유할 수 없습니다</string>
+    <string name="add_number_to_contact">연락처에 번호 추가</string>
+
+    <string name="proceed_with_deletion">삭제하시겠습니까?</string>
+    <string name="deletion_confirmation">%s(을)를 삭제하시겠습니까?</string>
+    <!-- 3개의 항목을 휴지통으로 이동하시겠습니까? -->
+    <string name="yes">예</string>
+
+    <string name="settings">설정</string>
+    <string name="customize_notifications">알림 사용자 지정</string>
+    <string name="use_english_language">영어 언어 사용</string>
+    <string name="font_size">글꼴 크기</string>
+    <string name="small">작게</string>
+    <string name="medium">중간</string>
+    <string name="large">크게</string>
+    <string name="extra_large">아주 크게</string>
+    <string name="use_24_hour_time_format">24시간 형식 사용</string>
+    <string name="settings_exported_successfully">설정이 성공적으로 내보내졌습니다</string>
+
+    <string name="importing_successful">가져오기가 성공적으로 완료되었습니다</string>
+    <string name="exporting_successful">백업이 성공적으로 완료되었습니다</string>
+    <string name="exporting_failed">내보내기에 실패했습니다</string>
+    <string name="importing_some_entries_failed">일부 항목의 가져오기에 실패했습니다</string>
+    <string name="no_entries_for_exporting">내보낼 항목이 없습니다</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">다음 화면에서 USB 장치의 최상위 폴더를 선택하여 액세스를 부여하세요</string>
+    <string name="wrong_root_selected_usb">잘못된 폴더가 선택되었습니다. USB 장치의 메인 폴더를 선택하세요</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        앱 버전이 손상되었습니다. 원본 버전을 <a href="%s">여기</a>에서 다운로드하세요.
+    ]]>
+</string>
+
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">SMS를 보내거나 받으려면 기본 애플리케이션으로 설정해야 합니다.</string>
+    <string name="app_continue">계속</string>
+    <string name="app_language">언어</string>
+    <string name="app_message">메시지</string>
+    <string name="app_search_number_name">번호, 이름 및 기타 검색</string>
+    <string name="app_all">모두</string>
+    <string name="app_personal">개인</string>
+    <string name="app_otps">OTP</string>
+    <string name="app_transactions">거래</string>
+    <string name="app_offers">제공</string>
+    <string name="app_inbox">받은 편지함</string>
+    <string name="app_archived">보관함</string>
+    <string name="app_block">차단</string>
+    <string name="app_backup_restore">백업 및 복원</string>
+    <string name="app_setting">설정</string>
+    <string name="app_rate_us">평가하기</string>
+    <string name="app_privacy_policy">개인정보 보호 정책</string>
+    <string name="app_appearance">외형</string>
+    <string name="app_theme">테마</string>
+    <string name="app_font_size">글꼴 크기</string>
+    <string name="app_use_system_font">시스템 글꼴 사용</string>
+    <string name="app_general">일반</string>
+    <string name="app_auto_compress_mms_attachments">MMS 첨부 파일 자동 압축</string>
+    <string name="app_sync_message">메시지 동기화</string>
+    <string name="app_about_message_sms">메시지 SMS 정보</string>
+    <string name="app_system">시스템</string>
+    <string name="app_light_mode">라이트 모드</string>
+    <string name="app_dark_mode">다크 모드</string>
+    <string name="app_small">작게</string>
+    <string name="app_normal">보통</string>
+    <string name="app_large">크게</string>
+    <string name="app_extra_large">아주 크게</string>
+    <string name="app_re_sync_message_with_native_database">네이티브 Android SMS 데이터베이스와 메시지 다시 동기화</string>
+    <string name="app_automatic">자동</string>
+    <string name="app_100_kb">100 KB</string>
+    <string name="app_200_kb">200 KB</string>
+    <string name="app_300_kb">300 KB</string>
+    <string name="app_600_kb">600 KB</string>
+    <string name="app_1000_kb">1000 KB</string>
+    <string name="app_2000_kb">2000 KB</string>
+    <string name="app_no_compression">압축 없음</string>
+    <string name="app_auto_compress">자동 압축</string>
+    <string name="app_are_your_sure_to_want_to_exit">정말 종료하시겠습니까?</string>
+    <string name="app_yes">예</string>
+    <string name="app_not_now">지금은 아님</string>
+    <string name="app_new_conversation">새 대화</string>
+    <string name="app_write_a_message">메시지 작성...</string>
+    <string name="app_notification">알림</string>
+    <string name="app_delete_conversation">대화 삭제</string>
+    <string name="app_contact">연락처</string>
+    <string name="app_detail">상세 정보</string>
+    <string name="app_delete">삭제</string>
+    <string name="app_delete_message">이 대화를 삭제하시겠습니까?</string>
+    <string name="app_cancel">취소</string>
+    <string name="app_block_confirmation">\"%s\"을(를) 차단하시겠습니까?</string>
+    <string name="app_last_backup">마지막 백업</string>
+    <string name="app_restore">복원</string>
+    <string name="app_select_a_backup">백업 선택</string>
+    <string name="app_backup_message">현재, 백업 및 복원은 SMS만 지원됩니다. MMS 지원 및 예약된 백업이 곧 제공됩니다!</string>
+    <string name="app_export_message">메시지 내보내기</string>
+    <string name="app_export_message_description">메시지를 내보내시겠습니까?</string>
+    <string name="app_export">내보내기</string>
+    <string name="app_tap_to_customize">탭하여 사용자 정의</string>
+    <string name="app_notification_preview">알림 미리보기</string>
+    <string name="app_wake_screen">화면 활성화</string>
+    <string name="app_show_name_and_message">이름과 메시지 표시</string>
+    <string name="app_show_name">이름 표시</string>
+    <string name="app_hide_contents">내용 숨기기</string>
+    <string name="app_block_number">번호 차단</string>
+    <string name="app_unarchived">보관 취소됨</string>
+    <string name="app_premium_upgrade">프리미엄 업그레이드</string>
+    <string name="app_no_advertising">광고 없음</string>
+    <string name="app_super_fast_service">초고속 서비스</string>
+    <string name="app_unlimited_photo_enhancing">무제한 사진 향상</string>
+    <string name="app_all_feature_available">모든 기능 이용 가능</string>
+    <string name="app_subscription_terms">구독 약관</string>
+    <string name="app_subscription_description">구독은 동일한 가격과 기간으로 자동 갱신됩니다. 구글 플레이 설정에서 언제든지 구독을 관리하고 취소할 수 있습니다. 구독은 동일한 가격과 기간으로 자동 갱신됩니다.</string>
+    <string name="app_no_archive_message_found">보관된 메시지가 없습니다.</string>
+    <string name="app_your_arhived_conversation_appear_here">보관된 대화가 여기에 표시됩니다</string>
+    <string name="app_exit_app">앱 종료</string>
+
+
+
+
+</resources>

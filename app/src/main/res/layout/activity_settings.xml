@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background_color">
+
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtAppearence"
+                style="@style/Text_manrope_Semi_Bold_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_15sdp"
+                android:text="@string/app_appearance"
+                android:textColor="@color/dark_blue" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlCustomNotifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_8">
+
+                    <TextView
+                        android:id="@+id/tvCustomizeNotifications"
+                        style="@style/Text_Dark_Grey"
+                        android:text="@string/customize_notifications"
+                        android:textSize="@dimen/textsize_16" />
+
+
+                    <ImageView
+                        style="@style/Icon_24DP"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:padding="2dp"
+                        android:src="@drawable/icon_arrow_right"
+                        app:tint="@color/black" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlBackupandRestore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_8">
+
+                    <TextView
+                        android:id="@+id/tvBackupAndRestore"
+                        style="@style/Text_Dark_Grey"
+                        android:text="@string/backup_and_restore"
+                        android:textSize="@dimen/textsize_16" />
+
+
+                    <ImageView
+                        style="@style/Icon_24DP"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:padding="2dp"
+                        android:src="@drawable/icon_arrow_right"
+                        app:tint="@color/black" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlLockScreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_8">
+
+                    <TextView
+                        android:id="@+id/tvLockScreenTitle"
+                        style="@style/Text_Dark_Grey"
+                        android:text="@string/lock_screen_visibility"
+                        android:textSize="@dimen/textsize_16" />
+
+
+                    <TextView
+                        android:id="@+id/tvLockScreenDesc"
+                        style="@style/Text_Blue"
+                        android:layout_below="@+id/tvLockScreenTitle"
+                        android:textSize="@dimen/textsize_12"
+                        tools:text="@string/sender_and_message" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text"
+                        style="@style/Text_manrope_Semi_Bold_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:drawableStart="@drawable/ic_theme"
+                        android:drawableEnd="@drawable/ic_right_arrow"
+                        android:drawablePadding="@dimen/_15sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/app_theme"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        style="@style/App_Switch"
+                        android:layout_alignParentEnd="true"
+                        android:clickable="false"
+                        android:gravity="center_vertical"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/rlFontSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgFontSize"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_font_size" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="@string/app_font_size"
+                            android:textSize="@dimen/_12ssp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtFontSize"
+                            style="@style/Text_manrope_Regular_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            android:gravity="center_vertical"
+                            android:text="Normal"
+                            android:textColor="@color/text_grey" />
+
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_right_arrow" />
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlUseSystemFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Text_manrope_Semi_Bold_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:drawableStart="@drawable/ic_use_system_font"
+                        android:drawablePadding="@dimen/_16sdp"
+                        android:gravity="center_vertical"
+                        android:text="@string/app_use_system_font"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchSystemFont"
+                        style="@style/App_Switch"
+                        android:layout_alignParentEnd="true"
+                        android:clickable="false"
+                        android:gravity="center_vertical"
+                        android:visibility="visible" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <View
+                style="@style/Devider_1PX"
+                android:layout_margin="@dimen/_15sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtGeneral"
+                    style="@style/Text_manrope_Semi_Bold_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:text="@string/app_general"
+                    android:textColor="@color/dark_blue" />
+
+                <LinearLayout
+                    android:id="@+id/rlMMSFileSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_gallery" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvMMSFileSizeTitle"
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_auto_compress_mms_attachments"
+                            android:textSize="@dimen/_12ssp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvMMSFileSizeDesc"
+                            style="@style/Text_manrope_Regular_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            android:gravity="center_vertical"
+                            android:text="300kb"
+                            android:textColor="@color/text_grey" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:src="@drawable/ic_right_arrow" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rlSyncDatabase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_sync" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvSyncDatabase"
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_sync_message"
+                            android:textSize="@dimen/_12ssp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Text_manrope_Regular_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/app_re_sync_message_with_native_database"
+                            android:textColor="@color/text_grey" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rlAboutMessageSMS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_info" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_about_message_sms"
+                            android:textSize="@dimen/_12ssp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtVersion"
+                            style="@style/Text_manrope_Regular_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            android:gravity="center_vertical"
+                            android:text="Version 1.0.16"
+                            android:textColor="@color/text_grey" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey"/>
+
+                <naimishtrivedi.in.googleadsmanager.BannerAds
+                    android:id="@+id/mBannerAds"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_animation="@layout/layout_banner_shimmer"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+

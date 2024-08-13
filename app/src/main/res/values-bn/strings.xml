@@ -1,0 +1,298 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">একটি বার্তা টাইপ করুন...</string>
+    <string name="message_not_sent_short">বার্তা পাঠানো হয়নি</string>
+    <string name="message_not_sent_touch_retry">পাঠানো না. আবার চেষ্টা করতে স্পর্শ করুন।</string>
+    <string name="message_sending_error" tools:ignore="StringEscaping">\'%s\' কে আপনার বার্তা পাঠানো হয়নি</string>
+    <string name="add_person">ব্যক্তি যোগ করুন</string>
+    <string name="attachment">সংযুক্তি</string>
+    <string name="no_conversations_found">কোন কথোপকথন পাওয়া যায়নি</string>
+    <string name="no_personal_conversations_found">কোনো ব্যক্তিগত কথোপকথন পাওয়া যায়নি</string>
+    <string name="no_otp_messages_found">কোন OTP বার্তা পাওয়া যায়নি</string>
+    <string name="no_transaction_messages_found">কোন লেনদেন বার্তা পাওয়া যায়নি</string>
+    <string name="no_offer_messages_found">কোন অফার বার্তা পাওয়া যায়নি</string>
+    <string name="start_conversation">একটি কথোপকথন শুরু করুন</string>
+    <string name="reply">উত্তর দিন</string>
+    <string name="loading_messages">বার্তা লোড হচ্ছে...</string>
+    <string name="txt_draft">খসড়া</string>
+    <string name="sending">পাঠানো হচ্ছে...</string>
+    <string name="pin_conversation">উপরে পিন করুন</string>
+    <string name="unpin_conversation">আনপিন করুন</string>
+    <string name="add_contact_or_number">যোগাযোগ বা নম্বর যোগ করুন...</string>
+    <string name="suggestions">পরামর্শ</string>
+    <string name="channel_received_sms">এসএমএস পেয়েছেন</string>
+    <string name="new_message">নতুন বার্তা</string>
+    <string name="mark_as_read">পঠিত হিসেবে চিহ্নিত করুন</string>
+    <string name="mark_as_unread">অপঠিত হিসাবে চিহ্নিত</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d কথোপকথন</item>
+        <item quantity="other">%d কথোপকথন</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d বার্তা</item>
+        <item quantity="other">%dটি বার্তা</item>
+    </plurals>
+    <string name="lock_screen_visibility">লক স্ক্রীন বিজ্ঞপ্তি দৃশ্যমানতা</string>
+    <string name="sender_and_message">প্রেরক এবং বার্তা</string>
+    <string name="sender_only">শুধুমাত্র প্রেরক</string>
+    <string name="import_messages">বার্তা আমদানি করুন</string>
+    <string name="app_import">বার্তা</string>
+
+    <string name="ad_attribution">বিজ্ঞাপন</string>
+    <string name="txt_transition_1">উত্তরণ ঘ</string>
+    <string name="txt_more">আরও</string>
+    <string name="txt_copy">কপি</string>
+
+
+    <string name="invalid_destination">অবৈধ গন্তব্য ঠিকানা।</string>
+    <string name="service_not_activated">নেটওয়ার্কে পরিষেবা সক্রিয় করা হয়নি।</string>
+    <string name="service_message_not_found">বার্তার মেয়াদ শেষ বা উপলব্ধ নেই৷</string>
+    <string name="service_network_problem">নেটওয়ার্ক সমস্যার কারণে পাঠানো যায়নি।</string>
+    <string name="message_queued">বর্তমানে আপনার বার্তা পাঠাতে পারবেন না। পরিষেবাটি উপলব্ধ হলে এটি পাঠানো হবে।</string>
+    <string name="download_later">এখনই ডাউনলোড করা যাচ্ছে না। পরে আবার চেষ্টা করুন.</string>
+    <string name="no_apn">অ্যাপের জন্য কোনও APN নির্দিষ্ট করা নেই, আপনাকে সেটিংসে সেট আপ করতে হবে!</string>
+    <string name="no_subject">(কোন বিষয় নেই)</string>
+    <string name="unknown_sender">অজানা প্রেরক</string>
+    <string name="dl_failure_notification">বার্তা ডাউনলোড করা যায়নি</string>
+
+    <string name="ok">ঠিক আছে</string>
+    <string name="txt_sender_does_not_support_replies">প্রেরক উত্তর সমর্থন করে না</string>
+    <string name="backup_and_restore">ব্যাকআপ এবং পুনঃস্থাপন</string>
+    <string name="backup_now">এখনি ব্যাকআপ করে নিন</string>
+    <string name="are_you_sure_you_want_to_import_sms_">আপনি কি নিশ্চিত আপনি বার্তা আমদানি করতে চান\?</string>
+    <string name="no_backup_available">কোন ব্যাকআপ উপলব্ধ</string>
+    <string name="backups">ব্যাকআপ</string>
+    <string name="message_backup">/বার্তা/ব্যাকআপ</string>
+    <string name="backing_up_messages">ব্যাক আপ বার্তা</string>
+    <string name="importing_messages">বার্তা পুনরুদ্ধার করুন</string>
+    <string name="txt_next">পরবর্তী</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">অনুগ্রহ করে অ্যাপ সেটিংস থেকে বিজ্ঞপ্তির অনুমতি দিন</string>
+
+
+
+    <string name="text_intro_title3">ডিফল্ট অ্যাপ সেট করুন</string>
+
+
+    <string name="text_dec_default_app">বার্তা পাঠাতে বা গ্রহণ করতে, আপনাকে অবশ্যই এটিকে ডিফল্ট অ্যাপ্লিকেশন হিসাবে সেট করতে হবে৷ আপনি কি চান যে বার্তাগুলি আপনার ডিফল্ট অ্যাপ্লিকেশন হয়ে উঠুক\?</string>
+
+    <string name="text_header_notification">বিজ্ঞপ্তির অনুমতি</string>
+    <string name="text_desc_notification">একটি অনুমতি প্রয়োজন যখন বার্তা অ্যাপ বার্তা বিজ্ঞপ্তি পায়, আপনাকে অনুমতি দিতে হবে।</string>
+
+
+    <string name="term_privacy">যোগদান করে, আপনি আমাদের গোপনীয়তা নীতি এবং ব্যবহারের শর্তাবলীতে সম্মত হন।</string>
+    <string name="privacy_policy">গোপনীয়তা নীতি</string>
+    <string name="terms_of_use">ব্যবহারের শর্তাবলী</string>
+
+    <string name="cancel">বাতিল করুন</string>
+    <string name="nothing">কিছুই না</string>
+    <string name="invalid_file_format">অবৈধ ফাইল বিন্যাস</string>
+    <string name="an_error_occurred">একটি ত্রুটি ঘটেছে: %s</string>
+    <string name="no_app_found">কোনো বৈধ অ্যাপ পাওয়া যায়নি</string>
+    <string name="copy_to_clipboard">ক্লিপবোর্ডে কপি করুন</string>
+    <string name="copy_number_to_clipboard">ক্লিপবোর্ডে নম্বর কপি করুন</string>
+    <string name="copied_to_clipboard">ক্লিপবোর্ডে কপি করা হয়েছে</string>
+    <string name="dial_number">নম্বর ডায়াল করুন</string>
+    <string name="number">সংখ্যা</string>
+    <string name="no_contacts_found">কোন পরিচিতি পাওয়া যায়নি</string>
+    <string name="request_the_required_permissions">প্রয়োজনীয় অনুমতির জন্য অনুরোধ করুন</string>
+    <string name="no_access_to_contacts">অ্যাপটি আপনার পরিচিতি অ্যাক্সেস করতে পারেনি</string>
+
+    <!-- View types -->
+
+    <!-- Blocked numbers -->
+    <string name="manage_blocked_numbers">অবরুদ্ধ নম্বরগুলি পরিচালনা করুন</string>
+    <string name="not_blocking_anyone">আপনি কাউকে ব্লক করছেন না।</string>
+    <string name="add_a_blocked_number">একটি ব্লক করা নম্বর যোগ করুন</string>
+    <string name="block_number">ব্লক নম্বর</string>
+    <string name="blocked_numbers">ব্লক করা নম্বর</string>
+    <string name="menu_export_blocked_numbers">ব্লক করা নম্বর রপ্তানি করুন</string>
+    <string name="menu_import_blocked_numbers">ব্লক করা নম্বর আমদানি করুন</string>
+    <string name="must_make_default_dialer">ব্লক করা নম্বর ব্যবহার করতে আপনাকে এই অ্যাপটিকে ডিফল্ট ডায়ালার অ্যাপ বানাতে হবে।</string>
+    <string name="set_as_default">ডিফল্ট হিসেবে সেট করুন</string>
+    <string name="block_confirmation">আপনি কি \\"%s\\" ব্লক করার বিষয়ে নিশ্চিত\?</string>
+
+    <!-- Favorites -->
+    <string name="favorites">প্রিয়</string>
+
+    <!-- Search -->
+    <string name="search">অনুসন্ধান করুন</string>
+    <string name="type_2_characters">অনুসন্ধান শুরু করতে কমপক্ষে 2টি অক্ষর টাইপ করুন৷</string>
+
+    <!-- Filters -->
+    <string name="no_items_found">কোন আইটেম পাওয়া যায়নি.</string>
+
+    <!-- Permissions -->
+
+    <!-- Renaming -->
+    <string name="filename_without_txt">ফাইলের নাম (.txt ছাড়া)</string>
+
+    <!-- Copy / Move -->
+    <string name="copying">অনুলিপি করা হচ্ছে...</string>
+    <string name="moving">সরানো হচ্ছে...</string>
+    <string name="could_not_create_folder">ফোল্ডার %s তৈরি করা যায়নি</string>
+    <string name="could_not_create_file">%s ফাইল তৈরি করা যায়নি</string>
+
+    <!-- Create new -->
+    <string name="create_new_folder">নতুন ফোল্ডার তৈরি কর</string>
+    <string name="name_taken">এই নামের একটি ফাইল বা ফোল্ডার ইতিমধ্যেই বিদ্যমান</string>
+    <string name="invalid_name">নামের ভিতরে ভুল অক্ষর আছে</string>
+    <string name="empty_name">একটি নাম লিখুন</string>
+    <string name="unknown_error_occurred">একটি অজানা ত্রুটি ঘটেছে</string>
+
+    <!-- File operation conflicts -->
+    <string name="file_already_exists">\\"%s\\" ফাইলটি ইতিমধ্যেই বিদ্যমান</string>
+    <string name="folder_already_exists">\\"%s\\" ফোল্ডারটি ইতিমধ্যেই বিদ্যমান</string>
+    <string name="merge">একত্রিত করা</string>
+    <string name="keep_both">দুটোই রাখো</string>
+    <string name="overwrite">ওভাররাইট করুন</string>
+    <string name="skip">এড়িয়ে যান</string>
+    <string name="apply_to_all">সব জন্য আবেদন</string>
+
+    <!-- File picker -->
+    <string name="select_folder">একটি ফোল্ডার নির্বাচন করুন</string>
+    <string name="select_file">একটি ফাইল নির্বাচন করুন</string>
+    <string name="confirm_storage_access_title">বাহ্যিক স্টোরেজ অ্যাক্সেস নিশ্চিত করুন</string>
+    <string name="confirm_storage_access_text">লেখার অ্যাক্সেস দেওয়ার জন্য অনুগ্রহ করে পরবর্তী স্ক্রিনে SD কার্ডের উপরের ফোল্ডারটি বেছে নিন</string>
+    <string name="confirm_storage_access_text_sd">আপনি যদি SD কার্ডটি দেখতে না পান তবে এটি চেষ্টা করুন৷</string>
+    <string name="confirm_storage_access_android_text">নীচের অংশে \\\'এই ফোল্ডারটি ব্যবহার করুন\\\' টিপে অনুগ্রহ করে অ্যাপটিকে পরবর্তী স্ক্রিনে নির্বাচিত সঞ্চয়স্থান অ্যাক্সেস করার অনুমতি দিন।</string>
+
+    <plurals name="items">
+        <item quantity="one">%d আইটেম</item>
+        <item quantity="other">%d আইটেম</item>
+    </plurals>
+
+    <string name="select_storage">স্টোরেজ নির্বাচন করুন</string>
+    <string name="internal">অভ্যন্তরীণ</string>
+    <string name="sd_card">এসডি কার্ড</string>
+    <string name="root">রুট</string>
+    <string name="wrong_root_selected">ভুল ফোল্ডার নির্বাচিত হয়েছে, আপনার এসডি কার্ডের মুখ্য ফোল্ডারটি নির্বাচন করুন</string>
+    <string name="sd_card_usb_same">এসডি কার্ড এবং ইউএসবি ডিভাইসের পথ একই হতে পারে না</string>
+
+    <string name="theme">থিম</string>
+
+    <string name="delete">মুছে ফেলুন</string>
+    <string name="share">শেয়ার করুন</string>
+    <string name="share_via">শেয়ার করুন মাধ্যমে</string>
+    <string name="select_all">সবগুলি নির্বাচন করুন</string>
+    <string name="select_text">টেক্সট নির্বাচন করুন</string>
+    <string name="maximum_share_reached">আপনি একবারে এত বেশি কন্টেন্ট শেয়ার করতে পারবেন না</string>
+    <string name="add_number_to_contact">যোগ করুন যোগাযোগের নাম্বারে</string>
+
+    <string name="proceed_with_deletion">আপনি কি মুছে ফেলার অপেক্ষায় আছেন?</string>
+    <string name="deletion_confirmation">%s মুছে ফেলতে আপনি কি নিশ্চিত?</string>
+    <!-- Are you sure you want to move 3 items into the Recycle Bin? -->
+    <string name="yes">হ্যাঁ</string>
+
+    <string name="settings">সেটিংস</string>
+    <string name="customize_notifications">বিজ্ঞপ্তি সাজান</string>
+    <string name="use_english_language">ইংরেজি ভাষা ব্যবহার করুন</string>
+    <string name="font_size">ফন্ট সাইজ</string>
+    <string name="small">ছোট</string>
+    <string name="medium">মাঝারি</string>
+    <string name="large">বড়</string>
+    <string name="extra_large">অতি বড়</string>
+    <string name="use_24_hour_time_format">২৪-ঘণ্টা সময় ফরম্যাট ব্যবহার করুন</string>
+    <string name="settings_exported_successfully">সেটিংস সফলভাবে রপ্ত করা হয়েছে</string>
+
+    <string name="importing_successful">আমদানি সফল</string>
+    <string name="exporting_successful">ব্যাকআপ সফল</string>
+    <string name="exporting_failed">প্রস্তুতিতে ব্যর্থ</string>
+    <string name="importing_some_entries_failed">কিছু এন্ট্রি আমদানি ব্যর্থ হয়েছে</string>
+    <string name="no_entries_for_exporting">কোনো এন্ট্রি রপ্ত করার জন্য পাওয়া যায়নি</string>
+
+    <string name="usb">ইউএসবি</string>
+    <string name="confirm_usb_storage_access_text">অনুমতি প্রদানের জন্য দয়া করে পরবর্তী স্ক্রিনে ইউএসবি ডিভাইসের শীর্ষ ফোল্ডারটি নির্বাচন করুন</string>
+    <string name="wrong_root_selected_usb">ভুল ফোল্ডার নির্বাচিত হয়েছে, দয়া করে আপনার ইউএসবি ডিভাইসের মুখ্য ফোল্ডারটি নির্বাচন করুন</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        আপনার অ্যাপ্লিকেশন সংস্করণ ভেঙে গেছে মনে হচ্ছে। দয়া করে মূল সংস্করণটি <a href="%s">এখানে</a> ডাউনলোড করুন।
+    ]]>
+</string>
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">এসএমএস প্রেরণ বা গ্রহণ করতে, আপনাকে এটি ডিফল্ট অ্যাপ্লিকেশন হিসেবে সেট করতে হবে। ডিফল্ট অ্যাপ্লিকেশন হিসেবে সেট করুন</string>
+    <string name="app_continue">চালিয়ে যান</string>
+    <string name="app_language">ভাষা</string>
+    <string name="app_message">বার্তা</string>
+    <string name="app_search_number_name">নাম্বার, নাম এবং আরো অনেক কিছু অনুসন্ধান করুন</string>
+    <string name="app_all">সব</string>
+    <string name="app_personal">ব্যক্তিগত</string>
+    <string name="app_otps">ওটিপ</string>
+    <string name="app_transactions">লেনদেন</string>
+    <string name="app_offers">অফারসমূহ</string>
+    <string name="app_inbox">ইনবক্স</string>
+    <string name="app_archived">সংরক্ষিত</string>
+    <string name="app_block">ব্লক</string>
+    <string name="app_backup_restore">ব্যাকআপ এবং পুনরুদ্ধার</string>
+    <string name="app_setting">সেটিংস</string>
+    <string name="app_rate_us">আমাদের রেট দিন</string>
+    <string name="app_privacy_policy">গোপনীয়তা নীতি</string>
+    <string name="app_appearance">উপস্থিতি</string>
+    <string name="app_theme">থিম</string>
+    <string name="app_font_size">ফন্ট সাইজ</string>
+    <string name="app_use_system_font">সিস্টেম ফন্ট ব্যবহার করুন</string>
+    <string name="app_general">সাধারণ</string>
+    <string name="app_auto_compress_mms_attachments">স্বয়ংক্রিয়ভাবে এমএমএস সংযুক্তিসমূহ সংকোচন করুন</string>
+    <string name="app_sync_message">বার্তা সিঙ্ক</string>
+    <string name="app_about_message_sms">মেসেজ এসএমএস সম্পর্কে</string>
+    <string name="app_system">সিস্টেম</string>
+    <string name="app_light_mode">হালকা মোড</string>
+    <string name="app_dark_mode">ডার্ক মোড</string>
+    <string name="app_small">ছোট</string>
+    <string name="app_normal">সাধারিক</string>
+    <string name="app_large">বড়</string>
+    <string name="app_extra_large">অতি বড়</string>
+    <string name="app_re_sync_message_with_native_database">নেটিভ Android এসএমএস ডাটাবেসের সাথে আপনার বার্তা পুনরায় সিঙ্ক করুন</string>
+    <string name="app_automatic">স্বয়ংক্রিয়</string>
+    <string name="app_100_kb">100 কিলোবাইট</string>
+    <string name="app_200_kb">200 কিলোবাইট</string>
+    <string name="app_300_kb">300 কিলোবাইট</string>
+    <string name="app_600_kb">600 কিলোবাইট</string>
+    <string name="app_1000_kb">1000 কিলোবাইট</string>
+    <string name="app_2000_kb">2000 কিলোবাইট</string>
+    <string name="app_no_compression">কোনো সংকোচন নেই</string>
+    <string name="app_auto_compress">স্বয়ংক্রিয় সংকোচন</string>
+    <string name="app_are_your_sure_to_want_to_exit">আপনি কি নিশ্চিত যে আপনি বাহির হতে চান?</string>
+    <string name="app_yes">হ্যাঁ</string>
+    <string name="app_not_now">এখন না</string>
+    <string name="app_new_conversation">নতুন কথোপকথন</string>
+    <string name="app_write_a_message">একটি বার্তা লিখুন....</string>
+    <string name="app_notification">নোটিফিকেশন</string>
+    <string name="app_delete_conversation">কথোপকথন মুছুন</string>
+    <string name="app_contact">যোগাযোগ</string>
+    <string name="app_detail">বিস্তারিত</string>
+    <string name="app_delete">মুছে ফেলুন</string>
+    <string name="app_delete_message">আপনি কি নিশ্চিত যে আপনি এই কথোপকথনটি মুছে ফেলতে চান?</string>
+    <string name="app_cancel">বাতিল করুন</string>
+    <string name="app_block_confirmation">আপনি কি \\"%s\\" ব্লক করার নিশ্চিত?</string>
+    <string name="app_last_backup">শেষ ব্যাকআপ</string>
+    <string name="app_restore">পুনরুদ্ধার</string>
+    <string name="app_select_a_backup">একটি ব্যাকআপ নির্বাচন করুন</string>
+    <string name="app_backup_message">বর্তমানে, ব্যাকআপ এবং পুনরুদ্ধার দ্বারা কেবল এসএমএস সমর্থিত। এমএমএস সমর্থন এবং নির্ধারিত ব্যাকআপগুলি শীঘ্রই আসছে!</string>
+    <string name="app_export_message">বার্তা রপ্ত করুন</string>
+    <string name="app_export_message_description">আপনি কি নিশ্চিত যে আপনি বার্তা রপ্ত করতে চান?</string>
+    <string name="app_export">রপ্তানি</string>
+    <string name="app_tap_to_customize">কাস্টমাইজ করতে ট্যাপ করুন</string>
+    <string name="app_notification_preview">নোটিফিকেশন পূর্বরূপ</string>
+    <string name="app_wake_screen">স্ক্রিন উঠান</string>
+    <string name="app_show_name_and_message">নাম এবং বার্তা প্রদর্শন করুন</string>
+    <string name="app_show_name">নাম প্রদর্শন করুন</string>
+    <string name="app_hide_contents">সামগ্রী লুকান</string>
+    <string name="app_block_number">নাম্বার ব্লক করুন</string>
+    <string name="app_unarchived">অপার্কাইভ করা হয়নি</string>
+    <string name="app_premium_upgrade">প্রিমিয়াম আপগ্রেড</string>
+    <string name="app_no_advertising">কোনও বিজ্ঞাপন নেই</string>
+    <string name="app_super_fast_service">সুপার দ্রুত সেবা</string>
+    <string name="app_unlimited_photo_enhancing">সীমাহীন ছবি উন্নত করা</string>
+    <string name="app_all_feature_available">সমস্ত বৈশিষ্ট্য উপলব্ধ</string>
+    <string name="app_subscription_terms">সাবস্ক্রিপশন শর্তাবলী</string>
+    <string name="app_subscription_description">সাবস্ক্রাইবকদের সমাপ্ত হওয়া স্বয়ংক্রিয়ভাবে একই দাম এবং একই সময়কালে নবায়ন করা হবে। আপনি গুগল প্লের সেটিংসে যে কোনও সময়ে সাবস্ক্রিপশন পরিচালনা এবং বাতিল করতে পারবেন। সাবস্ক্রাইবকদের সমাপ্ত হওয়া স্বয়ংক্রিয়ভাবে একই দাম এবং একই সময়কালে নবায়ন করা হবে।</string>
+    <string name="app_your_arhived_conversation_appear_here">আপনার সংরক্ষিত কথোপকথন এখানে প্রদর্শিত হবে</string>
+    <string name="app_exit_app">অ্যাপ থেকে বের হন</string>
+
+    <string name="app_no_archive_message_found">আর্কাইভ করা বার্তা খুঁজে পাওয়া যায়নি।</string>
+
+
+
+</resources>

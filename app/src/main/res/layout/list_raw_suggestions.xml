@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llMain"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_height="@dimen/_35sdp"
+        android:layout_width="@dimen/_35sdp"
+        android:background="@drawable/bg_gradient_circle">
+
+        <ImageView
+            android:id="@+id/ivThumb"
+            style="@style/Icon_64DP"
+            android:visibility="gone"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_user" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtFirstLetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/white"
+            style="@style/Text_manrope_Semi_Bold_14"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/Text_manrope_Regular_8"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:textSize="@dimen/textsize_10"
+        tools:text="How are you!!" />
+
+
+</LinearLayout>

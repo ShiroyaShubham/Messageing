@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteColor"
+    tools:context=".PersonalNotificationActivity">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header"/>
+
+    <LinearLayout
+        android:id="@+id/llCustomiseNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_dotted_round_corner_10"
+        android:foreground="@drawable/logo_ripple_16dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_10sdp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text_manrope_Semi_Bold_12"
+                android:text="@string/app_notification"
+                />
+
+            <TextView
+                android:id="@+id/tvBackupDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text_manrope_Regular_10"
+                android:textColor="@color/text_grey"
+                android:text="@string/app_tap_to_customize"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNotificationPreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/llCustomiseNotification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_dotted_round_corner_10"
+        android:foreground="@drawable/logo_ripple_16dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/_10sdp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text_manrope_Semi_Bold_12"
+                android:text="@string/app_notification_preview"
+                />
+
+            <TextView
+                android:id="@+id/tvNotificationPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text_manrope_Regular_10"
+                android:textColor="@color/text_grey"
+                android:text="Show name and messages"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWakeScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/llNotificationPreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_dotted_round_corner_10"
+        android:foreground="@drawable/logo_ripple_16dp"
+        android:gravity="center_vertical"
+        android:paddingVertical="@dimen/_17sdp"
+        android:paddingHorizontal="@dimen/_10sdp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/Text_manrope_Semi_Bold_12"
+                android:text="@string/app_wake_screen"
+                />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchWakeScreen"
+                style="@style/App_Switch"
+                android:layout_alignParentEnd="true"
+                android:clickable="false"
+                android:gravity="center_vertical" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

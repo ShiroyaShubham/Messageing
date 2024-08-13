@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">Digite uma mensagem...</string>
+    <string name="message_not_sent_short">Mensagem não enviada</string>
+    <string name="message_not_sent_touch_retry">Não enviada. Toque para tentar novamente.</string>
+    <string name="message_sending_error">Sua mensagem para \'%s\' não foi enviada</string>
+    <string name="add_person">Adicionar pessoa</string>
+    <string name="attachment">Anexo</string>
+    <string name="no_conversations_found">Nenhuma conversa encontrada</string>
+    <string name="no_personal_conversations_found">Nenhuma conversa pessoal encontrada</string>
+    <string name="no_otp_messages_found">Nenhuma mensagem de OTP encontrada</string>
+    <string name="no_transaction_messages_found">Nenhuma mensagem de transação encontrada</string>
+    <string name="no_offer_messages_found">Nenhuma mensagem de oferta encontrada</string>
+    <string name="start_conversation">Iniciar uma conversa</string>
+    <string name="reply">Responder</string>
+    <string name="loading_messages">Carregando mensagens...</string>
+    <string name="txt_draft">Rascunho</string>
+    <string name="sending">Enviando...</string>
+    <string name="pin_conversation">Fixar no topo</string>
+    <string name="unpin_conversation">Desafixar</string>
+    <string name="add_contact_or_number">Adicionar Contato ou Número...</string>
+    <string name="suggestions">Sugestões</string>
+    <string name="channel_received_sms">SMS recebido</string>
+    <string name="new_message">Nova mensagem</string>
+    <string name="mark_as_read">Marcar como lida</string>
+    <string name="mark_as_unread">Marcar como não lida</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d conversa</item>
+        <item quantity="other">%d conversas</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d mensagem</item>
+        <item quantity="other">%d mensagens</item>
+    </plurals>
+    <string name="lock_screen_visibility">Visibilidade da notificação na tela de bloqueio</string>
+    <string name="sender_and_message">Remetente e mensagem</string>
+    <string name="sender_only">Apenas remetente</string>
+    <string name="app_import">Importar</string>
+
+    <string name="ad_attribution">anúncio</string>
+    <string name="txt_transition_1">Transição 1</string>
+    <string name="txt_more">Mais</string>
+    <string name="txt_copy">Copiar</string>
+
+    <string name="invalid_destination">Endereço de destino inválido.</string>
+    <string name="service_not_activated">Serviço não ativado na rede.</string>
+    <string name="service_message_not_found">Mensagem expirada ou não disponível.</string>
+    <string name="service_network_problem">Não foi possível enviar devido a problema de rede.</string>
+    <string name="message_queued">Atualmente não é possível enviar sua mensagem. Ela será enviada quando o serviço estiver disponível.</string>
+    <string name="download_later">Não é possível baixar agora. Tente novamente mais tarde.</string>
+    <string name="no_apn">Nenhum APN especificado para o aplicativo, você precisa configurá-lo nas configurações!</string>
+    <string name="no_subject">(Sem assunto)</string>
+    <string name="unknown_sender">Remetente desconhecido</string>
+    <string name="dl_failure_notification">Não foi possível baixar a mensagem </string>
+
+    <string name="ok">OK</string>
+    <string name="txt_sender_does_not_support_replies">O remetente não suporta respostas</string>
+    <string name="backup_and_restore">Backup e Restauração</string>
+    <string name="backup_now">Fazer backup agora</string>
+    <string name="are_you_sure_you_want_to_import_sms_">Tem certeza de que deseja importar as mensagens?</string>
+    <string name="no_backup_available">Nenhum backup disponível</string>
+    <string name="backups">Backups</string>
+    <string name="message_backup">/Mensagem/Backup</string>
+    <string name="backing_up_messages">Fazendo backup das mensagens</string>
+    <string name="importing_messages">Restaurar Mensagens</string>
+    <string name="txt_next">Próximo</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">Conceda permissão de notificação nas Configurações do aplicativo</string>
+
+
+    <string name="text_intro_title3">Definir Aplicativo Padrão</string>
+    <string name="text_dec_default_app">Para enviar ou receber mensagens, você deve defini-lo como o aplicativo padrão. Deseja tornar as mensagens seu aplicativo padrão?</string>
+    <string name="text_header_notification">Permissão de Notificação</string>
+    <string name="text_desc_notification">Uma permissão é necessária quando o aplicativo de mensagens recebe notificações de mensagens. Você deve permitir a permissão.</string>
+    <string name="term_privacy">Ao participar, você concorda com nossa Política de Privacidade e Termos de Uso.</string>
+    <string name="privacy_policy">Política de Privacidade</string>
+    <string name="terms_of_use">Termos de Uso</string>
+    <string name="cancel">Cancelar</string>
+    <string name="nothing">Nada</string>
+    <string name="invalid_file_format">Formato de arquivo inválido</string>
+    <string name="an_error_occurred">Ocorreu um erro: %s</string>
+    <string name="no_app_found">Nenhum aplicativo válido encontrado</string>
+    <string name="copy_to_clipboard">Copiar para a área de transferência</string>
+    <string name="copy_number_to_clipboard">Copiar número para a área de transferência</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="dial_number">Discar número</string>
+    <string name="number">Número</string>
+    <string name="no_contacts_found">Nenhum contato encontrado</string>
+    <string name="request_the_required_permissions">Solicitar as permissões necessárias</string>
+    <string name="no_access_to_contacts">O aplicativo não pôde acessar seus contatos</string>
+    <string name="manage_blocked_numbers">Gerenciar números bloqueados</string>
+    <string name="not_blocking_anyone">Você não está bloqueando ninguém.</string>
+    <string name="add_a_blocked_number">Adicionar um número bloqueado</string>
+    <string name="block_number">Bloquear número</string>
+    <string name="blocked_numbers">Números bloqueados</string>
+    <string name="menu_export_blocked_numbers">Exportar números bloqueados</string>
+    <string name="menu_import_blocked_numbers">Importar números bloqueados</string>
+    <string name="must_make_default_dialer">Você deve tornar este aplicativo o aplicativo de discagem padrão para usar números bloqueados.</string>
+    <string name="set_as_default">Definir como padrão</string>
+    <string name="block_confirmation">Tem certeza de que deseja bloquear \"%s\"?</string>
+    <string name="favorites">Favoritos</string>
+    <string name="search">Buscar</string>
+    <string name="type_2_characters">Digite pelo menos 2 caracteres para iniciar a busca.</string>
+    <string name="no_items_found">Nenhum item encontrado.</string>
+    <string name="filename_without_txt">Nome do arquivo (sem .txt)</string>
+    <string name="copying">Copiando...</string>
+    <string name="moving">Movendo...</string>
+    <string name="could_not_create_folder">Não foi possível criar a pasta %s</string>
+    <string name="could_not_create_file">Não foi possível criar o arquivo %s</string>
+    <string name="create_new_folder">Criar nova pasta</string>
+    <string name="name_taken">Já existe um arquivo ou pasta com esse nome</string>
+    <string name="invalid_name">O nome contém caracteres inválidos</string>
+    <string name="empty_name">Por favor, insira um nome</string>
+    <string name="unknown_error_occurred">Ocorreu um erro desconhecido</string>
+
+    <!-- File operation conflicts -->
+    <string name="file_already_exists">O arquivo \"%s\" já existe</string>
+    <string name="folder_already_exists">A pasta \"%s\" já existe</string>
+    <string name="merge">Mesclar</string>
+    <string name="keep_both">Manter ambos</string>
+    <string name="overwrite">Sobrescrever</string>
+    <string name="skip">Pular</string>
+    <string name="apply_to_all">Aplicar a todos</string>
+
+    <!-- Seletor de Arquivo -->
+    <string name="select_folder">Selecionar uma pasta</string>
+    <string name="select_file">Selecionar um arquivo</string>
+    <string name="confirm_storage_access_title">Confirmar acesso ao armazenamento externo</string>
+    <string name="confirm_storage_access_text">Por favor, escolha a pasta principal do cartão SD na próxima tela para conceder acesso de escrita</string>
+    <string name="confirm_storage_access_text_sd">Se você não vir o cartão SD, tente isto</string>
+    <string name="confirm_storage_access_android_text">Por favor, permita que o aplicativo acesse o armazenamento selecionado na próxima tela pressionando \'Usar esta pasta\' na parte inferior.</string>
+
+    <plurals name="items">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d itens</item>
+    </plurals>
+
+    <string name="select_storage">Selecionar armazenamento</string>
+    <string name="internal">Interno</string>
+    <string name="sd_card">Cartão SD</string>
+    <string name="root">Raiz</string>
+    <string name="wrong_root_selected">Pasta selecionada incorreta, por favor selecione a pasta principal do seu cartão SD</string>
+    <string name="sd_card_usb_same">Caminhos do cartão SD e do dispositivo USB não podem ser os mesmos</string>
+
+    <string name="theme">Tema</string>
+
+    <string name="delete">Excluir</string>
+    <string name="share">Compartilhar</string>
+    <string name="share_via">Compartilhar via</string>
+    <string name="select_all">Selecionar tudo</string>
+    <string name="select_text">Selecionar texto</string>
+    <string name="maximum_share_reached">Você não pode compartilhar tanto conteúdo de uma vez</string>
+    <string name="add_number_to_contact">Adicionar número ao contato</string>
+
+    <string name="proceed_with_deletion">Tem certeza de que deseja prosseguir com a exclusão?</string>
+    <string name="deletion_confirmation">Tem certeza de que deseja excluir %s?</string>
+    <!-- Tem certeza de que deseja mover 3 itens para a Lixeira? -->
+    <string name="yes">Sim</string>
+
+    <string name="settings">Configurações</string>
+    <string name="customize_notifications">Personalizar notificações</string>
+    <string name="use_english_language">Usar idioma inglês</string>
+    <string name="font_size">Tamanho da fonte</string>
+    <string name="small">Pequeno</string>
+    <string name="medium">Médio</string>
+    <string name="large">Grande</string>
+    <string name="extra_large">Extra grande</string>
+    <string name="use_24_hour_time_format">Usar formato de hora de 24 horas</string>
+    <string name="settings_exported_successfully">Configurações exportadas com sucesso</string>
+
+    <string name="importing_successful">Importação bem-sucedida</string>
+    <string name="exporting_successful">Backup bem-sucedido</string>
+    <string name="exporting_failed">Falha na exportação</string>
+    <string name="importing_some_entries_failed">Falha na importação de algumas entradas</string>
+    <string name="no_entries_for_exporting">Nenhuma entrada para exportação foi encontrada</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">Por favor, escolha a pasta principal do dispositivo USB na próxima tela para conceder acesso</string>
+    <string name="wrong_root_selected_usb">Pasta selecionada incorreta, por favor selecione a pasta principal do seu dispositivo USB</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        Parece que a versão do seu aplicativo está corrompida. Por favor, baixe a versão original <a href="%s">aqui</a>.
+    ]]>
+</string>
+
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">Para enviar ou receber um SMS, você deve definir como o aplicativo padrão. Definir como padrão</string>
+    <string name="app_continue">Continuar</string>
+    <string name="app_language">Idioma</string>
+    <string name="app_message">Mensagens</string>
+    <string name="app_search_number_name">Pesquisar Número, Nomes e Mais</string>
+    <string name="app_all">Tudo</string>
+    <string name="app_personal">Pessoal</string>
+    <string name="app_otps">OTPs</string>
+    <string name="app_transactions">Transações</string>
+    <string name="app_offers">Ofertas</string>
+    <string name="app_inbox">Caixa de Entrada</string>
+    <string name="app_archived">Arquivado</string>
+    <string name="app_block">Bloquear</string>
+    <string name="app_backup_restore">Backup e Restauração</string>
+    <string name="app_setting">Configurações</string>
+    <string name="app_rate_us">Avalie-nos</string>
+    <string name="app_privacy_policy">Política de Privacidade</string>
+    <string name="app_appearance">Aparência</string>
+    <string name="app_theme">Tema</string>
+    <string name="app_font_size">Tamanho da Fonte</string>
+    <string name="app_use_system_font">Usar Fonte do Sistema</string>
+    <string name="app_general">Geral</string>
+    <string name="app_auto_compress_mms_attachments">Auto-Comprimir Anexos MMS</string>
+    <string name="app_sync_message">Sincronizar Mensagens</string>
+    <string name="app_about_message_sms">Sobre Mensagem SMS</string>
+    <string name="app_system">Sistema</string>
+    <string name="app_light_mode">Modo Claro</string>
+    <string name="app_dark_mode">Modo Escuro</string>
+    <string name="app_small">Pequeno</string>
+    <string name="app_normal">Normal</string>
+    <string name="app_large">Grande</string>
+    <string name="app_extra_large">Extra Grande</string>
+    <string name="app_re_sync_message_with_native_database">Re-Sincronizar suas Mensagens com o Banco de Dados SMS Nativo do Android</string>
+    <string name="app_automatic">Automático</string>
+    <string name="app_100_kb">100 KB</string>
+    <string name="app_200_kb">200 KB</string>
+    <string name="app_300_kb">300 KB</string>
+    <string name="app_600_kb">600 KB</string>
+    <string name="app_1000_kb">1000 KB</string>
+    <string name="app_2000_kb">2000 KB</string>
+    <string name="app_no_compression">Sem Compressão</string>
+    <string name="app_auto_compress">Auto-Comprimir</string>
+    <string name="app_are_your_sure_to_want_to_exit">Tem certeza de que deseja sair?</string>
+    <string name="app_yes">Sim</string>
+    <string name="app_not_now">Agora Não</string>
+    <string name="app_new_conversation">Nova Conversa</string>
+    <string name="app_write_a_message">Escreva uma mensagem....</string>
+    <string name="app_notification">Notificação</string>
+    <string name="app_delete_conversation">Excluir Conversa</string>
+    <string name="app_contact">Contatos</string>
+    <string name="app_detail">Detalhes</string>
+    <string name="app_delete">Excluir</string>
+    <string name="app_delete_message">Tem certeza de que gostaria de excluir esta conversa?</string>
+    <string name="app_cancel">Cancelar</string>
+    <string name="app_block_confirmation">Tem certeza de que deseja bloquear \"%s\"?</string>
+    <string name="app_last_backup">Último Backup</string>
+    <string name="app_restore">Restaurar</string>
+    <string name="app_select_a_backup">Selecione um backup</string>
+    <string name="app_backup_message">Atualmente, apenas SMS são suportadas por Backup e Restauração. O suporte a MMS e backups agendados estarão disponíveis em breve!</string>
+    <string name="app_export_message">Exportar Mensagem</string>
+    <string name="app_export_message_description">Tem certeza de que deseja exportar mensagens?</string>
+    <string name="app_export">Exportar</string>
+    <string name="app_tap_to_customize">Toque para personalizar</string>
+    <string name="app_notification_preview">Pré-visualização da Notificação</string>
+    <string name="app_wake_screen">Ativar Tela</string>
+    <string name="app_show_name_and_message">Mostrar nome e mensagem</string>
+    <string name="app_show_name">Mostrar nome</string>
+    <string name="app_hide_contents">Ocultar conteúdos</string>
+    <string name="app_block_number">Bloquear Número</string>
+    <string name="app_unarchived">Não Arquivado</string>
+    <string name="app_premium_upgrade">Atualização Premium</string>
+    <string name="app_no_advertising">Sem Publicidade</string>
+    <string name="app_super_fast_service">Serviços super rápidos</string>
+    <string name="app_unlimited_photo_enhancing">Aprimoramento de fotos ilimitado</string>
+    <string name="app_all_feature_available">Todas as funcionalidades disponíveis</string>
+    <string name="app_subscription_terms">Termos da assinatura</string>
+    <string name="app_subscription_description">A assinatura será renovada automaticamente pelo mesmo preço e pela mesma duração. Você pode gerenciar e cancelar a assinatura a qualquer momento nas configurações do Google Play. A assinatura será renovada automaticamente pelo mesmo preço e pela mesma duração.</string>
+    <string name="app_no_archive_message_found">Nenhuma mensagem arquivada encontrada.</string>
+    <string name="app_your_arhived_conversation_appear_here">Suas conversas arquivadas aparecerão aqui</string>
+    <string name="app_exit_app">Sair do aplicativo</string>
+
+
+
+</resources>

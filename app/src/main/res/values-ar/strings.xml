@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">اكتب رسالة...</string>
+    <string name="message_not_sent_short">الرسالة غير مرسلة</string>
+    <string name="message_not_sent_touch_retry">لم يتم الإرسال. اضغط لإعادة المحاولة.</string>
+    <string name="message_sending_error">لم يتم إرسال رسالتك إلى \'%s\'</string>
+    <string name="add_person">إضافة شخص</string>
+    <string name="attachment">مرفق</string>
+    <string name="no_conversations_found">لم يتم العثور على محادثات</string>
+    <string name="no_personal_conversations_found">لم يتم العثور على محادثات شخصية</string>
+    <string name="no_otp_messages_found">لم يتم العثور على رسائل OTP</string>
+    <string name="no_transaction_messages_found">لم يتم العثور على رسائل المعاملات</string>
+    <string name="no_offer_messages_found">لم يتم العثور على رسائل العروض</string>
+    <string name="start_conversation">بدء محادثة</string>
+    <string name="reply">الرد</string>
+    <string name="loading_messages">جارٍ تحميل الرسائل...</string>
+    <string name="txt_draft">مسودة</string>
+    <string name="sending">جارٍ الإرسال...</string>
+    <string name="pin_conversation">تثبيت في الأعلى</string>
+    <string name="unpin_conversation">إلغاء التثبيت</string>
+    <string name="add_contact_or_number">إضافة جهة اتصال أو رقم...</string>
+    <string name="suggestions">اقتراحات</string>
+    <string name="channel_received_sms">SMS تلقي الرسائل</string>
+    <string name="new_message">رسالة جديدة</string>
+    <string name="mark_as_read">وضع علامة كمقروء</string>
+    <string name="mark_as_unread">وضع علامة كغير مقروء</string>
+
+    <plurals name="delete_conversations" tools:ignore="MissingQuantity">
+        <item quantity="one">%d محادثة</item>
+        <item quantity="other">%d محادثة</item>
+    </plurals>
+    <plurals name="delete_messages" tools:ignore="MissingQuantity">
+        <item quantity="one">%d رسالة</item>
+        <item quantity="other">%d رسائل</item>
+    </plurals>
+
+    <string name="lock_screen_visibility">رؤية الإشعار على شاشة القفل</string>
+    <string name="sender_and_message">المرسل والرسالة</string>
+    <string name="sender_only">المرسل فقط</string>
+    <string name="import_messages">استيراد الرسائل</string>
+    <string name="app_import">استيراد</string>
+
+    <string name="ad_attribution">إعلان</string>
+    <string name="txt_transition_1">انتقال 1</string>
+    <string name="txt_more">المزيد</string>
+    <string name="txt_copy">نسخ</string>
+
+    <string name="invalid_destination">عنوان وجهة غير صالح.</string>
+    <string name="service_not_activated">الخدمة غير مفعلة على الشبكة.</string>
+    <string name="service_message_not_found">انتهت صلاحية الرسالة أو غير متاحة.</string>
+    <string name="service_network_problem">تعذر إرسال الرسالة بسبب مشكلة في الشبكة.</string>
+    <string name="message_queued">حاليًا لا يمكن إرسال رسالتك. سيتم إرسالها عند توفر الخدمة.</string>
+    <string name="download_later">تعذر التنزيل الآن. حاول مرة أخرى لاحقًا.</string>
+    <string name="no_apn">لم يتم تحديد APN للتطبيق، يجب عليك تعيينه في الإعدادات!</string>
+    <string name="no_subject">(بدون موضوع)</string>
+    <string name="unknown_sender">المرسل مجهول</string>
+    <string name="dl_failure_notification">تعذر تنزيل الرسالة </string>
+
+    <string name="ok">حسنًا</string>
+    <string name="txt_sender_does_not_support_replies">المُرسل لا يدعم الردود</string>
+    <string name="backup_and_restore">نسخ احتياطي واستعادة</string>
+    <string name="backup_now">نسخ احتياطي الآن</string>
+    <string name="are_you_sure_you_want_to_import_sms_">هل أنت متأكد أنك تريد استيراد الرسائل؟</string>
+    <string name="no_backup_available">لا يوجد نسخ احتياطي متاحة</string>
+    <string name="backups">نسخ احتياطية</string>
+    <string name="message_backup">/Message/Backup</string>
+    <string name="backing_up_messages">جارٍ عمل نسخ احتياطي للرسائل</string>
+    <string name="importing_messages">استعادة الرسائل</string>
+    <string name="txt_next">التالي</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">يرجى منح إذن الإشعار من إعدادات التطبيق</string>
+
+    <string name="text_intro_title3">تعيين التطبيق الافتراضي</string>
+
+    <string name="text_dec_default_app">لإرسال أو استقبال الرسائل، يجب عليك تعيينه كتطبيق افتراضي. هل ترغب في جعل الرسائل التطبيق الافتراضي؟</string>
+
+    <string name="text_header_notification">إذن الإشعار</string>
+    <string name="text_desc_notification">مطلوب إذن عند استقبال تطبيق الرسائل لإشعارات الرسائل، يجب عليك السماح بالإذن.</string>
+
+    <string name="term_privacy">من خلال الانضمام، فإنك توافق على سياسة الخصوصية وشروط الاستخدام لدينا.</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="terms_of_use">شروط الاستخدام</string>
+
+    <string name="cancel">إلغاء</string>
+    <string name="nothing">لا شيء</string>
+    <string name="invalid_file_format">تنسيق الملف غير صالح</string>
+    <string name="an_error_occurred">حدث خطأ: %s</string>
+    <string name="no_app_found">لم يتم العثور على تطبيق صالح</string>
+    <string name="copy_to_clipboard">نسخ إلى الحافظة</string>
+    <string name="copy_number_to_clipboard">نسخ الرقم إلى الحافظة</string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="dial_number">اطلب الرقم</string>
+    <string name="number">الرقم</string>
+    <string name="no_contacts_found">لم يتم العثور على جهات اتصال</string>
+    <string name="request_the_required_permissions">طلب الأذونات المطلوبة</string>
+    <string name="no_access_to_contacts">لم يتمكن التطبيق من الوصول إلى جهات اتصالك</string>
+
+    <!-- أنواع العرض -->
+
+    <!-- الأرقام المحظورة -->
+    <string name="manage_blocked_numbers">إدارة الأرقام المحظورة</string>
+    <string name="not_blocking_anyone">لا تقوم بحظر أي شخص.</string>
+    <string name="add_a_blocked_number">إضافة رقم محظور</string>
+    <string name="block_number">حظر الرقم</string>
+    <string name="blocked_numbers">الأرقام المحظورة</string>
+    <string name="menu_export_blocked_numbers">تصدير الأرقام المحظورة</string>
+    <string name="menu_import_blocked_numbers">استيراد الأرقام المحظورة</string>
+    <string name="must_make_default_dialer">يجب عليك جعل هذا التطبيق هو التطبيق الافتراضي للاتصال لاستخدام الأرقام المحظورة.</string>
+    <string name="set_as_default">تعيين كافتراضي</string>
+    <string name="block_confirmation">هل أنت متأكد أنك تريد حظر \"%s\"؟</string>
+
+    <!-- المفضلة -->
+    <string name="favorites">المفضلة</string>
+
+    <!-- البحث -->
+    <string name="search">البحث</string>
+    <string name="type_2_characters">اكتب على الأقل حرفين لبدء البحث.</string>
+
+    <!-- التصفية -->
+    <string name="no_items_found">لم يتم العثور على عناصر.</string>
+
+    <!-- الأذونات -->
+
+    <!-- إعادة التسمية -->
+    <string name="filename_without_txt">اسم الملف (بدون .txt)</string>
+
+    <!-- النسخ / النقل -->
+    <string name="copying">جاري النسخ...</string>
+    <string name="moving">جاري النقل...</string>
+    <string name="could_not_create_folder">تعذر إنشاء المجلد %s</string>
+    <string name="could_not_create_file">تعذر إنشاء الملف %s</string>
+
+    <!-- إنشاء جديد -->
+    <string name="create_new_folder">إنشاء مجلد جديد</string>
+    <string name="name_taken">يوجد ملف أو مجلد بنفس الاسم مسبقًا</string>
+    <string name="invalid_name">الاسم يحتوي على أحرف غير صالحة</string>
+    <string name="empty_name">يرجى إدخال اسم</string>
+    <string name="unknown_error_occurred">حدث خطأ غير معروف</string>
+
+    <!-- تعارضات عمليات الملفات -->
+    <string name="file_already_exists">الملف \"%s\" موجود بالفعل</string>
+    <string name="folder_already_exists">المجلد \"%s\" موجود بالفعل</string>
+    <string name="merge">دمج</string>
+    <string name="keep_both">الاحتفاظ بالكل</string>
+    <string name="overwrite">الكتابة فوق</string>
+    <string name="skip">تخطي</string>
+    <string name="apply_to_all">تطبيق الكل</string>
+
+    <!-- File picker -->
+    <string name="select_folder">حدد مجلدًا</string>
+    <string name="select_file">حدد ملفًا</string>
+    <string name="confirm_storage_access_title">تأكيد وصول التخزين الخارجي</string>
+    <string name="confirm_storage_access_text">يرجى اختيار أعلى مجلد في بطاقة SD في الشاشة التالية لمنح الوصول للكتابة</string>
+    <string name="confirm_storage_access_text_sd">إذا لم تر البطاقة SD ، جرب هذا</string>
+    <string name="confirm_storage_access_android_text">يرجى السماح للتطبيق بالوصول إلى التخزين المحدد في الشاشة التالية عن طريق الضغط على \'استخدم هذا المجلد\' في الأسفل.</string>
+
+    <plurals name="items" tools:ignore="MissingQuantity">
+        <item quantity="one">%d عنصر</item>
+        <item quantity="other">%d عناصر</item>
+    </plurals>
+
+    <string name="select_storage">حدد التخزين</string>
+    <string name="internal">التخزين الداخلي</string>
+    <string name="sd_card">بطاقة SD</string>
+    <string name="root">الجذر</string>
+    <string name="wrong_root_selected">تم اختيار مجلد خاطئ، يرجى اختيار المجلد الرئيسي لبطاقة SD الخاصة بك</string>
+    <string name="sd_card_usb_same">لا يمكن أن تكون مسارات بطاقة SD وجهاز USB متطابقة</string>
+
+    <string name="theme">السمة</string>
+
+    <string name="delete">حذف</string>
+    <string name="share">مشاركة</string>
+    <string name="share_via">مشاركة عبر</string>
+    <string name="select_all">تحديد الكل</string>
+    <string name="select_text">تحديد النص</string>
+    <string name="maximum_share_reached">لا يمكنك مشاركة هذا الكم الكبير من المحتوى في وقت واحد</string>
+    <string name="add_number_to_contact">إضافة الرقم إلى جهة الاتصال</string>
+
+    <string name="proceed_with_deletion">هل أنت متأكد أنك تريد المتابعة مع عملية الحذف؟</string>
+    <string name="deletion_confirmation">هل أنت متأكد أنك تريد حذف %s؟</string>
+    <!-- هل أنت متأكد أنك تريد نقل 3 عناصر إلى سلة المهملات؟ -->
+    <string name="yes">نعم</string>
+
+    <string name="settings">الإعدادات</string>
+    <string name="customize_notifications">تخصيص الإشعارات</string>
+    <string name="use_english_language">استخدام اللغة الإنجليزية</string>
+    <string name="font_size">حجم الخط</string>
+    <string name="small">صغير</string>
+    <string name="medium">متوسط</string>
+    <string name="large">كبير</string>
+    <string name="extra_large">كبير جدًا</string>
+    <string name="use_24_hour_time_format">استخدام تنسيق الوقت بنظام 24 ساعة</string>
+    <string name="settings_exported_successfully">تم تصدير الإعدادات بنجاح</string>
+    <string name="importing_successful">تم استيراد البيانات بنجاح</string>
+    <string name="exporting_successful">تم إنشاء نسخة احتياطية بنجاح</string>
+    <string name="exporting_failed">فشلت عملية النسخ الاحتياطي</string>
+    <string name="importing_some_entries_failed">فشل استيراد بعض البيانات</string>
+    <string name="no_entries_for_exporting">لم يتم العثور على بيانات للنسخ الاحتياطي</string>
+
+    <string name="usb">USB</string>
+    <string name="confirm_usb_storage_access_text">يرجى اختيار المجلد العلوي لجهاز USB على الشاشة التالية لمنح الوصول</string>
+    <string name="wrong_root_selected_usb">تم اختيار مجلد خاطئ، يرجى اختيار المجلد الرئيسي لجهاز USB الخاص بك</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        يبدو أن إصدار التطبيق الخاص بك تالف. يرجى تنزيل الإصدار الأصلي <a href="%s">هنا</a>.
+    ]]>
+</string>
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">لإرسال أو استقبال رسائل قصيرة، يجب عليك تعيينه كتطبيق افتراضي. تعيين كافتراضي</string>
+    <string name="app_continue">متابعة</string>
+    <string name="app_language">اللغة</string>
+    <string name="app_message">الرسائل</string>
+    <string name="app_search_number_name">البحث عن الأرقام والأسماء والمزيد</string>
+    <string name="app_all">الكل</string>
+    <string name="app_personal">شخصي</string>
+    <string name="app_otps">رموز OTP</string>
+    <string name="app_transactions">المعاملات</string>
+    <string name="app_offers">العروض</string>
+    <string name="app_inbox">صندوق الوارد</string>
+    <string name="app_archived">مؤرشف</string>
+    <string name="app_block">حظر</string>
+    <string name="app_backup_restore">نسخ احتياطي واستعادة</string>
+    <string name="app_setting">الإعدادات</string>
+    <string name="app_rate_us">قيمنا</string>
+    <string name="app_privacy_policy">سياسة الخصوصية</string>
+    <string name="app_appearance">المظهر</string>
+    <string name="app_theme">السمة</string>
+    <string name="app_font_size">حجم الخط</string>
+    <string name="app_use_system_font">استخدام الخط النظامي</string>
+    <string name="app_general">عام</string>
+    <string name="app_auto_compress_mms_attachments">ضغط مرفقات MMS تلقائيًا</string>
+    <string name="app_sync_message">مزامنة الرسائل</string>
+    <string name="app_about_message_sms">حول رسالة SMS</string>
+    <string name="app_system">النظام</string>
+    <string name="app_light_mode">الوضع الفاتح</string>
+    <string name="app_dark_mode">الوضع الداكن</string>
+    <string name="app_small">صغير</string>
+    <string name="app_normal">عادي</string>
+    <string name="app_large">كبير</string>
+    <string name="app_extra_large">كبير جدًا</string>
+    <string name="app_re_sync_message_with_native_database">أعد مزامنة رسائلك مع قاعدة بيانات SMS الأصلية لنظام Android</string>
+    <string name="app_automatic">تلقائي</string>
+    <string name="app_100_kb">100 كيلوبايت</string>
+    <string name="app_200_kb">200 كيلوبايت</string>
+    <string name="app_300_kb">300 كيلوبايت</string>
+    <string name="app_600_kb">600 كيلوبايت</string>
+    <string name="app_1000_kb">1000 كيلوبايت</string>
+    <string name="app_2000_kb">2000 كيلوبايت</string>
+    <string name="app_no_compression">بدون ضغط</string>
+    <string name="app_auto_compress">ضغط تلقائي</string>
+    <string name="app_are_your_sure_to_want_to_exit">هل أنت متأكد أنك تريد الخروج؟</string>
+    <string name="app_yes">نعم</string>
+    <string name="app_not_now">ليس الآن</string>
+    <string name="app_new_conversation">محادثة جديدة</string>
+    <string name="app_write_a_message">اكتب رسالة....</string>
+    <string name="app_notification">الإشعارات</string>
+    <string name="app_delete_conversation">حذف المحادثة</string>
+    <string name="app_contact">جهات الاتصال</string>
+    <string name="app_detail">التفاصيل</string>
+    <string name="app_delete">حذف</string>
+    <string name="app_delete_message">هل أنت متأكد أنك تريد حذف هذه المحادثة؟</string>
+    <string name="app_cancel">إلغاء</string>
+    <string name="app_block_confirmation">هل أنت متأكد أنك تريد حظر \"%s\"؟</string>
+    <string name="app_last_backup">آخر نسخة احتياطية</string>
+    <string name="app_restore">استعادة</string>
+    <string name="app_select_a_backup">حدد نسخة احتياطية</string>
+    <string name="app_backup_message">حاليًا، يتم دعم النسخ الاحتياطي والاستعادة فقط لرسائل SMS. سيتم دعم رسائل MMS والنسخ الاحتياطي المجدول قريبًا!</string>
+    <string name="app_export_message">تصدير الرسالة</string>
+    <string name="app_export_message_description">هل أنت متأكد أنك تريد تصدير الرسائل؟</string>
+    <string name="app_export">تصدير</string>
+    <string name="app_tap_to_customize">اضغط للتخصيص</string>
+    <string name="app_notification_preview">معاينة الإشعار</string>
+    <string name="app_wake_screen">تفعيل الشاشة</string>
+    <string name="app_show_name_and_message">إظهار الاسم والرسالة</string>
+    <string name="app_show_name">إظهار الاسم</string>
+    <string name="app_hide_contents">إخفاء المحتويات</string>
+    <string name="app_block_number">حظر الرقم</string>
+    <string name="app_unarchived">غير مؤرشف</string>
+    <string name="app_premium_upgrade">ترقية متميزة</string>
+    <string name="app_no_advertising">لا إعلانات</string>
+    <string name="app_super_fast_service">خدمات سريعة جداً</string>
+    <string name="app_unlimited_photo_enhancing">تحسين الصور بدون حدود</string>
+    <string name="app_all_feature_available">جميع الميزات متاحة</string>
+    <string name="app_subscription_terms">شروط الاشتراك</string>
+    <string name="app_subscription_description">سيتم تجديد الاشتراك تلقائيًا بنفس السعر ولنفس المدة. يمكنك إدارة وإلغاء الاشتراك في أي وقت في إعدادات Google Play. سيتم تجديد الاشتراك تلقائيًا بنفس السعر ولنفس المدة.</string>
+
+    <string name="app_no_archive_message_found">لم يتم العثور على رسائل مؤرشفة.</string>
+    <string name="app_your_arhived_conversation_appear_here">ستظهر محادثاتك المؤرشفة هنا</string>
+    <string name="app_exit_app">الخروج من التطبيق</string>
+
+
+
+</resources>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Messages</string>
+    <string name="app_launcher_name">Messages</string>
+    <string name="type_a_message">پیغام ٹائپ کریں...</string>
+    <string name="message_not_sent_short">پیغام نہیں بھیجا گیا</string>
+    <string name="message_not_sent_touch_retry">بھیجا نہیں گیا۔ دوبارہ کوشش کریں۔</string>
+    <string name="message_sending_error">آپ کا پیغام \'%s\' بھیجا نہیں گیا ہے</string>
+    <string name="add_person">شخص شامل کریں</string>
+    <string name="attachment">ضمیمہ</string>
+    <string name="no_conversations_found">کوئی بات چیت نہیں ملی</string>
+    <string name="no_personal_conversations_found">کوئی ذاتی بات چیت نہیں ملی</string>
+    <string name="no_otp_messages_found">کوئی او ٹی پی پیغام نہیں ملے</string>
+    <string name="no_transaction_messages_found">کوئی لین دین کے پیغام نہیں ملے</string>
+    <string name="no_offer_messages_found">کوئی پیشکش کے پیغام نہیں ملے</string>
+    <string name="start_conversation">بات چیت شروع کریں</string>
+    <string name="reply">جواب دیں</string>
+    <string name="loading_messages">پیغامات لوڈ ہو رہے ہیں...</string>
+    <string name="txt_draft">ڈرافٹ</string>
+    <string name="sending">بھیجا جا رہا ہے...</string>
+    <string name="pin_conversation">اوپر سے پن کریں</string>
+    <string name="unpin_conversation">پن ہٹائیں</string>
+    <string name="add_contact_or_number">رابطہ یا نمبر شامل کریں...</string>
+    <string name="suggestions">سراگ</string>
+    <string name="channel_received_sms">SMS موصول ہوگیا</string>
+    <string name="new_message">نیا پیغام</string>
+    <string name="mark_as_read">پڑھا گیا علامت لگائیں</string>
+    <string name="mark_as_unread">ناپڑھا علامت لگائیں</string>
+    <plurals name="delete_conversations">
+        <item quantity="one">%d بات چیت</item>
+        <item quantity="other">%d بات چیتیں</item>
+    </plurals>
+    <plurals name="delete_messages">
+        <item quantity="one">%d پیغام</item>
+        <item quantity="other">%d پیغامات</item>
+    </plurals>
+    <string name="lock_screen_visibility">لاک سکرین کی اطلاعیہ دکھائیں</string>
+    <string name="sender_and_message">فرست کنندہ اور پیغام</string>
+    <string name="sender_only">صرف فرست کنندہ</string>
+    <string name="app_import">پیغامات</string>
+    <string name="ad_attribution">اشتہار</string>
+    <string name="txt_transition_1">انتقال 1</string>
+    <string name="txt_more">مزید</string>
+    <string name="txt_copy">کاپی</string>
+    <string name="invalid_destination">غلط مقصد کا پتہ۔</string>
+    <string name="service_not_activated">خدمت نیٹ ورک پر فعال نہیں ہے۔</string>
+    <string name="service_message_not_found">پیغام ختم ہوگیا یا دستیاب نہیں ہے۔</string>
+    <string name="service_network_problem">نیٹ ورک میں مشکل کی وجہ سے بھیجنے میں ناکام ہوگیا۔</string>
+    <string name="message_queued">ابھی آپ کا پیغام بھیجا نہیں جا سکتا۔ جب خدمت دستیاب ہوجائے گی تو یہ بھیجا جائے گا۔</string>
+    <string name="download_later">ابھی ڈاؤن لوڈ نہیں ہوسکتا۔ بعد میں دوبارہ کوشش کریں۔</string>
+    <string name="no_apn">کوئی اے پی این مخصوص نہیں کیا گیا ہے، آپ کو اسے ترتیب دینے کی ضرورت ہے۔</string>
+    <string name="no_subject">(موضوع نہیں)</string>
+    <string name="unknown_sender">نامعلوم فرست کنندہ</string>
+    <string name="dl_failure_notification">پیغام ڈاؤن لوڈ نہیں ہو سکا </string>
+
+
+    <string name="ok">ٹھیک ہے</string>
+    <string name="txt_sender_does_not_support_replies">فرست کنندہ جوابات کی حمایت نہیں کرتا</string>
+    <string name="backup_and_restore">بیک اپ اور بحال کریں</string>
+    <string name="backup_now">اب بیک اپ کریں</string>
+    <string name="are_you_sure_you_want_to_import_sms_">کیا آپ پیغامات درآمد کرنا چاہتے ہیں؟</string>
+    <string name="no_backup_available">کوئی بیک اپ دستیاب نہیں ہے</string>
+    <string name="backups">بیک اپ</string>
+    <string name="message_backup">/پیغام/بیک اپ</string>
+    <string name="backing_up_messages">پیغامات کا بیک اپ لے رہا ہے</string>
+    <string name="importing_messages">پیغامات کو بحال کرنا</string>
+    <string name="txt_next">اگلا</string>
+    <string name="txt_please_grant_notification_permission_from_app_settings">براہ کرم ایپ کی ترتیبات سے اطلاع دینے کی اجازت فراہم کریں</string>
+    <string name="text_intro_title3">ڈیفالٹ ایپ ترتیب دیں</string>
+    <string name="text_dec_default_app">پیغامات بھیجنے یا وصول کرنے کے لئے، آپ کو اسے ڈیفالٹ ایپلی کیشن بنانا ہوگا۔ کیا آپ چاہتے ہیں کہ پیغامات آپ کی ڈیفالٹ ایپلی کیشن بن جائیں؟</string>
+    <string name="text_header_notification">اطلاعیہ اجازت</string>
+    <string name="text_desc_notification">پیغامات ایپ اطلاعات موصول کرنے پر اطلاعیہ فراہم کرتے ہیں، آپ کو اجازت فراہم کرنی ہوگی۔</string>
+    <string name="term_privacy">شامل ہونے پر، آپ ہماری پرائیویسی پالیسی اور استعمال کی شرائط پر متفق ہوتے ہیں۔</string>
+    <string name="privacy_policy">پرائیویسی پالیسی</string>
+    <string name="terms_of_use">استعمال کی شرائط</string>
+    <string name="cancel">منسوخ کریں</string>
+    <string name="nothing">کچھ نہیں</string>
+    <string name="invalid_file_format">غلط فائل فارمیٹ</string>
+    <string name="an_error_occurred">ایک غلطی واقع ہوئی: %s</string>
+    <string name="no_app_found">کوئی درست ایپ نہیں ملی</string>
+    <string name="copy_to_clipboard">کلپ بورڈ پر کاپی کریں</string>
+    <string name="copy_number_to_clipboard">کلپ بورڈ پر نمبر کاپی کریں</string>
+    <string name="copied_to_clipboard">کلپ بورڈ پر کاپی کیا گیا</string>
+    <string name="dial_number">نمبر ڈائل کریں</string>
+    <string name="number">نمبر</string>
+    <string name="no_contacts_found">کوئی رابطہ نہیں ملا</string>
+    <string name="request_the_required_permissions">ضروری اجازتیں درخواست کریں</string>
+    <string name="no_access_to_contacts">ایپ آپ کے رابطوں تک رسائی حاصل نہیں کر سکی</string>
+    <string name="manage_blocked_numbers">بلاک کردہ نمبرز کی انتظام کریں</string>
+    <string name="not_blocking_anyone">آپ کسی کو بلاک نہیں کر رہے ہیں۔</string>
+    <string name="add_a_blocked_number">ایک بلاک کردہ نمبر شامل کریں</string>
+    <string name="block_number">نمبر بلاک کریں</string>
+    <string name="blocked_numbers">بلاک کردہ نمبرز</string>
+    <string name="menu_export_blocked_numbers">بلاک کردہ نمبرز کی ایکسپورٹ کریں</string>
+    <string name="menu_import_blocked_numbers">بلاک کردہ نمبرز کی درآمد کریں</string>
+    <string name="must_make_default_dialer">آپ کو اس ایپ کو بلاک کردہ نمبرز کا استعمال کرنے کے لئے یہ ایپ ڈیفالٹ ڈائلر ایپ بنانا ہوگا۔</string>
+    <string name="set_as_default">ڈیفالٹ کے طور پر ترتیب دیں</string>
+    <string name="block_confirmation">کیا آپ مطمئن ہیں کہ آپ \"%s\" کو بلاک کرنا چاہتے</string>
+
+    <!-- Favorites -->
+    <string name="favorites">پسندیدہ</string>
+
+    <!-- تلاش -->
+    <string name="search">تلاش</string>
+    <string name="type_2_characters">تلاش شروع کرنے کے لئے کم از کم 2 حروف ٹائپ کریں۔</string>
+
+    <!-- فلٹر -->
+    <string name="no_items_found">کوئی اشیاء نہیں ملیں۔</string>
+
+    <!-- اجازتیں -->
+
+    <!-- نام تبدیلی -->
+    <string name="filename_without_txt">فائل کا نام (بغیر .txt کے)</string>
+
+    <!-- کاپی / منتقلی -->
+    <string name="copying">کاپی کر رہا ہے...</string>
+    <string name="moving">منتقلی کر رہا ہے...</string>
+    <string name="could_not_create_folder">فولڈر %s بنانے میں ناکام رہا</string>
+    <string name="could_not_create_file">فائل %s بنانے میں ناکام رہا</string>
+
+    <!-- نیا بنائیں -->
+    <string name="create_new_folder">نیا فولڈر بنائیں</string>
+    <string name="name_taken">ایک فائل یا فولڈر اس نام کے ساتھ پہلے ہی موجود ہے</string>
+    <string name="invalid_name">اس نام میں غلط حروف شامل ہیں</string>
+    <string name="empty_name">براہ کرم ایک نام درج کریں</string>
+    <string name="unknown_error_occurred">ایک نامعلوم خرابی واقع ہوگئی</string>
+
+    <!-- فائل عمل کنفلکٹس -->
+    <string name="file_already_exists">فائل \"%s\" پہلے سے موجود ہے</string>
+    <string name="folder_already_exists">فولڈر \"%s\" پہلے سے موجود ہے</string>
+    <string name="merge">مرج</string>
+    <string name="keep_both">دونوں رکھیں</string>
+    <string name="overwrite">واپس لکھیں</string>
+    <string name="skip">چھوڑ دیں</string>
+    <string name="apply_to_all">تمام پر لاگو کریں</string>
+
+    <!-- فائل منتخب کنندہ -->
+    <string name="select_folder">ایک فولڈر منتخب کریں</string>
+    <string name="select_file">ایک فائل منتخب کریں</string>
+    <string name="confirm_storage_access_title">بیرونی ذخیرہ کی رسائی کی تصدیق کریں</string>
+    <string name="confirm_storage_access_text">براہ کرم اگلی اسکرین پر ایس ڈی کارڈ کا اوپری فولڈر منتخب کریں، تاکہ رائٹ رسائی فراہم کی جائے</string>
+    <string name="confirm_storage_access_text_sd">اگر آپ ایس ڈی کارڈ نہیں دیکھ رہے ہیں، تو یہ کوشش کریں</string>
+    <string name="confirm_storage_access_android_text">براہ کرم اگلی اسکرین پر ایپ کو منتخب ذخیرہ رسائی دینے دیں، نیچے \'اس فولڈر کا استعمال کریں\' دبائیں۔</string>
+
+    <plurals name="items">
+        <item quantity="one">%d اشیاء</item>
+        <item quantity="other">%d اشیاء</item>
+    </plurals>
+
+    <string name="select_storage">ذخیرہ منتخب کریں</string>
+    <string name="internal">اندرونی</string>
+    <string name="sd_card">ایس ڈی کارڈ</string>
+    <string name="root">روٹ</string>
+    <string name="wrong_root_selected">غلط فولڈر منتخب کیا گیا، براہ کرم آپ کا ایس ڈی کارڈ کا مین فولڈر منتخب کریں</string>
+    <string name="sd_card_usb_same">ایس ڈی کارڈ اور یو ایس بی آلہ کے راستے ایک جیسے نہیں ہو سکتے</string>
+
+    <string name="theme">تھیم</string>
+
+    <string name="delete">حذف</string>
+    <string name="share">اشتراک کریں</string>
+    <string name="share_via">اس کے ذریعے اشتراک کریں</string>
+    <string name="select_all">سب کو منتخب کریں</string>
+    <string name="select_text">متن منتخب کریں</string>
+    <string name="maximum_share_reached">آپ ایک بار میں اتنی مقدار کا مواد اشتراک نہیں کر سکتے</string>
+    <string name="add_number_to_contact">رابطہ میں نمبر شامل کریں</string>
+
+
+    <string name="proceed_with_deletion">کیا آپ حذفی کارروائی کے ساتھ آگے بڑھنا چاہتے ہیں؟</string>
+    <string name="deletion_confirmation">کیا آپ مطمئن ہیں کہ آپ %s کو حذف کرنا چاہتے ہیں؟</string>
+    <!-- کیا آپ مطمئن ہیں کہ آپ 3 اشیاء کو ری سائیکل بن میں منتقل کرنا چاہتے ہیں؟ -->
+    <string name="yes">جی ہاں</string>
+
+    <string name="settings">ترتیبات</string>
+    <string name="customize_notifications">اطلاعات کو شخصیت دیں</string>
+    <string name="use_english_language">انگریزی زبان استعمال کریں</string>
+    <string name="font_size">فونٹ سائز</string>
+    <string name="small">چھوٹا</string>
+    <string name="medium">میڈیم</string>
+    <string name="large">بڑا</string>
+    <string name="extra_large">زیادہ بڑا</string>
+    <string name="use_24_hour_time_format">24 گھنٹے کی وقت کی شکل استعمال کریں</string>
+    <string name="settings_exported_successfully">ترتیبات کامیابی سے ایکسپورٹ ہوگئے ہیں</string>
+
+    <string name="importing_successful">داخل کرنا کامیاب</string>
+    <string name="exporting_successful">بیک اپ کامیاب</string>
+    <string name="exporting_failed">بیک اپ ناکام ہوگیا</string>
+    <string name="importing_some_entries_failed">کچھ اندراجات کا داخلہ ناکام ہوگیا</string>
+    <string name="no_entries_for_exporting">کوئی اندراجات بیرونی میں موجود نہیں ہیں</string>
+
+    <string name="usb">یو ایس بی</string>
+    <string name="confirm_usb_storage_access_text">براہ کرم اگلی اسکرین پر یو ایس بی ڈیوائس کے اوپری فولڈر کا انتخاب کریں، تکہ رسائی فراہم کی جائے</string>
+    <string name="wrong_root_selected_usb">غلط فولڈر منتخب کیا گیا ہے، براہ کرم آپ اپنے یو ایس بی ڈیوائس کے مین فولڈر کا انتخاب کریں</string>
+
+    <string name="sideloaded_app">
+    <![CDATA[
+        لگتا ہے آپ کی ایپ کی ورژن خراب ہے۔ براہ کرم اصل ورژن <a href="%s">یہاں</a> سے ڈاؤن لوڈ کریں۔
+    ]]>
+</string>
+
+
+    <string name="app_to_sent_or_receive_sms_you_must_set_it_as_default_application">ایس ایم ایس بھیجنے یا موصول کرنے کے لئے، آپ کو اسے ڈیفالٹ ایپلیکیشن قرار دینا ہوگا۔ ڈیفالٹ قرار دیں</string>
+    <string name="app_continue">جاری رہیں</string>
+    <string name="app_language">زبان</string>
+    <string name="app_message">پیغامات</string>
+    <string name="app_search_number_name">نمبر، نام اور مزید تلاش کریں</string>
+    <string name="app_all">سبھی</string>
+    <string name="app_personal">ذاتی</string>
+    <string name="app_otps">OTP</string>
+    <string name="app_transactions">لین دین</string>
+    <string name="app_offers">پیشکشیں</string>
+    <string name="app_inbox">ان باکس</string>
+    <string name="app_archived">آرکائیو شدہ</string>
+    <string name="app_block">بلاک</string>
+    <string name="app_backup_restore">بیک اپ اور بحالی</string>
+    <string name="app_setting">ترتیبات</string>
+    <string name="app_rate_us">ہمیں درجہ دیں</string>
+    <string name="app_privacy_policy">پرائیویسی پالیسی</string>
+    <string name="app_appearance">ظاہریت</string>
+    <string name="app_theme">موضوع</string>
+    <string name="app_font_size">فونٹ سائز</string>
+    <string name="app_use_system_font">سسٹم فونٹ استعمال کریں</string>
+    <string name="app_general">عام</string>
+    <string name="app_auto_compress_mms_attachments">آٹو-کمپریس ایم ایم ایس مرفقات</string>
+    <string name="app_sync_message">پیغامات کا مطابقت کریں</string>
+    <string name="app_about_message_sms">پیغام سی ایم ایس کے بارے میں</string>
+    <string name="app_system">نظام</string>
+    <string name="app_light_mode">روشنی کا موڈ</string>
+    <string name="app_dark_mode">اندھیرا موڈ</string>
+    <string name="app_small">چھوٹا</string>
+    <string name="app_normal">عام</string>
+    <string name="app_large">بڑا</string>
+    <string name="app_extra_large">بہت بڑا</string>
+    <string name="app_re_sync_message_with_native_database">اپنے پیغامات کو نیٹو اینڈرویڈ ایس ایم ایس ڈیٹا بیس کے ساتھ دوبارہ مطابقت دیں</string>
+    <string name="app_automatic">خود کار</string>
+    <string name="app_100_kb">100 کلو بائٹ</string>
+    <string name="app_200_kb">200 کلو بائٹ</string>
+    <string name="app_300_kb">300 کلو بائٹ</string>
+    <string name="app_600_kb">600 کلو بائٹ</string>
+    <string name="app_1000_kb">1000 کلو بائٹ</string>
+    <string name="app_2000_kb">2000 کلو بائٹ</string>
+    <string name="app_no_compression">کوئی کمپریشن نہیں</string>
+    <string name="app_auto_compress">آٹو-کمپریس</string>
+    <string name="app_are_your_sure_to_want_to_exit">کیا آپ واقعی بند کرنا چاہتے ہیں؟</string>
+    <string name="app_yes">ہاں</string>
+    <string name="app_not_now">اب نہیں</string>
+    <string name="app_new_conversation">نیا مکالمہ</string>
+    <string name="app_write_a_message">ایک پیغام لکھیں....</string>
+    <string name="app_notification">اطلاع</string>
+    <string name="app_delete_conversation">مکالمہ حذف کریں</string>
+    <string name="app_contact">رابطے</string>
+    <string name="app_detail">تفصیلات</string>
+    <string name="app_delete">حذف</string>
+    <string name="app_delete_message">کیا آپ واقعی اس مکالمہ کو حذف کرنا چاہتے ہیں؟</string>
+    <string name="app_cancel">منسوخ کریں</string>
+    <string name="app_block_confirmation">کیا آپ واقعی \"%s\" کو بلاک کرنا چاہتے ہیں؟</string>
+    <string name="app_last_backup">آخری بیک اپ</string>
+    <string name="app_restore">بحال کریں</string>
+    <string name="app_select_a_backup">ایک بیک اپ منتخب کریں</string>
+    <string name="app_backup_message">موجودہ، صرف ایس ایم ایس بیک اپ اور بحالی سے سپورٹ ملتا ہے۔ ایم ایم ایس سپورٹ اور مقررہ بیک اپ جلد آ رہے ہیں!</string>
+    <string name="app_export_message">پیغامات بیرونی کریں</string>
+    <string name="app_export_message_description">کیا آپ واقعی پیغامات کو بیرونی کرنا چاہتے ہیں؟</string>
+    <string name="app_export">برآمد کریں</string>
+    <string name="app_tap_to_customize">تخصیص کرنے کے لئے ٹیپ کریں</string>
+    <string name="app_notification_preview">اطلاع کی پیشنگوئی</string>
+    <string name="app_wake_screen">اسکرین جگاو</string>
+    <string name="app_show_name_and_message">نام اور پیغام دکھائیں</string>
+    <string name="app_show_name">نام دکھائیں</string>
+    <string name="app_hide_contents">مواد چھپائیں</string>
+    <string name="app_block_number">نمبر بلاک کریں</string>
+    <string name="app_unarchived">غیر آرکائیو شدہ</string>
+    <string name="app_premium_upgrade">پریمیم اپ گریڈ</string>
+    <string name="app_no_advertising">کوئی تشہیر نہیں</string>
+    <string name="app_super_fast_service">سپر تیز خدمات</string>
+    <string name="app_unlimited_photo_enhancing">لامحدود تصویر بہتری</string>
+    <string name="app_all_feature_available">تمام خصوصیات دستیاب ہیں</string>
+    <string name="app_subscription_terms">سبسکرپشن شرائط</string>
+    <string name="app_subscription_description">سبسکرائب کو وہی قیمت اور مدت کے لئے خود بخود تجدید کیا جائے گا۔ آپ گوگل پلے کی ترتیبات میں کبھی بھی سبسکرپشن کو منظم کرسکتے ہیں اور منسوخ کر سکتے ہیں۔ سبسکرائب کو وہی قیمت اور مدت کے لئے خود بخود تجدید کیا جائے گا۔ </string>
+    <string name="app_no_archive_message_found">کوئی آرکائیو شدہ پیغام نہیں ملا۔</string>
+    <string name="app_your_arhived_conversation_appear_here">آپ کی محفوظ شدہ گفتگو یہاں ظاہر ہوگی</string>
+    <string name="app_exit_app">ایپ سے باہر نکلیں</string>
+
+
+</resources>

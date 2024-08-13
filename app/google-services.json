@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "865281257440",
+    "project_id": "message---shubham",
+    "storage_bucket": "message---shubham.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865281257440:android:c99fcd38fe994bc5fb8585",
+        "android_client_info": {
+          "package_name": "messenger.messages.messaging.sms.chat.meet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1NWV8pPALbl3LaV--NSpN4ZKLrT6e7_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
