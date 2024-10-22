@@ -41,9 +41,6 @@ class WriterUtils(private val context: Context) {
     }
 
     fun writeMmsMessage(mmsBackup: MMSBackupModel) {
-        // 1. write mms msg, get the msg_id, check if mms exists before writing
-        // 2. write parts - parts depend on the msg id, check if part exist before writing, write data if it is a non-text part
-        // 3. write the addresses, address depends on msg id too, check if address exist before writing
         val contentValues = mmsBackup.toContentValues()
         val threadId = getMmsThreadId(mmsBackup)
         if (threadId != INVALID_ID) {

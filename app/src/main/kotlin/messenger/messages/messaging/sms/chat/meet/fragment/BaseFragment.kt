@@ -10,12 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
+import com.adsdk.plugin.AdsUtils
+import com.adsdk.plugin.BaseFragment
+import com.adsdk.plugin.model.AdsConfig
 import messenger.messages.messaging.sms.chat.meet.extensions.getPermissionString
 import messenger.messages.messaging.sms.chat.meet.extensions.getSharedPrefs
 import messenger.messages.messaging.sms.chat.meet.extensions.hasPermission
 import messenger.messages.messaging.sms.chat.meet.listners.AdsDismissCallback
 import messenger.messages.messaging.sms.chat.meet.model.*
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.utils.CircularProgressDialog
 import messenger.messages.messaging.sms.chat.meet.utils.LAST_AD_DISPLAY_MESSAGE_CLICK
 import messenger.messages.messaging.sms.chat.meet.utils.ONE_DAY_IN_MILLIS
@@ -23,7 +26,7 @@ import messenger.messages.messaging.sms.chat.meet.utils.isOnMainThread
 import java.util.Calendar
 
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : BaseFragment() {
     var actionOnPermission: ((granted: Boolean) -> Unit)? = null
     var isAskingPermissions = false
     private val GENERIC_PERM_HANDLER = 100
@@ -122,19 +125,24 @@ open class BaseFragment : Fragment() {
     }
 
     fun showInterstitialAdPerDayOnMessageClick(onItemClick: () -> Unit) {
+        if (PrefClass.isProUser) {
+            onItemClick.invoke()
+            return
+        }
         val lastAdDisplayTime = requireContext().getSharedPrefs().getLong(LAST_AD_DISPLAY_MESSAGE_CLICK, 0L)
         val currentTime = Calendar.getInstance().timeInMillis
         if (currentTime - lastAdDisplayTime >= ONE_DAY_IN_MILLIS) {
-            showDialog()
-            AdsManager.loadInterstitialAds(requireActivity(), object : AdsDismissCallback {
-                override fun onAdDismiss() {
-                    dismissDialog()
+//            showDialog()
+            if (AdsUtils.adsConfig.adsStatus) {
+                showInterstitialAds {
+                    Log.e("TAG", "showInterstitialAdPerDayOnMessageClick:>>>>>>>> Show ")
+//                dismissDialog()
                     onItemClick.invoke()
                 }
-            })
+            }
             requireContext().getSharedPrefs().edit().putLong(LAST_AD_DISPLAY_MESSAGE_CLICK, currentTime).apply()
         } else {
-            dismissDialog()
+//            dismissDialog()
             onItemClick.invoke()
         }
     }

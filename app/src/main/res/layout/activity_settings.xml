@@ -28,10 +28,10 @@
                 style="@style/Text_manrope_Semi_Bold_12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:text="@string/app_appearance"
                 android:textColor="@color/dark_blue" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,17 +111,20 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/rlTheme"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/text"
@@ -149,7 +152,8 @@
                     android:id="@+id/rlFontSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -194,12 +198,12 @@
 
                 </LinearLayout>
 
-
                 <RelativeLayout
                     android:id="@+id/rlUseSystemFont"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15sdp">
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/_20sdp">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/Text_manrope_Semi_Bold_12"
@@ -224,7 +228,6 @@
 
                 </RelativeLayout>
 
-
             </LinearLayout>
 
             <View
@@ -244,7 +247,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_15sdp"
-                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
                     android:text="@string/app_general"
                     android:textColor="@color/dark_blue" />
 
@@ -252,7 +255,9 @@
                     android:id="@+id/rlMMSFileSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:visibility="gone"
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -284,6 +289,7 @@
                             android:layout_marginTop="-2dp"
                             android:gravity="center_vertical"
                             android:text="300kb"
+                            android:textSize="@dimen/_9ssp"
                             android:textColor="@color/text_grey" />
 
                     </LinearLayout>
@@ -299,8 +305,10 @@
                     android:id="@+id/rlSyncDatabase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -332,6 +340,7 @@
                             android:ellipsize="end"
                             android:gravity="center_vertical"
                             android:maxLines="1"
+                            android:textSize="@dimen/_9ssp"
                             android:text="@string/app_re_sync_message_with_native_database"
                             android:textColor="@color/text_grey" />
 
@@ -343,8 +352,11 @@
                     android:id="@+id/rlAboutMessageSMS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
@@ -373,6 +385,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-2dp"
+                            android:textSize="@dimen/_9ssp"
                             android:gravity="center_vertical"
                             android:text="Version 1.0.16"
                             android:textColor="@color/text_grey" />
@@ -393,15 +406,16 @@
                     android:layout_height="1dp"
                     android:background="@color/grey"/>
 
-                <naimishtrivedi.in.googleadsmanager.BannerAds
-                    android:id="@+id/mBannerAds"
+                <include
+                    android:id="@+id/mBannerAdsContainer"
+                    layout="@layout/ad_banner_shimmer_effect"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_animation="@layout/layout_banner_shimmer"
-                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginTop="7dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
 
             </LinearLayout>
 

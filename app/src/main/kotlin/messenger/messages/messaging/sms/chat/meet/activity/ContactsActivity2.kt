@@ -8,8 +8,6 @@ import android.view.Menu
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
@@ -17,17 +15,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.MainAppClass
-import messenger.messages.messaging.sms.chat.meet.extensions.*
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.adapters.PhoneContactsAdapter
-import messenger.messages.messaging.sms.chat.meet.utils.getSuggestedContacts
-import messenger.messages.messaging.sms.chat.meet.utils.getThreadId
-import messenger.messages.messaging.sms.chat.meet.dialogs.RadioButtonsDialog
-import messenger.messages.messaging.sms.chat.meet.send_message.Utils
-import messenger.messages.messaging.sms.chat.meet.model.RadioModel
-import messenger.messages.messaging.sms.chat.meet.model.ContactsModel
-import messenger.messages.messaging.sms.chat.meet.utils.*
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityContact2Binding
+import messenger.messages.messaging.sms.chat.meet.dialogs.RadioButtonsDialog
+import messenger.messages.messaging.sms.chat.meet.extensions.*
+import messenger.messages.messaging.sms.chat.meet.model.ContactsModel
+import messenger.messages.messaging.sms.chat.meet.model.RadioModel
+import messenger.messages.messaging.sms.chat.meet.send_message.Utils
+import messenger.messages.messaging.sms.chat.meet.utils.*
 import java.net.URLDecoder
 
 class ContactsActivity2 : BaseHomeActivity() {
@@ -43,9 +39,9 @@ class ContactsActivity2 : BaseHomeActivity() {
         binding.header.txtHeading.text = getString(R.string.app_new_conversation)
 
         binding.header.imgBack.setOnClickListener {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
+            overridePendingTransition(0, 0);
         }
-
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
         binding.etSearchText.requestFocus()
@@ -53,7 +49,6 @@ class ContactsActivity2 : BaseHomeActivity() {
         handlePermission(PERMISSION_READ_CONTACTS) {
             initContacts()
         }
-
 
     }
 
@@ -87,12 +82,19 @@ class ContactsActivity2 : BaseHomeActivity() {
             filteredContacts.sortWith(compareBy { !it.name.startsWith(searchString, true) })
             setupAdapter(filteredContacts)
 
-            binding.tvSearchDone.beVisibleIf(searchString.length > 2)
+            if (isNumeric(searchString)) {
+                binding.tvSearchDone.beVisibleIf(searchString.length > 2)
+            }
         }
 
         binding.tvSearchDone.setOnClickListener {
-            val number = binding.etSearchText.value
-            launchThreadActivity(number, number)
+            if (!binding.etSearchText.text.isNullOrEmpty()){
+                val number = binding.etSearchText.value
+                launchThreadActivity(number, number)
+            }else{
+                onBackPressedDispatcher.onBackPressed()
+                overridePendingTransition(0, 0);
+            }
         }
 
         binding.tvNoContact2.setOnClickListener {
@@ -103,6 +105,10 @@ class ContactsActivity2 : BaseHomeActivity() {
             }
         }
 
+    }
+
+    fun isNumeric(str: String): Boolean {
+        return str.matches("-?\\d+(.\\d+)?".toRegex())
     }
 
     private fun isThirdPartyIntent(): Boolean {
@@ -118,7 +124,6 @@ class ContactsActivity2 : BaseHomeActivity() {
     private fun fetchContacts() {
         fillSuggestedContacts {
             CoroutineScope(Dispatchers.IO).launch {
-//            SimpleContactsHelperUtils(this).getAvailableContacts(false) {
             mAllContacts = MainAppClass.mAllContacts.ifEmpty {
                 SimpleContactsHelperUtils(this@ContactsActivity2).getAvailableContacts(false)
             }
@@ -136,7 +141,6 @@ class ContactsActivity2 : BaseHomeActivity() {
                 }
             }
         }
-//        }
     }
 
     private fun setupAdapter(contacts: ArrayList<ContactsModel>) {
@@ -226,10 +230,6 @@ class ContactsActivity2 : BaseHomeActivity() {
                 callback()
             }
         }
-    }
-
-    private fun setupLetterFastscroller(contacts: ArrayList<ContactsModel>) {
-
     }
 
     private fun launchThreadActivity(phoneNumber: String, name: String) {

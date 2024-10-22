@@ -2,6 +2,8 @@ package messenger.messages.messaging.sms.chat.meet.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import messenger.messages.messaging.sms.chat.meet.adapters.AutoCompressAdapter
@@ -9,8 +11,9 @@ import messenger.messages.messaging.sms.chat.meet.databinding.ActivityAutoCompre
 import messenger.messages.messaging.sms.chat.meet.model.AutoCompressModel
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import messenger.messages.messaging.sms.chat.meet.R
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 
-class AutoCompressActivity : AppCompatActivity() {
+class AutoCompressActivity : BaseHomeActivity() {
     private var _binding: ActivityAutoCompressBinding? = null
     private val binding get() = _binding!!
     private lateinit var autoCompressAdapter: AutoCompressAdapter
@@ -21,6 +24,11 @@ class AutoCompressActivity : AppCompatActivity() {
         setContentView(binding.root)
         bindHandlers()
         setupRecyclerView()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
     }
 
     private fun bindHandlers() {
@@ -49,7 +57,7 @@ class AutoCompressActivity : AppCompatActivity() {
 
     private fun getAutoCompressSize() = listOf(
         AutoCompressModel(getString(R.string.app_automatic), FILE_SIZE_AUTOMATIC),
-        AutoCompressModel(getString(R.string.app_1000_kb), FILE_SIZE_100_KB),
+        AutoCompressModel(getString(R.string.app_100_kb), FILE_SIZE_100_KB),
         AutoCompressModel(getString(R.string.app_200_kb), FILE_SIZE_200_KB),
         AutoCompressModel(getString(R.string.app_300_kb), FILE_SIZE_300_KB),
         AutoCompressModel(getString(R.string.app_600_kb), FILE_SIZE_600_KB),

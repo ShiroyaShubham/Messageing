@@ -7,11 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class CustomLayoutManager(context: Context?, orientation: Int, reverseLayout: Boolean) : LinearLayoutManager(context, orientation, reverseLayout) {
-    /**
-     * Disable predictive animations. There is a bug in RecyclerView which causes views that
-     * are being reloaded to pull invalid ViewHolders from the internal recycler stack if the
-     * adapter size has decreased since the ViewHolder was recycled.
-     */
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State?) {
         try {
             super.onLayoutChildren(recycler, state)

@@ -2,21 +2,18 @@ package messenger.messages.messaging.sms.chat.meet.activity
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
-import android.content.ContentResolver
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.provider.Settings
-import android.provider.Telephony
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.view.Window
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.lifecycleScope
 
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.dialogs.RadioButtonsDialog
@@ -29,8 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.MainAppClass
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivitySettingsBinding
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import java.util.Objects
 
 
@@ -47,15 +44,16 @@ class SettingsActivity : BaseHomeActivity() {
         setContentView(binding.root)
         binding.header.txtHeading.text = getString(R.string.app_setting)
         setDialog(this)
-        loadBannerAd()
         binding.header.imgBack.setOnClickListener {
             onBackPressed()
         }
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
     }
 
-    private fun loadBannerAd() {
-        AdsManager.showSmallBannerAds(binding.mBannerAds, this)
-    }
 
     private fun setDialog(context: Context, theme: Int = R.style.AppTheme_Dark_Dialog) {
         dialog = ProgressDialog(context, theme)

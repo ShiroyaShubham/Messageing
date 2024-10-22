@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2006 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.internal.telephony;
 
 import android.text.TextUtils;
@@ -25,91 +9,23 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class implements the character set mapping between
- * the GSM SMS 7-bit alphabet specified in TS 23.038 6.2.1
- * and UTF-16
- * <p/>
- * {@hide}
- */
 public class GsmAlphabet {
     private static final String TAG = "GSM";
 
     private GsmAlphabet() {
     }
 
-    /**
-     * This escapes extended characters, and when present indicates that the
-     * following character should be looked up in the "extended" table.
-     * <p/>
-     * gsmToChar(GSM_EXTENDED_ESCAPE) returns 0xffff
-     */
     public static final byte GSM_EXTENDED_ESCAPE = 0x1B;
-
-    /**
-     * User data header requires one octet for length. Count as one septet, because
-     * all combinations of header elements below will have at least one free bit
-     * when padding to the nearest septet boundary.
-     */
     public static final int UDH_SEPTET_COST_LENGTH = 1;
-
-    /**
-     * Using a non-default language locking shift table OR single shift table
-     * requires a user data header of 3 octets, or 4 septets, plus UDH length.
-     */
     public static final int UDH_SEPTET_COST_ONE_SHIFT_TABLE = 4;
-
-    /**
-     * Using a non-default language locking shift table AND single shift table
-     * requires a user data header of 6 octets, or 7 septets, plus UDH length.
-     */
     public static final int UDH_SEPTET_COST_TWO_SHIFT_TABLES = 7;
-
-    /**
-     * Multi-part messages require a user data header of 5 octets, or 6 septets,
-     * plus UDH length.
-     */
     public static final int UDH_SEPTET_COST_CONCATENATED_MESSAGE = 6;
-
-    /**
-     * For a specific text string, this object describes protocol
-     * properties of encoding it for transmission as message user
-     * data.
-     */
     public static class TextEncodingDetails {
-        /**
-         * The number of SMS's required to encode the text.
-         */
         public int msgCount;
-
-        /**
-         * The number of code units consumed so far, where code units
-         * are basically characters in the encoding -- for example,
-         * septets for the standard ASCII and GSM encodings, and 16
-         * bits for Unicode.
-         */
         public int codeUnitCount;
-
-        /**
-         * How many code units are still available without spilling
-         * into an additional message.
-         */
         public int codeUnitsRemaining;
-
-        /**
-         * The encoding code unit size (specified using
-         * android.telephony.SmsMessage ENCODING_*).
-         */
         public int codeUnitSize;
-
-        /**
-         * The GSM national language table to use, or 0 for the default 7-bit alphabet.
-         */
         public int languageTable;
-
-        /**
-         * The GSM national language shift table to use, or 0 for the default 7-bit extension table.
-         */
         public int languageShiftTable;
 
         @Override
@@ -125,16 +41,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Converts a char to a GSM 7 bit table index.
-     * Returns ' ' in GSM alphabet if there's no possible match. Returns
-     * GSM_EXTENDED_ESCAPE if this character is in the extended table.
-     * In this case, you must call charToGsmExtended() for the value
-     * that should follow GSM_EXTENDED_ESCAPE in the GSM alphabet string.
-     *
-     * @param c the character to convert
-     * @return the GSM 7 bit table index for the specified character
-     */
     public static int
     charToGsm(char c) {
         try {
@@ -145,18 +51,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Converts a char to a GSM 7 bit table index.
-     * Returns GSM_EXTENDED_ESCAPE if this character is in the extended table.
-     * In this case, you must call charToGsmExtended() for the value that
-     * should follow GSM_EXTENDED_ESCAPE in the GSM alphabet string.
-     *
-     * @param c              the character to convert
-     * @param throwException If true, throws EncodeException on invalid char.
-     *                       If false, returns GSM alphabet ' ' char.
-     * @return the GSM 7 bit table index for the specified character
-     * @throws EncodeException encode error when throwException is true
-     */
     public static int
     charToGsm(char c, boolean throwException) throws EncodeException {
         int ret;
@@ -180,14 +74,6 @@ public class GsmAlphabet {
         return ret;
     }
 
-    /**
-     * Converts a char to an extended GSM 7 bit table index.
-     * Extended chars should be escaped with GSM_EXTENDED_ESCAPE.
-     * Returns ' ' in GSM alphabet if there's no possible match.
-     *
-     * @param c the character to convert
-     * @return the GSM 7 bit extended table index for the specified character
-     */
     public static int
     charToGsmExtended(char c) {
         int ret;
@@ -201,18 +87,6 @@ public class GsmAlphabet {
         return ret;
     }
 
-    /**
-     * Converts a character in the GSM alphabet into a char.
-     * <p/>
-     * If GSM_EXTENDED_ESCAPE is passed, 0xffff is returned. In this case,
-     * the following character in the stream should be decoded with
-     * gsmExtendedToChar().
-     * <p/>
-     * If an unmappable value is passed (one greater than 127), ' ' is returned.
-     *
-     * @param gsmChar the GSM 7 bit table index to convert
-     * @return the decoded character
-     */
     public static char
     gsmToChar(int gsmChar) {
         if (gsmChar >= 0 && gsmChar < 128) {
@@ -222,19 +96,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Converts a character in the extended GSM alphabet into a char
-     * <p/>
-     * if GSM_EXTENDED_ESCAPE is passed, ' ' is returned since no second
-     * extension page has yet been defined (see Note 1 in table 6.2.1.1 of
-     * TS 23.038 v7.00)
-     * <p/>
-     * If an unmappable value is passed, the character from the GSM 7 bit
-     * default table will be used (table 6.2.1.1 of TS 23.038).
-     *
-     * @param gsmChar the GSM 7 bit extended table index to convert
-     * @return the decoded character
-     */
     public static char
     gsmExtendedToChar(int gsmChar) {
         if (gsmChar == GSM_EXTENDED_ESCAPE) {
@@ -251,46 +112,13 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Converts a String into a byte array containing the 7-bit packed
-     * GSM Alphabet representation of the string. If a header is provided,
-     * this is included in the returned byte array and padded to a septet
-     * boundary. This method is used by OEM code.
-     *
-     * @param data   The text string to encode.
-     * @param header Optional header (including length byte) that precedes
-     *               the encoded data, padded to septet boundary.
-     * @return Byte array containing header and encoded data.
-     * @throws EncodeException if String is too large to encode
-     * @see #stringToGsm7BitPackedWithHeader(String, byte[], int, int)
-     */
+
     public static byte[] stringToGsm7BitPackedWithHeader(String data, byte[] header)
             throws EncodeException {
         return stringToGsm7BitPackedWithHeader(data, header, 0, 0);
     }
 
-    /**
-     * Converts a String into a byte array containing the 7-bit packed
-     * GSM Alphabet representation of the string. If a header is provided,
-     * this is included in the returned byte array and padded to a septet
-     * boundary.
-     * <p/>
-     * Unencodable chars are encoded as spaces
-     * <p/>
-     * Byte 0 in the returned byte array is the count of septets used,
-     * including the header and header padding. The returned byte array is
-     * the minimum size required to store the packed septets. The returned
-     * array cannot contain more than 255 septets.
-     *
-     * @param data               The text string to encode.
-     * @param header             Optional header (including length byte) that precedes
-     *                           the encoded data, padded to septet boundary.
-     * @param languageTable      the 7 bit language table, or 0 for the default GSM alphabet
-     * @param languageShiftTable the 7 bit single shift language table, or 0 for the default
-     *                           GSM extension table
-     * @return Byte array containing header and encoded data.
-     * @throws EncodeException if String is too large to encode
-     */
+
     public static byte[] stringToGsm7BitPackedWithHeader(String data, byte[] header,
                                                          int languageTable, int languageShiftTable)
             throws EncodeException {
@@ -310,70 +138,17 @@ public class GsmAlphabet {
         return ret;
     }
 
-    /**
-     * Converts a String into a byte array containing
-     * the 7-bit packed GSM Alphabet representation of the string.
-     * <p/>
-     * Unencodable chars are encoded as spaces
-     * <p/>
-     * Byte 0 in the returned byte array is the count of septets used
-     * The returned byte array is the minimum size required to store
-     * the packed septets. The returned array cannot contain more than 255
-     * septets.
-     *
-     * @param data the data string to encode
-     * @return the encoded string
-     * @throws EncodeException if String is too large to encode
-     */
     public static byte[] stringToGsm7BitPacked(String data)
             throws EncodeException {
         return stringToGsm7BitPacked(data, 0, true, 0, 0);
     }
 
-    /**
-     * Converts a String into a byte array containing
-     * the 7-bit packed GSM Alphabet representation of the string.
-     * <p/>
-     * Unencodable chars are encoded as spaces
-     * <p/>
-     * Byte 0 in the returned byte array is the count of septets used
-     * The returned byte array is the minimum size required to store
-     * the packed septets. The returned array cannot contain more than 255
-     * septets.
-     *
-     * @param data               the data string to encode
-     * @param languageTable      the 7 bit language table, or 0 for the default GSM alphabet
-     * @param languageShiftTable the 7 bit single shift language table, or 0 for the default
-     *                           GSM extension table
-     * @return the encoded string
-     * @throws EncodeException if String is too large to encode
-     */
     public static byte[] stringToGsm7BitPacked(String data, int languageTable,
                                                int languageShiftTable)
             throws EncodeException {
         return stringToGsm7BitPacked(data, 0, true, languageTable, languageShiftTable);
     }
 
-    /**
-     * Converts a String into a byte array containing
-     * the 7-bit packed GSM Alphabet representation of the string.
-     * <p/>
-     * Byte 0 in the returned byte array is the count of septets used
-     * The returned byte array is the minimum size required to store
-     * the packed septets. The returned array cannot contain more than 255
-     * septets.
-     *
-     * @param data                 the text to convert to septets
-     * @param startingSeptetOffset the number of padding septets to put before
-     *                             the character data at the beginning of the array
-     * @param throwException       If true, throws EncodeException on invalid char.
-     *                             If false, replaces unencodable char with GSM alphabet space char.
-     * @param languageTable        the 7 bit language table, or 0 for the default GSM alphabet
-     * @param languageShiftTable   the 7 bit single shift language table, or 0 for the default
-     *                             GSM extension table
-     * @return the encoded message
-     * @throws EncodeException if String is too large to encode
-     */
     public static byte[] stringToGsm7BitPacked(String data, int startingSeptetOffset,
                                                boolean throwException, int languageTable, int languageShiftTable)
             throws EncodeException {
@@ -417,14 +192,7 @@ public class GsmAlphabet {
         return ret;
     }
 
-    /**
-     * Pack a 7-bit char into its appropriate place in a byte array
-     *
-     * @param packedChars the destination byte array
-     * @param bitOffset   the bit offset that the septet should be packed at
-     *                    (septet index * 7)
-     * @param value       the 7-bit character to store
-     */
+
     private static void
     packSmsChar(byte[] packedChars, int bitOffset, int value) {
         int byteOffset = bitOffset / 8;
@@ -437,38 +205,12 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Convert a GSM alphabet 7 bit packed string (SMS string) into a
-     * {@link java.lang.String}.
-     * <p/>
-     * See TS 23.038 6.1.2.1 for SMS Character Packing
-     *
-     * @param pdu           the raw data from the pdu_alt
-     * @param offset        the byte offset of
-     * @param lengthSeptets string length in septets, not bytes
-     * @return String representation or null on decoding exception
-     */
     public static String gsm7BitPackedToString(byte[] pdu, int offset,
                                                int lengthSeptets) {
         return gsm7BitPackedToString(pdu, offset, lengthSeptets, 0, 0, 0);
     }
 
-    /**
-     * Convert a GSM alphabet 7 bit packed string (SMS string) into a
-     * {@link java.lang.String}.
-     * <p/>
-     * See TS 23.038 6.1.2.1 for SMS Character Packing
-     *
-     * @param pdu            the raw data from the pdu_alt
-     * @param offset         the byte offset of
-     * @param lengthSeptets  string length in septets, not bytes
-     * @param numPaddingBits the number of padding bits before the start of the
-     *                       string in the first byte
-     * @param languageTable  the 7 bit language table, or 0 for the default GSM alphabet
-     * @param shiftTable     the 7 bit single shift language table, or 0 for the default
-     *                       GSM extension table
-     * @return String representation or null on decoding exception
-     */
+
     public static String gsm7BitPackedToString(byte[] pdu, int offset,
                                                int lengthSeptets, int numPaddingBits, int languageTable, int shiftTable) {
         StringBuilder ret = new StringBuilder(lengthSeptets);
@@ -540,33 +282,11 @@ public class GsmAlphabet {
     }
 
 
-    /**
-     * Convert a GSM alphabet string that's stored in 8-bit unpacked
-     * format (as it often appears in SIM records) into a String
-     * <p/>
-     * Field may be padded with trailing 0xff's. The decode stops
-     * at the first 0xff encountered.
-     *
-     * @param data   the byte array to decode
-     * @param offset array offset for the first character to decode
-     * @param length the number of bytes to decode
-     * @return the decoded string
-     */
     public static String
     gsm8BitUnpackedToString(byte[] data, int offset, int length) {
         return gsm8BitUnpackedToString(data, offset, length, "");
     }
 
-    /**
-     * Convert a GSM alphabet string that's stored in 8-bit unpacked
-     * format (as it often appears in SIM records) into a String
-     * <p/>
-     * Field may be padded with trailing 0xff's. The decode stops
-     * at the first 0xff encountered.
-     * <p/>
-     * Additionally, in some country(ex. Korea), there are non-ASCII or MBCS characters.
-     * If a character set is given, characters in data are treat as MBCS.
-     */
     public static String
     gsm8BitUnpackedToString(byte[] data, int offset, int length, String characterset) {
         boolean isMbcs = false;
@@ -631,13 +351,6 @@ public class GsmAlphabet {
         return ret.toString();
     }
 
-    /**
-     * Convert a string into an 8-bit unpacked GSM alphabet byte array.
-     * Always uses GSM default 7-bit alphabet and extension table.
-     *
-     * @param s the string to encode
-     * @return the 8-bit GSM encoded byte array for the string
-     */
     public static byte[]
     stringToGsm8BitPacked(String s) {
         byte[] ret;
@@ -653,15 +366,6 @@ public class GsmAlphabet {
     }
 
 
-    /**
-     * Write a String into a GSM 8-bit unpacked field of
-     * Field is padded with 0xff's, string is truncated if necessary
-     *
-     * @param s      the string to encode
-     * @param dest   the destination byte array
-     * @param offset the starting offset for the encoded string
-     * @param length the maximum number of bytes to write
-     */
     public static void
     stringToGsm8BitUnpackedField(String s, byte dest[], int offset, int length) {
         int outByteIndex = offset;
@@ -700,13 +404,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Returns the count of 7-bit GSM alphabet characters
-     * needed to represent this character. Counts unencodable char as 1 septet.
-     *
-     * @param c the character to examine
-     * @return the number of septets for this character
-     */
     public static int
     countGsmSeptets(char c) {
         try {
@@ -717,16 +414,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Returns the count of 7-bit GSM alphabet characters
-     * needed to represent this character using the default 7 bit GSM alphabet.
-     *
-     * @param c               the character to examine
-     * @param throwsException If true, throws EncodeException if unencodable
-     *                        char. Otherwise, counts invalid char as 1 septet.
-     * @return the number of septets for this character
-     * @throws EncodeException the character can't be encoded and throwsException is true
-     */
     public static int
     countGsmSeptets(char c, boolean throwsException) throws EncodeException {
         if (sCharsToGsmTables[0].get(c, -1) != -1) {
@@ -745,20 +432,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Returns the count of 7-bit GSM alphabet characters needed
-     * to represent this string, using the specified 7-bit language table
-     * and extension table (0 for GSM default tables).
-     *
-     * @param s                  the Unicode string that will be encoded
-     * @param use7bitOnly        allow using space in place of unencodable character if true,
-     *                           otherwise, return -1 if any characters are unencodable
-     * @param languageTable      the 7 bit language table, or 0 for the default GSM alphabet
-     * @param languageShiftTable the 7 bit single shift language table, or 0 for the default
-     *                           GSM extension table
-     * @return the septet count for s using the specified language tables, or -1 if any
-     * characters are unencodable and use7bitOnly is false
-     */
     public static int countGsmSeptetsUsingTables(CharSequence s, boolean use7bitOnly,
                                                  int languageTable, int languageShiftTable) {
         int count = 0;
@@ -784,25 +457,6 @@ public class GsmAlphabet {
         return count;
     }
 
-    /**
-     * Returns the count of 7-bit GSM alphabet characters
-     * needed to represent this string, and the language table and
-     * language shift table used to achieve this result.
-     * For multi-part text messages, each message part may use its
-     * own language table encoding as specified in the message header
-     * for that message. However, this method will only return the
-     * optimal encoding for the message as a whole. When the individual
-     * pieces are encoded, a more optimal encoding may be chosen for each
-     * piece of the message, but the message will be split into pieces
-     * based on the encoding chosen for the message as a whole.
-     *
-     * @param s           the Unicode string that will be encoded
-     * @param use7bitOnly allow using space in place of unencodable character if true,
-     *                    using the language table pair with the fewest unencodable characters
-     * @return a TextEncodingDetails object containing the message and
-     * character counts for the most efficient 7-bit encoding,
-     * or null if there are no suitable language tables to encode the string.
-     */
     public static TextEncodingDetails
     countGsmSeptets(CharSequence s, boolean use7bitOnly) {
         // Load enabled language tables from config.xml, including any MCC overlays
@@ -944,21 +598,7 @@ public class GsmAlphabet {
         return ted;
     }
 
-    /**
-     * Returns the index into <code>s</code> of the first character
-     * after <code>limit</code> septets have been reached, starting at
-     * index <code>start</code>.  This is used when dividing messages
-     * into units within the SMS message size limit.
-     *
-     * @param s              source string
-     * @param start          index of where to start counting septets
-     * @param limit          maximum septets to include,
-     *                       e.g. <code>MAX_USER_DATA_SEPTETS</code>
-     * @param langTable      the 7 bit character table to use (0 for default GSM 7-bit alphabet)
-     * @param langShiftTable the 7 bit shift table to use (0 for default GSM extension table)
-     * @return index of first character that won't fit, or the length
-     * of the entire string if everything fits
-     */
+
     public static int
     findGsmSeptetLimitIndex(String s, int start, int limit, int langTable, int langShiftTable) {
         int accumulator = 0;
@@ -986,13 +626,7 @@ public class GsmAlphabet {
         return size;
     }
 
-    /**
-     * Modify the array of enabled national language single shift tables for SMS
-     * encoding. This is used for unit testing, but could also be used to
-     * modify the enabled encodings based on the active MCC/MNC, for example.
-     *
-     * @param tables the new list of enabled single shift tables
-     */
+
     static synchronized void setEnabledSingleShiftTables(int[] tables) {
         sEnabledSingleShiftTables = tables;
         sDisableCountryEncodingCheck = true;
@@ -1004,45 +638,20 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Modify the array of enabled national language locking shift tables for SMS
-     * encoding. This is used for unit testing, but could also be used to
-     * modify the enabled encodings based on the active MCC/MNC, for example.
-     *
-     * @param tables the new list of enabled locking shift tables
-     */
+
     static synchronized void setEnabledLockingShiftTables(int[] tables) {
         sEnabledLockingShiftTables = tables;
         sDisableCountryEncodingCheck = true;
     }
 
-    /**
-     * Return the array of enabled national language single shift tables for SMS
-     * encoding. This is used for unit testing. The returned array is not a copy, so
-     * the caller should be careful not to modify it.
-     *
-     * @return the list of enabled single shift tables
-     */
     static synchronized int[] getEnabledSingleShiftTables() {
         return sEnabledSingleShiftTables;
     }
 
-    /**
-     * Return the array of enabled national language locking shift tables for SMS
-     * encoding. This is used for unit testing. The returned array is not a copy, so
-     * the caller should be careful not to modify it.
-     *
-     * @return the list of enabled locking shift tables
-     */
     static synchronized int[] getEnabledLockingShiftTables() {
         return sEnabledLockingShiftTables;
     }
 
-    /**
-     * Enable country-specific language tables from MCC-specific overlays.
-     *
-     * @context the context to use to get the TelephonyManager
-     */
     private static void enableCountrySpecificEncodings() {
         // See comments in frameworks/base/core/res/res/values/config.xml for allowed values
         sEnabledSingleShiftTables = new int[1];
@@ -1056,40 +665,13 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * Reverse mapping from Unicode characters to indexes into language tables.
-     */
     private static final SparseIntArray[] sCharsToGsmTables;
-
-    /**
-     * Reverse mapping from Unicode characters to indexes into language shift tables.
-     */
     private static final SparseIntArray[] sCharsToShiftTables;
-
-    /**
-     * OEM configured list of enabled national language single shift tables for encoding.
-     */
     private static int[] sEnabledSingleShiftTables;
-
-    /**
-     * OEM configured list of enabled national language locking shift tables for encoding.
-     */
     private static int[] sEnabledLockingShiftTables;
-
-    /**
-     * Highest language code to include in array of single shift counters.
-     */
     private static int sHighestEnabledSingleShiftCode;
-
-    /**
-     * Flag to bypass check for country-specific overlays (for test cases only).
-     */
     private static boolean sDisableCountryEncodingCheck = false;
 
-    /**
-     * Septet counter for a specific locking shift table and all of
-     * the single shift tables that it can be paired with.
-     */
     private static class LanguagePairCount {
         final int languageCode;
         final int[] septetCounts;
@@ -1120,10 +702,6 @@ public class GsmAlphabet {
         }
     }
 
-    /**
-     * GSM default 7 bit alphabet plus national language locking shift character tables.
-     * Comment lines above strings indicate the lower four bits of the table position.
-     */
     private static final String[] sLanguageTables = {
         /* 3GPP TS 23.038 V9.1.1 section 6.2.1 - GSM 7 bit Default Alphabet
          01.....23.....4.....5.....6.....7.....8.....9.....A.B.....C.....D.E.....F.....0.....1 */
@@ -1314,9 +892,6 @@ public class GsmAlphabet {
                     + "yz\u0655\u0651\u0653\u0656\u0670"
     };
 
-    /**
-     * GSM default extension table plus national language single shift character tables.
-     */
     private static final String[] sLanguageShiftTables = new String[]{
         /* 6.2.1.1 GSM 7 bit Default Alphabet Extension Table
          0123456789A.....BCDEF0123456789ABCDEF0123456789ABCDEF.0123456789ABCDEF0123456789ABCDEF */

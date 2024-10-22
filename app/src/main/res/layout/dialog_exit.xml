@@ -18,34 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/mBannerAds"
+    <include
+        android:id="@+id/mMediumAdsContainer"
+        layout="@layout/ad_intro_native_shimmer_effect_exit"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@id/txtTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/llNativeShimmer"
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center">
-
-            <include layout="@layout/layout_native_video_shimmer" />
-
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/mNativeContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </FrameLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -60,7 +43,7 @@
         android:textColor="@color/text_grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mBannerAds" />
+        app:layout_constraintTop_toBottomOf="@id/mMediumAdsContainer" />
 
 
     <LinearLayout

@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2007 Esmertec AG.
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom;
 
 import org.w3c.dom.Attr;
@@ -28,18 +11,11 @@ public class ElementImpl extends NodeImpl implements Element {
     private String mTagName;
     private NamedNodeMap mAttributes = new NamedNodeMapImpl();
 
-    /*
-     * Internal methods
-     */
-
     protected ElementImpl(DocumentImpl owner, String tagName) {
         super(owner);
         mTagName = tagName;
     }
 
-    /*
-     *  Element Interface methods
-     */
 
     public String getAttribute(String name) {
         Attr attrNode = getAttributeNode(name);
@@ -69,7 +45,6 @@ public class ElementImpl extends NodeImpl implements Element {
     }
 
     public NodeList getElementsByTagNameNS(String namespaceURI, String localName) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -82,23 +57,18 @@ public class ElementImpl extends NodeImpl implements Element {
     }
 
     public boolean hasAttributeNS(String namespaceURI, String localName) {
-        // TODO Auto-generated method stub
         return false;
     }
 
     public void removeAttribute(String name) throws DOMException {
-        // TODO Auto-generated method stub
 
     }
 
     public void removeAttributeNS(String namespaceURI, String localName)
             throws DOMException {
-        // TODO Auto-generated method stub
-
     }
 
     public Attr removeAttributeNode(Attr oldAttr) throws DOMException {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -113,23 +83,16 @@ public class ElementImpl extends NodeImpl implements Element {
 
     public void setAttributeNS(String namespaceURI, String qualifiedName,
             String value) throws DOMException {
-        // TODO Auto-generated method stub
-
     }
 
     public Attr setAttributeNode(Attr newAttr) throws DOMException {
-        // TODO Auto-generated method stub
         return null;
     }
 
     public Attr setAttributeNodeNS(Attr newAttr) throws DOMException {
-        // TODO Auto-generated method stub
         return null;
     }
 
-    /*
-     * Node Interface methods
-     */
 
     @Override
     public short getNodeType() {

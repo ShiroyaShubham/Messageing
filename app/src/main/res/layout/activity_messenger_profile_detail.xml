@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_background_color"
-    tools:context=".MessengerProfileDetailActivity">
+    tools:context=".activity.MessengerProfileDetailActivity">
 
     <include
         android:id="@+id/header"
@@ -74,6 +74,9 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:tint="@color/grayish"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:layout_marginEnd="@dimen/_10sdp"
             android:src="@drawable/ic_add_user" />
 
@@ -112,6 +115,9 @@
             android:drawablePadding="@dimen/_15sdp"
             android:paddingVertical="@dimen/_10sdp"
             android:text="@string/app_notification"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:drawableTint="@color/convertable_grey"
             android:textColor="@color/convertable_grey" />
 
@@ -120,10 +126,13 @@
             style="@style/Text_manrope_Medium_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_archived"
+            android:drawableStart="@drawable/ic_archived_2"
             android:drawablePadding="@dimen/_15sdp"
             android:paddingVertical="@dimen/_10sdp"
             android:text="@string/app_archived"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:drawableTint="@color/convertable_grey"
             android:textColor="@color/convertable_grey" />
 
@@ -132,11 +141,14 @@
             style="@style/Text_manrope_Medium_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_archived"
+            android:drawableStart="@drawable/ic_archived_2"
             android:drawablePadding="@dimen/_15sdp"
             android:paddingVertical="@dimen/_10sdp"
             android:text="@string/app_unarchived"
             android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:drawableTint="@color/convertable_grey"
             android:textColor="@color/convertable_grey" />
 
@@ -149,6 +161,9 @@
             android:drawablePadding="@dimen/_15sdp"
             android:paddingVertical="@dimen/_10sdp"
             android:text="@string/app_block"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:drawableTint="@color/convertable_grey"
             android:textColor="@color/convertable_grey" />
 
@@ -162,10 +177,23 @@
             android:drawablePadding="@dimen/_15sdp"
             android:paddingVertical="@dimen/_10sdp"
             android:text="@string/app_delete_conversation"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             app:drawableTint="@color/convertable_grey"
             android:textColor="@color/convertable_grey" />
 
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/mBannerAdsContainer"
+        layout="@layout/ad_banner_shimmer_effect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

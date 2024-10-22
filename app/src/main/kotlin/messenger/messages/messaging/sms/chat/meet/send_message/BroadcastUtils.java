@@ -6,11 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-/**
- * Utility for helping with Android O changes. This means that we need to explicitly send broadcasts
- * to the correct receiver instead of implicitly. This is done by attaching the class and package
- * name to the intent based on the provided action.
- */
 public class BroadcastUtils {
 
     public static void sendExplicitBroadcast(Context context, Intent intent, String action) {

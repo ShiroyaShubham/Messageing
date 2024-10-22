@@ -9,32 +9,29 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
-import android.os.PersistableBundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
 import android.widget.PopupWindow
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.adsdk.plugin.BaseActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import messenger.messages.messaging.sms.chat.meet.R
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.databinding.DialogExitBinding
 import messenger.messages.messaging.sms.chat.meet.databinding.LayoutLoadingBinding
 import messenger.messages.messaging.sms.chat.meet.dialogs.FileConflictDialog
 import messenger.messages.messaging.sms.chat.meet.dialogs.WritePermissionDialog
 import messenger.messages.messaging.sms.chat.meet.extensions.*
-import messenger.messages.messaging.sms.chat.meet.listners.AdsDismissCallback
 import messenger.messages.messaging.sms.chat.meet.model.*
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.utils.*
-import messenger.messages.messaging.sms.chat.meet.utils.MyContextWrapperUtils
 import java.io.OutputStream
-import java.util.*
+import java.util.Calendar
+import java.util.Objects
 import java.util.regex.Pattern
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : BaseActivity() {
     var copyMoveCallback: ((destinationPath: String) -> Unit)? = null
     var actionOnPermission: ((granted: Boolean) -> Unit)? = null
     var isAskingPermissions = false
@@ -62,11 +59,6 @@ abstract class BaseActivity : AppCompatActivity() {
         funAfterSAFPermission = null
         actionOnPermission = null
     }
-
-//    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-//        super.onCreate(savedInstanceState, persistentState)
-//        initLoadingDialog(this)
-//    }
 
     override fun onStart() {
         super.onStart()
@@ -330,43 +322,6 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-//    val copyMoveListener = object : CopyMoveCallback {
-//        override fun copySucceeded(copyOnly: Boolean, copiedAll: Boolean, destinationPath: String, wasCopyingOneFileOnly: Boolean) {
-//            if (copyOnly) {
-//                toast(
-//                    if (copiedAll) {
-//                        if (wasCopyingOneFileOnly) {
-//                            R.string.copying_success_one
-//                        } else {
-//                            R.string.copying_success
-//                        }
-//                    } else {
-//                        R.string.copying_success_partial
-//                    }
-//                )
-//            } else {
-//                toast(
-//                    if (copiedAll) {
-//                        if (wasCopyingOneFileOnly) {
-//                            R.string.moving_success_one
-//                        } else {
-//                            R.string.moving_success
-//                        }
-//                    } else {
-//                        R.string.moving_success_partial
-//                    }
-//                )
-//            }
-//
-//            copyMoveCallback?.invoke(destinationPath)
-//            copyMoveCallback = null
-//        }
-//
-//        override fun copyFailed() {
-//            toast(R.string.copy_move_failed)
-//            copyMoveCallback = null
-//        }
-//    }
 
     private fun exportSettingsTo(outputStream: OutputStream?, configItems: LinkedHashMap<String, Any>) {
         if (outputStream == null) {
@@ -411,8 +366,11 @@ abstract class BaseActivity : AppCompatActivity() {
         builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val width = (resources.displayMetrics.widthPixels * 0.9).toInt()
         builder.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-
-        AdsManager.showMediumRectangleBannerAds(dialogBinding.mNativeContainer, dialogBinding.llNativeShimmer, mContext)
+        if (!PrefClass.isProUser) {
+            showMediumNativeAds(builder.findViewById(R.id.mMediumAdsContainer))
+        }else{
+            builder.findViewById<ViewGroup>(R.id.mMediumAdsContainer)?.visibility = View.GONE
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             dialogBinding.btnNotNow.setGradientColors(getColor(R.color.blue), getColor(R.color.purple))
         }
@@ -427,16 +385,18 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun showInterstitialAdPerDayOnDrawerItemClick(onItemClick: () -> Unit) {
+        if (PrefClass.isProUser) {
+            onItemClick.invoke()
+            return
+        }
         val lastAdDisplayTime = getSharedPrefs().getLong(LAST_AD_DISPLAY_DRAWER_ITEM_CLICK, 0L)
         val currentTime = Calendar.getInstance().timeInMillis
         if (currentTime - lastAdDisplayTime >= ONE_DAY_IN_MILLIS) {
-            showDialog()
-            AdsManager.loadInterstitialAds(this, object : AdsDismissCallback {
-                override fun onAdDismiss() {
-                    dismissDialog()
-                    onItemClick.invoke()
-                }
-            })
+//            showDialog()
+            showInterstitialAds {
+                dismissDialog()
+                onItemClick.invoke()
+            }
             getSharedPrefs().edit().putLong(LAST_AD_DISPLAY_DRAWER_ITEM_CLICK, currentTime).apply()
         } else {
             dismissDialog()
@@ -446,7 +406,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     var ad: CircularProgressDialog? = null
 
-    fun showDialog() {
+    override fun showDialog() {
         runOnUiThread {
             try {
                 Log.d("TAG_DIALOG", "showDialog: $loadingDialog")
@@ -458,7 +418,7 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-     fun initLoadingDialog(activity: Context) {
+    fun initLoadingDialog(activity: Context) {
         loadingDialog = Dialog(activity)
         val binding: LayoutLoadingBinding =
             LayoutLoadingBinding.inflate(LayoutInflater.from(activity))
@@ -480,7 +440,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    fun dismissDialog() {
+    override fun dismissDialog() {
         runOnUiThread {
             try {
                 loadingDialog?.dismiss()
@@ -492,14 +452,18 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (SHOW_INTERTAIL_ADD_PER_COUNT % 5 == 0) {
-            showDialog()
-            AdsManager.loadInterstitialAds(this, object : AdsDismissCallback {
-                override fun onAdDismiss() {
-                    dismissDialog()
-                    SHOW_INTERTAIL_ADD_PER_COUNT++
-                    finish()
-                }
-            })
+//            showDialog()
+            if (PrefClass.isProUser){
+                dismissDialog()
+                SHOW_INTERTAIL_ADD_PER_COUNT++
+                super.onBackPressed()
+                return
+            }
+            showInterstitialAds {
+                dismissDialog()
+                SHOW_INTERTAIL_ADD_PER_COUNT++
+                finish()
+            }
         } else {
             dismissDialog()
             SHOW_INTERTAIL_ADD_PER_COUNT++

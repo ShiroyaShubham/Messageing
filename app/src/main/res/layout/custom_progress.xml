@@ -5,13 +5,6 @@
               android:background="@color/black_66"
               android:gravity="center">
 
-    <!--<com.pnikosis.materialishprogress.ProgressWheel-->
-    <!--android:id="@+id/progress_wheel"-->
-    <!--android:layout_width="80dp"-->
-    <!--android:layout_height="80dp"-->
-    <!--android:layout_gravity="center"-->
-    <!--wheel:matProg_barColor="@color/primary_dark"-->
-    <!--wheel:matProg_progressIndeterminate="true" />-->
 
     <ProgressBar
             android:layout_width="wrap_content"

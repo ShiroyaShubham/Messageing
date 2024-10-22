@@ -28,6 +28,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -92,14 +93,10 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.decorView.setBackgroundResource(R.drawable.bg_gradient)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.color_primary)
+//        window.decorView.setBackgroundResource(R.drawable.bg_gradient)
         binding = ActivityMessagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        appTopToolbar = findViewById(R.id.appTopToolbar)
-//        setSupportActionBar(appTopToolbar)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar!!.setDisplayShowHomeEnabled(true)
-//        appTopToolbar?.navigationIcon = ContextCompat.getDrawable(this, R.drawable.icon_back)
 
 
         mTitle = intent.getStringExtra(THREAD_TITLE)
@@ -113,7 +110,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
         val extras = intent.extras
         if (extras == null) {
             toast(R.string.unknown_error_occurred)
-//            hideKeyboard()
             finish()
             return
         }
@@ -133,7 +129,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
             checkAllowReply(mTitle!!, mNUmber!!)
         }
 
-//        supportActionBar?.title = mTitle
         if (!mTitle.equals(mNUmber) && mNUmber != null && !mNUmber!!.isEmpty()) {
 //            supportActionBar?.subtitle = mNUmber
         }
@@ -152,7 +147,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
                             binding.myRecyclerView.smoothScrollToPosition(index)
                         }
                     }
-
                     setupThread()
                 }
             } else {
@@ -212,7 +206,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
 
     override fun onResume() {
         super.onResume()
-//        hideKeyboard()
         val smsDraft = getSmsDraft(threadId)
         if (smsDraft != null && !isAttach) {
             binding.threadTypeMessage.setText(smsDraft)
@@ -222,15 +215,11 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
 
     override fun onPause() {
         super.onPause()
-
         if (binding.threadTypeMessage.value != "" && attachmentSelections.isEmpty() && !isAttach) {
             saveSmsDraft(binding.threadTypeMessage.value, threadId)
         } else {
             deleteSmsDraft(threadId)
         }
-
-//        bus?.post(RefreshEventsModel.RefreshMessages())
-
         isActivityVisible = false
     }
 
@@ -297,10 +286,7 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
             dismissPopup(popupMore)
             dialNumber()
         }
-//        view.findViewById<View>(R.id.llBlock).setOnClickListener { v: View? ->
-//            dismissPopup(popupMore)
-//            blockNumber()
-//        }
+
         view.findViewById<View>(R.id.llMarkUnread).setOnClickListener { v: View? ->
             dismissPopup(popupMore)
             markAsUnread()
@@ -391,9 +377,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
                 participants.add(contact)
             }
 
-//            messages.chunked(30).forEach { currentMessages ->
-//                messagesDB.insertAddMessages(*currentMessages.toTypedArray())
-//            }
 
             messagesDB.insertAllInMSGTransaction(messages)
 
@@ -443,7 +426,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
             }
         }
 
-//        SimpleContactsHelperUtils(this).getAvailableContacts(false) { contacts ->
         val contacts = MainAppClass.mAllContacts
         contacts.addAll(privateContacts)
         runOnUiThread {
@@ -456,15 +438,10 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
                 addSelectedContact(selectedContact)
             }
         }
-//        }
     }
 
     var isAttach = false
     private fun setupButtons() {
-
-//        thread_character_counter.beVisibleIf(config.showCharacterCounter)
-//        thread_character_counter.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
-
         binding.threadTypeMessage.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
         binding.threadSendMessage.setOnClickListener {
             sendMessage()
@@ -473,7 +450,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
         binding.threadSendMessage.isClickable = false
         binding.threadTypeMessage.onTextChangeListener {
             checkSendMessageAvailability()
-//            thread_character_counter.text = it.length.toString()
         }
 
         binding.confirmManageContacts.setOnClickListener {
@@ -485,8 +461,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
                 it.phoneNumbers.forEach {
                     numbers.add(it)
                 }
-
-
             }
             val newThreadId = getThreadId(numbers)
             if (threadId != newThreadId) {
@@ -604,10 +578,6 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
 
 
             binding.threadSelectSimIcon.setOnClickListener {
-                /*currentSIMCardIndex = (currentSIMCardIndex + 1) % availableSIMCards.size
-                val currentSIMCard = availableSIMCards[currentSIMCardIndex]
-                binding.threadSelectSimNumber.text = currentSIMCard.id.toString()
-                toast(currentSIMCard.label)*/
                 if (!binding.laySimSelection.isVisible) {
                     binding.laySimSelection.visibility = View.VISIBLE
 
@@ -956,7 +926,7 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
                         refreshMessages()
                     }
                 }
-            }, 2000)
+            }, 0)
 
         } else {
             sendMessage(msg, participants[0].phoneNumbers[0], false)
@@ -1151,11 +1121,12 @@ class MessagesActivity : BaseHomeActivity(), MessagesAdapter.DeleteLuancherListn
     }
 
     override fun onDeleteLuancherCall(message: String, pos: Int) {
-        posLauncher = pos
-        val intent = Intent(this, SelectTextActivity::class.java)
-        intent.putExtra(THREAD_TITLE, message)
-
-        resultLauncher.launch(intent)
+        copyToClipboard(message)
+//        posLauncher = pos
+//        val intent = Intent(this, SelectTextActivity::class.java)
+//        intent.putExtra(THREAD_TITLE, message)
+//
+//        resultLauncher.launch(intent)
 
     }
 

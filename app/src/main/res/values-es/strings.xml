@@ -255,5 +255,6 @@
 
     <string name="app_no_archive_message_found">No se encontraron mensajes archivados.</string>
 
-
+    <string name="start">Comenzar</string>
+    <string name="please_select_plan">Por favor seleccione el plan</string>
 </resources>

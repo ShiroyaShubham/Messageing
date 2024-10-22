@@ -1,10 +1,14 @@
 package messenger.messages.messaging.sms.chat.meet.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.Uri
 import android.os.Build
+import android.provider.ContactsContract
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
@@ -23,6 +27,8 @@ import messenger.messages.messaging.sms.chat.meet.extensions.formatDateOrTime
 import messenger.messages.messaging.sms.chat.meet.extensions.getTextSize
 import messenger.messages.messaging.sms.chat.meet.model.ConversationSmsModel
 import messenger.messages.messaging.sms.chat.meet.send_message.Utils
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
+import messenger.messages.messaging.sms.chat.meet.utils.Utility
 import messenger.messages.messaging.sms.chat.meet.utils.config
 import messenger.messages.messaging.sms.chat.meet.utils.getAllDrafts
 import messenger.messages.messaging.sms.chat.meet.utils.getContactNameFromPhoneNumber
@@ -54,14 +60,19 @@ class ChatHistoryAdapter1(val mActivity: BaseHomeActivity) : RecyclerView.Adapte
                     val conversation = mConversations[position]
                     val smsDraft = drafts[conversation.threadId]
 
-                    Log.e("TAG_CONVERSATION", "bindData: ${conversation.title} ${conversation.read} ${position}")
+                    // Check if the title is a phone number (no contact name yet)
+                    if (Utility.isNumber(conversation.title)) {
+                        // Try to get the contact name from the number
+                        val contactName = getContactName(conversation.title, mActivity)
 
-//                    var name: String
-//                    withContext(Dispatchers.IO) {
-//                        name = mActivity.getContactNameFromPhoneNumber(conversation.phoneNumber).ifEmpty {
-//                            conversation.title
-//                        }
-//                    }
+                        if (!contactName.isNullOrEmpty()) {
+                            // If contact name is found, update the conversation's title with the contact name
+                            conversation.title = contactName
+                            notifyItemChanged(position) // Update the specific item in RecyclerView
+                        }
+                    }
+                    Log.e("TAG", "bindData:>>>> "+conversation.title )
+
                     bind.tvConversationTitle.apply {
                         text = conversation.title
                         setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 1.2f)
@@ -101,30 +112,9 @@ class ChatHistoryAdapter1(val mActivity: BaseHomeActivity) : RecyclerView.Adapte
                             bind.txtFirstLetter.isVisible = false
                         }
                     }
-
-//            if (itemView.context.getSharedPrefs().getBoolean("SHOW_PROFILE", false)) {
-//                if (!conversation.photoUri.equals("")) {
-//                    Glide.with(mActivity).load(conversation.photoUri)
-//                        .into(bind.imgProfile)
-//                    bind.imgProfile.apply {
-//                        visibility = View.VISIBLE
-//                    }
-//                }
-//            }
-
                     bind.rlMain.setOnClickListener {
-                        /*val intent = Intent(mActivity, MsgActivity::class.java)
-                    intent.putExtra(THREAD_ID, conversation.threadId)
-                    intent.putExtra(THREAD_TITLE, conversation.title)
-                    intent.putExtra(THREAD_NUMBER, conversation.phoneNumber)
-                    mActivity.startActivity(intent)*/
                         itemClickListenerSelect(absoluteAdapterPosition, conversation)
                     }
-
-//            bind.rlMain.setOnLongClickListener {
-//                itemLongClickListener(absoluteAdapterPosition, conversation, true)
-//                return@setOnLongClickListener true
-//            }
 
                 } catch (e: Exception) {
                     Log.d("TAG_ERROR", "bindData: ${e.message}")
@@ -144,34 +134,16 @@ class ChatHistoryAdapter1(val mActivity: BaseHomeActivity) : RecyclerView.Adapte
             Log.e("TAG", "bindData: inside adapter $position")
 
             if (!IS_AD_SHOWN) {
-
-                /*bind.mNativeAds.showAds(PreferenceHelper.getString(AdConstants.NATIVE, ""))
-                bind.mNativeAds.setOnAdsViewListener(object : OnAdsViewListener {
-                    override fun onAdsSuccess(adResource: String) {
-                        Log.e("TAG", "$adResource Success")
-                        IS_AD_SHOWN = true
-                    }
-
-                    override fun onAdsFailure(adResource: String, errorMsg: String) {
-                        Log.e("TAG", "$adResource Error msg $errorMsg")
-                        IS_AD_SHOWN = false
-                    }
-                })
-                bind.mNativeAds.setOnAdRevenueListener(OnAdRevenueListener { model ->
-                    val logPaidImpression = LogPaidImpression()
-                    logPaidImpression.adsPlatform = "ad_manager" //Set Ads Platform value
-                    logPaidImpression.adsPlacement = model.adsPlacement //Set Ads Placement value like (banner, reward, native, interstitial or reward)
-                    logPaidImpression.adsSourceName = model.adsSourceName //Set Ads source name value from AdsPaidModel
-                    logPaidImpression.adsUnitId = model.adsUnitId // Set Ads unit id value from AdsPaidModel
-                    logPaidImpression.currencyCode = model.currencyCode //Set Currency code value from AdsPaidModel
-                    logPaidImpression.valueMicros = model.valueMicros //Set value micros from AdsPaidModel
-                    AdsManager.logPaidImpression(mActivity, logPaidImpression)
-                })*/
-
                 if (mActivity is BaseActivity) {
                     IS_AD_SHOWN = true
                     itemView.apply {
-                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById(R.id.mNativeAds), mActivity)
+                        if (!PrefClass.isProUser) {
+                            findViewById<ViewGroup>(R.id.mMediumAdsContainer)?.visibility = View.VISIBLE
+                            mActivity.showSmallNativeAds(findViewById(R.id.mMediumAdsContainer))
+                        }else{
+                            findViewById<ViewGroup>(R.id.mMediumAdsContainer)?.visibility = View.GONE
+                        }
+//                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById(R.id.mNativeAds), mActivity)
                     }
                 }
 
@@ -322,7 +294,8 @@ class ChatHistoryAdapter1(val mActivity: BaseHomeActivity) : RecyclerView.Adapte
     }
 
     fun setData(newArrayList: ArrayList<ConversationSmsModel>) {
-        val petDiffUtilCallback = PetDiffUtilCallback(mConversations, newArrayList)
+        val filteredList = newArrayList.distinctBy { it.threadId } // Avoid duplicate threadIds
+        val petDiffUtilCallback = PetDiffUtilCallback(mConversations, ArrayList(filteredList))
         val diffResult = DiffUtil.calculateDiff(petDiffUtilCallback)
         mConversations.clear()
         mConversations.addAll(newArrayList)
@@ -345,6 +318,22 @@ class ChatHistoryAdapter1(val mActivity: BaseHomeActivity) : RecyclerView.Adapte
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             if (newList.isNotEmpty() && oldList.isNotEmpty()) newList[newItemPosition] == oldList[oldItemPosition] else true
     }
+
+    // Function to get the contact name from a phone number
+    fun getContactName(phoneNumber: String, context: Context): String? {
+        var contactName: String? = null
+        val uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber))
+        val projection = arrayOf(ContactsContract.PhoneLookup.DISPLAY_NAME)
+
+        val cursor = context.contentResolver.query(uri, projection, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                contactName = it.getString(it.getColumnIndexOrThrow(ContactsContract.PhoneLookup.DISPLAY_NAME))
+            }
+        }
+        return contactName
+    }
+
 }
 
 

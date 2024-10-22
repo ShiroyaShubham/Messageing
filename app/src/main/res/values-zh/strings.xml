@@ -254,5 +254,7 @@
     <string name="app_your_arhived_conversation_appear_here">您的归档对话将显示在这里</string>
     <string name="app_exit_app">退出应用</string>
 
+    <string name="start">开始</string>
+    <string name="please_select_plan">请选择计划</string>
 
 </resources>

@@ -12,15 +12,13 @@ internal object Security {
     private const val KEY_FACTORY_ALGORITHM = "RSA"
     private const val SIGNATURE_ALGORITHM = "SHA1withRSA"
     fun verifyPurchase(
-        /*productId: String,*/ base64PublicKey: String?,
+        base64PublicKey: String?,
         signedData: String, signature: String?
     ): Boolean {
         if (TextUtils.isEmpty(signedData) || TextUtils.isEmpty(base64PublicKey) ||
             TextUtils.isEmpty(signature)
         ) {
-//            if (productId == "android.test.purchased" || productId == "android.test.canceled" || productId == "android.test.refunded" || productId == "android.test.item_unavailable") {
-//                return true
-//            }
+
             Log.e(TAG, "Purchase verification failed: missing data.")
             return false
         }

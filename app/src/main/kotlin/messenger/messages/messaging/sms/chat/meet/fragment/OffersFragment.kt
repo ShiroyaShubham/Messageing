@@ -334,39 +334,6 @@ class OffersFragment : BaseFragment() {
     }
 
     private var bus: EventBus? = null
-//    fun onOptionType() {
-//        bus = EventBus.getDefault()
-//        try {
-//            bus!!.register(this)
-//        } catch (e: Exception) {
-//        }
-//        try {
-//            if (isAdded && !mActivity!!.isFinishing) {
-//                ensureBackgroundThread {
-//
-//                    val searchQuery = "%$searchKey%"
-//
-//                    val messages = MainAppClass.offerMessageDBDATA.ifEmpty {
-//                        mActivity!!.messagesDB.getMessagesWithText(searchQuery)
-//                    }
-//                    Log.e("Event: ", "messagesAll size offer: " + messages.size)
-//
-//
-//                    val offerMessage = checkLinkIsValid(messages)
-//
-//
-//                    val sortedConversationsmessages = offerMessage.sortedWith(
-//                        compareByDescending<MessagesModel> { mActivity!!.config.pinnedConversations.contains(it.threadId.toString()) }
-//                            .thenByDescending { it.date.toString() }
-//                    ).toMutableList() as ArrayList<MessagesModel>
-//
-//                    showSearchResultsNew(sortedConversationsmessages)
-//                }
-//            }
-//        } catch (e: Exception) {
-//            Log.d("TAG_ERROR", "onOptionType: ${e.message}")
-//        }
-//    }
 
     fun checkLinkIsValid(messages: List<ConversationSmsModel>): List<ConversationSmsModel> {
 
@@ -399,73 +366,6 @@ class OffersFragment : BaseFragment() {
         return containedUrls
     }
 
-//    val searchResultsAds = ArrayList<SearchModel>()
-//    private fun showSearchResultsNew(messages: ArrayList<MessagesModel>) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//
-//
-//                val searchResults = ArrayList<SearchModel>()
-//                if (messages != null && messages.size > 0) {
-//                    messages.forEach { message ->
-//                        if (message != null) {
-//                            var recipient = message.senderName
-//                            val phoneNumber = message.participants[0].phoneNumbers[0]
-//                            if (recipient.isEmpty() && message.participants.isNotEmpty()) {
-//                                val participantNames = message.participants.map { it.name }
-////                        val number = message.participants.map { it.phoneNumbers[0] }
-//                                recipient = TextUtils.join(", ", participantNames)
-//                            }
-//
-////                        val date = message.date.formatDateOrTime(mActivity!!, true, true)
-//                            val searchResult =
-//                                SearchModel(message.id, recipient, message.body, message.date.toString(), message.threadId, message.senderPhotoUri, phoneNumber)
-//                            searchResults.add(searchResult)
-//                        }
-//                    }
-//
-//                }
-//
-//
-//                searchResultsAds.clear()
-//                val filterAfterRemoveArchive = removeArchiveItem(searchResults, mActivity!!.archivedMessageDao.getArchivedUser())
-//                val filterLocalAll = removeBlockItem(filterAfterRemoveArchive, mActivity!!.blockContactDao.getAllBlockNo())
-//                for (i in filterLocalAll.indices) {
-//                    searchResultsAds.add(filterLocalAll[i])
-//                }
-//
-//                Log.e("Event: ", "result size offer: " + searchResultsAds.size)
-//                if (isInternetAvailable(requireActivity())) {
-//                    if (searchResultsAds.any { it.date == "1" }) {
-//
-//                    } else {
-//                        searchResultsAds.add(0, SearchModel(0, "", "", "1", 0, "", ""))
-//                    }
-//                }
-//                if (mAdapter == null) {
-//
-//                    /*if (searchResultsAds.size == 0) {
-//                    noDataView()
-//                } else {
-//                    visibleDataView()
-//                }*/
-//
-//                } else {
-////            mAdapter.updateConversations(searchResultsAds)
-//                    withContext(Dispatchers.Main) {
-//                        mAdapter!!.setData(searchResultsAds)
-//                        if (searchResultsAds.size == 1) {
-//                            noDataView()
-//                        } else {
-//                            visibleDataView()
-//                        }
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                Log.d("TAG_ERROR", "SearchResult: Offer ${e.message}")
-//            }
-//        }
-//    }
 
     fun noDataView() {
         try {

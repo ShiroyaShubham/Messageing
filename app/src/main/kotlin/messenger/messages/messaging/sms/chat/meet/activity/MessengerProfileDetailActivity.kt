@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
@@ -25,6 +27,7 @@ import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.MainAppClass
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.model.BlockContactModel
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import org.greenrobot.eventbus.EventBus
 
 class MessengerProfileDetailActivity : BaseHomeActivity() {
@@ -43,6 +46,11 @@ class MessengerProfileDetailActivity : BaseHomeActivity() {
         setContentView(binding.root)
         initData()
         bindHandlers()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
     }
 
     @SuppressLint("Range")
@@ -227,9 +235,6 @@ class MessengerProfileDetailActivity : BaseHomeActivity() {
 
         AlertDialogCustom(this, title, question) {
             ensureBackgroundThread {
-//                numbers.forEach {
-//                    addBlockedNumber(it)
-//                }
                 val snippet = intent.getStringExtra(SNIPPET)
                 val date = intent.getLongExtra(DATE, 0L)
                 Log.d("TAG_BLOCK", "blockNumber: $snippet $date")

@@ -290,6 +290,7 @@
     <string name="app_your_arhived_conversation_appear_here">ستظهر محادثاتك المؤرشفة هنا</string>
     <string name="app_exit_app">الخروج من التطبيق</string>
 
-
+    <string name="start">يبدأ</string>
+    <string name="please_select_plan">الرجاء تحديد الخطة</string>
 
 </resources>

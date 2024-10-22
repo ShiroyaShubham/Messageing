@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.billingclient.api.ProductDetails
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.send_message.Utils
+import messenger.messages.messaging.sms.chat.meet.utils.Utility
 
 class SubscriptionPlanAdapter(
     private val itemClick: (ProductDetails) -> Unit
 ) : RecyclerView.Adapter<SubscriptionPlanAdapter.ViewHolder>() {
-    private var selectedPos = 0
     private var skuDetailsList: ArrayList<ProductDetails> = ArrayList()
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,30 +36,20 @@ class SubscriptionPlanAdapter(
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val item = skuDetailsList[position]
-        when (position) {
-            0 -> {
-                holder.tvName.text = "Weekly"
-                holder.tvPlan.text = "Auto-renewing subscription\nCharged weekly"
-            }
-
-            1 -> {
-                holder.tvName.text = "Monthly"
-                holder.tvPlan.text = "Auto-renewing subscription\nCharged Monthly"
-            }
-
-            2 -> {
-                holder.tvName.text = "Yearly"
-                holder.tvPlan.text = "Auto-renewing subscription\nCharged Yearly"
-            }
-        }
-        holder.tvPrice.text = item.oneTimePurchaseOfferDetails?.formattedPrice
+        holder.tvName.text = item.name
+        holder.tvPlan.text = "Auto-renewing subscription\nCharged ${item.name}"
+        holder.tvPrice.text = item.subscriptionOfferDetails?.get(0)?.pricingPhases?.pricingPhaseList?.get(
+            0
+        )?.formattedPrice
+            ?: ""
 
         holder.itemView.setOnClickListener {
-            selectedPos = position
+            Utility.selectedPos = position
             itemClick.invoke(item)
             notifyDataSetChanged()
         }
-        if (selectedPos == position) {
+
+        if (Utility.selectedPos == position) {
             if (Utils.isDarkMode(holder.itemView.context)) {
                 holder.imgChecked.setColorFilter(Color.WHITE)
             }
@@ -72,8 +62,10 @@ class SubscriptionPlanAdapter(
     }
 
 
-    fun updateList(skuDetailsList: MutableList<ProductDetails>) {
-        this.skuDetailsList = skuDetailsList as ArrayList<ProductDetails>
+    fun updateList(skuDetailsList: List<ProductDetails>) {
+      //  this.skuDetailsList = skuDetailsList as ArrayList<ProductDetails>
+        this.skuDetailsList.clear()
+        this.skuDetailsList.addAll(skuDetailsList)
         notifyDataSetChanged()
     }
 

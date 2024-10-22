@@ -15,11 +15,11 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.webkit.MimeTypeMap
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.adapters.ImportSmsAdapter
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.dialogs.ExportDialog
 import messenger.messages.messaging.sms.chat.meet.extensions.getFileOutputStream
 import messenger.messages.messaging.sms.chat.meet.extensions.showErrorToast
@@ -29,7 +29,7 @@ import messenger.messages.messaging.sms.chat.meet.utils.*
 import messenger.messages.messaging.sms.chat.meet.views.GradientTextView
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityBackupRestoreBinding
 import messenger.messages.messaging.sms.chat.meet.model.BackupImportModel
-import messenger.messages.messaging.sms.chat.meet.model.RefreshWhileBackModel
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.io.OutputStream
@@ -49,8 +49,11 @@ class BackupRestoreActivity : BaseHomeActivity() {
         binding = ActivityBackupRestoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.appTopToolbar.txtHeading.text = getString(R.string.backup_and_restore)
-
-        loadMediumBannerAd()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
         setClicks()
         setLastBackupDate()
     }
@@ -63,10 +66,6 @@ class BackupRestoreActivity : BaseHomeActivity() {
         }
     }
 
-    private fun loadMediumBannerAd() {
-        AdsManager.showMediumRectangleBannerAds(binding.mNativeContainer, binding.llNativeShimmer, this)
-    }
-
     private fun setClicks() {
         binding.llRestore.setOnClickListener {
             if (PermissionUtils.isPermissionGranted_R_W(this)) {
@@ -77,12 +76,12 @@ class BackupRestoreActivity : BaseHomeActivity() {
         }
         binding.llBackupNow.setOnClickListener {
             if (PermissionUtils.isPermissionGranted_R_W(this)) {
-
                 tryToExportMessages()
             } else {
                 PermissionUtils.takePermission_R_W(this, PERMISSIONS_REQUEST_EXPORT)
             }
         }
+
         binding.appTopToolbar.imgBack.setOnClickListener {
             onBackPressed()
         }
@@ -135,6 +134,7 @@ class BackupRestoreActivity : BaseHomeActivity() {
     //export
     private fun tryToExportMessages() {
         ExportDialog(this) { file ->
+            showDialog()
             getFileOutputStream(file.toFileDirItem(this), true) { outStream ->
                 exportMessagesTo(outStream)
             }
@@ -143,17 +143,16 @@ class BackupRestoreActivity : BaseHomeActivity() {
 
 
     private fun exportMessagesTo(outputStream: OutputStream?) {
-        showDialog()
         ensureBackgroundThread {
             smsExporter.exportMessages(outputStream) {
                 when (it) {
                     MessagesExporterUtils.ExportResult.EXPORT_OK -> {
+                        dismissDialog()
                         toast(getString(R.string.exporting_successful))
                         setLastBackupDate()
                     }
 
                     else -> {
-//                        toast(getString(R.string.exporting_failed))
                     }
                 }
                 dismissDialog()
@@ -169,7 +168,6 @@ class BackupRestoreActivity : BaseHomeActivity() {
 
 
     //import Messages
-
     private fun tryToImportMessages() {
         val arrayList = getAllSavedFontsPath()
 
@@ -229,7 +227,6 @@ class BackupRestoreActivity : BaseHomeActivity() {
     }
 
     fun SMS_Dialog_Import(path: String) {
-
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_conformation)
         dialog.setCancelable(false)
@@ -266,7 +263,6 @@ class BackupRestoreActivity : BaseHomeActivity() {
                     handleParseResult(it)
                     dismissDialog()
                     config.appRunCount = 1
-//                    refreshMessages()
                     EventBus.getDefault().post(BackupImportModel())
                 }
             }
@@ -283,7 +279,4 @@ class BackupRestoreActivity : BaseHomeActivity() {
             }
         )
     }
-
-    //loading
-
 }

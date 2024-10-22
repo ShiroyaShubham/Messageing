@@ -292,6 +292,7 @@
     <string name="app_your_arhived_conversation_appear_here">Percakapan Anda yang Diarsipkan Akan Muncul Di Sini</string>
     <string name="app_exit_app">Keluar Aplikasi</string>
 
-
+    <string name="start">Awal</string>
+    <string name="please_select_plan">Silakan Pilih Paket</string>
 
 </resources>

@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom.smil;
 
 
@@ -38,40 +22,23 @@ public abstract class ElementTimeImpl implements ElementTime {
     private static final String FILL_AUTO_ATTRIBUTE   = "auto";
     private static final String FILL_ATTRIBUTE_NAME   = "fill";
     private static final String FILLDEFAULT_ATTRIBUTE_NAME   = "fillDefault";
-
     final SMILElement mSmilElement;
-
-    /*
-     * Internal Interface
-     */
     ElementTimeImpl(SMILElement element) {
         mSmilElement = element;
     }
 
-    // Default implementation. Override if required.
     int getBeginConstraints() {
         return TimeImpl.ALLOW_ALL;
     }
 
-    // Default implementation. Override if required
     int getEndConstraints() {
         return TimeImpl.ALLOW_ALL;
     }
 
-    /**
-     * To get the parent node on the ElementTime tree. It is in opposition to getTimeChildren.
-     * @return the parent ElementTime. Returns <code>null</code> if there is no parent.
-     */
     abstract ElementTime getParentElementTime();
-
-    /*
-     * ElementTime Interface
-     */
 
     public TimeList getBegin() {
         String[] beginTimeStringList = mSmilElement.getAttribute("begin").split(";");
-
-        // TODO: Check other constraints on parsed values, e.g., "single, non-negative offset values
         ArrayList<Time> beginTimeList = new ArrayList<Time>();
         // Initialize Time instances and add them to Vector
         for (int i = 0; i < beginTimeStringList.length; i++) {
@@ -82,25 +49,6 @@ public abstract class ElementTimeImpl implements ElementTime {
             }
         }
         if (beginTimeList.size() == 0) {
-            /*
-             * What is the right default value?
-             *
-             * In MMS SMIL, this method may be called either on an instance of:
-             *
-             * 1 - ElementSequentialTimeContainer (The SMILDocument)
-             * 2 - ElementParallelTimeContainer (A Time-Child of the SMILDocument, which is a seq)
-             * 3 - ElementTime (A SMILMediaElement).
-             *
-             * 1 - In the first case, the default start time is obviously 0.
-             * 2 - In the second case, the specifications mentions that
-             *      "For children of a sequence, the only legal value for begin is
-             *      a (single) non-negative offset value. The default begin value is 0."
-             * 3 - In the third case, the specification mentions that
-             *      "The default value of begin for children of a par is 0."
-             *
-             * In short, if no value is specified, the default is always 0.
-             */
-
             beginTimeList.add(new TimeImpl("0", TimeImpl.ALLOW_ALL));
         }
         return new TimeListImpl(beginTimeList);
@@ -195,16 +143,6 @@ public abstract class ElementTimeImpl implements ElementTime {
             }
         }
 
-        /*
-         * fill = auto
-         * The fill behavior for this element depends on whether the element specifies any of
-         * the attributes that define the simple or active duration:
-         *  - If none of the attributes dur, end, repeatCount or repeatDur are specified on
-         *    the element, then the element will have a fill behavior identical to that if it were
-         *    specified as "freeze".
-         *  - Otherwise, the element will have a fill behavior identical to that if it were
-         *    specified as "remove".
-         */
         if (((mSmilElement.getAttribute("dur").length() == 0) &&
                 (mSmilElement.getAttribute("end").length() == 0) &&
                 (mSmilElement.getAttribute("repeatCount").length() == 0) &&
@@ -231,12 +169,6 @@ public abstract class ElementTimeImpl implements ElementTime {
             // FIXME handle it as freeze for now
             return FILL_FREEZE;
         } else {
-            /*
-             * fillDefault = inherit
-             * Specifies that the value of this attribute (and of the fill behavior) are
-             * inherited from the fillDefault value of the parent element.
-             * This is the default value.
-             */
             ElementTime parent = getParentElementTime();
             if (parent == null) {
                 /*

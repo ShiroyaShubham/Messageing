@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Looper
 import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
+import com.adsdk.plugin.AdsUtils
 import messenger.messages.messaging.sms.chat.meet.model.RefreshEventsModel
 import messenger.messages.messaging.sms.chat.meet.R
 import org.greenrobot.eventbus.EventBus
@@ -247,11 +248,12 @@ const val PREF_KEY_PURCHASE_STATUS = "KeyPurchaseStatus"
 const val ONE_DAY_IN_MILLIS = 24 * 60 * 60 * 1000
 const val LAST_AD_DISPLAY_MESSAGE_CLICK = "last_ad_display_message_click"
 const val LAST_AD_DISPLAY_DRAWER_ITEM_CLICK = "last_ad_display_drawer_item_click"
-const val PRIVACY_POLICY = "https://sites.google.com/view/messages-text-sms--chat-app/home"// most app icon colors from md_app_icon_colors with reduced alpha
+//const val PRIVACY_POLICY = "https://sites.google.com/view/messages-text-sms--chat-app/home"// most app icon colors from md_app_icon_colors with reduced alpha
+const val PRIVACY_POLICY = "Privacy_Policy"// most app icon colors from md_app_icon_colors with reduced alpha
 var SHOW_INTERTAIL_ADD_PER_COUNT = 1
-const val MONTHLY_SKU = "1_month_ads_remove"
-const val YEARLY_SKU = "1_year_ads_remove"
-const val WEEKLY_SKU = "1_week_ads_remove"
+const val MONTHLY_SKU = "messaging.sms.chat.meet.monthly"
+const val YEARLY_SKU = "messaging.sms.chat.meet.yearly"
+const val WEEKLY_SKU = "messaging.sms.chat.meet.weekly"
 const val NOTIFICATION_CHANNEL_ID = "messaging"
 const val LAST_SYNC_DATE = "last_synced_date"
 var IS_LOOP_WORKING = true
@@ -274,6 +276,13 @@ val letterBackgroundColors = arrayListOf(
     0xCCE64A19
 )
 
+fun getPolicyLink(): String {
+    if (AdsUtils.adsConfig.privacyPolicyUrl != null && AdsUtils.adsConfig.privacyPolicyUrl.isNotEmpty()) {
+        PreferenceHelper.putString(PRIVACY_POLICY, AdsUtils.adsConfig.privacyPolicyUrl)
+    }
+    return PreferenceHelper.getString(PRIVACY_POLICY, "https://sites.google.com/view/messagestextsmschatapp"
+    )
+}
 
 fun isOnMainThread() = Looper.myLooper() == Looper.getMainLooper()
 

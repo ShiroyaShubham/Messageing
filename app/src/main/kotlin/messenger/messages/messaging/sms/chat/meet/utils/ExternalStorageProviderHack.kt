@@ -7,9 +7,6 @@ import android.net.Uri
 import android.provider.DocumentsContract
 import messenger.messages.messaging.sms.chat.meet.extensions.getStringValue
 
-// On Android 11, ExternalStorageProvider no longer returns Android/data and Android/obb as children
-// of the Android directory on primary storage. However, the two child directories are actually
-// still accessible.
 object ExternalStorageProviderHack {
     private const val ANDROID_DATA_DISPLAY_NAME = "data"
     private const val ANDROID_OBB_DISPLAY_NAME = "obb"

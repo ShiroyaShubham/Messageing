@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 import android.net.Uri;
@@ -21,13 +5,8 @@ import android.net.Uri;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * The pdu part.
- */
+
 public class PduPart {
-    /**
-     * Well-Known Parameters.
-     */
     public static final int P_Q                  = 0x80;
     public static final int P_CHARSET            = 0x81;
     public static final int P_LEVEL              = 0x82;
@@ -59,9 +38,6 @@ public class PduPart {
     public static final int P_DOMAIN             = 0x9C;
     public static final int P_PATH               = 0x9D;
 
-    /**
-     *  Header field names.
-     */
      public static final int P_CONTENT_TYPE       = 0x91;
      public static final int P_CONTENT_LOCATION   = 0x8E;
      public static final int P_CONTENT_ID         = 0xC0;
@@ -70,68 +46,35 @@ public class PduPart {
     // The next header is unassigned header, use reserved header(0x48) value.
      public static final int P_CONTENT_TRANSFER_ENCODING = 0xC8;
 
-     /**
-      * Content=Transfer-Encoding string.
-      */
      public static final String CONTENT_TRANSFER_ENCODING =
              "Content-Transfer-Encoding";
 
-     /**
-      * Value of Content-Transfer-Encoding.
-      */
      public static final String P_BINARY = "binary";
      public static final String P_7BIT = "7bit";
      public static final String P_8BIT = "8bit";
      public static final String P_BASE64 = "base64";
      public static final String P_QUOTED_PRINTABLE = "quoted-printable";
 
-     /**
-      * Value of disposition can be set to PduPart when the value is octet in
-      * the PDU.
-      * "from-data" instead of Form-data<Octet 128>.
-      * "attachment" instead of Attachment<Octet 129>.
-      * "inline" instead of Inline<Octet 130>.
-      */
      static final byte[] DISPOSITION_FROM_DATA = "from-data".getBytes();
      static final byte[] DISPOSITION_ATTACHMENT = "attachment".getBytes();
      static final byte[] DISPOSITION_INLINE = "inline".getBytes();
 
-     /**
-      * Content-Disposition value.
-      */
      public static final int P_DISPOSITION_FROM_DATA  = 0x80;
      public static final int P_DISPOSITION_ATTACHMENT = 0x81;
      public static final int P_DISPOSITION_INLINE     = 0x82;
 
-     /**
-      * Header of part.
-      */
      private Map<Integer, Object> mPartHeader = null;
 
-     /**
-      * Data uri.
-      */
      private Uri mUri = null;
 
-     /**
-      * Part data.
-      */
      private byte[] mPartData = null;
 
      private static final String TAG = "PduPart";
 
-     /**
-      * Empty Constructor.
-      */
      public PduPart() {
          mPartHeader = new HashMap<Integer, Object>();
      }
 
-     /**
-      * Set part data. The data are stored as byte array.
-      *
-      * @param data the data
-      */
      public void setData(byte[] data) {
          if(data == null) {
             return;
@@ -141,11 +84,6 @@ public class PduPart {
          System.arraycopy(data, 0, mPartData, 0, data.length);
      }
 
-     /**
-      * @return A copy of the part data or null if the data wasn't set or
-      *         the data is stored as Uri.
-      * @see #getDataUri
-      */
      public byte[] getData() {
          if(mPartData == null) {
             return null;
@@ -156,9 +94,6 @@ public class PduPart {
          return byteArray;
      }
 
-    /**
-     * @return The length of the data, if this object have data, else 0.
-     */
      public int getDataLength() {
          if(mPartData != null){
              return mPartData.length;
@@ -168,30 +103,14 @@ public class PduPart {
      }
 
 
-     /**
-      * Set data uri. The data are stored as Uri.
-      *
-      * @param uri the uri
-      */
      public void setDataUri(Uri uri) {
          mUri = uri;
      }
 
-     /**
-      * @return The Uri of the part data or null if the data wasn't set or
-      *         the data is stored as byte array.
-      * @see #getData
-      */
      public Uri getDataUri() {
          return mUri;
      }
 
-     /**
-      * Set Content-id value
-      *
-      * @param contentId the content-id value
-      * @throws NullPointerException if the value is null.
-      */
      public void setContentId(byte[] contentId) {
          if((contentId == null) || (contentId.length == 0)) {
              throw new IllegalArgumentException(
@@ -213,29 +132,14 @@ public class PduPart {
          mPartHeader.put(P_CONTENT_ID, buffer);
      }
 
-     /**
-      * Get Content-id value.
-      *
-      * @return the value
-      */
      public byte[] getContentId() {
          return (byte[]) mPartHeader.get(P_CONTENT_ID);
      }
 
-     /**
-      * Set Char-set value.
-      *
-      * @param charset the value
-      */
      public void setCharset(int charset) {
          mPartHeader.put(P_CHARSET, charset);
      }
 
-     /**
-      * Get Char-set value
-      *
-      * @return the charset value. Return 0 if charset was not set.
-      */
      public int getCharset() {
          Integer charset = (Integer) mPartHeader.get(P_CHARSET);
          if(charset == null) {
@@ -245,12 +149,6 @@ public class PduPart {
          }
      }
 
-     /**
-      * Set Content-Location value.
-      *
-      * @param contentLocation the value
-      * @throws NullPointerException if the value is null.
-      */
      public void setContentLocation(byte[] contentLocation) {
          if(contentLocation == null) {
              throw new NullPointerException("null content-location");
@@ -259,27 +157,10 @@ public class PduPart {
          mPartHeader.put(P_CONTENT_LOCATION, contentLocation);
      }
 
-     /**
-      * Get Content-Location value.
-      *
-      * @return the value
-      *     return PduPart.disposition[0] instead of <Octet 128> (Form-data).
-      *     return PduPart.disposition[1] instead of <Octet 129> (Attachment).
-      *     return PduPart.disposition[2] instead of <Octet 130> (Inline).
-      */
      public byte[] getContentLocation() {
          return (byte[]) mPartHeader.get(P_CONTENT_LOCATION);
      }
 
-     /**
-      * Set Content-Disposition value.
-      * Use PduPart.disposition[0] instead of <Octet 128> (Form-data).
-      * Use PduPart.disposition[1] instead of <Octet 129> (Attachment).
-      * Use PduPart.disposition[2] instead of <Octet 130> (Inline).
-      *
-      * @param contentDisposition the value
-      * @throws NullPointerException if the value is null.
-      */
      public void setContentDisposition(byte[] contentDisposition) {
          if(contentDisposition == null) {
              throw new NullPointerException("null content-disposition");
@@ -288,21 +169,10 @@ public class PduPart {
          mPartHeader.put(P_CONTENT_DISPOSITION, contentDisposition);
      }
 
-     /**
-      * Get Content-Disposition value.
-      *
-      * @return the value
-      */
      public byte[] getContentDisposition() {
          return (byte[]) mPartHeader.get(P_CONTENT_DISPOSITION);
      }
 
-     /**
-      *  Set Content-Type value.
-      *
-      *  @param contentType the value
-      *  @throws NullPointerException if the value is null.
-      */
      public void setContentType(byte[] contentType) {
          if(contentType == null) {
              throw new NullPointerException("null content-type");
@@ -311,21 +181,12 @@ public class PduPart {
          mPartHeader.put(P_CONTENT_TYPE, contentType);
      }
 
-     /**
-      * Get Content-Type value of part.
-      *
-      * @return the value
-      */
+
      public byte[] getContentType() {
          return (byte[]) mPartHeader.get(P_CONTENT_TYPE);
      }
 
-     /**
-      * Set Content-Transfer-Encoding value
-      *
-      * @param contentTransferEncoding the content-id value
-      * @throws NullPointerException if the value is null.
-      */
+
      public void setContentTransferEncoding(byte[] contentTransferEncoding) {
          if(contentTransferEncoding == null) {
              throw new NullPointerException("null content-transfer-encoding");
@@ -334,21 +195,11 @@ public class PduPart {
          mPartHeader.put(P_CONTENT_TRANSFER_ENCODING, contentTransferEncoding);
      }
 
-     /**
-      * Get Content-Transfer-Encoding value.
-      *
-      * @return the value
-      */
+
      public byte[] getContentTransferEncoding() {
          return (byte[]) mPartHeader.get(P_CONTENT_TRANSFER_ENCODING);
      }
 
-     /**
-      * Set Content-type parameter: name.
-      *
-      * @param name the name value
-      * @throws NullPointerException if the value is null.
-      */
      public void setName(byte[] name) {
          if(null == name) {
              throw new NullPointerException("null content-id");
@@ -357,21 +208,10 @@ public class PduPart {
          mPartHeader.put(P_NAME, name);
      }
 
-     /**
-      *  Get content-type parameter: name.
-      *
-      *  @return the name
-      */
      public byte[] getName() {
          return (byte[]) mPartHeader.get(P_NAME);
      }
 
-     /**
-      * Get Content-disposition parameter: filename
-      *
-      * @param fileName the filename value
-      * @throws NullPointerException if the value is null.
-      */
      public void setFilename(byte[] fileName) {
          if(null == fileName) {
              throw new NullPointerException("null content-id");
@@ -380,11 +220,6 @@ public class PduPart {
          mPartHeader.put(P_FILENAME, fileName);
      }
 
-     /**
-      * Set Content-disposition parameter: filename
-      *
-      * @return the filename
-      */
      public byte[] getFilename() {
          return (byte[]) mPartHeader.get(P_FILENAME);
      }

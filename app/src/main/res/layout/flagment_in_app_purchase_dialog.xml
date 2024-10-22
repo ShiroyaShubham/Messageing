@@ -62,7 +62,7 @@
                         android:src="@mipmap/ic_launcher" />
 
                     <TextView
-                        style="@style/Text_manrope_Semi_Bold_14"
+                        style="@style/Text_manrope_Semi_Bold_12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="bottom"
@@ -82,7 +82,7 @@
 
 
                         <TextView
-                            style="@style/Text_manrope_Medium_12"
+                            style="@style/Text_manrope_Medium_11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/app_premium_upgrade"
@@ -141,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
+                        android:visibility="gone"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -185,21 +186,41 @@
                 </LinearLayout>
 
 
-                <LinearLayout
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvSubscriptionPlan"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvSubscriptionPlan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:id="@+id/tvStartBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:text="@string/start"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_14ssp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/manrope_semi_bold"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:background="@drawable/bg_gradient_round_corner_25"
+                            android:layout_marginHorizontal="@dimen/_20sdp"/>
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -212,7 +233,7 @@
                         style="@style/Text_manrope_Semi_Bold_14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:text="@string/app_subscription_terms"
                         android:textColor="@color/blackColor" />
@@ -224,9 +245,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:gravity="center"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:ellipsize="end"
-                        android:text="By joining, you agree to our Privacy Policy and Terms of use."
+                        android:text="By joining, you agree to our \nPrivacy Policy and Terms of use."
                         android:textColor="@color/blackColor"
                         android:textSize="12sp" />
 

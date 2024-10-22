@@ -53,8 +53,7 @@
                             android:background="@drawable/bg_gradient_round_corner_25"
                             android:backgroundTint="@color/light_grey"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal"
-                            >
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_height="wrap_content"
@@ -71,7 +70,7 @@
                                 android:layout_weight="1"
                                 android:maxLines="1"
                                 android:ellipsize="end"
-                                android:textColorHint="@color/text_grey"
+                                android:textColorHint="@color/grayish"
                                 android:layout_marginStart="@dimen/_15sdp"
                                 android:hint="@string/app_search_number_name"
                                 android:textSize="@dimen/textsize_14" />
@@ -133,7 +132,7 @@
 
             <ImageView
                 android:id="@+id/ivThumbNoContatc"
-                style="@style/Icon_100DP"
+                style="@style/Icon_200DP"
                 android:src="@drawable/icon_placeholder"
                 android:visibility="gone" />
 
@@ -145,6 +144,7 @@
                 android:padding="@dimen/margin_16"
                 android:text="@string/no_access_to_contacts"
                 android:textSize="@dimen/textsize_16"
+                android:textColor="@color/grayish"
                 android:visibility="gone" />
 
 
@@ -163,13 +163,10 @@
 
         </LinearLayout>
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
 
             <messenger.messages.messaging.sms.chat.meet.views.CustomRecyclerView
                 android:id="@+id/recyclerViewContacts"

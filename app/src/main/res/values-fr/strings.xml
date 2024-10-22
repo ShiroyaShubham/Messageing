@@ -284,5 +284,7 @@
 
     <string name="app_no_archive_message_found">Aucun message archivé trouvé.</string>
 
+    <string name="start">Commencer</string>
+    <string name="please_select_plan">Veuillez sélectionner le forfait</string>
 
 </resources>

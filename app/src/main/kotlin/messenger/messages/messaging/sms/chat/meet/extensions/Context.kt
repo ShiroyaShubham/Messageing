@@ -67,38 +67,6 @@ fun Bitmap.CompressFormat.extension() = when (this) {
 }
 
 
-//fun Context.updateTextColors(viewGroup: ViewGroup, tmpTextColor: Int = 0, tmpAccentColor: Int = 0) {
-//    val textColor = if (tmpTextColor == 0) mPref.textColor else tmpTextColor
-//    val backgroundColor = mPref.backgroundColor
-//    val accentColor = if (tmpAccentColor == 0) {
-//        when {
-//            isWhiteTheme() || isBlackAndWhiteTheme() -> mPref.accentColor
-//            else -> mPref.primaryColor
-//        }
-//    } else {
-//        tmpAccentColor
-//    }
-//
-//    val cnt = viewGroup.childCount
-//    (0 until cnt).map { viewGroup.getChildAt(it) }.forEach {
-//        when (it) {
-////            is TextView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MyAppCompatSpinnerView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MySwitchCompat -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MyCompatRadioButtonView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MyAppCompatCheckboxView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is EditText -> it.setColors(textColor, accentColor, backgroundColor)
-//            is MyAutoCompleteTextView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MyFloatingActionButtonView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MySeekBarView -> it.setColors(textColor, accentColor, backgroundColor)
-////            is MyButtonView -> it.setColors(textColor, accentColor, backgroundColor)
-//            is MyTextInputLayout -> it.setColors(textColor, accentColor, backgroundColor)
-////            is ViewGroup -> updateTextColors(it, textColor, accentColor)
-//        }
-//    }
-//}
-
-
 fun Context.isBlackAndWhiteTheme() = mPref.textColor == Color.WHITE && mPref.primaryColor == Color.BLACK && mPref.backgroundColor == Color.BLACK
 
 fun Context.isWhiteTheme() = mPref.textColor == DARK_GREY && mPref.primaryColor == Color.WHITE && mPref.backgroundColor == Color.WHITE
@@ -139,7 +107,8 @@ private fun doToast(context: Context, message: String, length: Int) {
 }
 
 fun Context.showErrorToast(msg: String, length: Int = Toast.LENGTH_LONG) {
-    toast(String.format(getString(R.string.an_error_occurred), msg), length)
+//    toast(String.format(getString(R.string.an_error_occurred), msg), length)
+    toast(String.format(msg), length)
 }
 
 fun Context.showErrorToast(exception: Exception, length: Int = Toast.LENGTH_LONG) {

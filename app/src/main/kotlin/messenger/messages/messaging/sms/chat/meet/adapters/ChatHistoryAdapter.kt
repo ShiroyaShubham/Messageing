@@ -22,10 +22,9 @@ import messenger.messages.messaging.sms.chat.meet.model.ConversationSmsModel
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
 import messenger.messages.messaging.sms.chat.meet.send_message.Utils
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.views.GradientTextView
 import messenger.messages.messaging.sms.chat.meet.views.CustomRecyclerView
-import naimishtrivedi.`in`.googleadsmanager.AdsManager
-import naimishtrivedi.`in`.googleadsmanager.NativeBannerAds
 
 
 class ChatHistoryAdapter(
@@ -149,7 +148,12 @@ class ChatHistoryAdapter(
                 Log.d("TAG_NATIVE", "onBindViewHolder: ${!IS_AD_SHOWN}")
                 if (!IS_AD_SHOWN) {
                     holder.itemView.apply {
-                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById<NativeBannerAds>(R.id.mNativeAds), mActivity)
+                        if (!PrefClass.isProUser) {
+                            mActivity.showBannerAds(findViewById(R.id.mBannerAdsContainer))
+                        }else{
+                            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+                        }
+//                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById<NativeBannerAds>(R.id.mNativeAds), mActivity)
                     }
                     IS_AD_SHOWN = true
                 }
@@ -425,12 +429,12 @@ class ChatHistoryAdapter(
 
 
     internal class MyAdViewHolder1(
-        private val view: View) :
+        private val view: View
+    ) :
         RecyclerView.ViewHolder(view) {
         fun bindView(any: Any, allowSingleClick: Boolean, allowLongClick: Boolean, callback: (itemView: View, layoutPosition: Int) -> Unit): View {
             return view.apply {
                 callback(this, layoutPosition)
-
                 if (allowSingleClick) {
                     setOnClickListener { viewClicked(any) }
                     setOnLongClickListener {

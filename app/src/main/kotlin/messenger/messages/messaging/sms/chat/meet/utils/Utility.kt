@@ -15,6 +15,12 @@ import messenger.messages.messaging.sms.chat.meet.utils.SharedPrefrenceClass.Com
 
 object Utility {
 
+    var selectedPos = -1
+
+    fun isNumber(input: String?): Boolean {
+        return input?.all { it.isDigit() } ?: false
+    }
+
     @JvmStatic
     fun checkNotificationPermission(
         activity: Activity,
@@ -76,7 +82,6 @@ object Utility {
             }
         }
 
-//        AppUtils.printLog("Calculate Size Method", "Done........");
         return inSampleSize
     }
 

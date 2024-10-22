@@ -247,10 +247,6 @@ class TransactionsFragment : BaseFragment() {
                 sortedConversations.removeAt(0)
             }
 
-//            mActivity!!.conversationsDB.insertAllInConversationTransaction(conversations)
-//            MainAppClass.getAllMessagesFromDb {
-//                refreshMessages()
-//            }
 
             val localAll =
                 sortedConversations.sortedWith(compareByDescending<ConversationSmsModel> { mActivity!!.config.pinnedConversations.contains(it.threadId.toString()) }.thenByDescending {
@@ -346,110 +342,6 @@ class TransactionsFragment : BaseFragment() {
         }
     }
 
-//    fun onOptionType() {
-//        bus = EventBus.getDefault()
-//        try {
-//            bus!!.register(this)
-//        } catch (e: Exception) {
-//        }
-//
-//        try {
-//
-//            if (isAdded && !mActivity!!.isFinishing) {
-//                ensureBackgroundThread {
-//                    val messages = MainAppClass.transactionMessageDBDATA.ifEmpty {
-//                        val messagesAll = mActivity!!.messagesDB.getAllList()
-//                        Log.e("Event: ", "messagesAll size: " + messagesAll.size);
-//
-//                        val searchKeyCredit = "Credit"
-//                        val searchQueryCredit = "%$searchKeyCredit%"
-//                        val messagesCredit = mActivity!!.messagesDB.getMessagesWithText(searchQueryCredit)
-//                        val searchKeyDebit = "Debit"
-//                        val searchQueryDebit = "%$searchKeyDebit%"
-//                        val messagesDebit = mActivity!!.messagesDB.getMessagesWithText(searchQueryDebit)
-//                        messagesCredit + messagesDebit
-//                    }
-//
-//                    Log.e("Event: ", "messagesAll size credit debit : " + messages.size);
-//                    searchKey = ""
-//
-//                    val sortedConversationsmessages =
-//                        messages.sortedWith(compareByDescending<MessagesModel> { mActivity!!.config.pinnedConversations.contains(it.threadId.toString()) }.thenByDescending { it.date.toString() })
-//                            .toMutableList() as ArrayList<MessagesModel>
-//                    showSearchResultsNew(sortedConversationsmessages, searchKey)
-//                }
-//            }
-//        } catch (e: Exception) {
-//            Log.d("TAG_ERROR", "onOptionType: ${e.message}")
-//        }
-
-//    }
-//
-//    val searchResultsAds = ArrayList<SearchModel>()
-//
-//    private fun showSearchResultsNew(messages: ArrayList<MessagesModel>, searchedText: String) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val searchResults = ArrayList<SearchModel>()
-//
-//                messages.forEach { message ->
-//                    var recipient = message.senderName
-//                    val phoneNumber = message.participants[0].phoneNumbers[0]
-//                    if (recipient.isEmpty() && message.participants.isNotEmpty()) {
-//                        val participantNames = message.participants.map { it.name }
-//
-//                        recipient = TextUtils.join(", ", participantNames)
-//                    }
-//
-////                val date = message.date.formatDateOrTime(mActivity!!, true, true)
-//                    val searchResult =
-//                        SearchModel(message.id, recipient, message.body, message.date.toString(), message.threadId, message.senderPhotoUri, phoneNumber)
-//                    searchResults.add(searchResult)
-//                }
-//
-//
-//                searchResultsAds.clear()
-//                val filterAfterRemoveArchive = removeArchiveItem(searchResults, mActivity!!.archivedMessageDao.getArchivedUser())
-//                val filterLocalAll = removeBlockItem(filterAfterRemoveArchive, mActivity!!.blockContactDao.getAllBlockNo())
-//                for (i in filterLocalAll.indices) {
-//                    searchResultsAds.add(filterLocalAll[i])
-//                }
-//
-//                if (isInternetAvailable(requireActivity())) {
-//                    if (searchResultsAds.any { it.date == "1" }) {
-//
-//                    } else {
-//                        searchResultsAds.add(0, SearchModel(0, "", "", "1", 0, "", ""))
-//                    }
-//                }
-//                Log.e("Event: ", "result size transaction: " + searchResultsAds.size);
-//
-//                if (mAdapter == null) {
-//
-//
-//                    /*  if (searchResultsAds.size == 0) {
-//                    noDataView()
-//                } else {
-//                    visibleDataView()
-//                }*/
-//                } else {
-////            mAdapter.updateConversations(searchResultsAds)
-//                    withContext(Dispatchers.Main) {
-//                        mAdapter!!.setData(searchResultsAds)
-//                        if (searchResultsAds.size == 1) {
-//                            noDataView()
-//                        } else {
-//                            visibleDataView()
-//                        }
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                Log.d("TAG_ERROR", "showSearchResultsNew: ${e.message}")
-//            }
-//        }
-//
-//
-//    }
 
     fun noDataView() {
         try {

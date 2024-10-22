@@ -263,7 +263,9 @@
     <string name="app_your_arhived_conversation_appear_here">Ihre archivierten Gespräche werden hier angezeigt</string>
     <string name="app_exit_app">App beenden</string>
 
-
     <string name="app_no_archive_message_found">Keine archivierte Nachricht gefunden.</string>
+
+    <string name="start">Start</string>
+    <string name="please_select_plan">Bitte wählen Sie Plan aus</string>
 
 </resources>

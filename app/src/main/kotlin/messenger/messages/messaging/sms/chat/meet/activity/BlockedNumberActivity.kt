@@ -19,13 +19,12 @@ import messenger.messages.messaging.sms.chat.meet.dialogs.ExportBlockNumberDialo
 import messenger.messages.messaging.sms.chat.meet.dialogs.FilePickerDialog
 import messenger.messages.messaging.sms.chat.meet.extensions.*
 import messenger.messages.messaging.sms.chat.meet.listners.RefreshingRecyclerListner
-import messenger.messages.messaging.sms.chat.meet.model.BlockedNumberModel
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import messenger.messages.messaging.sms.chat.meet.utils.BlockedNumbersExporterUtils.ExportResult
 import kotlinx.coroutines.*
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityBlockedNumberBinding
 import messenger.messages.messaging.sms.chat.meet.model.BlockContactModel
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.*
@@ -50,25 +49,15 @@ class BlockedNumberActivity : BaseHomeActivity(), RefreshingRecyclerListner {
             onBackPressed()
         }
 
-        loadMediumBannerAd()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
         updateBlockedNumbers()
         updatePlaceholderTexts()
 
-//        binding.tvNoData2.apply {
-//            setOnClickListener {
-//                if (isDefaultDialer()) {
-//                    addOrEditBlockedNumber()
-//                } else {
-//                    defaultDialer()
-//                }
-//            }
-//        }
     }
-
-    private fun loadMediumBannerAd() {
-        AdsManager.showMediumRectangleBannerAds(binding.mNativeContainer,binding.llNativeShimmer,this)
-    }
-
 
     @SuppressLint("InlinedApi")
     protected fun defaultDialer() {
@@ -112,7 +101,6 @@ class BlockedNumberActivity : BaseHomeActivity(), RefreshingRecyclerListner {
 
     private fun updatePlaceholderTexts() {
         binding.tvNoData1.text = getString(if (isDefaultDialer()) R.string.not_blocking_anyone else R.string.must_make_default_dialer)
-//        binding.tvNoData2.text = getString(if (isDefaultDialer()) R.string.add_a_blocked_number else R.string.set_as_default)
     }
 
     private fun updateBlockedNumbers() {
@@ -140,7 +128,6 @@ class BlockedNumberActivity : BaseHomeActivity(), RefreshingRecyclerListner {
                 }
 
                 binding.tvNoData1.beVisibleIf(blockedNumbers.isEmpty())
-//                binding.tvNoData2.beVisibleIf(blockedNumbers.isEmpty())
                 binding.ivThumbNodata.beVisibleIf(blockedNumbers.isEmpty())
             }
         }

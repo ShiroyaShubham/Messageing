@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2010 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 import android.net.DhcpInfo;
@@ -26,12 +10,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-/**
- * A simple object for retrieving the results of a DHCP request.
- * Replaces (internally) the IPv4-only DhcpInfo class.
- *
- * @hide
- */
 public class DhcpInfoInternal {
     private final static String TAG = "DhcpInfoInternal";
     public String ipAddress;
@@ -43,9 +21,6 @@ public class DhcpInfoInternal {
     public String serverAddress;
     public int leaseDuration;
 
-    /**
-     * Vendor specific information (from RFC 2132).
-     */
     public String vendorInfo;
 
     private Collection<RouteInfo> mRoutes;
@@ -123,10 +98,6 @@ public class DhcpInfoInternal {
         return p;
     }
 
-    /* Updates the DHCP fields that need to be retained from
-     * original DHCP request if the DHCP renewal shows them as
-     * being empty
-     */
     public void updateFromDhcpRequest(DhcpInfoInternal orig) {
         if (orig == null) return;
 
@@ -145,10 +116,6 @@ public class DhcpInfoInternal {
         }
     }
 
-    /**
-     * Test if this DHCP lease includes vendor hint that network link is
-     * metered, and sensitive to heavy data transfers.
-     */
     public boolean hasMeteredHint() {
         if (vendorInfo != null) {
             return vendorInfo.contains("ANDROID_METERED");

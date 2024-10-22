@@ -46,7 +46,7 @@ class ThemeAdapter(
     }
 
     fun getSelectedPos(): Int {
-        return selectedPos!!
+        return selectedPos
     }
 
     override fun getItemCount(): Int {

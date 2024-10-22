@@ -279,5 +279,6 @@
     <string name="app_your_arhived_conversation_appear_here">آپ کی محفوظ شدہ گفتگو یہاں ظاہر ہوگی</string>
     <string name="app_exit_app">ایپ سے باہر نکلیں</string>
 
-
+    <string name="start">شروع کریں۔</string>
+    <string name="please_select_plan">براہ کرم منصوبہ منتخب کریں</string>
 </resources>

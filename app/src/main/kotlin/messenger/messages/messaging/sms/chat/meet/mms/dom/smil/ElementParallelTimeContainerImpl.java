@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2007-2008 Esmertec AG.
- * Copyright (C) 2007-2008 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package messenger.messages.messaging.sms.chat.meet.mms.dom.smil;
 
@@ -38,10 +22,6 @@ public abstract class ElementParallelTimeContainerImpl extends ElementTimeContai
     private final static String ENDSYNC_ALL   = "all";
     private final static String ENDSYNC_MEDIA = "media";
 
-    /*
-     * Internal Interface
-     */
-
     ElementParallelTimeContainerImpl(SMILElement element) {
         super(element);
     }
@@ -56,8 +36,6 @@ public abstract class ElementParallelTimeContainerImpl extends ElementTimeContai
                 ENDSYNC_ALL.equals(endsync) || ENDSYNC_MEDIA.equals(endsync)) {
             return endsync;
         }
-
-        // FIXME add the checking for ID-Value and smil1.0-Id-value.
 
         setEndSync(ENDSYNC_LAST);
         return ENDSYNC_LAST;
@@ -107,11 +85,6 @@ public abstract class ElementParallelTimeContainerImpl extends ElementTimeContai
     }
 
     public NodeList getActiveChildrenAt(float instant) {
-        /*
-         * Find the closest Time of ElementTime before instant.
-         * Add ElementTime to list of active elements if the Time belongs to the begin-list,
-         * do not add it otherwise.
-         */
         ArrayList<Node> activeChildren = new ArrayList<Node>();
         NodeList children = getTimeChildren();
         int childrenLen = children.getLength();

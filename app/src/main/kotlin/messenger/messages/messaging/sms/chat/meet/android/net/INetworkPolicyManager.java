@@ -1,32 +1,14 @@
-/*
- * This file is auto-generated.  DO NOT MODIFY.
- * Original file: frameworks/base/core/java/android/net/INetworkPolicyManager.aidl
- */
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
-/**
- * Interface that creates and modifies network policy rules.
- * <p/>
- * {@hide}
- */
 public interface INetworkPolicyManager extends android.os.IInterface {
-    /**
-     * Local-side IPC implementation stub class.
-     */
+
     public static abstract class Stub extends android.os.Binder implements INetworkPolicyManager {
         private static final java.lang.String DESCRIPTOR = "android.net.INetworkPolicyManager";
 
-        /**
-         * Construct the stub at attach it to the interface.
-         */
         public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
 
-        /**
-         * Cast an IBinder object into an android.net.INetworkPolicyManager interface,
-         * generating a proxy if needed.
-         */
         public static INetworkPolicyManager asInterface(android.os.IBinder obj) {
             if ((obj == null)) {
                 return null;
@@ -192,9 +174,6 @@ public interface INetworkPolicyManager extends android.os.IInterface {
                 return mRemote;
             }
 
-            /**
-             * Control UID policies.
-             */
             @Override
             public void setUidPolicy(int uid, int policy) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -295,9 +274,7 @@ public interface INetworkPolicyManager extends android.os.IInterface {
                 }
             }
 
-            /**
-             * Control network policies atomically.
-             */
+
             @Override
             public void setNetworkPolicies(NetworkPolicy[] policies) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -330,9 +307,6 @@ public interface INetworkPolicyManager extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * Snooze limit on policy matching given template.
-             */
             @Override
             public void snoozeLimit(NetworkTemplate template) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -353,9 +327,6 @@ public interface INetworkPolicyManager extends android.os.IInterface {
                 }
             }
 
-            /**
-             * Control if background data is restricted system-wide.
-             */
             @Override
             public void setRestrictBackground(boolean restrictBackground) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -454,9 +425,6 @@ public interface INetworkPolicyManager extends android.os.IInterface {
         static final int TRANSACTION_isNetworkMetered = (android.os.IBinder.FIRST_CALL_TRANSACTION + 12);
     }
 
-    /**
-     * Control UID policies.
-     */
     public void setUidPolicy(int uid, int policy) throws android.os.RemoteException;
 
     public int getUidPolicy(int uid) throws android.os.RemoteException;
@@ -469,21 +437,12 @@ public interface INetworkPolicyManager extends android.os.IInterface {
 
     public void unregisterListener(INetworkPolicyListener listener) throws android.os.RemoteException;
 
-    /**
-     * Control network policies atomically.
-     */
     public void setNetworkPolicies(NetworkPolicy[] policies) throws android.os.RemoteException;
 
     public NetworkPolicy[] getNetworkPolicies() throws android.os.RemoteException;
 
-    /**
-     * Snooze limit on policy matching given template.
-     */
     public void snoozeLimit(NetworkTemplate template) throws android.os.RemoteException;
 
-    /**
-     * Control if background data is restricted system-wide.
-     */
     public void setRestrictBackground(boolean restrictBackground) throws android.os.RemoteException;
 
     public boolean getRestrictBackground() throws android.os.RemoteException;

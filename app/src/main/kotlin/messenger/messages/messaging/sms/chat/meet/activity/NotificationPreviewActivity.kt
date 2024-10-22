@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import messenger.messages.messaging.sms.chat.meet.adapters.NotificationPreviewAdapter
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityNotificationPreviewBinding
 import messenger.messages.messaging.sms.chat.meet.model.AutoCompressModel
@@ -14,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.R
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import java.util.ArrayList
 
 class NotificationPreviewActivity : BaseHomeActivity() {
@@ -28,6 +31,11 @@ class NotificationPreviewActivity : BaseHomeActivity() {
         window.decorView.setBackgroundResource(R.drawable.bg_gradient)
         setContentView(binding.root)
         setupRecyclerview()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
         bindHandlers()
         initData()
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_background_color"
-    tools:context=".ArchivedMessageActivity">
+    tools:context=".activity.ActivityArchivedMessage">
 
     <include
         android:id="@+id/header"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintBottom_toTopOf="@id/mBannerAds"
+        app:layout_constraintBottom_toTopOf="@id/mBannerAdsContainer"
         android:orientation="vertical">
 
         <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/mBannerAds"
+        app:layout_constraintBottom_toTopOf="@id/mBannerAdsContainer"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,34 +69,14 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/mBannerAds"
+    <include
+        android:id="@+id/mBannerAdsContainer"
+        layout="@layout/ad_banner_shimmer_effect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/llNativeShimmer"
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center">
-
-            <include
-                layout="@layout/layout_native_video_shimmer" />
-
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/mNativeContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_15sdp"/>
-
-    </FrameLayout>
-
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

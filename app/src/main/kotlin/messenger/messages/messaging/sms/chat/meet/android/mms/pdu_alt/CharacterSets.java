@@ -1,32 +1,10 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 public class CharacterSets {
-    /**
-     * IANA assigned MIB enum numbers.
-     *
-     * From wap-230-wsp-20010705-a.pdf
-     * Any-charset = <Octet 128>
-     * Equivalent to the special RFC2616 charset value "*"
-     */
+
     public static final int ANY_CHARSET = 0x00;
     public static final int US_ASCII    = 0x03;
     public static final int ISO_8859_1  = 0x04;
@@ -44,14 +22,8 @@ public class CharacterSets {
     public static final int UCS2        = 0x03E8;
     public static final int UTF_16      = 0x03F7;
 
-    /**
-     * If the encoding of given data is unsupported, use UTF_8 to decode it.
-     */
     public static final int DEFAULT_CHARSET = UTF_8;
 
-    /**
-     * Array of MIB enum numbers.
-     */
     private static final int[] MIBENUM_NUMBERS = {
         ANY_CHARSET,
         US_ASCII,
@@ -71,9 +43,6 @@ public class CharacterSets {
         UTF_16,
     };
 
-    /**
-     * The Well-known-charset Mime name.
-     */
     public static final String MIMENAME_ANY_CHARSET = "*";
     public static final String MIMENAME_US_ASCII    = "us-ascii";
     public static final String MIMENAME_ISO_8859_1  = "iso-8859-1";
@@ -93,9 +62,6 @@ public class CharacterSets {
 
     public static final String DEFAULT_CHARSET_NAME = MIMENAME_UTF_8;
 
-    /**
-     * Array of the names of character sets.
-     */
     private static final String[] MIME_NAMES = {
         MIMENAME_ANY_CHARSET,
         MIMENAME_US_ASCII,
@@ -132,14 +98,6 @@ public class CharacterSets {
 
     private CharacterSets() {} // Non-instantiatable
 
-    /**
-     * Map an MIBEnum number to the name of the charset which this number
-     * is assigned to by IANA.
-     *
-     * @param mibEnumValue An IANA assigned MIBEnum number.
-     * @return The name string of the charset.
-     * @throws UnsupportedEncodingException
-     */
     public static String getMimeName(int mibEnumValue)
             throws UnsupportedEncodingException {
         String name = MIBENUM_TO_NAME_MAP.get(mibEnumValue);
@@ -149,13 +107,6 @@ public class CharacterSets {
         return name;
     }
 
-    /**
-     * Map a well-known charset name to its assigned MIBEnum number.
-     *
-     * @param mimeName The charset name.
-     * @return The MIBEnum number assigned by IANA for this charset.
-     * @throws UnsupportedEncodingException
-     */
     public static int getMibEnumValue(String mimeName)
             throws UnsupportedEncodingException {
         if(null == mimeName) {

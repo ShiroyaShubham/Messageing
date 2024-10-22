@@ -293,6 +293,8 @@
 
     <string name="app_no_archive_message_found">আর্কাইভ করা বার্তা খুঁজে পাওয়া যায়নি।</string>
 
+    <string name="start">শুরু করুন</string>
+    <string name="please_select_plan">পরিকল্পনা নির্বাচন করুন</string>
 
 
 </resources>

@@ -2,25 +2,31 @@ package messenger.messages.messaging.sms.chat.meet.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.view.*
+import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.adsdk.plugin.AdsUtils
 import com.bumptech.glide.Glide
-import com.google.android.gms.ads.*
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -29,24 +35,17 @@ import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.google.gson.Gson
 import me.zhanghai.android.materialprogressbar.IndeterminateHorizontalProgressDrawable
 import messenger.messages.messaging.sms.chat.meet.MainAppClass.Companion.setupSIMSelector
 import messenger.messages.messaging.sms.chat.meet.R
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
-import messenger.messages.messaging.sms.chat.meet.ads.WebApiClient
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityHomeBinding
 import messenger.messages.messaging.sms.chat.meet.extensions.*
 import messenger.messages.messaging.sms.chat.meet.fragment.*
-import messenger.messages.messaging.sms.chat.meet.model.AdModel
 import messenger.messages.messaging.sms.chat.meet.model.LoadConversationsModel
 import messenger.messages.messaging.sms.chat.meet.subscription.InAppPurchaseDialogFragment
 import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import org.greenrobot.eventbus.EventBus
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class HomeActivity : BaseHomeActivity() {
@@ -78,58 +77,59 @@ class HomeActivity : BaseHomeActivity() {
 
     private fun isDrawerOpen() = findViewById<DrawerLayout>(R.id.mDrawer).isDrawerOpen(GravityCompat.START)
 
-    private fun getBanner() {
-        if (isInternetAvailable(this)) {
-            WebApiClient.getInstance().GetAdvertisement().enqueue(object : Callback<AdModel> {
-                override fun onResponse(call: Call<AdModel>, response: Response<AdModel>) {
-                    Log.e("TAG_RESPONSE", "onResponse:>>>>> " + Gson().toJson(response.body()))
-                    if (response.code() == 200 && response.body()!!.success) {
-//                        Log.e("TAG", "onResponse:>>>>> "+response.message().toString() )
+//    private fun getBanner() {
+//        if (isInternetAvailable(this)) {
+//
+////            WebApiClient.getInstance().GetAdvertisement().enqueue(object : Callback<AdModel> {
+////                override fun onResponse(call: Call<AdModel>, response: Response<AdModel>) {
+////                    Log.e("TAG_RESPONSE", "onResponse:>>>>> " + Gson().toJson(response.body()))
+////                    if (response.code() == 200 && response.body()!!.success) {
+//////                        Log.e("TAG", "onResponse:>>>>> "+response.message().toString() )
+////
+////
+////                        getSharedPrefs().edit().putString(
+////                            APP_OPEN_AD_ID,
+////                            response.body()!!.getData().getAds().getAdmob().getApp_open()
+////                        ).apply()
+////                        getSharedPrefs().edit().putString(
+////                            BANNER_AD_ID,
+////                            response.body()!!.getData().getAds().getAdmob().getBanner()
+////                        ).apply()
+////                        getSharedPrefs().edit().putString(
+////                            NATIVE_AD_ID,
+////                            response.body()!!.getData().getAds().getAdmob().getNativeBanner()
+////                        ).apply()
+////                        getSharedPrefs().edit().putString(
+////                            INTERSTITIAL_AD_ID,
+////                            response.body()!!.getData().getAds().getAdmob().getInterstitial()
+////                        ).apply()
+////                        getSharedPrefs().edit().putString(
+////                            AD_STATUS,
+////                            response.body()!!.getData().getAds().getSetting().getAd_show_status()
+////                        ).apply()
+////                        getSharedPrefs().edit().putString(
+////                            REWARD_AD,
+////                            response.body()!!.getData().getAds().getAdmob().getRewarded_video()
+////                        ).apply()
+////
+//////                        Utils.setPref(
+//////                            this,
+//////                            .PRIVACY_POLICY,
+//////                            response.body()!!.getData().getAds().getSetting()
+//////                                .getPrivacy_policy_link()
+//////                        )
 
-
-                        getSharedPrefs().edit().putString(
-                            APP_OPEN_AD_ID,
-                            response.body()!!.getData().getAds().getAdmob().getApp_open()
-                        ).apply()
-                        getSharedPrefs().edit().putString(
-                            BANNER_AD_ID,
-                            response.body()!!.getData().getAds().getAdmob().getBanner()
-                        ).apply()
-                        getSharedPrefs().edit().putString(
-                            NATIVE_AD_ID,
-                            response.body()!!.getData().getAds().getAdmob().getNativeBanner()
-                        ).apply()
-                        getSharedPrefs().edit().putString(
-                            INTERSTITIAL_AD_ID,
-                            response.body()!!.getData().getAds().getAdmob().getInterstitial()
-                        ).apply()
-                        getSharedPrefs().edit().putString(
-                            AD_STATUS,
-                            response.body()!!.getData().getAds().getSetting().getAd_show_status()
-                        ).apply()
-                        getSharedPrefs().edit().putString(
-                            REWARD_AD,
-                            response.body()!!.getData().getAds().getAdmob().getRewarded_video()
-                        ).apply()
-
-//                        Utils.setPref(
-//                            this,
-//                            .PRIVACY_POLICY,
-//                            response.body()!!.getData().getAds().getSetting()
-//                                .getPrivacy_policy_link()
-//                        )
-
-
-                    }
-                }
-
-                override fun onFailure(call: Call<AdModel>, t: Throwable) {
-                    Log.d("TAG_ERROR", "onFailure: ${t.message}")
-
-                }
-            })
-        }
-    }
+////                    }
+////                }
+////
+////                override fun onFailure(call: Call<AdModel>, t: Throwable) {
+////                    Log.d("TAG_ERROR", "onFailure: ${t.message}")
+////
+////                }
+////            })
+//            showBannerAds(findViewById(R.id.mBannerAdsContainer))
+//        }
+//    }
 
     private fun isInternetAvailable(context: Context?): Boolean {
         return if (context != null) {
@@ -148,7 +148,6 @@ class HomeActivity : BaseHomeActivity() {
 
         binding.progressBar.indeterminateDrawable = IndeterminateHorizontalProgressDrawable(this)
         window.statusBarColor = resources.getColor(R.color.screen_background_color)
-        getBanner()
         SharedPrefrenceClass.getInstance()!!.setBoolean("isSplash", false)
         setupSIMSelector()
         bindNavHandlers()
@@ -168,6 +167,7 @@ class HomeActivity : BaseHomeActivity() {
             )
         }
         binding.ivProCrown.setOnClickListener {
+
             onViewPurchaseDialog()
         }
         binding.imgMenu.setOnClickListener {
@@ -176,7 +176,6 @@ class HomeActivity : BaseHomeActivity() {
 
 
         appLaunched(packageName)
-
 
         binding.txtVersion.text = "V.${packageManager.getPackageInfo(packageName, 0).versionName}"
         pagerAdapter = ViewPagerAdapter(supportFragmentManager, this)
@@ -292,10 +291,24 @@ class HomeActivity : BaseHomeActivity() {
         binding.txtPrivacyPolicy.setOnClickListener {
             closeDrawer()
             showInterstitialAdPerDayOnDrawerItemClick {
-                launchViewIntent(PRIVACY_POLICY)
+//                launchViewIntent(getPolicyLink())
+                policy(getPolicyLink(), "Privacy Policy can't open")
             }
         }
     }
+
+    private fun policy(url: String, msg: String) {
+        try {
+            val marketUri = Uri.parse(url)
+            val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+            startActivity(marketIntent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this@HomeActivity, msg, Toast.LENGTH_SHORT).show()
+            //DO Something
+        }
+    }
+
+
 
     private fun onViewPurchaseDialog() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -317,7 +330,6 @@ class HomeActivity : BaseHomeActivity() {
                         handlePermission(PERMISSION_READ_CONTACTS) {
                             showErrorToast("Done")
                             toast("All Permission Given")
-//                            refreshMessages()
                             setupSIMSelector()
                             EventBus.getDefault().post(LoadConversationsModel())
                         }
@@ -340,15 +352,11 @@ class HomeActivity : BaseHomeActivity() {
     }
 
     override fun onStop() {
-//        if (mAppUpdateManager != null) {
-//            mAppUpdateManager!!.unregisterListener(installStateUpdatedListener)
-//        }
         super.onStop()
     }
 
     private fun inAppUpdate() {
         mAppUpdateManager = AppUpdateManagerFactory.create(this)
-//        mAppUpdateManager!!.registerListener(installStateUpdatedListener)
         mAppUpdateManager!!.appUpdateInfo
             .addOnSuccessListener { appUpdateInfo ->
                 Log.e(TAG2, "OnSuccess")
@@ -393,7 +401,6 @@ class HomeActivity : BaseHomeActivity() {
     override fun onResume() {
         super.onResume()
         try {
-            loadBannerAd()
             mAppUpdateManager!!.appUpdateInfo
                 .addOnSuccessListener { result ->
                     if (result.updateAvailability() ==
@@ -417,6 +424,11 @@ class HomeActivity : BaseHomeActivity() {
                         popupSnackbarForCompleteUpdate()
                     }
                 }
+            if (!PrefClass.isProUser){
+            showBannerAds(findViewById(R.id.mBannerAdsContainer))
+            }else{
+                findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+            }
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
@@ -424,22 +436,7 @@ class HomeActivity : BaseHomeActivity() {
 
 
     private var mAppUpdateManager: AppUpdateManager? = null
-//    var installStateUpdatedListener: InstallStateUpdatedListener =
-//        object : InstallStateUpdatedListener {
-//            override fun onStateUpdate(state: InstallState) {
-//                if (state.installStatus() == InstallStatus.DOWNLOADED) {
-//                    popupSnackbarForCompleteUpdate()
-//                } else if (state.installStatus() == InstallStatus.INSTALLED) {
-//                    if (mAppUpdateManager != null) {
-//                        mAppUpdateManager!!.unregisterListener(this)
-//                    }
-//                } else {
-//                    Log.i(
-//                        TAG2, "InstallStateUpdatedListener: state: " + state.installStatus()
-//                    )
-//                }
-//            }
-//        }
+
 
     inner class ViewPagerAdapter(manager: FragmentManager?, val conttex: Context) : FragmentPagerAdapter(manager!!) {
         private val mFragmentList: MutableList<Fragment> = ArrayList()
@@ -492,11 +489,11 @@ class HomeActivity : BaseHomeActivity() {
             if (i == tabPos) {
                 tvTopTitle.setTextColor(resources.getColor(R.color.white))
                 ivTabThumb.setColorFilter(resources.getColor(R.color.white), android.graphics.PorterDuff.Mode.SRC_ATOP)
-                linTabParent.setBackgroundResource(R.drawable.bg_gradient_round_corner_25)
+                linTabParent.setBackgroundResource(R.drawable.bg_gradient_round_corner_5)
             } else {
                 tvTopTitle.setTextColor(resources.getColor(R.color.dark_grey))
                 ivTabThumb.setColorFilter(resources.getColor(R.color.dark_grey), android.graphics.PorterDuff.Mode.SRC_ATOP)
-                linTabParent.setBackgroundResource(R.drawable.bg_grey_round_corner_25)
+                linTabParent.setBackgroundResource(R.drawable.bg_grey_round_corner_5)
             }
             binding.tabLayout.getTabAt(i)!!.customView = tabView
         }
@@ -521,11 +518,5 @@ class HomeActivity : BaseHomeActivity() {
             }
         }
     }
-
-    private fun loadBannerAd() {
-        AdsManager.showSmallBannerAds(binding.mBannerAds, this)
-    }
-
-
 }
 

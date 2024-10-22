@@ -9,7 +9,6 @@ import messenger.messages.messaging.sms.chat.meet.model.ContactsModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-// used for sharing privately stored contacts in Simple Contacts with Simple Dialer, Simple SMS Messenger and Simple Calendar Pro
 class MyContactsContentProviderUtils {
     companion object {
         private const val AUTHORITY = "messenger.messages.messaging.sms.chat.meet.contacts.provider"

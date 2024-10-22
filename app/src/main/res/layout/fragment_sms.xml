@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AllSMSFragment">
+    tools:context=".fragment.FragmentAllSMS">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,14 +19,23 @@
             android:src="@drawable/icon_placeholder"
             android:visibility="gone" />
 
-        <com.airbnb.lottie.LottieAnimationView
+        <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:progressTint="@color/blue"
             android:visibility="gone"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/message_loading" />
+            android:indeterminateTint="@color/blue" />
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/progressBar"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:visibility="gone"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_loop="true"-->
+<!--            app:lottie_rawRes="@raw/message_loading" />-->
 
         <TextView
             android:id="@+id/tvNoData1"

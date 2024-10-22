@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 import android.Manifest;
@@ -66,9 +50,7 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/**
- * This class is the high-level manager of PDU storage.
- */
+
 public class PduPersister {
     private static final String TAG = "PduPersister";
     private static final boolean DEBUG = false;
@@ -78,22 +60,13 @@ public class PduPersister {
     private static final int DEFAULT_SUBSCRIPTION = 0;
     private static final int MAX_TEXT_BODY_SIZE = 300 * 1024;
 
-    /**
-     * The uri of temporary drm objects.
-     */
     public static final String TEMPORARY_DRM_OBJECT_URI =
         "content://mms/" + Long.MAX_VALUE + "/part";
-    /**
-     * Indicate that we transiently failed to process a MM.
-     */
+
     public static final int PROC_STATUS_TRANSIENT_FAILURE   = 1;
-    /**
-     * Indicate that we permanently failed to process a MM.
-     */
+
     public static final int PROC_STATUS_PERMANENTLY_FAILURE = 2;
-    /**
-     * Indicate that we have successfully processed a MM.
-     */
+
     public static final int PROC_STATUS_COMPLETED           = 3;
 
     private static PduPersister sPersister;
@@ -294,7 +267,6 @@ public class PduPersister {
                 .getSystemService(Context.TELEPHONY_SERVICE);
      }
 
-    /** Get(or create if not exist) an instance of PduPersister */
     public static PduPersister getPduPersister(Context context) {
         if ((sPersister == null)) {
             sPersister = new PduPersister(context);
@@ -522,13 +494,6 @@ public class PduPersister {
         }
     }
 
-    /**
-     * Load a PDU from storage by given Uri.
-     *
-     * @param uri The Uri of the PDU to be loaded.
-     * @return A generic PDU object, it may be cast to dedicated PDU.
-     * @throws MmsException Failed to load some fields of a PDU.
-     */
     public GenericPdu load(Uri uri) throws MmsException {
         GenericPdu pdu = null;
         PduCacheEntry cacheEntry = null;
@@ -797,20 +762,6 @@ public class PduPersister {
         return builder.toString();
     }
 
-    /**
-     * Save data of the part into storage. The source data may be given
-     * by a byte[] or a Uri. If it's a byte[], directly save it
-     * into storage, otherwise load source data from the dataUri and then
-     * save it. If the data is an image, we may scale down it according
-     * to user preference.
-     *
-     * @param part The PDU part which contains data to be saved.
-     * @param uri The URI of the part.
-     * @param contentType The MIME type of the part.
-     * @param preOpenedFiles if not null, a map of preopened InputStreams for the parts.
-     * @throws MmsException Cannot find source data or error occurred
-     *         while saving the data.
-     */
     private void persistData(PduPart part, Uri uri,
             String contentType, HashMap<Uri, InputStream> preOpenedFiles)
             throws MmsException {
@@ -959,15 +910,6 @@ public class PduPersister {
         }
     }
 
-    /**
-     * This method expects uri in the following format
-     *     content://media/<table_name>/<row_index> (or)
-     *     file://sdcard/test.mp4
-     *     http://test.com/test.mp4
-     *
-     * Here <table_name> shall be "video" or "audio" or "images"
-     * <row_index> the index of the content in given table
-     */
     static public String convertUriToPath(Context context, Uri uri) {
         String path = null;
         if (null != uri) {
@@ -1016,13 +958,7 @@ public class PduPersister {
         persistAddress(msgId, type, array);
     }
 
-    /**
-     * Update headers of a SendReq.
-     *
-     * @param uri The PDU which need to be updated.
-     * @param sendReq New headers.
-     * @throws MmsException Bad URI or updating failed.
-     */
+
     public void updateHeaders(Uri uri, SendReq sendReq) {
         synchronized(PDU_CACHE_INSTANCE) {
             // If the cache item is getting updated, wait until it's done updating before
@@ -1182,14 +1118,7 @@ public class PduPersister {
         }
     }
 
-    /**
-     * Update all parts of a PDU.
-     *
-     * @param uri The PDU which need to be updated.
-     * @param body New message body of the PDU.
-     * @param preOpenedFiles if not null, a map of preopened InputStreams for the parts.
-     * @throws MmsException Bad URI or updating failed.
-     */
+
     public void updateParts(Uri uri, PduBody body, HashMap<Uri, InputStream> preOpenedFiles)
             throws MmsException {
         try {
@@ -1268,18 +1197,6 @@ public class PduPersister {
         return toIsoString(pdu.getPduHeaders().getTextString(PduHeaders.CONTENT_LOCATION));
     }
 
-    /**
-     * Persist a PDU object to specific location in the storage.
-     *
-     * @param pdu The PDU object to be stored.
-     * @param uri Where to store the given PDU object.
-     * @param createThreadId if true, this function may create a thread id for the recipients
-     * @param groupMmsEnabled if true, all of the recipients addressed in the PDU will be used
-     *  to create the associated thread. When false, only the sender will be used in finding or
-     *  creating the appropriate thread or conversation.
-     * @param preOpenedFiles if not null, a map of preopened InputStreams for the parts.
-     * @return A Uri which can be used to access the stored PDU.
-     */
 
     public Uri persist(GenericPdu pdu, Uri uri, boolean createThreadId, boolean groupMmsEnabled,
             HashMap<Uri, InputStream> preOpenedFiles, int subscriptionId)
@@ -1508,14 +1425,6 @@ public class PduPersister {
         return res;
     }
 
-    /**
-     * For a given address type, extract the recipients from the headers.
-     *
-     * @param addressType can be PduHeaders.FROM, PduHeaders.TO or PduHeaders.CC
-     * @param recipients a HashSet that is loaded with the recipients from the FROM, TO or CC headers
-     * @param addressMap a HashMap of the addresses from the ADDRESS_FIELDS header
-     * @param excludeMyNumber if true, the number of this phone will be excluded from recipients
-     */
     private void loadRecipients(int addressType, HashSet<String> recipients,
             HashMap<Integer, EncodedStringValue[]> addressMap, boolean excludeMyNumber) {
         EncodedStringValue[] array = addressMap.get(addressType);
@@ -1542,17 +1451,7 @@ public class PduPersister {
         }
     }
 
-    /**
-     * Move a PDU object from one location to another.
-     *
-     * @param from Specify the PDU object to be moved.
-     * @param to The destination location, should be one of the following:
-     *        "content://mms/inbox", "content://mms/sent",
-     *        "content://mms/drafts", "content://mms/outbox",
-     *        "content://mms/trash".
-     * @return New Uri of the moved PDU.
-     * @throws MmsException Error occurred while moving the message.
-     */
+
     public Uri move(Uri from, Uri to) throws MmsException {
         // Check whether the 'msgId' has been assigned a valid value.
         long msgId = ContentUris.parseId(from);
@@ -1576,9 +1475,7 @@ public class PduPersister {
         return ContentUris.withAppendedId(to, msgId);
     }
 
-    /**
-     * Wrap a byte[] into a String.
-     */
+
     public static String toIsoString(byte[] bytes) {
         try {
             return new String(bytes, CharacterSets.MIMENAME_ISO_8859_1);
@@ -1589,9 +1486,7 @@ public class PduPersister {
         }
     }
 
-    /**
-     * Unpack a given String into a byte[].
-     */
+
     public static byte[] getBytes(String data) {
         try {
             return data.getBytes(CharacterSets.MIMENAME_ISO_8859_1);
@@ -1602,17 +1497,12 @@ public class PduPersister {
         }
     }
 
-    /**
-     * Remove all objects in the temporary path.
-     */
+
     public void release() {
         Uri uri = Uri.parse(TEMPORARY_DRM_OBJECT_URI);
         SqliteWrapper.delete(mContext, mContentResolver, uri, null, null);
     }
 
-    /**
-     * Find all messages to be sent or downloaded before certain time.
-     */
     public Cursor getPendingMessages(long dueTime) {
         if (!checkReadSmsPermissions()) {
           Log.w(TAG, "No read sms permissions have been granted");
@@ -1634,9 +1524,6 @@ public class PduPersister {
                 PendingMessages.DUE_TIME);
     }
 
-    /**
-     * Check if read permissions for SMS have been granted
-     */
     private boolean checkReadSmsPermissions() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 mContext.checkSelfPermission(Manifest.permission.READ_SMS) ==

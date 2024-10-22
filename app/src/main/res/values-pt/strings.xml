@@ -267,6 +267,7 @@
     <string name="app_your_arhived_conversation_appear_here">Suas conversas arquivadas aparecerão aqui</string>
     <string name="app_exit_app">Sair do aplicativo</string>
 
-
+    <string name="start">Começar</string>
+    <string name="please_select_plan">Selecione o plano</string>
 
 </resources>

@@ -16,13 +16,12 @@
 
         <RelativeLayout
             android:id="@+id/rlTopIcon"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_centerVertical="true"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
-            android:background="@drawable/bg_gradient_circle"
-            >
+            android:background="@drawable/bg_gradient_circle">
 
             <ImageView
                 android:id="@+id/ivThumb"
@@ -36,16 +35,17 @@
                 android:id="@+id/txtFirstLetter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="A"
+                android:paddingBottom="@dimen/_2sdp"
                 android:textColor="@color/white"
-                style="@style/Text_manrope_Semi_Bold_14"
+                style="@style/Text_manrope_Semi_Bold_13"
                 android:layout_centerInParent="true"/>
 
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tvConversationTitle"
-            style="@style/Text_manrope_Semi_Bold_14"
+            style="@style/Text_manrope_Semi_Bold_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/tvConversationDate"
@@ -58,7 +58,7 @@
 
         <TextView
             android:id="@+id/tvConversationDate"
-            style="@style/Text_manrope_Medium_10"
+            style="@style/Text_manrope_Medium_8"
             android:layout_alignTop="@+id/tvConversationTitle"
             android:layout_alignBottom="@+id/tvConversationTitle"
             android:layout_alignParentEnd="true"
@@ -70,7 +70,7 @@
 
         <TextView
             android:id="@+id/tvConversationDesc"
-            style="@style/Text_manrope_Medium_10"
+            style="@style/Text_manrope_Medium_8"
             android:textSize="@dimen/textsize_14"
             android:layout_below="@+id/tvConversationTitle"
             android:layout_toEndOf="@+id/rlTopIcon"

@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 import messenger.messages.messaging.sms.chat.meet.android.mms.InvalidHeaderValueException;
@@ -22,9 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PduHeaders {
-    /**
-     * All pdu header fields.
-     */
     public static final int BCC                             = 0x81;
     public static final int CC                              = 0x82;
     public static final int CONTENT_LOCATION                = 0x83;
@@ -93,9 +74,6 @@ public class PduHeaders {
     public static final int CANCEL_ID                       = 0xBE;
     public static final int CANCEL_STATUS                   = 0xBF;
 
-    /**
-     * X-Mms-Message-Type field types.
-     */
     public static final int MESSAGE_TYPE_SEND_REQ           = 0x80;
     public static final int MESSAGE_TYPE_SEND_CONF          = 0x81;
     public static final int MESSAGE_TYPE_NOTIFICATION_IND   = 0x82;
@@ -121,34 +99,12 @@ public class PduHeaders {
     public static final int MESSAGE_TYPE_CANCEL_REQ         = 0x96;
     public static final int MESSAGE_TYPE_CANCEL_CONF        = 0x97;
 
-    /**
-     *  X-Mms-Delivery-Report |
-     *  X-Mms-Read-Report |
-     *  X-Mms-Report-Allowed |
-     *  X-Mms-Sender-Visibility |
-     *  X-Mms-Store |
-     *  X-Mms-Stored |
-     *  X-Mms-Totals |
-     *  X-Mms-Quotas |
-     *  X-Mms-Distribution-Indicator |
-     *  X-Mms-DRM-Content |
-     *  X-Mms-Adaptation-Allowed |
-     *  field types.
-     */
     public static final int VALUE_YES                       = 0x80;
     public static final int VALUE_NO                        = 0x81;
 
-    /**
-     *  Delivery-Time |
-     *  Expiry and Reply-Charging-Deadline |
-     *  field type components.
-     */
     public static final int VALUE_ABSOLUTE_TOKEN            = 0x80;
     public static final int VALUE_RELATIVE_TOKEN            = 0x81;
 
-    /**
-     * X-Mms-MMS-Version field types.
-     */
     public static final int MMS_VERSION_1_3                 = ((1 << 4) | 3);
     public static final int MMS_VERSION_1_2                 = ((1 << 4) | 2);
     public static final int MMS_VERSION_1_1                 = ((1 << 4) | 1);
@@ -157,18 +113,12 @@ public class PduHeaders {
     // Current version is 1.2.
     public static final int CURRENT_MMS_VERSION             = MMS_VERSION_1_2;
 
-    /**
-     *  From field type components.
-     */
     public static final int FROM_ADDRESS_PRESENT_TOKEN      = 0x80;
     public static final int FROM_INSERT_ADDRESS_TOKEN       = 0x81;
 
     public static final String FROM_ADDRESS_PRESENT_TOKEN_STR = "address-present-token";
     public static final String FROM_INSERT_ADDRESS_TOKEN_STR = "insert-address-token";
 
-    /**
-     *  X-Mms-Status Field.
-     */
     public static final int STATUS_EXPIRED                  = 0x80;
     public static final int STATUS_RETRIEVED                = 0x81;
     public static final int STATUS_REJECTED                 = 0x82;
@@ -178,16 +128,10 @@ public class PduHeaders {
     public static final int STATUS_FORWARDED                = 0x86;
     public static final int STATUS_UNREACHABLE              = 0x87;
 
-    /**
-     *  MM-Flags field type components.
-     */
     public static final int MM_FLAGS_ADD_TOKEN              = 0x80;
     public static final int MM_FLAGS_REMOVE_TOKEN           = 0x81;
     public static final int MM_FLAGS_FILTER_TOKEN           = 0x82;
 
-    /**
-     *  X-Mms-Message-Class field types.
-     */
     public static final int MESSAGE_CLASS_PERSONAL          = 0x80;
     public static final int MESSAGE_CLASS_ADVERTISEMENT     = 0x81;
     public static final int MESSAGE_CLASS_INFORMATIONAL     = 0x82;
@@ -198,16 +142,10 @@ public class PduHeaders {
     public static final String MESSAGE_CLASS_INFORMATIONAL_STR = "informational";
     public static final String MESSAGE_CLASS_AUTO_STR = "auto";
 
-    /**
-     *  X-Mms-Priority field types.
-     */
     public static final int PRIORITY_LOW                    = 0x80;
     public static final int PRIORITY_NORMAL                 = 0x81;
     public static final int PRIORITY_HIGH                   = 0x82;
 
-    /**
-     *  X-Mms-Response-Status field types.
-     */
     public static final int RESPONSE_STATUS_OK                   = 0x80;
     public static final int RESPONSE_STATUS_ERROR_UNSPECIFIED    = 0x81;
     public static final int RESPONSE_STATUS_ERROR_SERVICE_DENIED = 0x82;
@@ -240,9 +178,6 @@ public class PduHeaders {
     public static final int RESPONSE_STATUS_ERROR_PERMANENT_LACK_OF_PREPAID                     = 0xEB;
     public static final int RESPONSE_STATUS_ERROR_PERMANENT_END                                 = 0xFF;
 
-    /**
-     *  X-Mms-Retrieve-Status field types.
-     */
     public static final int RETRIEVE_STATUS_OK                                  = 0x80;
     public static final int RETRIEVE_STATUS_ERROR_TRANSIENT_FAILURE             = 0xC0;
     public static final int RETRIEVE_STATUS_ERROR_TRANSIENT_MESSAGE_NOT_FOUND   = 0xC1;
@@ -253,49 +188,28 @@ public class PduHeaders {
     public static final int RETRIEVE_STATUS_ERROR_PERMANENT_CONTENT_UNSUPPORTED = 0xE3;
     public static final int RETRIEVE_STATUS_ERROR_END                           = 0xFF;
 
-    /**
-     *  X-Mms-Sender-Visibility field types.
-     */
     public static final int SENDER_VISIBILITY_HIDE          = 0x80;
     public static final int SENDER_VISIBILITY_SHOW          = 0x81;
 
-    /**
-     *  X-Mms-Read-Status field types.
-     */
     public static final int READ_STATUS_READ                        = 0x80;
     public static final int READ_STATUS__DELETED_WITHOUT_BEING_READ = 0x81;
 
-    /**
-     *  X-Mms-Cancel-Status field types.
-     */
     public static final int CANCEL_STATUS_REQUEST_SUCCESSFULLY_RECEIVED = 0x80;
     public static final int CANCEL_STATUS_REQUEST_CORRUPTED             = 0x81;
 
-    /**
-     *  X-Mms-Reply-Charging field types.
-     */
     public static final int REPLY_CHARGING_REQUESTED           = 0x80;
     public static final int REPLY_CHARGING_REQUESTED_TEXT_ONLY = 0x81;
     public static final int REPLY_CHARGING_ACCEPTED            = 0x82;
     public static final int REPLY_CHARGING_ACCEPTED_TEXT_ONLY  = 0x83;
 
-    /**
-     *  X-Mms-MM-State field types.
-     */
     public static final int MM_STATE_DRAFT                  = 0x80;
     public static final int MM_STATE_SENT                   = 0x81;
     public static final int MM_STATE_NEW                    = 0x82;
     public static final int MM_STATE_RETRIEVED              = 0x83;
     public static final int MM_STATE_FORWARDED              = 0x84;
 
-    /**
-     * X-Mms-Recommended-Retrieval-Mode field types.
-     */
     public static final int RECOMMENDED_RETRIEVAL_MODE_MANUAL = 0x80;
 
-    /**
-     *  X-Mms-Content-Class field types.
-     */
     public static final int CONTENT_CLASS_TEXT              = 0x80;
     public static final int CONTENT_CLASS_IMAGE_BASIC       = 0x81;
     public static final int CONTENT_CLASS_IMAGE_RICH        = 0x82;
@@ -305,9 +219,6 @@ public class PduHeaders {
     public static final int CONTENT_CLASS_CONTENT_BASIC     = 0x86;
     public static final int CONTENT_CLASS_CONTENT_RICH      = 0x87;
 
-    /**
-     *  X-Mms-Store-Status field types.
-     */
     public static final int STORE_STATUS_SUCCESS                                = 0x80;
     public static final int STORE_STATUS_ERROR_TRANSIENT_FAILURE                = 0xC0;
     public static final int STORE_STATUS_ERROR_TRANSIENT_NETWORK_PROBLEM        = 0xC1;
@@ -318,26 +229,12 @@ public class PduHeaders {
     public static final int STORE_STATUS_ERROR_PERMANENT_MMBOX_FULL             = 0xE4;
     public static final int STORE_STATUS_ERROR_END                              = 0xFF;
 
-    /**
-     * The map contains the value of all headers.
-     */
     private HashMap<Integer, Object> mHeaderMap = null;
 
-    /**
-     * Constructor of PduHeaders.
-     */
     public PduHeaders() {
         mHeaderMap = new HashMap<Integer, Object>();
     }
 
-    /**
-     * Get octet value by header field.
-     *
-     * @param field the field
-     * @return the octet value of the pdu header
-     *          with specified header field. Return 0 if
-     *          the value is not set.
-     */
     protected int getOctet(int field) {
         Integer octet = (Integer) mHeaderMap.get(field);
         if (null == octet) {
@@ -347,19 +244,8 @@ public class PduHeaders {
         return octet;
     }
 
-    /**
-     * Set octet value to pdu header by header field.
-     *
-     * @param value the value
-     * @param field the field
-     * @throws InvalidHeaderValueException if the value is invalid.
-     */
     protected void setOctet(int value, int field)
             throws InvalidHeaderValueException{
-        /**
-         * Check whether this field can be set for specific
-         * header and check validity of the field.
-         */
         switch (field) {
             case REPORT_ALLOWED:
             case ADAPTATION_ALLOWED:
@@ -491,31 +377,11 @@ public class PduHeaders {
         mHeaderMap.put(field, value);
     }
 
-    /**
-     * Get TextString value by header field.
-     *
-     * @param field the field
-     * @return the TextString value of the pdu header
-     *          with specified header field
-     */
     protected byte[] getTextString(int field) {
         return (byte[]) mHeaderMap.get(field);
     }
 
-    /**
-     * Set TextString value to pdu header by header field.
-     *
-     * @param value the value
-     * @param field the field
-     * @return the TextString value of the pdu header
-     *          with specified header field
-     * @throws NullPointerException if the value is null.
-     */
     protected void setTextString(byte[] value, int field) {
-        /**
-         * Check whether this field can be set for specific
-         * header and check validity of the field.
-         */
         if (null == value) {
             throw new NullPointerException();
         }
@@ -540,24 +406,10 @@ public class PduHeaders {
         mHeaderMap.put(field, value);
     }
 
-    /**
-     * Get EncodedStringValue value by header field.
-     *
-     * @param field the field
-     * @return the EncodedStringValue value of the pdu header
-     *          with specified header field
-     */
     protected EncodedStringValue getEncodedStringValue(int field) {
         return (EncodedStringValue) mHeaderMap.get(field);
     }
 
-    /**
-     * Get TO, CC or BCC header value.
-     *
-     * @param field the field
-     * @return the EncodeStringValue array of the pdu header
-     *          with specified header field
-     */
     protected EncodedStringValue[] getEncodedStringValues(int field) {
         ArrayList<EncodedStringValue> list =
                 (ArrayList<EncodedStringValue>) mHeaderMap.get(field);
@@ -568,20 +420,7 @@ public class PduHeaders {
         return list.toArray(values);
     }
 
-    /**
-     * Set EncodedStringValue value to pdu header by header field.
-     *
-     * @param value the value
-     * @param field the field
-     * @return the EncodedStringValue value of the pdu header
-     *          with specified header field
-     * @throws NullPointerException if the value is null.
-     */
     protected void setEncodedStringValue(EncodedStringValue value, int field) {
-        /**
-         * Check whether this field can be set for specific
-         * header and check validity of the field.
-         */
         if (null == value) {
             throw new NullPointerException();
         }
@@ -605,20 +444,8 @@ public class PduHeaders {
         mHeaderMap.put(field, value);
     }
 
-    /**
-     * Set TO, CC or BCC header value.
-     *
-     * @param value the value
-     * @param field the field
-     * @return the EncodedStringValue value array of the pdu header
-     *          with specified header field
-     * @throws NullPointerException if the value is null.
-     */
     protected void setEncodedStringValues(EncodedStringValue[] value, int field) {
-        /**
-         * Check whether this field can be set for specific
-         * header and check validity of the field.
-         */
+
         if (null == value) {
             throw new NullPointerException();
         }
@@ -640,13 +467,7 @@ public class PduHeaders {
         mHeaderMap.put(field, list);
     }
 
-    /**
-     * Append one EncodedStringValue to another.
-     *
-     * @param value the EncodedStringValue to append
-     * @param field the field
-     * @throws NullPointerException if the value is null.
-     */
+
     protected void appendEncodedStringValue(EncodedStringValue value,
                                     int field) {
         if (null == value) {
@@ -671,14 +492,7 @@ public class PduHeaders {
         mHeaderMap.put(field, list);
     }
 
-    /**
-     * Get LongInteger value by header field.
-     *
-     * @param field the field
-     * @return the LongInteger value of the pdu header
-     *          with specified header field. if return -1, the
-     *          field is not existed in pdu header.
-     */
+
     protected long getLongInteger(int field) {
         Long longInteger = (Long) mHeaderMap.get(field);
         if (null == longInteger) {
@@ -688,17 +502,9 @@ public class PduHeaders {
         return longInteger.longValue();
     }
 
-    /**
-     * Set LongInteger value to pdu header by header field.
-     *
-     * @param value the value
-     * @param field the field
-     */
+
     protected void setLongInteger(long value, int field) {
-        /**
-         * Check whether this field can be set for specific
-         * header and check validity of the field.
-         */
+
         switch (field) {
             case DATE:
             case REPLY_CHARGING_SIZE:

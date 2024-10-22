@@ -49,7 +49,6 @@ class SearchAdapter(
 
     override fun onActionModeDestroyed() {}
 
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = createViewHolder(R.layout.item_search_result, parent)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -97,13 +96,11 @@ class SearchAdapter(
         view.apply {
             findViewById<TextView>(R.id.tvConversationTitle).apply {
                 text = searchResult.title!!.highlightTextPart(textToHighlight, adjustedPrimaryColor)
-//                setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 1.2f)
             }
 
             findViewById<TextView>(R.id.tvConversationDesc).apply {
                 text = searchResult.snippet!!.highlightTextPart(textToHighlight, adjustedPrimaryColor)
-//                setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.9f)
             }
 

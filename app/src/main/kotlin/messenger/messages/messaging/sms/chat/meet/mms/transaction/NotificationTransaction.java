@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.transaction;
 
 import android.app.Service;
@@ -40,22 +24,6 @@ import java.io.IOException;
 
 import static messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt.PduHeaders.STATUS_DEFERRED;
 
-/**
- * The NotificationTransaction is responsible for handling multimedia
- * message notifications (M-Notification.ind).  It:
- *
- * <ul>
- * <li>Composes the notification response (M-NotifyResp.ind).
- * <li>Sends the notification response to the MMSC server.
- * <li>Stores the notification indication.
- * <li>Notifies the TransactionService about succesful completion.
- * </ul>
- *
- * NOTE: This MMS client handles all notifications with a <b>deferred
- * retrieval</b> response.  The transaction service, upon succesful
- * completion of this transaction, will trigger a retrieve transaction
- * in case the client is in immediate retrieve mode.
- */
 public class NotificationTransaction extends Transaction implements Runnable {
     private static final String TAG = "loggg";
     private static final boolean DEBUG = false;
@@ -87,9 +55,6 @@ public class NotificationTransaction extends Transaction implements Runnable {
         attach(RetryScheduler.getInstance(context));
     }
 
-    /**
-     * This constructor is only used for test purposes.
-     */
     public NotificationTransaction(
             Context context, int serviceId,
             TransactionSettings connectionSettings, NotificationInd ind) {
@@ -180,11 +145,6 @@ public class NotificationTransaction extends Transaction implements Runnable {
                 status);
 
         // Pack M-NotifyResp.ind and send it
-        /*if(MmsConfig.getNotifyWapMMSC()) {
-            sendPdu(new PduComposer(mContext, notifyRespInd).make(), mContentLocation);
-        } else {
-            sendPdu(new PduComposer(mContext, notifyRespInd).make());
-        }*/
     }
 
     @Override

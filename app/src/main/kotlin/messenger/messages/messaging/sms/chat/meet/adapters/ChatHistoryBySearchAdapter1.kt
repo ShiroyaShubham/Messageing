@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.activity.BaseActivity
 import messenger.messages.messaging.sms.chat.meet.activity.BaseHomeActivity
-import messenger.messages.messaging.sms.chat.meet.databinding.ItemAdvanceNativeBannerBinding
+//import messenger.messages.messaging.sms.chat.meet.databinding.ItemAdvanceNativeBannerBinding
 import messenger.messages.messaging.sms.chat.meet.databinding.ListRawChatHistoryBinding
 import messenger.messages.messaging.sms.chat.meet.extensions.beGone
 import messenger.messages.messaging.sms.chat.meet.extensions.beVisibleIf
@@ -133,53 +133,53 @@ class ChatHistoryBySearchAdapter1(val mActivity: BaseHomeActivity) : RecyclerVie
 
     }
 
-    inner class ViewHolderAds(private val bind: ItemAdvanceNativeBannerBinding) : RecyclerView.ViewHolder(bind.root) {
-        fun bindData(position: Int) {
-            val conversation = mConversations[position]
-            val smsDraft = drafts[conversation.threadId]
-
-            Log.e("TAG", "bindData: inside adapter $position")
-
-            if (!IS_AD_SHOWN) {
-
-                /*bind.mNativeAds.showAds(PreferenceHelper.getString(AdConstants.NATIVE, ""))
-                bind.mNativeAds.setOnAdsViewListener(object : OnAdsViewListener {
-                    override fun onAdsSuccess(adResource: String) {
-                        Log.e("TAG", "$adResource Success")
-                        IS_AD_SHOWN = true
-                    }
-
-                    override fun onAdsFailure(adResource: String, errorMsg: String) {
-                        Log.e("TAG", "$adResource Error msg $errorMsg")
-                        IS_AD_SHOWN = false
-                    }
-                })
-                bind.mNativeAds.setOnAdRevenueListener(OnAdRevenueListener { model ->
-                    val logPaidImpression = LogPaidImpression()
-                    logPaidImpression.adsPlatform = "ad_manager" //Set Ads Platform value
-                    logPaidImpression.adsPlacement = model.adsPlacement //Set Ads Placement value like (banner, reward, native, interstitial or reward)
-                    logPaidImpression.adsSourceName = model.adsSourceName //Set Ads source name value from AdsPaidModel
-                    logPaidImpression.adsUnitId = model.adsUnitId // Set Ads unit id value from AdsPaidModel
-                    logPaidImpression.currencyCode = model.currencyCode //Set Currency code value from AdsPaidModel
-                    logPaidImpression.valueMicros = model.valueMicros //Set value micros from AdsPaidModel
-                    AdsManager.logPaidImpression(mActivity, logPaidImpression)
-                })*/
-
-                if (mActivity is BaseActivity) {
-                    IS_AD_SHOWN = true
-                    itemView.apply {
-                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(
-                            findViewById(
-                                R.id.mNativeAds
-                            ), mActivity
-                        )
-                    }
-                }
-
-            }
-
-        }
-    }
+//    inner class ViewHolderAds(private val bind: ItemAdvanceNativeBannerBinding) : RecyclerView.ViewHolder(bind.root) {
+//        fun bindData(position: Int) {
+//            val conversation = mConversations[position]
+//            val smsDraft = drafts[conversation.threadId]
+//
+//            Log.e("TAG", "bindData: inside adapter $position")
+//
+//            if (!IS_AD_SHOWN) {
+//
+//                /*bind.mNativeAds.showAds(PreferenceHelper.getString(AdConstants.NATIVE, ""))
+//                bind.mNativeAds.setOnAdsViewListener(object : OnAdsViewListener {
+//                    override fun onAdsSuccess(adResource: String) {
+//                        Log.e("TAG", "$adResource Success")
+//                        IS_AD_SHOWN = true
+//                    }
+//
+//                    override fun onAdsFailure(adResource: String, errorMsg: String) {
+//                        Log.e("TAG", "$adResource Error msg $errorMsg")
+//                        IS_AD_SHOWN = false
+//                    }
+//                })
+//                bind.mNativeAds.setOnAdRevenueListener(OnAdRevenueListener { model ->
+//                    val logPaidImpression = LogPaidImpression()
+//                    logPaidImpression.adsPlatform = "ad_manager" //Set Ads Platform value
+//                    logPaidImpression.adsPlacement = model.adsPlacement //Set Ads Placement value like (banner, reward, native, interstitial or reward)
+//                    logPaidImpression.adsSourceName = model.adsSourceName //Set Ads source name value from AdsPaidModel
+//                    logPaidImpression.adsUnitId = model.adsUnitId // Set Ads unit id value from AdsPaidModel
+//                    logPaidImpression.currencyCode = model.currencyCode //Set Currency code value from AdsPaidModel
+//                    logPaidImpression.valueMicros = model.valueMicros //Set value micros from AdsPaidModel
+//                    AdsManager.logPaidImpression(mActivity, logPaidImpression)
+//                })*/
+//
+//                if (mActivity is BaseActivity) {
+//                    IS_AD_SHOWN = true
+//                    itemView.apply {
+//                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(
+//                            findViewById(
+//                                R.id.mNativeAds
+//                            ), mActivity
+//                        )
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//    }
 
     fun getIsShowSelection(): Boolean {
         return isShowSelection
@@ -253,15 +253,15 @@ class ChatHistoryBySearchAdapter1(val mActivity: BaseHomeActivity) : RecyclerVie
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         return when (viewType) {
-            BANNER_AD -> {
-                ViewHolderAds(
-                    ItemAdvanceNativeBannerBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
-                )
-            }
+//            BANNER_AD -> {
+//                ViewHolderAds(
+//                    ItemAdvanceNativeBannerBinding.inflate(
+//                        LayoutInflater.from(parent.context),
+//                        parent,
+//                        false
+//                    )
+//                )
+//            }
 
             CONTENT -> {
                 ViewHolder(
@@ -288,11 +288,12 @@ class ChatHistoryBySearchAdapter1(val mActivity: BaseHomeActivity) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is ViewHolderAds) {
-
-            holder.bindData(position)
-
-        } else if (holder is ViewHolder) {
+//        if (holder is ViewHolderAds) {
+//
+//            holder.bindData(position)
+//
+//        } else
+            if (holder is ViewHolder) {
             holder.bindData(position)
         }
     }

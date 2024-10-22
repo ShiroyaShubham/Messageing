@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityPersonalNotificationBinding
 import messenger.messages.messaging.sms.chat.meet.extensions.beVisibleIf
 import messenger.messages.messaging.sms.chat.meet.model.NotificationPreviewModel
@@ -15,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import messenger.messages.messaging.sms.chat.meet.R
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 
 class PersonalNotificationActivity : BaseHomeActivity() {
     private var _binding: ActivityPersonalNotificationBinding? = null
@@ -30,6 +33,11 @@ class PersonalNotificationActivity : BaseHomeActivity() {
         setContentView(binding.root)
         initData()
         bindHandlers()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
     }
 
     private fun setupWakeupSleep() {

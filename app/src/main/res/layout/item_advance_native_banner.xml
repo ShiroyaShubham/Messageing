@@ -6,17 +6,28 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <naimishtrivedi.in.googleadsmanager.NativeBannerAds
-        android:id="@+id/mNativeAds"
+<!--    <include-->
+<!--        android:id="@+id/mBannerAdsContainer"-->
+<!--        layout="@layout/ad_banner_shimmer_effect"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="7dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <include
+        android:id="@+id/mMediumAdsContainer"
+        layout="@layout/ad_small_native_shimmer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:adsLayoutId="@layout/layout_cutom_native_ad"
-        app:layout_animation="@layout/ads_native_custom_shimmer_effect"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:layout_width="match_parent"

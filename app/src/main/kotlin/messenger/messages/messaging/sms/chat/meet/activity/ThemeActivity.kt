@@ -29,6 +29,7 @@ class ThemeActivity : BaseHomeActivity() {
         binding.header.imgSave.setImageResource(R.drawable.ic_tick)
         binding.header.imgSave.isVisible = true
         binding.header.imgSave.setOnClickListener {
+            try {
             val selectedPos = themeAdapter.getSelectedPos()
             mPref.appTheme = selectedPos
             Log.d("TAG_SELECTED", "bindHandlers: $selectedPos")
@@ -45,10 +46,14 @@ class ThemeActivity : BaseHomeActivity() {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
             }
-            val intent = Intent(this,HomeActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
+                recreate()
+//            val intent = Intent(this,HomeActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//            startActivity(intent)
             finish()
+            } catch (e: Exception) {
+                Log.e("ThemeSwitchError", "Error switching theme", e)
+            }
         }
         binding.header.imgBack.setOnClickListener {
             onBackPressed()

@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.transaction;
 
 import android.app.AlarmManager;
@@ -72,12 +56,6 @@ public class RetryScheduler implements Observer {
         try {
             Transaction t = (Transaction) observable;
 
-           /* if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
-                Log.v(TAG, "[RetryScheduler] update " + observable);
-            }*/
-
-            // We are only supposed to handle M-Notification.ind, M-Send.req
-            // and M-ReadRec.ind.
             if ((t instanceof NotificationTransaction)
                     || (t instanceof RetrieveTransaction)
                     || (t instanceof ReadRecTransaction)
@@ -172,11 +150,6 @@ public class RetryScheduler implements Observer {
                     }
                     if ((retryIndex < scheme.getRetryLimit()) && retry) {
                         long retryAt = current + scheme.getWaitingInterval();
-
-                        /*if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
-                            Log.v(TAG, "scheduleRetry: retry for " + uri + " is scheduled at "
-                                    + (retryAt - System.currentTimeMillis()) + "ms from now");
-                        }*/
 
                         values.put(PendingMessages.DUE_TIME, retryAt);
 
@@ -285,7 +258,6 @@ public class RetryScheduler implements Observer {
         return respStatus;
     }
 
-    // apply R880 IOT issue (Conformance 11.6 Retrieve Invalid Message)
     private int getRetrieveStatus(long msgID) {
         int retrieveStatus = 0;
         Cursor cursor = SqliteWrapper.query(mContext, mContentResolver,
@@ -299,9 +271,7 @@ public class RetryScheduler implements Observer {
             cursor.close();
         }
         if (retrieveStatus != 0) {
-           /* if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
-                Log.v(TAG, "Retrieve status is: " + retrieveStatus);
-            }*/
+
         }
         return retrieveStatus;
     }
@@ -324,10 +294,6 @@ public class RetryScheduler implements Observer {
                             Context.ALARM_SERVICE);
                     am.set(AlarmManager.RTC, retryAt, operation);
 
-                    /*if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
-                        Log.v(TAG, "Next retry is scheduled at"
-                                + (retryAt - System.currentTimeMillis()) + "ms from now");
-                    }*/
                 }
             } finally {
                 cursor.close();

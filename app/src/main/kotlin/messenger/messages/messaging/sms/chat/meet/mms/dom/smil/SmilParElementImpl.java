@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2007 Esmertec AG.
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom.smil;
 
 import java.util.ArrayList;
@@ -37,10 +20,7 @@ public class SmilParElementImpl extends SmilElementImpl implements SMILParElemen
         new ElementParallelTimeContainerImpl(this) {
         @Override
         public TimeList getBegin() {
-            /*
-             * For children of a sequence, the only legal value for begin is
-             * a (single) non-negative offset value.
-             */
+
             TimeList beginTimeList = super.getBegin();
             if (beginTimeList.getLength() > 1) {
                 ArrayList<Time> singleTimeContainer = new ArrayList<Time>();
@@ -90,9 +70,6 @@ public class SmilParElementImpl extends SmilElementImpl implements SMILParElemen
         }
     };
 
-    /*
-     * Internal Interface
-     */
 
     SmilParElementImpl(SmilDocumentImpl owner, String tagName)
     {
@@ -100,16 +77,9 @@ public class SmilParElementImpl extends SmilElementImpl implements SMILParElemen
     }
 
     int getBeginConstraints() {
-        /*
-         * For children of a sequence, the only legal value for begin is
-         * a (single) non-negative offset value.
-         */
         return (TimeImpl.ALLOW_OFFSET_VALUE); // Do not set ALLOW_NEGATIVE_VALUE
     }
 
-    /*
-     * ElementParallelTimeContainer
-     */
 
     public String getEndSync() {
         return mParTimeContainer.getEndSync();

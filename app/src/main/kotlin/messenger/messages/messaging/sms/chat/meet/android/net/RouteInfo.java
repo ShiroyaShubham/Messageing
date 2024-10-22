@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 import android.os.Parcel;
@@ -26,21 +10,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Collection;
 
-/**
- * A simple container for route information.
- *
- * @hide
- */
 public class RouteInfo implements Parcelable {
     private static final String TAG = "RouteInfo";
-    /**
-     * The IP destination address for this route.
-     */
     private final LinkAddress mDestination;
-
-    /**
-     * The gateway address for this route.
-     */
     private final InetAddress mGateway;
 
     private final boolean mIsDefault;
@@ -258,14 +230,6 @@ public class RouteInfo implements Parcelable {
         return mDestination.getAddress().equals(dstNet);
     }
 
-    /**
-     * Find the route from a Collection of routes that best matches a given address.
-     * May return null if no routes are applicable.
-     *
-     * @param routes a Collection of RouteInfos to chose from
-     * @param dest   the InetAddress your trying to get to
-     * @return the RouteInfo from the Collection that best fits the given address
-     */
     public static RouteInfo selectBestRoute(Collection<RouteInfo> routes, InetAddress dest) {
         if ((routes == null) || (dest == null)) return null;
 

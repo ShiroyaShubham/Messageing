@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 import android.content.ContentResolver;
@@ -29,18 +13,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class PduComposer {
-    /**
-     * Address type.
-     */
+
     static private final int PDU_PHONE_NUMBER_ADDRESS_TYPE = 1;
     static private final int PDU_EMAIL_ADDRESS_TYPE = 2;
     static private final int PDU_IPV4_ADDRESS_TYPE = 3;
     static private final int PDU_IPV6_ADDRESS_TYPE = 4;
     static private final int PDU_UNKNOWN_ADDRESS_TYPE = 5;
 
-    /**
-     * Address regular expression string.
-     */
     static final String REGEXP_PHONE_NUMBER_ADDRESS_TYPE = "\\+?[0-9|\\.|\\-]+";
     static final String REGEXP_EMAIL_ADDRESS_TYPE = "[a-zA-Z| ]*\\<{0,1}[a-zA-Z| ]+@{1}" +
             "[a-zA-Z| ]+\\.{1}[a-zA-Z| ]+\\>{0,1}";
@@ -51,24 +30,15 @@ public class PduComposer {
     static final String REGEXP_IPV4_ADDRESS_TYPE = "[0-9]{1,3}\\.{1}[0-9]{1,3}\\.{1}" +
             "[0-9]{1,3}\\.{1}[0-9]{1,3}";
 
-    /**
-     * The postfix strings of address.
-     */
     static final String STRING_PHONE_NUMBER_ADDRESS_TYPE = "/TYPE=PLMN";
     static final String STRING_IPV4_ADDRESS_TYPE = "/TYPE=IPV4";
     static final String STRING_IPV6_ADDRESS_TYPE = "/TYPE=IPV6";
 
-    /**
-     * Error values.
-     */
     static private final int PDU_COMPOSE_SUCCESS = 0;
     static private final int PDU_COMPOSE_CONTENT_ERROR = 1;
     static private final int PDU_COMPOSE_FIELD_NOT_SET = 2;
     static private final int PDU_COMPOSE_FIELD_NOT_SUPPORTED = 3;
 
-    /**
-     * WAP values defined in WSP spec.
-     */
     static private final int QUOTED_STRING_FLAG = 34;
     static private final int END_STRING_FLAG = 0;
     static private final int LENGTH_QUOTE = 31;
@@ -76,45 +46,21 @@ public class PduComposer {
     static private final int SHORT_INTEGER_MAX = 127;
     static private final int LONG_INTEGER_LENGTH_MAX = 8;
 
-    /**
-     * Block size when read data from InputStream.
-     */
     static private final int PDU_COMPOSER_BLOCK_SIZE = 1024;
     private static final String TAG = "PduComposer";
 
-    /**
-     * The output message.
-     */
     protected ByteArrayOutputStream mMessage = null;
 
-    /**
-     * The PDU.
-     */
     private GenericPdu mPdu = null;
 
-    /**
-     * Current visiting position of the mMessage.
-     */
     protected int mPosition = 0;
 
-    /**
-     * Message compose buffer stack.
-     */
     private BufferStack mStack = null;
 
-    /**
-     * Content resolver.
-     */
     private final ContentResolver mResolver;
 
-    /**
-     * Header of this pdu.
-     */
     private PduHeaders mPduHeader = null;
 
-    /**
-     * Map of all content type
-     */
     private static HashMap<String, Integer> mContentTypeMap = null;
 
     static {
@@ -126,12 +72,6 @@ public class PduComposer {
         }
     }
 
-    /**
-     * Constructor.
-     *
-     * @param context the context
-     * @param pdu the pdu to be composed
-     */
     public PduComposer(Context context, GenericPdu pdu) {
         mPdu = pdu;
         mResolver = context.getContentResolver();
@@ -141,13 +81,6 @@ public class PduComposer {
         mPosition = 0;
     }
 
-    /**
-     * Make the message. No need to check whether mandatory fields are set,
-     * because the constructors of outgoing pdus are taking care of this.
-     *
-     * @return OutputStream of maked message. Return null if
-     *         the PDU is invalid.
-     */
     public byte[] make() {
         // Get Message-type.
         int type = mPdu.getMessageType();
@@ -181,56 +114,24 @@ public class PduComposer {
         return mMessage.toByteArray();
     }
 
-    /**
-     *  Copy buf to mMessage.
-     */
     protected void arraycopy(byte[] buf, int pos, int length) {
         mMessage.write(buf, pos, length);
         mPosition = mPosition + length;
     }
 
-    /**
-     * Append a byte to mMessage.
-     */
     protected void append(int value) {
         mMessage.write(value);
         mPosition ++;
     }
 
-    /**
-     * Append short integer value to mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendShortInteger(int value) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Short-integer = OCTET
-         * ; Integers in range 0-127 shall be encoded as a one octet value
-         * ; with the most significant bit set to one (1xxx xxxx) and with
-         * ; the value in the remaining least significant bits.
-         * In our implementation, only low 7 bits are stored and otherwise
-         * bits are ignored.
-         */
         append((value | 0x80) & 0xff);
     }
 
-    /**
-     * Append an octet number between 128 and 255 into mMessage.
-     * NOTE:
-     * A value between 0 and 127 should be appended by using appendShortInteger.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendOctet(int number) {
         append(number);
     }
 
-    /**
-     * Append a short length into mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendShortLength(int value) {
         /*
          * From WAP-230-WSP-20010705-a:
@@ -239,21 +140,7 @@ public class PduComposer {
         append(value);
     }
 
-    /**
-     * Append long integer into mMessage. it's used for really long integers.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendLongInteger(long longInt) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Long-integer = Short-length Multi-octet-integer
-         * ; The Short-length indicates the length of the Multi-octet-integer
-         * Multi-octet-integer = 1*30 OCTET
-         * ; The content octets shall be an unsigned integer value with the
-         * ; most significant octet encoded first (big-endian representation).
-         * ; The minimum number of octets must be used to encode the value.
-         */
         int size;
         long temp = longInt;
 
@@ -275,19 +162,7 @@ public class PduComposer {
         }
     }
 
-    /**
-     * Append text string into mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendTextString(byte[] text) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Text-string = [Quote] *TEXT End-of-string
-         * ; If the first character in the TEXT is in the range of 128-255,
-         * ; a Quote character must precede it. Otherwise the Quote character
-         * ;must be omitted. The Quote is not part of the contents.
-         */
         if (((text[0])&0xff) > TEXT_MAX) { // No need to check for <= 255
             append(TEXT_MAX);
         }
@@ -296,32 +171,11 @@ public class PduComposer {
         append(0);
     }
 
-    /**
-     * Append text string into mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendTextString(String str) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Text-string = [Quote] *TEXT End-of-string
-         * ; If the first character in the TEXT is in the range of 128-255,
-         * ; a Quote character must precede it. Otherwise the Quote character
-         * ;must be omitted. The Quote is not part of the contents.
-         */
         appendTextString(str.getBytes());
     }
 
-    /**
-     * Append encoded string value to mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
     protected void appendEncodedString(EncodedStringValue enStr) {
-        /*
-         * From OMA-TS-MMS-ENC-V1_3-20050927-C:
-         * Encoded-string-value = Text-string | Value-length Char-set Text-string
-         */
         assert(enStr != null);
 
         int charset = enStr.getCharacterSet();
@@ -330,11 +184,6 @@ public class PduComposer {
             return;
         }
 
-        /*
-         * In the implementation of EncodedStringValue, the charset field will
-         * never be 0. It will always be composed as
-         * Encoded-string-value = Value-length Char-set Text-string
-         */
         mStack.newbuf();
         PositionMarker start = mStack.mark();
 
@@ -347,20 +196,8 @@ public class PduComposer {
         mStack.copy();
     }
 
-    /**
-     * Append uintvar integer into mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
+
     protected void appendUintvarInteger(long value) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * To encode a large unsigned integer, split it into 7-bit fragments
-         * and place them in the payloads of multiple octets. The most significant
-         * bits are placed in the first octets with the least significant bits
-         * ending up in the last octet. All octets MUST set the Continue bit to 1
-         * except the last octet, which MUST set the Continue bit to 0.
-         */
         int i;
         long max = SHORT_INTEGER_MAX;
 
@@ -384,11 +221,7 @@ public class PduComposer {
         append((int)(value & 0x7f));
     }
 
-    /**
-     * Append date value into mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
+
     protected void appendDateValue(long date) {
         /*
          * From OMA-TS-MMS-ENC-V1_3-20050927-C:
@@ -397,20 +230,8 @@ public class PduComposer {
         appendLongInteger(date);
     }
 
-    /**
-     * Append value length to mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
+
     protected void appendValueLength(long value) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Value-length = Short-length | (Length-quote Length)
-         * ; Value length is used to indicate the length of the value to follow
-         * Short-length = <Any octet 0-30>
-         * Length-quote = <Octet 31>
-         * Length = Uintvar-integer
-         */
         if (value < LENGTH_QUOTE) {
             appendShortLength((int) value);
             return;
@@ -420,35 +241,16 @@ public class PduComposer {
         appendUintvarInteger(value);
     }
 
-    /**
-     * Append quoted string to mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
+
     protected void appendQuotedString(byte[] text) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Quoted-string = <Octet 34> *TEXT End-of-string
-         * ;The TEXT encodes an RFC2616 Quoted-string with the enclosing
-         * ;quotation-marks <"> removed.
-         */
+
         append(QUOTED_STRING_FLAG);
         arraycopy(text, 0, text.length);
         append(END_STRING_FLAG);
     }
 
-    /**
-     * Append quoted string to mMessage.
-     * This implementation doesn't check the validity of parameter, since it
-     * assumes that the values are validated in the GenericPdu setter methods.
-     */
+
     protected void appendQuotedString(String str) {
-        /*
-         * From WAP-230-WSP-20010705-a:
-         * Quoted-string = <Octet 34> *TEXT End-of-string
-         * ;The TEXT encodes an RFC2616 Quoted-string with the enclosing
-         * ;quotation-marks <"> removed.
-         */
         appendQuotedString(str.getBytes());
     }
 
@@ -475,9 +277,7 @@ public class PduComposer {
         return temp;
     }
 
-    /**
-     * Append header to mMessage.
-     */
+
     private int appendHeader(int field) {
         switch (field) {
             case PduHeaders.MMS_VERSION:
@@ -645,9 +445,6 @@ public class PduComposer {
         return PDU_COMPOSE_SUCCESS;
     }
 
-    /**
-     * Make ReadRec.Ind.
-     */
     private int makeReadRecInd() {
         if (mMessage == null) {
             mMessage = new ByteArrayOutputStream();
@@ -693,9 +490,7 @@ public class PduComposer {
         return PDU_COMPOSE_SUCCESS;
     }
 
-    /**
-     * Make NotifyResp.Ind.
-     */
+
     private int makeNotifyResp() {
         if (mMessage == null) {
             mMessage = new ByteArrayOutputStream();
@@ -725,9 +520,7 @@ public class PduComposer {
         return PDU_COMPOSE_SUCCESS;
     }
 
-    /**
-     * Make Acknowledge.Ind.
-     */
+
     private int makeAckInd() {
         if (mMessage == null) {
             mMessage = new ByteArrayOutputStream();
@@ -754,9 +547,7 @@ public class PduComposer {
         return PDU_COMPOSE_SUCCESS;
     }
 
-    /**
-     * Make Send.req.
-     */
+
     private int makeSendReqPdu() {
         if (mMessage == null) {
             mMessage = new ByteArrayOutputStream();
@@ -838,9 +629,7 @@ public class PduComposer {
         return makeMessageBody();
     }
 
-    /**
-     * Make message body.
-     */
+
     private int makeMessageBody() {
         // 1. add body informations
         mStack.newbuf();  // Switching buffer because we need to
@@ -1018,9 +807,7 @@ public class PduComposer {
         return PDU_COMPOSE_SUCCESS;
     }
 
-    /**
-     *  Record current message informations.
-     */
+
     static private class LengthRecordNode {
         ByteArrayOutputStream currentMessage = null;
         public int currentPosition = 0;
@@ -1028,9 +815,7 @@ public class PduComposer {
         public LengthRecordNode next = null;
     }
 
-    /**
-     * Mark current message position and stact size.
-     */
+
     private class PositionMarker {
         private int c_pos;   // Current position
         private int currentStackSize;  // Current stack size
@@ -1047,20 +832,12 @@ public class PduComposer {
         }
     }
 
-    /**
-     * This implementation can be OPTIMIZED to use only
-     * 2 buffers. This optimization involves changing BufferStack
-     * only... Its usage (interface) will not change.
-     */
     private class BufferStack {
         private LengthRecordNode stack = null;
         private LengthRecordNode toCopy = null;
 
         int stackSize = 0;
 
-        /**
-         *  Create a new message buffer and push it into the stack.
-         */
         void newbuf() {
             // You can't create a new buff when toCopy != null
             // That is after calling pop() and before calling copy()
@@ -1083,9 +860,6 @@ public class PduComposer {
             mPosition = 0;
         }
 
-        /**
-         *  Pop the message before and record current message in the stack.
-         */
         void pop() {
             ByteArrayOutputStream currentMessage = mMessage;
             int currentPosition = mPosition;
@@ -1103,9 +877,7 @@ public class PduComposer {
             toCopy.currentPosition = currentPosition;
         }
 
-        /**
-         *  Append current message to the message before.
-         */
+
         void copy() {
             arraycopy(toCopy.currentMessage.toByteArray(), 0,
                     toCopy.currentPosition);
@@ -1113,9 +885,7 @@ public class PduComposer {
             toCopy = null;
         }
 
-        /**
-         *  Mark current message position
-         */
+
         PositionMarker mark() {
             PositionMarker m = new PositionMarker();
 
@@ -1126,36 +896,7 @@ public class PduComposer {
         }
     }
 
-    /**
-     * Check address type.
-     *
-     * @param address address string without the postfix stinng type,
-     *        such as "/TYPE=PLMN", "/TYPE=IPv6" and "/TYPE=IPv4"
-     * @return PDU_PHONE_NUMBER_ADDRESS_TYPE if it is phone number,
-     *         PDU_EMAIL_ADDRESS_TYPE if it is email address,
-     *         PDU_IPV4_ADDRESS_TYPE if it is ipv4 address,
-     *         PDU_IPV6_ADDRESS_TYPE if it is ipv6 address,
-     *         PDU_UNKNOWN_ADDRESS_TYPE if it is unknown.
-     */
     protected static int checkAddressType(String address) {
-        /**
-         * From OMA-TS-MMS-ENC-V1_3-20050927-C.pdf, section 8.
-         * address = ( e-mail / device-address / alphanum-shortcode / num-shortcode)
-         * e-mail = mailbox; to the definition of mailbox as described in
-         * section 3.4 of [RFC2822], but excluding the
-         * obsolete definitions as indicated by the "obs-" prefix.
-         * device-address = ( global-phone-number "/TYPE=PLMN" )
-         * / ( ipv4 "/TYPE=IPv4" ) / ( ipv6 "/TYPE=IPv6" )
-         * / ( escaped-value "/TYPE=" address-type )
-         *
-         * global-phone-number = ["+"] 1*( DIGIT / written-sep )
-         * written-sep =("-"/".")
-         *
-         * ipv4 = 1*3DIGIT 3( "." 1*3DIGIT ) ; IPv4 address value
-         *
-         * ipv6 = 4HEXDIG 7( ":" 4HEXDIG ) ; IPv6 address per RFC 2373
-         */
-
         if (null == address) {
             return PDU_UNKNOWN_ADDRESS_TYPE;
         }

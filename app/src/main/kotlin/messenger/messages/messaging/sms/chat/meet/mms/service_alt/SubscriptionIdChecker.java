@@ -16,7 +16,6 @@ public class SubscriptionIdChecker {
     private static SubscriptionIdChecker sInstance;
     private boolean mCanUseSubscriptionId = false;
 
-    // I met a device which does not have Telephony.Mms.SUBSCRIPTION_ID event if it's API Level is 22.
     private void check(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             Cursor c = null;

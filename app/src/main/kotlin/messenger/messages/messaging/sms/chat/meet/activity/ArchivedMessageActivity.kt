@@ -6,14 +6,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Telephony
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import kotlinx.coroutines.*
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.adapters.ChatHistoryAdapter1
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityArchivedMessageBinding
 import messenger.messages.messaging.sms.chat.meet.extensions.*
 import messenger.messages.messaging.sms.chat.meet.model.*
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -32,14 +34,15 @@ class ArchivedMessageActivity : BaseHomeActivity() {
         window.decorView.setBackgroundResource(R.drawable.bg_gradient)
         binding = ActivityArchivedMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        loadMediumBannerAd()
         initData()
         bindHandlers()
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
     }
 
-    private fun loadMediumBannerAd() {
-        AdsManager.showMediumRectangleBannerAds(binding.mNativeContainer, binding.llNativeShimmer, this)
-    }
 
     private fun bindHandlers() {
         binding.header.imgBack.setOnClickListener {
@@ -50,22 +53,9 @@ class ArchivedMessageActivity : BaseHomeActivity() {
 
     private fun initData() {
         binding.header.txtHeading.text = getString(R.string.app_archived)
-        mAdapter = ChatHistoryAdapter1(this@ArchivedMessageActivity/*, *//*sortedConversations,*//* binding.recyclerViewChatHistory*/) /*{
-            val intent = Intent(this, MsgActivity::class.java)
-            intent.putExtra(THREAD_ID, (it as ConversationSmsModel).threadId)
-            intent.putExtra(THREAD_TITLE, it.title)
-            intent.putExtra(THREAD_NUMBER, it.phoneNumber)
-            startActivity(intent)
-        }*/
+        mAdapter = ChatHistoryAdapter1(this@ArchivedMessageActivity)
         mAdapter!!.itemClickListener = { position, data, isLeft ->
-
             if (!isLeft) {
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    archivedMessageDao.deleteArchivedUser(ArchivedModel(data.phoneNumber!!, data.title!!))
-//                    withContext(Dispatchers.Main) {
-//                        mAdapter!!.notifyDataSetChanged()
-//                    }
-//                }
 
             } else {
 
@@ -73,9 +63,7 @@ class ArchivedMessageActivity : BaseHomeActivity() {
         }
         mAdapter!!.itemClickListenerSelect = { position, data ->
             if (mAdapter!!.getIsShowSelection()) {
-//                mAdapter!!.getFileListData()[position].isSelected = !mAdapter!!.getFileListData()[position].isSelected
-//                mAdapter!!.notifyItemChanged(position)
-//                showCounterLayout()
+
             } else {
                 val intent = Intent(this@ArchivedMessageActivity, MessagesActivity::class.java)
                 intent.putExtra(THREAD_ID, data.threadId)
@@ -126,7 +114,6 @@ class ArchivedMessageActivity : BaseHomeActivity() {
         initMessenger()
     }
 
-    // while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional. If we don't have it, we just won't be able to show the contact name in some cases
     private fun askPermissions() {
         handlePermission(PERMISSION_READ_SMS) {
             if (it) {
@@ -173,71 +160,11 @@ class ArchivedMessageActivity : BaseHomeActivity() {
 
     private fun getCachedConversations() {
         Log.d("TAG_MESSAGE", "getCachedConversations: ")
-        if (!isFinishing) {/*ensureBackgroundThread {
-                val conversations = try {
-                    conversationsDB.getAllList().toMutableList() as ArrayList<ConversationSmsModel>
-                } catch (e: Exception) {
-                    ArrayList()
-                }
-
-                updateUnreadCountBadge(conversations)
-                runOnUiThread {
-                    Log.e("Event: ", "setupConversations 1")
-                    setupConversations(conversations)
-                    getNewConversations(conversations)
-                }
-            }*/
-
-            /*CoroutineScope(Dispatchers.IO).launch {
-
-                val conversations = try {
-                    conversationsDB.getAllList().toMutableList() as ArrayList<ConversationSmsModel>
-                } catch (e: Exception) {
-                    ArrayList()
-                }
-
-                withContext(Dispatchers.Main) {
-                    if (conversations.size > 0) {
-//                        setupConversations(conversations)
-//                        setupConversations(conversations)
-                        getAlldataFromArchive
-
-                    } else {
-                        updateUnreadCountBadge(conversations)
-                        runOnUiThread {
-                            Log.e("Event: ", "setupConversations 1")
-
-                            Handler(Looper.getMainLooper()).postDelayed({
-                                getNewConversations(conversations)
-                            }, 100)
-                        }
-                    }
-                }
-            }*/
-
+        if (!isFinishing) {
             getAlldataFromArchive()
-
         }
     }
 
-//    private fun setupConversations(conversations: ArrayList<ConversationSmsModel>) {
-//        Log.d("TAG_MESSAGE", "setupConversations: ")
-//        if (!isFinishing) {
-//            val hasConversations = conversations.isNotEmpty()
-//            val localAll =
-//                conversations.sortedWith(compareByDescending<ConversationSmsModel> { config.pinnedConversations.contains(it.threadId.toString()) }.thenByDescending { it.date })
-//                    .toMutableList() as ArrayList<ConversationSmsModel>
-//
-//            if (!isFinishing) {
-////                binding.conversationsFastscroller.beVisibleIf(hasConversations)
-//                binding.llNoDataFound.beGoneIf(hasConversations)
-//
-//
-//                setAdapterNew(localAll, hasConversations)
-//            }
-//        }
-//    }
-//
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onUnarchiveMSGS(unarchive: ArchivedModel) {
@@ -267,9 +194,7 @@ class ArchivedMessageActivity : BaseHomeActivity() {
                 sortedConversations[it.index].snippet = event.snipet
                 sortedConversations[it.index].date = event.dateTime
                 mAdapter?.notifyItemChanged(it.index)
-//                mAdapter?.notifyItemMoved(it.index, 1)
-                /* counter = it.index
-                 dataDemo = sortedConversations[it.index]*/
+
                 CoroutineScope(Dispatchers.IO).launch {
                     conversationsDB.insertOrUpdateMessage(sortedConversations[it.index])
 
@@ -311,8 +236,6 @@ class ArchivedMessageActivity : BaseHomeActivity() {
             Log.e("TAG_MESSAGE", "getAlldataFromArchive: 1 ${conversations1}")
 
             conversations1.forEach {
-//                val number = if (it.number.startsWith("91")) "+${it.number}" else it.number
-//                Log.d("TAG_NUMBER", "getAlldataFromArchive: $number")
                 val conversation = conversationsDB.getDataFromThreadId(it.threadId)
                 if (conversation != null) conversations.add(conversation)
             }
@@ -333,7 +256,6 @@ class ArchivedMessageActivity : BaseHomeActivity() {
                     binding.recyclerViewChatHistory.isVisible = true
                     binding.llNoDataFound.beGone()
                 } else {
-//                    binding.conversationsFastscroller.beGone()
                     binding.recyclerViewChatHistory.isVisible = false
                     binding.llNoDataFound.beVisible()
                 }
@@ -342,49 +264,6 @@ class ArchivedMessageActivity : BaseHomeActivity() {
 
 
     }
-
-//    private fun setAdapterNew(localAll: ArrayList<ConversationSmsModel>, hasConversations: Boolean) {
-//        sortedConversations.clear()
-//
-//        CoroutineScope(Dispatchers.Main).launch {
-//            for (i in localAll.indices) {
-//                withContext(Dispatchers.IO) {
-//                    archivedMessageDao.getArchivedUser().forEach {
-//                        Log.d("TAG_NUMBER", "setAdapterNew: ${it.number} ${localAll[i].phoneNumber}")
-//                        if (it.number == localAll[i].phoneNumber) {
-//                            sortedConversations.add(localAll[i])
-//                        }
-//                    }
-//                }
-//            }
-//            Log.d("TAG_MESSAGE", "setAdapterNew: ")
-//
-//            if (mAdapter == null) {
-//                Log.e("Event: ", "all message currAdapter null")
-//
-//            } else {
-//                Log.e("Event: ", "all message currAdapter not null")
-//                Log.e("Event: ", "sortedConversations: " + sortedConversations.size)
-//
-//                mAdapter!!.notifyDataSetChanged()
-//                if (mAdapter!!.mConversations.isEmpty()) {
-//                    binding.conversationsFastscroller.beGone()
-//                    binding.llNoDataFound.beVisible()
-//
-//                    if (!hasConversations && config.appRunCount == 1) {
-//                        binding.llNoDataFound.beGone()
-//                    }
-//                } else {
-//                    binding.conversationsFastscroller.beVisible()
-//                    binding.llNoDataFound.beGone()
-//
-//
-//                }
-//            }
-//        }
-//
-//
-//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -395,7 +274,6 @@ class ArchivedMessageActivity : BaseHomeActivity() {
         super.onPause()
         storeStateVariables()
     }
-
 
     override fun onResume() {
         super.onResume()

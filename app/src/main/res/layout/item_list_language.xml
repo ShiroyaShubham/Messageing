@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_12sdp"
-    android:id="@+id/clMain"
-    android:layoutDirection="ltr"
     android:layout_marginHorizontal="@dimen/_15sdp"
+    android:layout_marginTop="@dimen/_12sdp"
     android:background="@drawable/bg_dotted_round_corner_15"
+    android:layoutDirection="ltr"
     android:paddingHorizontal="@dimen/_15sdp"
     android:paddingVertical="@dimen/_12sdp">
 
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgChecked"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
         android:src="@drawable/ic_unchecked"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="@dimen/_30sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="@dimen/_20sdp"
-        android:visibility="gone"
-        android:paddingEnd="@dimen/_10sdp"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_22sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        app:layout_constraintEnd_toStartOf="@id/txtName"
+        android:paddingEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_theme"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/ic_theme"/>
+        app:layout_constraintEnd_toStartOf="@id/txtName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtName"
+        style="@style/Text_manrope_Semi_Bold_11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:maxLines="1"
         android:ellipsize="end"
+        android:maxLines="1"
         android:text="English"
-        style="@style/Text_manrope_Semi_Bold_12"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgIcon"/>
+        app:layout_constraintStart_toEndOf="@id/imgIcon"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

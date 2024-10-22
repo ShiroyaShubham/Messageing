@@ -39,19 +39,6 @@ class MessagesExporterUtils(private val context: Context) {
                             }
                             writer.endArray()
                         }
-
-//                        if (config.exportMms && messageReader.getMmsCount() > 0) {
-//                            writer.name("mms")
-//                            writer.beginArray()
-//                            messageReader.forEachMms(threadId) {
-//                                writer.jsonValue(gson.toJson(it))
-//                                written++
-//                                onProgress.invoke(totalMessages, written)
-//                            }
-//
-//                            writer.endArray()
-//                        }
-
                         writer.endObject()
                     }
                     writer.endArray()

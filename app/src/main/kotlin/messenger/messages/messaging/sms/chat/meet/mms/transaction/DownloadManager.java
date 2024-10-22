@@ -4,10 +4,6 @@ package messenger.messages.messaging.sms.chat.meet.mms.transaction;
 import android.content.Context;
 import android.net.Uri;
 
-/**
- * In order to avoid downloading duplicate MMS.
- * We should manage to call SMSManager.downloadMultimediaMessage().
- */
 public class DownloadManager {
     private static DownloadManager ourInstance = new DownloadManager();
 

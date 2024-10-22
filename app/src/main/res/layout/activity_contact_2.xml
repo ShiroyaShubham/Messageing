@@ -64,7 +64,7 @@
 
                             <androidx.appcompat.widget.AppCompatEditText
                                 android:id="@+id/etSearchText"
-                                style="@style/Text_manrope_Medium_10"
+                                style="@style/Text_manrope_Medium_8"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_marginStart="@dimen/_15sdp"
@@ -91,21 +91,35 @@
                             style="@style/Icon_24DP"
                             android:layout_marginEnd="@dimen/textsize_16"
                             android:src="@drawable/icon_check"
-                            android:visibility="visible"
+                            android:visibility="gone"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackgroundBorderless"
                             app:tint="@color/black" />
 
                     </LinearLayout>
 
 
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvSuggestions"-->
+<!--                        style="@style/Text_Light_Grey"-->
+<!--                        android:layout_below="@+id/llHeader"-->
+<!--                        android:paddingHorizontal="@dimen/margin_16"-->
+<!--                        android:paddingBottom="@dimen/margin_8"-->
+<!--                        android:text="@string/suggestions"-->
+<!--                        android:textSize="@dimen/textsize_14" />-->
+
                     <TextView
                         android:id="@+id/tvSuggestions"
-                        style="@style/Text_Light_Grey"
+                        style="@style/Text_manrope_Medium_10"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_grey"
+                        android:layout_width="wrap_content"
                         android:layout_below="@+id/llHeader"
-                        android:paddingHorizontal="@dimen/margin_16"
+                        android:paddingHorizontal="@dimen/_15sdp"
                         android:paddingBottom="@dimen/margin_8"
                         android:text="@string/suggestions"
                         android:textSize="@dimen/textsize_14" />
-
 
                     <HorizontalScrollView
                         android:id="@+id/suggestionsHorizontalScroll"

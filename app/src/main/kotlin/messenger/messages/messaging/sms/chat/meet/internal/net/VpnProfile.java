@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.internal.net;
 
 import android.os.Parcel;
@@ -22,15 +6,6 @@ import android.util.Log;
 
 import java.nio.charset.Charset;
 
-/**
- * Parcel-like entity class for VPN profiles. To keep things simple, all
- * fields are package private. Methods are provided for serialization, so
- * storage can be implemented easily. Two rules are set for this class.
- * First, all fields must be kept non-null. Second, always make a copy
- * using clone() before modifying.
- *
- * @hide
- */
 public class VpnProfile implements Cloneable, Parcelable {
     private static final String TAG = "VpnProfile";
 
@@ -168,11 +143,6 @@ public class VpnProfile implements Cloneable, Parcelable {
         return builder.toString().getBytes(Charset.forName("UTF-8"));
     }
 
-    /**
-     * Test if profile is valid for lockdown, which requires IPv4 address for
-     * both server and DNS. Server hostnames would require using DNS before
-     * connection.
-     */
     public boolean isValidLockdownProfile() {
         try {
             return true;

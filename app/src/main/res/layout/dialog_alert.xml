@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tvAlertTitle"
-        style="@style/Text_manrope_Semi_Bold_14"
+        style="@style/Text_manrope_Semi_Bold_13"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/margin_8"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/tvAlertDesc"
-        style="@style/Text_manrope_Regular_12"
+        style="@style/Text_manrope_Regular_11"
         android:textColor="@color/text_grey"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginStart="@dimen/_70sdp"
+        android:layout_marginStart="@dimen/_90sdp"
         android:paddingHorizontal="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -40,14 +40,15 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAlertCancel"
-                style="@style/Text_manrope_Medium_10"
+                style="@style/Text_manrope_Medium_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_gradient_round_corner_10"
                 android:gravity="center"
-                android:paddingVertical="@dimen/_7sdp"
+                android:paddingVertical="@dimen/_6sdp"
                 android:text="@string/app_cancel"
                 android:textColor="@color/white"
+                android:layout_marginStart="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -64,12 +65,12 @@
 
             <messenger.messages.messaging.sms.chat.meet.views.GradientTextView
                 android:id="@+id/tvAlertOk"
-                style="@style/Text_manrope_Medium_10"
+                style="@style/Text_manrope_Medium_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_round_corner_10"
                 android:gravity="center"
-                android:paddingVertical="@dimen/_7sdp"
+                android:paddingVertical="@dimen/_6sdp"
                 android:text="@string/app_delete"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

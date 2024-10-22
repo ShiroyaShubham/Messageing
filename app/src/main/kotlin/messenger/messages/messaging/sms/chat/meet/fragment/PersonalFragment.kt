@@ -280,120 +280,6 @@ class PersonalFragment : BaseFragment() {
 
     //    var searchKey = ""
     private var bus: EventBus? = null
-//    private fun onOptionType() {
-//        bus = EventBus.getDefault()
-//        try {
-//            bus!!.register(this)
-//        } catch (e: Exception) {
-//            Log.d("TAG_EXCEPTION", "onOptionType: ${e.message}")
-//        }
-//
-//        try {
-//            if (isAdded && !mActivity!!.isFinishing) {
-//                CoroutineScope(Dispatchers.IO).launch {
-//
-//                    Log.d("TAG_CONTACT", "onOptionType: ${MainAppClass.personalMessageDBDATA.size}")
-//                    val messagesLocal = MainAppClass.personalMessageDBDATA.ifEmpty {
-//                        val messagesAll = mActivity!!.messagesDB.getAllList()
-//                        Log.e("TAG_SIZE_PERSONAL", "messagesAll size: " + messagesAll.size)
-//
-//                        val searchKeyCredit = "Credit"
-//                        val searchQueryCredit = "%$searchKeyCredit%"
-//                        val messagesCredit = mActivity!!.messagesDB.getMessagesWithText(searchQueryCredit)
-//
-//                        val searchKeyDebit = "Debit"
-//                        val searchQueryDebit = "%$searchKeyDebit%"
-//                        val messagesDebit = mActivity!!.messagesDB.getMessagesWithText(searchQueryDebit)
-//
-//                        val searchKeyOTP = "OTP"
-//                        val searchQueryOTP = "%$searchKeyOTP%"
-//                        val messagesOTP = mActivity!!.messagesDB.getMessagesWithText(searchQueryOTP)
-//
-//                        val searchKeyLink = "Link"
-//                        val searchQueryLink = "%$searchKeyLink%"
-//                        val messagesLink = mActivity!!.messagesDB.getMessagesWithText(searchQueryLink)
-//
-//
-//                        messagesAll - messagesCredit.toSet() - messagesDebit.toSet() - messagesOTP.toSet() - messagesLink.toSet()
-//
-//                    }
-//
-//                    Log.d("TAG_PERSONAL", "onOptionType: 1 ")
-//
-//                    val mAllContacts: ArrayList<ContactsModel>
-//                    if (MainAppClass.mAllContacts.isNotEmpty()) {
-//                        mAllContacts = MainAppClass.mAllContacts
-//                        compareAllMessagesWithContacts(mAllContacts, messagesLocal)
-//                    } else {
-//                        SimpleContactsHelperUtils(mActivity!!).getAvailableContacts(false) {
-//                            Log.d("TAG_CONTACT_SIZE", "onOptionType: inital ${it.size}")
-//                            compareAllMessagesWithContacts(it, messagesLocal)
-//                        }
-//                    }
-//                }
-//            }
-//        } catch (e: Exception) {
-//            Log.d("TAG_ERROR", "onOptionType: ${e.message}")
-//        }
-//    }
-
-//    private fun compareAllMessagesWithContacts(mAllContacts: ArrayList<ContactsModel>, messagesLocal: List<MessagesModel>) {
-//        val messages = ArrayList<MessagesModel>()
-//        val mContactsNumber = ArrayList<String>()
-//        Log.d("TAG_ALL_CONTACT", "onOptionType: ${mAllContacts.size}")
-//
-//        try {
-//
-//
-//            for (item in mAllContacts) {
-//                for (phoneNumber in item.phoneNumbers) {
-//                    mContactsNumber.add(phoneNumber.replace("[", "").replace("]", ""))
-//                }
-////                        mContactsNumber.add(item.phoneNumbers.toString().replace("[", "").replace("]", ""))
-//            }
-//
-//            Log.d("TAG_PERSONAL", "onOptionType: 2 ")
-//            for (messageItem in messagesLocal) {
-//                for (participants in messageItem.participants) {
-//                    for (number in participants.phoneNumbers) {
-//                        for (contactNumber in mContactsNumber) {
-//                            if (contactNumber.contains(number)) {
-//                                messages.add(messageItem)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        } catch (e: ConcurrentModificationException) {
-//            Log.d(
-//                "TAG_CONCURRE" +
-//                    "NT_MODIFICATION", "compareAllMessagesWithContacts: ${e.localizedMessage}"
-//            )
-//            return
-//        }
-////                }
-//        Log.d("TAG_PERSONAL", "onOptionType: 3 ")
-//        val sortedConversationsmessages =
-//            messages.sortedWith(compareByDescending<MessagesModel> { mActivity!!.config.pinnedConversations.contains(it.threadId.toString()) }.thenByDescending { it.date })
-//                .toMutableList() as ArrayList<MessagesModel>
-//
-//        Log.e("Event: ", "result Personal: " + sortedConversationsmessages.size)
-//
-//        val messagesNew = ArrayList<MessagesModel>()
-//
-//        Log.d("TAG_PERSONAL", "onOptionType: 4 ")
-//        for (i in sortedConversationsmessages.indices) {
-//            if (i == 0) {
-//                messagesNew.add(sortedConversationsmessages.get(i))
-//            } else {
-//                if (!checkIsInList(sortedConversationsmessages.get(i).participants.get(0).phoneNumbers.toString(), messagesNew)) {
-//                    messagesNew.add(sortedConversationsmessages.get(i))
-//                }
-//            }
-//        }
-//        Log.d("TAG_PERSONAL", "onOptionType: 5 ")
-////        showSearchResultsNew(messagesNew, searchKey)
-//    }
 
 
     private fun onOptionTypeNew() {
@@ -406,6 +292,9 @@ class PersonalFragment : BaseFragment() {
 
         try {
             if (isAdded && !mActivity!!.isFinishing) {
+                binding.progressBar.isVisible = true
+                binding.recyclerViewChatHistory.isVisible = false
+
                 CoroutineScope(Dispatchers.IO).launch {
                     val allConversation = mActivity!!.conversationsDB.getAllList().toMutableList()
                     val actualConversation = MainAppClass.removeCommonItems(allConversation, MainAppClass.application?.archivedMessageDao!!.getArchivedUser())
@@ -452,6 +341,9 @@ class PersonalFragment : BaseFragment() {
 
             Log.e("TAG_CURRENT_POS: ", "result Personal: " + sortedConversations.size)
             withContext(Dispatchers.Main) {
+                binding.progressBar.isVisible = false
+                binding.recyclerViewChatHistory.isVisible = true
+
                 if (mActivity!!.getSharedPrefs().getBoolean(IS_FETCH_PERSONAL_CONVERSATION, false)) {
                     (activity as HomeActivity).binding.llSyncMsgProgress.isVisible = false
                 }
@@ -465,58 +357,6 @@ class PersonalFragment : BaseFragment() {
         }
     }
 
-//    @SuppressLint("NotifyDataSetChanged")
-//    private fun showSearchResultsNew(messages: ArrayList<MessagesModel>, searchedText: String) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val searchResults = ArrayList<SearchModel>()
-//                messages.forEach { message ->
-//                    var recipient = message.senderName
-//                    val phoneNumber = message.participants[0].phoneNumbers[0]
-//                    if (recipient.isEmpty() && message.participants.isNotEmpty()) {
-//                        val participantNames = message.participants.map { it.name }
-//                        recipient = TextUtils.join(", ", participantNames)
-//                    }
-//
-//                    val date = message.date.formatDateOrTime(mActivity!!, true, true)
-//                    val searchResult =
-//                        SearchModel(message.id, recipient, message.body, message.date.toString(), message.threadId, message.senderPhotoUri, phoneNumber)
-//                    searchResults.add(searchResult)
-//                }
-//                Log.d("TAG_PERSONAL", "onOptionType: 7 ")
-//                searchResultsAds.clear()
-//                val filterAfterRemoveArchive = removeArchiveItem(searchResults, mActivity!!.archivedMessageDao.getArchivedUser())
-//                val filterLocalAll = removeBlockItem(filterAfterRemoveArchive, mActivity!!.blockContactDao.getAllBlockNo())
-//                for (i in filterLocalAll.indices) {
-//                    searchResultsAds.add(filterLocalAll[i])
-//                }
-////
-//                Log.d("TAG_PERSONAL", "onOptionType: 8 ")
-//                if (isAdded && isInternetAvailable(requireActivity())) {
-//                    if (searchResultsAds.any { it.date == "1" }) {
-//
-//                    } else {
-//                        searchResultsAds.add(0, SearchModel(0, "", "", "1", 0, "", ""))
-//                    }
-//                }
-//
-//                Log.d("TAG_SIZE", "showSearchResultsNew: ${searchResults.size}")
-//
-//                withContext(Dispatchers.Main) {
-//                    mAdapter!!.setData(searchResultsAds)
-//                    if (searchResultsAds.size == 1) {
-//                        noDataView()
-//                    } else {
-//                        visibleDataView()
-//                    }
-//                }
-//                Log.d("TAG_PERSONAL", "onOptionType: final ")
-//            } catch (e: Exception) {
-//                Log.d("TAG_ERROR", "showSearchResultsNew: ${e.message}")
-//            }
-//        }
-//
-//    }
 
     fun noDataView() {
         try {

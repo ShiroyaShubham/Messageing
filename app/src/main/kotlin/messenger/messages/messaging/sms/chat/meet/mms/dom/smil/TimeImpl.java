@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom.smil;
 
 import org.w3c.dom.DOMException;
@@ -35,47 +19,7 @@ public class TimeImpl implements Time {
     boolean mResolved;
     double mResolvedOffset;
 
-    /**
-     * Creates a TimeImpl representation of a time-value represented as a String.
-     * Time-values have the following syntax:
-     * <p>
-     * <pre>
-     * Time-val ::= ( smil-1.0-syncbase-value
-     *                          | "indefinite"
-     *                          | offset-value
-     *                          | syncbase-value
-     *                          | syncToPrev-value
-     *                          | event-value
-     *                          | media-marker-value
-     *                          | wallclock-sync-value )
-     * Smil-1.0-syncbase-value ::=
-     *          "id(" id-ref ")" ( "(" ( "begin" | "end" | clock-value ) ")" )?
-     * Offset-value         ::= ( "+" | "-" )? clock-value
-     * Syncbase-value       ::= ( id-ref "." ( "begin" | "end" ) ) ( ( "+" | "-" ) clock-value )?
-     * SyncToPrev-value     ::= ( "prev.begin" | "prev.end" ) ( ( "+" | "-" ) clock-value )?
-     * Event-value          ::= ( id-ref "." )? ( event-ref  ) ( ( "+" | "-" ) clock-value )?
-     * Media-marker-value   ::= id-ref ".marker(" marker-name ")"
-     * Wallclock-sync-value ::= "wallclock(" wallclock-value ")"
-     * </pre>
-     *
-     * @param timeValue A String in the representation specified above
-     * @param constraints Any combination of the #ALLOW_* flags
-     * @return  A TimeImpl instance representing
-     * @exception IllegalArgumentException if the timeValue input
-     *          parameter does not comply with the defined syntax
-     * @exception NullPointerException if the timekValue string is
-     *          <code>null</code>
-     */
     TimeImpl(String timeValue, int constraints) {
-        /*
-         * We do not support yet:
-         *      - smil-1.0-syncbase-value
-         *      - syncbase-value
-         *      - syncToPrev-value
-         *      - event-value
-         *      - Media-marker-value
-         *      - Wallclock-sync-value
-         */
         // Will throw NullPointerException if timeValue is null
         if (timeValue.equals("indefinite")
                 && ((constraints & ALLOW_INDEFINITE_VALUE) != 0) ) {
@@ -96,36 +40,6 @@ public class TimeImpl implements Time {
         }
     }
 
-    /**
-     * Converts a String representation of a clock value into the float
-     * representation used in this API.
-     * <p>
-     * Clock values have the following syntax:
-     * </p>
-     * <p>
-     * <pre>
-     * Clock-val         ::= ( Full-clock-val | Partial-clock-val | Timecount-val )
-     * Full-clock-val    ::= Hours ":" Minutes ":" Seconds ("." Fraction)?
-     * Partial-clock-val ::= Minutes ":" Seconds ("." Fraction)?
-     * Timecount-val     ::= Timecount ("." Fraction)? (Metric)?
-     * Metric            ::= "h" | "min" | "s" | "ms"
-     * Hours             ::= DIGIT+; any positive number
-     * Minutes           ::= 2DIGIT; range from 00 to 59
-     * Seconds           ::= 2DIGIT; range from 00 to 59
-     * Fraction          ::= DIGIT+
-     * Timecount         ::= DIGIT+
-     * 2DIGIT            ::= DIGIT DIGIT
-     * DIGIT             ::= [0-9]
-     * </pre>
-     *
-     * @param clockValue A String in the representation specified above
-     * @return  A float value in milliseconds that matches the string
-     *          representation given as the parameter
-     * @exception IllegalArgumentException if the clockValue input
-     *          parameter does not comply with the defined syntax
-     * @exception NullPointerException if the clockValue string is
-     *          <code>null</code>
-     */
     public static float parseClockValue(String clockValue) {
         try {
             float result = 0;
@@ -186,22 +100,6 @@ public class TimeImpl implements Time {
         }
     }
 
-    /**
-     * Parse a value formatted as follows:
-     * <p>
-     * <pre>
-     * Value    ::= Number ("." Decimal)? (Text)?
-     * Number   ::= DIGIT+; any positive number
-     * Decimal  ::= DIGIT+; any positive number
-     * Text     ::= CHAR*;   any sequence of chars
-     * DIGIT    ::= [0-9]
-     * </pre>
-     * @param value The Value to parse
-     * @param ignoreLast The size of Text to ignore
-     * @param parseDecimal Whether Decimal is expected
-     * @return The float value without Text, rounded to 3 digits after '.'
-     * @throws IllegalArgumentException if Decimal was not expected but encountered
-     */
     private static float parseFloat(String value, int ignoreLast, boolean parseDecimal) {
         // Ignore last characters
         value = value.substring(0, value.length() - ignoreLast);
@@ -225,9 +123,6 @@ public class TimeImpl implements Time {
         return result;
     }
 
-    /*
-     * Time Interface
-     */
 
     public boolean getBaseBegin() {
         // TODO Auto-generated method stub

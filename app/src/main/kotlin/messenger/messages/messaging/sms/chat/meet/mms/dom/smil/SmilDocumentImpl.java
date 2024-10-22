@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom.smil;
 
 import org.w3c.dom.DOMException;
@@ -34,26 +18,14 @@ import messenger.messages.messaging.sms.chat.meet.org.smil.TimeList;
 import messenger.messages.messaging.sms.chat.meet.mms.dom.DocumentImpl;
 
 public class SmilDocumentImpl extends DocumentImpl implements SMILDocument, DocumentEvent {
-    /*
-     * The sequential time container cannot be initialized here because the real container
-     * is body, which hasn't been created yet. It will be initialized when the body has
-     * already been created. Please see getBody().
-     */
+
     ElementSequentialTimeContainer mSeqTimeContainer;
 
     public final static String SMIL_DOCUMENT_START_EVENT = "SmilDocumentStart";
     public final static String SMIL_DOCUMENT_END_EVENT = "SimlDocumentEnd";
-
-    /*
-     * Internal methods
-     */
     public SmilDocumentImpl() {
         super();
     }
-
-    /*
-     * ElementSequentialTimeContainer stuff
-     */
 
     public NodeList getActiveChildrenAt(float instant) {
         return mSeqTimeContainer.getActiveChildrenAt(instant);
@@ -147,9 +119,6 @@ public class SmilDocumentImpl extends DocumentImpl implements SMILDocument, Docu
         mSeqTimeContainer.setRestart(restart);
     }
 
-    /*
-     * Document Interface
-     */
 
     @Override
     public Element createElement(String tagName) throws DOMException {
@@ -192,9 +161,6 @@ public class SmilDocumentImpl extends DocumentImpl implements SMILDocument, Docu
         return (SMILElement) rootElement;
     }
 
-    /*
-     * SMILElement Interface
-     */
 
     public SMILElement getHead() {
         Node rootElement = getDocumentElement();
@@ -279,9 +245,6 @@ public class SmilDocumentImpl extends DocumentImpl implements SMILDocument, Docu
         return (SMILLayoutElement) layoutElement;
     }
 
-    /*
-     * DocumentEvent Interface
-     */
     public Event createEvent(String eventType) throws DOMException {
         if ("Event".equals(eventType)) {
             return new EventImpl();

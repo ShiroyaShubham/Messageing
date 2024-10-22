@@ -1,12 +1,15 @@
 package messenger.messages.messaging.sms.chat.meet.activity
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.isVisible
 import messenger.messages.messaging.sms.chat.meet.adapters.FontSizeAdapter
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityFontSizeBinding
 import messenger.messages.messaging.sms.chat.meet.model.ImageWithTextModel
 import messenger.messages.messaging.sms.chat.meet.utils.config
 import messenger.messages.messaging.sms.chat.meet.R
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 
 class FontSizeActivity : BaseHomeActivity() {
     private var _binding: ActivityFontSizeBinding? = null
@@ -17,6 +20,11 @@ class FontSizeActivity : BaseHomeActivity() {
         window.decorView.setBackgroundResource(R.drawable.bg_gradient)
         _binding = ActivityFontSizeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
         bindHandlers()
         setupRecyclerView()
     }

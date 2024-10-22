@@ -11,6 +11,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.*
 import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.View.OnLongClickListener
 import android.view.View.OnTouchListener
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -265,8 +266,6 @@ class MessagesAdapter(
                 refreshMessages()
             }
         }
-
-
     }
 
     private fun getSelectedItems() = mMessages.filter {
@@ -355,27 +354,34 @@ class MessagesAdapter(
                 true
             }
 
-            findViewById<TextView>(R.id.tvMessageBody).setOnTouchListener(object : OnTouchListener {
-                @SuppressLint("ClickableViewAccessibility")
-                private val gestureDetector = GestureDetector(mActivity, object : SimpleOnGestureListener() {
-                    override fun onDoubleTap(e: MotionEvent): Boolean {
-                        copyText(message)
-                        return super.onDoubleTap(e)
-                    }
-
-                    @SuppressLint("ClickableViewAccessibility")
-                    override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
-                        selectText(message, holder.layoutPosition)
-                        return false
-                    }
-                })
-
-                @SuppressLint("ClickableViewAccessibility")
-                override fun onTouch(v: View?, event: MotionEvent): Boolean {
-                    gestureDetector.onTouchEvent(event)
-                    return true
+            findViewById<TextView>(R.id.tvMessageBody).setOnLongClickListener(object : OnLongClickListener{
+                override fun onLongClick(v: View?): Boolean {
+                    selectText(message, holder.layoutPosition)
+                    return false
                 }
             })
+
+//            findViewById<TextView>(R.id.tvMessageBody).setOnTouchListener(object : OnTouchListener {
+//                @SuppressLint("ClickableViewAccessibility")
+//                private val gestureDetector = GestureDetector(mActivity, object : SimpleOnGestureListener() {
+//                    override fun onDoubleTap(e: MotionEvent): Boolean {
+//                        copyText(message)
+//                        return super.onDoubleTap(e)
+//                    }
+//
+//                    @SuppressLint("ClickableViewAccessibility")
+//                    override fun onSingleTapConfirmed(event: MotionEvent): Boolean {
+//                        selectText(message, holder.layoutPosition)
+//                        return false
+//                    }
+//                })
+//
+//                @SuppressLint("ClickableViewAccessibility")
+//                override fun onTouch(v: View?, event: MotionEvent): Boolean {
+//                    gestureDetector.onTouchEvent(event)
+//                    return true
+//                }
+//            })
 
             findViewById<LinearLayout>(R.id.llHolder).removeAllViews()
             if (message.attachment?.attachments?.isNotEmpty() == true) {

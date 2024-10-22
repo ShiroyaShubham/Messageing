@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 import android.os.Parcel;
@@ -22,12 +6,6 @@ import messenger.messages.messaging.sms.chat.meet.internal.util.Objects;
 
 import static messenger.messages.messaging.sms.chat.meet.internal.util.Preconditions.checkNotNull;
 
-/**
- * Policy for networks matching a {@link NetworkTemplate}, including usage cycle
- * and limits to be enforced.
- *
- * @hide
- */
 public class NetworkPolicy implements Parcelable, Comparable<NetworkPolicy> {
     public static final int CYCLE_NONE = -1;
     public static final long WARNING_DISABLED = -1;
@@ -97,17 +75,10 @@ public class NetworkPolicy implements Parcelable, Comparable<NetworkPolicy> {
         return 0;
     }
 
-    /**
-     * Test if given measurement is over {@link #warningBytes}.
-     */
     public boolean isOverWarning(long totalBytes) {
         return warningBytes != WARNING_DISABLED && totalBytes >= warningBytes;
     }
 
-    /**
-     * Test if given measurement is near enough to {@link #limitBytes} to be
-     * considered over-limit.
-     */
     public boolean isOverLimit(long totalBytes) {
         // over-estimate, since kernel will trigger limit once first packet
         // trips over limit.
@@ -115,17 +86,11 @@ public class NetworkPolicy implements Parcelable, Comparable<NetworkPolicy> {
         return limitBytes != LIMIT_DISABLED && totalBytes >= limitBytes;
     }
 
-    /**
-     * Clear any existing snooze values, setting to {@link #SNOOZE_NEVER}.
-     */
     public void clearSnooze() {
         lastWarningSnooze = SNOOZE_NEVER;
         lastLimitSnooze = SNOOZE_NEVER;
     }
 
-    /**
-     * Test if this policy has a cycle defined, after which usage should reset.
-     */
     public boolean hasCycle() {
         return cycleDay != CYCLE_NONE;
     }

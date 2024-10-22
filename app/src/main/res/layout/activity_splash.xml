@@ -33,6 +33,7 @@
             style="@style/Text_manrope_Regular_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:gravity="center"
             android:text="@string/app_to_sent_or_receive_sms_you_must_set_it_as_default_application"

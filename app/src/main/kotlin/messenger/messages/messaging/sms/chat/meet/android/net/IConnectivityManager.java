@@ -1,38 +1,19 @@
-/*
- * This file is auto-generated.  DO NOT MODIFY.
- * Original file: frameworks/base/core/java/android/net/IConnectivityManager.aidl
- */
 package messenger.messages.messaging.sms.chat.meet.android.net;
-/**
- * Interface that answers queries about, and allows changing, the
- * state of network connectivity.
- */
+
 
 import messenger.messages.messaging.sms.chat.meet.internal.net.LegacyVpnInfo;
 import messenger.messages.messaging.sms.chat.meet.internal.net.VpnConfig;
 import messenger.messages.messaging.sms.chat.meet.internal.net.VpnProfile;
 
-/**
- * {@hide}
- */
 public interface IConnectivityManager extends android.os.IInterface {
-    /**
-     * Local-side IPC implementation stub class.
-     */
+
     public static abstract class Stub extends android.os.Binder implements IConnectivityManager {
         private static final java.lang.String DESCRIPTOR = "android.net.IConnectivityManager";
 
-        /**
-         * Construct the stub at attach it to the interface.
-         */
         public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
 
-        /**
-         * Cast an IBinder object into an android.net.IConnectivityManager interface,
-         * generating a proxy if needed.
-         */
         public static IConnectivityManager asInterface(android.os.IBinder obj) {
             if ((obj == null)) {
                 return null;
@@ -903,9 +884,6 @@ public interface IConnectivityManager extends android.os.IInterface {
                 }
             }
 
-            /**
-             * Policy control over specific {@link NetworkStateTracker}.
-             */
             @Override
             public void setPolicyDataEnable(int networkType, boolean enabled) throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1027,10 +1005,6 @@ public interface IConnectivityManager extends android.os.IInterface {
                 return _result;
             }
 
-            /**
-             * Return list of interface pairs that are actively tethered.  Even indexes are
-             * remote interface, and odd indexes are corresponding local interfaces.
-             */
             @Override
             public java.lang.String[] getTetheredIfacePairs() throws android.os.RemoteException {
                 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -1479,9 +1453,6 @@ public interface IConnectivityManager extends android.os.IInterface {
 
     public void setMobileDataEnabled(boolean enabled) throws android.os.RemoteException;
 
-    /**
-     * Policy control over specific {@link NetworkStateTracker}.
-     */
     public void setPolicyDataEnable(int networkType, boolean enabled) throws android.os.RemoteException;
 
     public int tether(java.lang.String iface) throws android.os.RemoteException;
@@ -1496,10 +1467,7 @@ public interface IConnectivityManager extends android.os.IInterface {
 
     public java.lang.String[] getTetheredIfaces() throws android.os.RemoteException;
 
-    /**
-     * Return list of interface pairs that are actively tethered.  Even indexes are
-     * remote interface, and odd indexes are corresponding local interfaces.
-     */
+
     public java.lang.String[] getTetheredIfacePairs() throws android.os.RemoteException;
 
     public java.lang.String[] getTetheringErroredIfaces() throws android.os.RemoteException;

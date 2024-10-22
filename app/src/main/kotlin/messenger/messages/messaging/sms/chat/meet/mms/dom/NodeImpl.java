@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2007 Esmertec AG.
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.mms.dom;
 
 import java.util.NoSuchElementException;
@@ -38,19 +21,9 @@ public abstract class NodeImpl implements Node, EventTarget {
     private final Vector<Node> mChildNodes = new Vector<Node>();
     DocumentImpl mOwnerDocument;
     private final EventTarget mEventTarget = new EventTargetImpl(this);
-
-    /*
-     * Internal methods
-     */
-
     protected NodeImpl(DocumentImpl owner) {
         mOwnerDocument = owner;
     }
-
-    /*
-     * Node Interface Methods
-     */
-
     public Node appendChild(Node newChild) throws DOMException {
         ((NodeImpl)newChild).setParentNode(this);
         mChildNodes.remove(newChild);
@@ -59,12 +32,10 @@ public abstract class NodeImpl implements Node, EventTarget {
     }
 
     public Node cloneNode(boolean deep) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     public NamedNodeMap getAttributes() {
-        // Default. Override in Element.
         return null;
     }
 
@@ -118,7 +89,6 @@ public abstract class NodeImpl implements Node, EventTarget {
     public abstract short getNodeType();
 
     public String getNodeValue() throws DOMException {
-        // Default behaviour. Override if required.
         return null;
     }
 
@@ -206,9 +176,6 @@ public abstract class NodeImpl implements Node, EventTarget {
         mParentNode = parentNode;
     }
 
-    /*
-     * EventTarget Interface
-     */
 
     public void addEventListener(String type, EventListener listener, boolean useCapture) {
         mEventTarget.addEventListener(type, listener, useCapture);

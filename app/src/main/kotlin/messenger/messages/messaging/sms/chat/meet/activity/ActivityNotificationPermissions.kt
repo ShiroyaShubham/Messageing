@@ -75,7 +75,6 @@ class ActivityNotificationPermissions : AppCompatActivity() {
                 tvSetAsDefault!!.startAnimation(anim_out)
 
             }
-
             override fun onAnimationRepeat(animation: Animation) {}
         })
     }

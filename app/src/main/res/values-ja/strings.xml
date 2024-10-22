@@ -295,6 +295,7 @@
     <string name="app_your_arhived_conversation_appear_here">アーカイブされた会話がここに表示されます</string>
     <string name="app_exit_app">アプリを終了する</string>
 
-
+    <string name="start">始める</string>
+    <string name="please_select_plan">プランを選択してください</string>
 
 </resources>

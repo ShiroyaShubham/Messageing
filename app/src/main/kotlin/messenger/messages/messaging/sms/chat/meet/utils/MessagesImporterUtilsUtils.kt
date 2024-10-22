@@ -49,13 +49,6 @@ class MessagesImporterUtilsUtils(private val context: Context) {
                                 onProgress.invoke(totalMessages, messagesImported)
                             }
                         }
-//                        if (config.importMms) {
-//                            message.mms?.forEach { backup ->
-//                                messageWriter.writeMmsMessage(backup)
-//                                messagesImported++
-//                                onProgress.invoke(totalMessages, messagesImported)
-//                            }
-//                        }
                         Log.e("Event: ", " MessagesImporterUtilsUtils importMessages")
                         //refreshMessages()
                     }

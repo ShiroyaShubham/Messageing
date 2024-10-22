@@ -1,35 +1,9 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.mms.pdu_alt;
 
 public class Base64 {
-    /**
-     * Used to get the number of Quadruples.
-     */
+
     static final int FOURBYTE = 4;
-
-    /**
-     * Byte used to pad output.
-     */
     static final byte PAD = (byte) '=';
-
-    /**
-     * The base length.
-     */
     static final int BASELENGTH = 255;
 
     // Create arrays to hold the base64 characters
@@ -54,12 +28,6 @@ public class Base64 {
         base64Alphabet['/'] = 63;
     }
 
-    /**
-     * Decodes Base64 data into octects
-     *
-     * @param base64Data Byte array containing Base64 data
-     * @return Array containing decoded data.
-     */
     public static byte[] decodeBase64(byte[] base64Data) {
         // RFC 2045 requires that we discard ALL non-Base64 characters
         base64Data = discardNonBase64(base64Data);
@@ -122,12 +90,6 @@ public class Base64 {
         return decodedData;
     }
 
-    /**
-     * Check octect wheter it is a base64 encoding.
-     *
-     * @param octect to be checked byte
-     * @return ture if it is base64 encoding, false otherwise.
-     */
     private static boolean isBase64(byte octect) {
         if (octect == PAD) {
             return true;
@@ -138,15 +100,6 @@ public class Base64 {
         }
     }
 
-    /**
-     * Discards any characters outside of the base64 alphabet, per
-     * the requirements on page 25 of RFC 2045 - "Any characters
-     * outside of the base64 alphabet are to be ignored in base64
-     * encoded data."
-     *
-     * @param data The base-64 encoded data to groom
-     * @return The data, less non-base64 characters (see RFC 2045).
-     */
     static byte[] discardNonBase64(byte[] data) {
         byte groomedData[] = new byte[data.length];
         int bytesCopied = 0;

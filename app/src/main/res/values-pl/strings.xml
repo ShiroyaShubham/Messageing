@@ -292,7 +292,8 @@
     <string name="app_your_arhived_conversation_appear_here">Twoje zarchiwizowane rozmowy pojawią się tutaj</string>
     <string name="app_exit_app">Zamknij aplikację</string>
 
-
+    <string name="start">Start</string>
+    <string name="please_select_plan">Proszę wybrać Plan</string>
 
 
 </resources>

@@ -37,15 +37,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Common methods to be used for data connectivity/sending messages ect
- *
- * @author Jake Klinker
- */
 public class Utils {
-    /**
-     * characters to compare against when checking for 160 character sending compatibility
-     */
     public static final String GSM_CHARACTERS_REGEX = "^[A-Za-z0-9 \\r\\n@Ł$ĽčéůěňÇŘřĹĺ\u0394_\u03A6\u0393\u039B\u03A9\u03A0\u03A8\u03A3\u0398\u039EĆćßÉ!\"#$%&'()*+,\\-./:;<=>?ĄÄÖŃÜ§żäöńüŕ^{}\\\\\\[~\\]|\u20AC]*$";
     public static final int DEFAULT_SUBSCRIPTION_ID = 1;
     private static final String TAG = "Utils";
@@ -62,12 +54,6 @@ public class Utils {
     private static final Pattern NAME_ADDR_EMAIL_PATTERN =
         Pattern.compile("\\s*(\"[^\"]*\"|[^<>\"]+)\\s*<([^<>]+)>\\s*");
 
-    /**
-     * Gets the current users phone number
-     *
-     * @param context is the context of the activity or service
-     * @return a string of the phone number on the device
-     */
     @SuppressLint("HardwareIds")
     public static String getMyPhoneNumber(Context context) {
         TelephonyManager mTelephonyMgr;
@@ -79,54 +65,6 @@ public class Utils {
         }
         return mTelephonyMgr.getLine1Number();
     }
-
-    /*public static <T> T ensureRouteToMmsNetwork(Context context, String url, String proxy, Task<T> task) throws IOException {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return ensureRouteToMmsNetworkMarshmallow(context, task);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return ensureRouteToMmsNetworkLollipop(context, task);
-        } else {
-            ensureRouteToHost(context, url, proxy);
-            return task.run();
-        }
-    }*/
-
-   /* @TargetApi(Build.VERSION_CODES.M)
-    private static <T> T ensureRouteToMmsNetworkMarshmallow(Context context, Task<T> task) throws IOException {
-        final MmsNetworkManager networkManager = new MmsNetworkManager(context.getApplicationContext(), Utils.getDefaultSubscriptionId());
-        final ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        Network network = null;
-        try {
-            network = networkManager.acquireNetwork();
-            connectivityManager.bindProcessToNetwork(network);
-            return task.run();
-        } catch (MmsNetworkException e) {
-            throw new IOException(e);
-        } finally {
-            if (network != null) {
-                connectivityManager.bindProcessToNetwork(null);
-            }
-            networkManager.releaseNetwork();
-        }
-    }*/
-
-   /* @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private static <T> T ensureRouteToMmsNetworkLollipop(Context context, Task<T> task) throws IOException {
-        final MmsNetworkManager networkManager = new MmsNetworkManager(context.getApplicationContext(), Utils.getDefaultSubscriptionId());
-        Network network = null;
-        try {
-            network = networkManager.acquireNetwork();
-            ConnectivityManager.setProcessDefaultNetwork(network);
-            return task.run();
-        } catch (MmsNetworkException e) {
-            throw new IOException(e);
-        } finally {
-            if (network != null) {
-                ConnectivityManager.setProcessDefaultNetwork(null);
-            }
-            networkManager.releaseNetwork();
-        }
-    }*/
 
     public static String getMyPhoneNumberFromSubscription(Context context, int subscriptionId) {
         if (DEFAULT_SUBSCRIPTION_ID == subscriptionId) {
@@ -148,14 +86,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Ensures that the host MMSC is reachable
-     *
-     * @param context is the context of the activity or service
-     * @param url     is the MMSC to check
-     * @param proxy   is the proxy of the APN to check
-     * @throws IOException when route cannot be established
-     */
     public static void ensureRouteToHost(Context context, String url, String proxy) throws IOException {
         ConnectivityManager connMgr =
             (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -194,12 +124,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Checks whether or not mobile data is enabled and returns the result
-     *
-     * @param context is the context of the activity or service
-     * @return true if data is enabled or false if disabled
-     */
     public static Boolean isMobileDataEnabled(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -214,11 +138,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Checks mobile data enabled based on telephonymanager
-     *
-     * @param telephonyManager the telephony manager
-     */
     public static boolean isDataEnabled(TelephonyManager telephonyManager) {
         try {
             Class<?> c = telephonyManager.getClass();
@@ -230,12 +149,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Checks mobile data enabled based on telephonymanager and sim card
-     *
-     * @param telephonyManager the telephony manager
-     * @param subId            the sim card id
-     */
     public static boolean isDataEnabled(TelephonyManager telephonyManager, int subId) {
         try {
             Class<?> c = telephonyManager.getClass();
@@ -247,12 +160,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Toggles mobile data
-     *
-     * @param context is the context of the activity or service
-     * @param enabled is whether to enable or disable data
-     */
     public static void setMobileDataEnabled(Context context, boolean enabled) {
         String methodName;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -292,13 +199,6 @@ public class Utils {
 
     }
 
-    /**
-     * Gets the number of pages in the SMS based on settings and the length of string
-     *
-     * @param settings is the settings object to check against
-     * @param text     is the text from the message object to be sent
-     * @return the number of pages required to hold message
-     */
     public static int getNumPages(Settings settings, String text) {
         if (settings.getStripUnicode()) {
             text = StripAccents.stripAccents(text);
@@ -308,13 +208,6 @@ public class Utils {
         return data[0];
     }
 
-    /**
-     * Gets the current thread_id or creates a new one for the given recipient
-     *
-     * @param context   is the context of the activity or service
-     * @param recipient is the person message is being sent to
-     * @return the thread_id to use in the database
-     */
     public static long getOrCreateThreadId(Context context, String recipient) {
         Set<String> recipients = new HashSet<String>();
 
@@ -322,13 +215,6 @@ public class Utils {
         return getOrCreateThreadId(context, recipients);
     }
 
-    /**
-     * Gets the current thread_id or creates a new one for the given recipient
-     *
-     * @param context    is the context of the activity or service
-     * @param recipients is the set of people message is being sent to
-     * @return the thread_id to use in the database
-     */
     public static long getOrCreateThreadId(
         Context context, Set<String> recipients) {
         Uri.Builder uriBuilder = Uri.parse("content://mms-sms/threadID").buildUpon();
@@ -394,12 +280,6 @@ public class Utils {
         return address;
     }
 
-    /**
-     * Gets the default settings from a shared preferences file associated with your app
-     *
-     * @param context is the context of the activity or service
-     * @return the settings object to send with
-     */
     public static Settings getDefaultSendSettings(Context context) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         Settings sendSettings = new Settings();
@@ -422,21 +302,10 @@ public class Utils {
         return sendSettings;
     }
 
-    /**
-     * Determines whether or not the user has Android 4.4 KitKat
-     *
-     * @return true if version code on device is >= kitkat
-     */
     public static boolean hasKitKat() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }
 
-    /**
-     * Determines whether or not the app is the default SMS app on a device
-     *
-     * @param context
-     * @return true if app is default
-     */
     public static boolean isDefaultSmsApp(Context context) {
         if (hasKitKat()) {
             return context.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(context));
@@ -445,12 +314,6 @@ public class Utils {
         return true;
     }
 
-    /**
-     * Determins whether or not the app has enabled MMS over WiFi
-     *
-     * @param context
-     * @return true if enabled
-     */
     public static boolean isMmsOverWifiEnabled(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("mms_over_wifi", false);
     }

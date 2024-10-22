@@ -1,30 +1,12 @@
-/*
- * This file is auto-generated.  DO NOT MODIFY.
- * Original file: frameworks/base/core/java/android/net/INetworkPolicyListener.aidl
- */
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
-/**
- * {@hide}
- */
 public interface INetworkPolicyListener extends android.os.IInterface {
-    /**
-     * Local-side IPC implementation stub class.
-     */
     public static abstract class Stub extends android.os.Binder implements INetworkPolicyListener {
         private static final java.lang.String DESCRIPTOR = "android.net.INetworkPolicyListener";
-
-        /**
-         * Construct the stub at attach it to the interface.
-         */
         public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
 
-        /**
-         * Cast an IBinder object into an android.net.INetworkPolicyListener interface,
-         * generating a proxy if needed.
-         */
         public static INetworkPolicyListener asInterface(android.os.IBinder obj) {
             if ((obj == null)) {
                 return null;

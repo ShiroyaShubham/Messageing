@@ -9,7 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardToolbar"
-        style="@style/Toolbard_Card">
+        style="@style/Toolbard_Card"
+        android:layout_alignParentTop="true">
 
         <include
             android:id="@+id/header"
@@ -254,10 +255,6 @@
 
         </LinearLayout>
 
-
-
-
-
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -412,7 +409,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/thread_add_attachment"

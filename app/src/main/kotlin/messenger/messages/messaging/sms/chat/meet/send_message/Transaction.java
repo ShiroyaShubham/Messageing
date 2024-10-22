@@ -41,11 +41,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Class to process transaction requests for sending
- *
- * @author Jake Klinker
- */
 public class Transaction {
 
     public static final String SENT_SMS_BUNDLE = "messenger.messages.messaging.sms.chat.meet.send_message.SENT_SMS_BUNDLE";
@@ -68,22 +63,10 @@ public class Transaction {
     private Intent explicitSentMmsReceiver;
     private Intent explicitDeliveredSmsReceiver;
     private boolean saveMessage = true;
-
-    /**
-     * Sets context and initializes settings to default values
-     *
-     * @param context is the context of the activity or service
-     */
     public Transaction(Context context) {
         this(context, new Settings());
     }
 
-    /**
-     * Sets context and settings
-     *
-     * @param context  is the context of the activity or service
-     * @param settings is the settings object to process send requests through
-     */
     public Transaction(Context context, Settings settings) {
         this.settings = settings;
         this.context = context;
@@ -416,50 +399,10 @@ public class Transaction {
         return res;
     }
 
-    /**
-     * Called to send a new message depending on settings and provided Message object
-     * If you want to send message as mms, call this from the UI thread
-     *
-     * @param message               is the message that you want to send
-     * @param threadId              is the thread id of who to send the message to (can also be set to Transaction.NO_THREAD_ID)
-     * @param sentMessageParcelable is the piece of data that will be retrieved when BroadcastReceiver is called for sent message
-     * @param deliveredParcelable   is the piece of data that will be retrieved when BroadcastReceiver is called for delivered message
-     */
     public void sendNewMessage(Message message, long threadId,
                                Parcelable sentMessageParcelable, Parcelable deliveredParcelable) {
         this.saveMessage = message.getSave();
-
-        // if message:
-        //      1) Has images attached
-        // or
-        //      1) is enabled to send long messages as mms
-        //      2) number of pages for that sms exceeds value stored in settings for when to send the mms by
-        //      3) prefer voice is disabled
-        // or
-        //      1) more than one address is attached
-        //      2) group messaging is enabled
-        //
-        // then, send as MMS, else send as Voice or SMS
         if (checkMMS(message)) {
-            /*try {
-                Looper.prepare();
-            } catch (Exception e) {
-            }
-            RateController.init(context);
-            DownloadManager.init(context);
-
-            if (!settings.getGroup()) {
-                // send individual MMS to each person in the group of addresses
-                for (String address : message.getAddresses()) {
-                    sendMmsMessage(message.getText(), message.getFromAddress(), new String[]{address},
-                        message.getImages(), message.getImageNames(), message.getParts(), message.getSubject(),
-                        message.getSave(), message.getMessageUri());
-                }
-            } else {
-                sendMmsMessage(message.getText(), message.getFromAddress(), message.getAddresses(),
-                    message.getImages(), message.getImageNames(), message.getParts(), message.getSubject(),
-                    message.getSave(), message.getMessageUri());
-            }*/
         } else {
             sendSmsMessage(message.getText(), message.getAddresses(), threadId, message.getDelay(),
                 sentMessageParcelable, deliveredParcelable);
@@ -467,51 +410,18 @@ public class Transaction {
 
     }
 
-    /**
-     * Called to send a new message depending on settings and provided Message object
-     * If you want to send message as mms, call this from the UI thread
-     *
-     * @param message  is the message that you want to send
-     * @param threadId is the thread id of who to send the message to (can also be set to Transaction.NO_THREAD_ID)
-     */
     public void sendNewMessage(Message message, long threadId) {
         this.sendNewMessage(message, threadId, new Bundle(), new Bundle());
     }
-
-    /**
-     * Optional: define a {@link BroadcastReceiver} that will get started when Android notifies us that the SMS has
-     * been marked as "sent". If you do not define a receiver here, it will look for the .SMS_SENT receiver
-     * that was defined in the AndroidManifest, as discussed in the README.md.
-     *
-     * @param intent the receiver that you want to start when the message gets marked as sent.
-     */
     public Transaction setExplicitBroadcastForSentSms(Intent intent) {
         explicitSentSmsReceiver = intent;
         return this;
     }
-
-    /**
-     * Optional: define a {@link BroadcastReceiver} that will get started when Android notifies us that the MMS has
-     * been marked as "sent". If you do not define a receiver here, it will look for the .MMS_SENT receiver
-     * that was defined in the AndroidManifest, as discussed in the README.md.
-     *
-     * @param intent the receiver that you want to start when the message gets marked as sent.
-     */
     public Transaction setExplicitBroadcastForSentMms(Intent intent) {
         explicitSentMmsReceiver = intent;
         return this;
     }
 
-    /**
-     * Optional: define a {@link BroadcastReceiver} that will get started when Android notifies us that the SMS has
-     * been marked as "delivered". If you do not define a receiver here, it will look for the .SMS_DELIVERED
-     * receiver that was defined in the AndroidManifest, as discussed in the README.md.
-     * <p/>
-     * Providing a receiver here does not guarantee that it will ever get started. If the {@link Settings}
-     * object does not have delivery reports turned on, this receiver will never get called.
-     *
-     * @param intent the receiver that you want to start when the message gets marked as sent.
-     */
     public Transaction setExplicitBroadcastForDeliveredSms(Intent intent) {
         explicitDeliveredSmsReceiver = intent;
         return this;
@@ -736,12 +646,6 @@ public class Transaction {
         return returnArray;
     }
 
-    /**
-     * A method for checking whether or not a certain message will be sent as mms depending on its contents and the settings
-     *
-     * @param message is the message that you are checking against
-     * @return true if the message will be mms, otherwise false
-     */
     public boolean checkMMS(Message message) {
         return message.getImages().length != 0 ||
             (message.getParts().size() != 0) ||

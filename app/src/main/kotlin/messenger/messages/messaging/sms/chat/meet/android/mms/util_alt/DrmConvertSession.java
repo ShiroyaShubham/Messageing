@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2015 Jacob Klinker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package messenger.messages.messaging.sms.chat.meet.android.mms.util_alt;
 
 import android.content.Context;
@@ -36,13 +21,6 @@ public class DrmConvertSession {
         mConvertSessionId = convertSessionId;
     }
 
-    /**
-     * Start of converting a file.
-     *
-     * @param context The context of the application running the convert session.
-     * @param mimeType Mimetype of content that shall be converted.
-     * @return A convert session or null in case an error occurs.
-     */
     public static DrmConvertSession open(Context context, String mimeType) {
         DrmManagerClient drmClient = null;
         int convertSessionId = -1;
@@ -71,14 +49,7 @@ public class DrmConvertSession {
             return new DrmConvertSession(drmClient, convertSessionId);
         }
     }
-    /**
-     * Convert a buffer of data to protected format.
-     *
-     * @param inBuffer Buffer filled with data to convert.
-     * @param size The number of bytes that shall be converted.
-     * @return A Buffer filled with converted data, if execution is ok, in all
-     *         other case null.
-     */
+
     public byte [] convert(byte[] inBuffer, int size) {
         byte[] result = null;
         if (inBuffer != null) {
@@ -110,16 +81,7 @@ public class DrmConvertSession {
         return result;
     }
 
-    /**
-     * Ends a conversion session of a file.
-     *
-     * @param filename The filename of the converted file.
-     * @return Downloads.Impl.STATUS_SUCCESS if execution is ok.
-     *         Downloads.Impl.STATUS_FILE_ERROR in case converted file can not
-     *         be accessed. Downloads.Impl.STATUS_NOT_ACCEPTABLE if a problem
-     *         occurs when accessing drm framework.
-     *         Downloads.Impl.STATUS_UNKNOWN_ERROR if a general error occurred.
-     */
+
     public int close(String filename) {
         DrmConvertedStatus convertedStatus = null;
         int result = Downloads.Impl.STATUS_UNKNOWN_ERROR;

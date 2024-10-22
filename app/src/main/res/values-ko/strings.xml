@@ -287,7 +287,8 @@
     <string name="app_your_arhived_conversation_appear_here">보관된 대화가 여기에 표시됩니다</string>
     <string name="app_exit_app">앱 종료</string>
 
-
+    <string name="start">시작</string>
+    <string name="please_select_plan">플랜을 선택해 주세요</string>
 
 
 </resources>

@@ -43,6 +43,7 @@ class ReceiverService : BroadcastReceiver() {
 
             Handler(Looper.getMainLooper()).post {
                 ensureBackgroundThread {
+                    Log.e("TAG", "onReceive:>>>>>>>>>>> "+type)
                     if (!context.isNumberBlockedNew(address)) {
                         val newMessageId = context.insertNewSMS(address, subject, body, date, read, threadId, type, subscriptionId)
 

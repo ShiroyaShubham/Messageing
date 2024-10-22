@@ -52,7 +52,10 @@ class AllSMSFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        bus?.unregister(this)
+        if (bus!!.isRegistered(this)) {
+            bus!!.unregister(this)
+        }
+//        bus?.unregister(this)
     }
 
     override fun onPause() {
@@ -82,7 +85,7 @@ class AllSMSFragment : BaseFragment() {
         binding.recyclerViewChatHistory.isNestedScrollingEnabled = false
 
         mAdapter!!.itemClickListenerSelect = { position, data ->
-            if (mAdapter!!.getIsShowSelection()) {
+//            if (mAdapter!!.getIsShowSelection()) {
 //                mAdapter!!.getFileListData()[position].isSelected = !mAdapter!!.getFileListData()[position].isSelected
 //                mAdapter!!.notifyItemChanged(position)
 //                selectedConversations = mAdapter!!.getFileListDataSelected()
@@ -92,17 +95,28 @@ class AllSMSFragment : BaseFragment() {
 //
 //                Log.e("TAG", "onViewCreated: ${sortedConversations.filter { it.isSelected }}")
 
-            } else {
+//            } else {
+//
+//                showInterstitialAdPerDayOnMessageClick {
+//                    val intent = Intent(mActivity!!, MessagesActivity::class.java)
+//                    intent.putExtra(THREAD_ID, data.threadId)
+//                    intent.putExtra(THREAD_TITLE, data.title)
+//                    intent.putExtra(THREAD_NUMBER, data.phoneNumber)
+//                    intent.putExtra(SNIPPET, data.snippet)
+//                    intent.putExtra(DATE, data.date)
+//                    startActivity(intent)
+//                }
+//            }
+            Log.e("TAG", "onViewCreated:>>>> "+data.title)
 
-                showInterstitialAdPerDayOnMessageClick {
-                    val intent = Intent(mActivity!!, MessagesActivity::class.java)
-                    intent.putExtra(THREAD_ID, data.threadId)
-                    intent.putExtra(THREAD_TITLE, data.title)
-                    intent.putExtra(THREAD_NUMBER, data.phoneNumber)
-                    intent.putExtra(SNIPPET, data.snippet)
-                    intent.putExtra(DATE, data.date)
-                    startActivity(intent)
-                }
+            showInterstitialAdPerDayOnMessageClick {
+                val intent = Intent(mActivity!!, MessagesActivity::class.java)
+                intent.putExtra(THREAD_ID, data.threadId)
+                intent.putExtra(THREAD_TITLE, data.title)
+                intent.putExtra(THREAD_NUMBER, data.phoneNumber)
+                intent.putExtra(SNIPPET, data.snippet)
+                intent.putExtra(DATE, data.date)
+                startActivity(intent)
             }
         }
 
@@ -116,6 +130,7 @@ class AllSMSFragment : BaseFragment() {
         }
         getPermission()
         if (MainAppClass.conversationsDBDATA.size > 0) {
+            sortedConversations.clear() // Clear the existing data
             sortedConversations.addAll(MainAppClass.conversationsDBDATA)
             Log.e("TAG_ALL_SMS", "getConversationDataFromDB: 5")
             mAdapter?.setData(sortedConversations)
@@ -217,7 +232,7 @@ class AllSMSFragment : BaseFragment() {
                 return
             }
 
-            sortedConversations.withIndex().filter { sortedConversations[it.index].threadId == event.threadID }.map {
+            sortedConversations.withIndex().filter { sortedConversations[it.index].threadId == event.threadID }.forEach  {
                 sortedConversations[it.index].read = event.read
                 sortedConversations[it.index].snippet = event.snipet
                 sortedConversations[it.index].date = event.dateTime

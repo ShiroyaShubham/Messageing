@@ -15,16 +15,25 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.multidex.MultiDex
-import com.google.android.gms.ads.MobileAds
+import com.adsdk.plugin.AppOpenAdsManager
+import com.google.firebase.FirebaseApp
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import messenger.messages.messaging.sms.chat.meet.ads.AppOpenManager
 import messenger.messages.messaging.sms.chat.meet.extensions.mPref
 import messenger.messages.messaging.sms.chat.meet.listners.OnActivityResultLauncher
-import messenger.messages.messaging.sms.chat.meet.model.*
-import messenger.messages.messaging.sms.chat.meet.utils.*
+import messenger.messages.messaging.sms.chat.meet.logger.AppLogger
+import messenger.messages.messaging.sms.chat.meet.model.ArchivedModel
+import messenger.messages.messaging.sms.chat.meet.model.ContactsModel
+import messenger.messages.messaging.sms.chat.meet.model.ConversationSmsModel
+import messenger.messages.messaging.sms.chat.meet.model.SimModel
+import messenger.messages.messaging.sms.chat.meet.utils.SimpleContactsHelperUtils
+import messenger.messages.messaging.sms.chat.meet.utils.archivedMessageDao
+import messenger.messages.messaging.sms.chat.meet.utils.config
+import messenger.messages.messaging.sms.chat.meet.utils.conversationsDB
 
 
 class MainAppClass : Application() {
@@ -37,8 +46,8 @@ class MainAppClass : Application() {
         mInstance = this
         sContext = applicationContext
         application = this
-
-        AppOpenManager(application)
+        FirebaseApp.initializeApp(this)
+        AppOpenAdsManager(this)
 
         when (mPref.appTheme) {
             0 -> {
@@ -54,7 +63,6 @@ class MainAppClass : Application() {
             }
         }
 
-        MobileAds.initialize(this)
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         checkAppReplacingState()
     }
@@ -82,6 +90,11 @@ class MainAppClass : Application() {
         var offerMessageDBDATA: List<ConversationSmsModel> = arrayListOf()
         var mAllContacts: ArrayList<ContactsModel> = arrayListOf()
         var IS_LOOP_WORKING = true
+
+        var gson: Gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create()
+        var logger: AppLogger = AppLogger()
 
         fun getConversationDataFromDB() {
             Log.e("TAG_WHITESCREEN", "getConversationDataFromDB: 2")
@@ -143,7 +156,6 @@ class MainAppClass : Application() {
                         val searchQueryLink = "%$searchKeyLink%"
                         val messagesLink = it.conversationsDB.getConversationWithText(searchQueryLink)
 
-//                    personalMessageDBDATA = messagesAll - messagesCredit - messagesDebit - messagesOTP - messagesLink
 
 //                OTP Message
                         otpMessageDBDATA = messagesOTP!!

@@ -20,8 +20,7 @@ class PrefClass {
 
         var isProUser: Boolean
             get() = SharedPrefrenceClass.getInstance()!!.getBoolean(IS_PRO_USER, false)
-            set(rate) {
-                SharedPrefrenceClass.getInstance()!!.setBoolean(IS_PRO_USER, rate)
+            set(rate) { SharedPrefrenceClass.getInstance()!!.setBoolean(IS_PRO_USER, rate)
             }
 
 

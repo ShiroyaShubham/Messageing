@@ -31,7 +31,7 @@ fun Long.formatFullDateOrTime(context: Context, hideTimeAtOtherDays: Boolean, sh
     val cal = Calendar.getInstance(Locale.US)
     cal.timeInMillis = this
 
-    val sdf = SimpleDateFormat("hh:mm a dd MMM yyyy", Locale.getDefault())
+    val sdf = SimpleDateFormat("dd MMM yyyy hh:mm a", Locale.getDefault())
 
     // Create a Date object from milliseconds
     val date = Date(this)

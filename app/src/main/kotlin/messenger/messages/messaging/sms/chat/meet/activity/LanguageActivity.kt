@@ -1,35 +1,32 @@
 package messenger.messages.messaging.sms.chat.meet.activity
 
 import android.Manifest
-import android.app.AlertDialog
 import android.app.Dialog
 import android.app.role.RoleManager
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.provider.Telephony
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import messenger.messages.messaging.sms.chat.meet.R
 import messenger.messages.messaging.sms.chat.meet.adapters.LanguageAdapter
-import messenger.messages.messaging.sms.chat.meet.ads.AdsManager
 import messenger.messages.messaging.sms.chat.meet.send_message.Utils
 import messenger.messages.messaging.sms.chat.meet.databinding.ActivityLanguageBinding
 import messenger.messages.messaging.sms.chat.meet.model.LanguageModel
+import messenger.messages.messaging.sms.chat.meet.subscription.PrefClass
 import messenger.messages.messaging.sms.chat.meet.utils.*
 import java.util.ArrayList
 
 class LanguageActivity : BaseActivity() {
     private var _binding: ActivityLanguageBinding? = null
-    private val YOUR_PERMISSION_REQUEST_CODE: Int = 100
     private val binding get() = _binding!!
     private lateinit var languageAdapter: LanguageAdapter
     private val MAKE_DEFAULT_APP_REQUEST = 1
@@ -40,18 +37,27 @@ class LanguageActivity : BaseActivity() {
         _binding = ActivityLanguageBinding.inflate(layoutInflater)
         window.decorView.setBackgroundResource(R.drawable.bg_gradient)
         setContentView(binding.root)
-        binding.header.imgSave.isVisible = true
+        binding.header.tvSave.isVisible = true
+        if (!PrefClass.isProUser){
+        showBannerAds(findViewById(R.id.mBannerAdsContainer))
+        }else{
+            findViewById<ViewGroup>(R.id.mBannerAdsContainer)?.visibility = View.GONE
+        }
         setupRecyclerView()
-        loadBannerAd()
         bindHandlers()
+
+        Log.e("TAG", "onCreate:>>>>>>> "+SharedPrefrenceClass.getInstance()?.getBoolean(IS_LOGIN, false) )
+        if (SharedPrefrenceClass.getInstance()?.getBoolean(IS_LOGIN, false)==true)
+        {
+            binding.header.imgBack.visibility=View.VISIBLE
+        }else{
+            binding.header.imgBack.visibility=View.GONE
+        }
     }
 
-    private fun loadBannerAd() {
-        AdsManager.showMediumRectangleBannerAds(binding.mNativeContainer, binding.llNativeShimmer, this)
-    }
 
     private fun bindHandlers() {
-        binding.header.imgSave.setOnClickListener {
+        binding.header.tvSave.setOnClickListener {
             SharedPrefrenceClass.getInstance()?.setInt(LANG_POS, languageAdapter.getSelectedLangPos())
             SharedPrefrenceClass.getInstance()?.setString(LANG_CODE, getLanguages()[languageAdapter.getSelectedLangPos()].code)
             SharedPrefrenceClass.getInstance()?.setBoolean(IS_LOGIN, true)

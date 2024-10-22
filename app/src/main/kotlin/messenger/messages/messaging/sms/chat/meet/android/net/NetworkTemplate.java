@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 import android.net.ConnectivityManager;
@@ -26,12 +10,6 @@ import messenger.messages.messaging.sms.chat.meet.internal.util.Objects;
 import static android.net.ConnectivityManager.*;
 import static messenger.messages.messaging.sms.chat.meet.internal.util.ArrayUtils.contains;
 
-/**
- * Template definition used to generically match {@link NetworkIdentity},
- * usually when collecting statistics.
- *
- * @hide
- */
 public class NetworkTemplate implements Parcelable {
 
     public static final int MATCH_MOBILE_ALL = 1;
@@ -41,95 +19,27 @@ public class NetworkTemplate implements Parcelable {
     public static final int MATCH_ETHERNET = 5;
     public static final int MATCH_MOBILE_WILDCARD = 6;
     public static final int MATCH_WIFI_WILDCARD = 7;
-
-    /**
-     * Network type is unknown
-     */
     public static final int NETWORK_TYPE_UNKNOWN = 0;
-    /**
-     * Current network is GPRS
-     */
     public static final int NETWORK_TYPE_GPRS = 1;
-    /**
-     * Current network is EDGE
-     */
     public static final int NETWORK_TYPE_EDGE = 2;
-    /**
-     * Current network is UMTS
-     */
     public static final int NETWORK_TYPE_UMTS = 3;
-    /**
-     * Current network is CDMA: Either IS95A or IS95B
-     */
     public static final int NETWORK_TYPE_CDMA = 4;
-    /**
-     * Current network is EVDO revision 0
-     */
     public static final int NETWORK_TYPE_EVDO_0 = 5;
-    /**
-     * Current network is EVDO revision A
-     */
     public static final int NETWORK_TYPE_EVDO_A = 6;
-    /**
-     * Current network is 1xRTT
-     */
     public static final int NETWORK_TYPE_1xRTT = 7;
-    /**
-     * Current network is HSDPA
-     */
     public static final int NETWORK_TYPE_HSDPA = 8;
-    /**
-     * Current network is HSUPA
-     */
     public static final int NETWORK_TYPE_HSUPA = 9;
-    /**
-     * Current network is HSPA
-     */
     public static final int NETWORK_TYPE_HSPA = 10;
-    /**
-     * Current network is iDen
-     */
     public static final int NETWORK_TYPE_IDEN = 11;
-    /**
-     * Current network is EVDO revision B
-     */
     public static final int NETWORK_TYPE_EVDO_B = 12;
-    /**
-     * Current network is LTE
-     */
     public static final int NETWORK_TYPE_LTE = 13;
-    /**
-     * Current network is eHRPD
-     */
     public static final int NETWORK_TYPE_EHRPD = 14;
-    /**
-     * Current network is HSPA+
-     */
     public static final int NETWORK_TYPE_HSPAP = 15;
-
-    /**
-     * Unknown network class. {@hide}
-     */
     public static final int NETWORK_CLASS_UNKNOWN = 0;
-    /**
-     * Class of broadly defined "2G" networks. {@hide}
-     */
     public static final int NETWORK_CLASS_2_G = 1;
-    /**
-     * Class of broadly defined "3G" networks. {@hide}
-     */
     public static final int NETWORK_CLASS_3_G = 2;
-    /**
-     * Class of broadly defined "4G" networks. {@hide}
-     */
     public static final int NETWORK_CLASS_4_G = 3;
 
-    /**
-     * Return general class of network type, such as "3G" or "4G". In cases
-     * where classification is contentious, this method is conservative.
-     *
-     * @hide
-     */
     public static int getNetworkClass(int networkType) {
         switch (networkType) {
             case NETWORK_TYPE_GPRS:
@@ -155,9 +65,6 @@ public class NetworkTemplate implements Parcelable {
         }
     }
 
-    /**
-     * Set of {@link NetworkInfo#getType()} that reflect data usage.
-     */
     private static final int[] DATA_USAGE_NETWORK_TYPES = {0};
 
     private static boolean sForceAllNetworkTypes = false;
@@ -166,66 +73,36 @@ public class NetworkTemplate implements Parcelable {
     public static void forceAllNetworkTypes() {
         sForceAllNetworkTypes = true;
     }
-
-    /**
-     * Template to match {@link ConnectivityManager#TYPE_MOBILE} networks with
-     * the given IMSI.
-     */
     public static NetworkTemplate buildTemplateMobileAll(String subscriberId) {
         return new NetworkTemplate(MATCH_MOBILE_ALL, subscriberId, null);
     }
 
-    /**
-     * Template to match {@link ConnectivityManager#TYPE_MOBILE} networks with
-     * the given IMSI that roughly meet a "3G" definition, or lower.
-     */
     @Deprecated
     public static NetworkTemplate buildTemplateMobile3gLower(String subscriberId) {
         return new NetworkTemplate(MATCH_MOBILE_3G_LOWER, subscriberId, null);
     }
 
-    /**
-     * Template to match {@link ConnectivityManager#TYPE_MOBILE} networks with
-     * the given IMSI that roughly meet a "4G" definition.
-     */
     @Deprecated
     public static NetworkTemplate buildTemplateMobile4g(String subscriberId) {
         return new NetworkTemplate(MATCH_MOBILE_4G, subscriberId, null);
     }
 
-    /**
-     * Template to match {@link ConnectivityManager#TYPE_MOBILE} networks,
-     * regardless of IMSI.
-     */
     public static NetworkTemplate buildTemplateMobileWildcard() {
         return new NetworkTemplate(MATCH_MOBILE_WILDCARD, null, null);
     }
 
-    /**
-     * Template to match all {@link ConnectivityManager#TYPE_WIFI} networks,
-     * regardless of SSID.
-     */
     public static NetworkTemplate buildTemplateWifiWildcard() {
         return new NetworkTemplate(MATCH_WIFI_WILDCARD, null, null);
     }
-
     @Deprecated
     public static NetworkTemplate buildTemplateWifi() {
         return buildTemplateWifiWildcard();
     }
 
-    /**
-     * Template to match {@link ConnectivityManager#TYPE_WIFI} networks with the
-     * given SSID.
-     */
     public static NetworkTemplate buildTemplateWifi(String networkId) {
         return new NetworkTemplate(MATCH_WIFI, null, networkId);
     }
 
-    /**
-     * Template to combine all {@link ConnectivityManager#TYPE_ETHERNET} style
-     * networks together.
-     */
     public static NetworkTemplate buildTemplateEthernet() {
         return new NetworkTemplate(MATCH_ETHERNET, null, null);
     }
@@ -299,9 +176,6 @@ public class NetworkTemplate implements Parcelable {
         return mNetworkId;
     }
 
-    /**
-     * Test if given {@link NetworkIdentity} matches this template.
-     */
     public boolean matches(NetworkIdentity ident) {
         switch (mMatchRule) {
             case MATCH_MOBILE_ALL:
@@ -323,9 +197,6 @@ public class NetworkTemplate implements Parcelable {
         }
     }
 
-    /**
-     * Check if mobile network with matching IMSI.
-     */
     private boolean matchesMobile(NetworkIdentity ident) {
         if (ident.mType == TYPE_WIMAX) {
             // TODO: consider matching against WiMAX subscriber identity
@@ -336,9 +207,6 @@ public class NetworkTemplate implements Parcelable {
         }
     }
 
-    /**
-     * Check if mobile network classified 3G or lower with matching IMSI.
-     */
     private boolean matchesMobile3gLower(NetworkIdentity ident) {
         ensureSubtypeAvailable();
         if (ident.mType == TYPE_WIMAX) {
@@ -354,9 +222,6 @@ public class NetworkTemplate implements Parcelable {
         return false;
     }
 
-    /**
-     * Check if mobile network classified 4G with matching IMSI.
-     */
     private boolean matchesMobile4g(NetworkIdentity ident) {
         ensureSubtypeAvailable();
         if (ident.mType == TYPE_WIMAX) {
@@ -371,9 +236,6 @@ public class NetworkTemplate implements Parcelable {
         return false;
     }
 
-    /**
-     * Check if matches Wi-Fi network template.
-     */
     private boolean matchesWifi(NetworkIdentity ident) {
         switch (ident.mType) {
             case TYPE_WIFI:
@@ -383,9 +245,6 @@ public class NetworkTemplate implements Parcelable {
         }
     }
 
-    /**
-     * Check if matches Ethernet network template.
-     */
     private boolean matchesEthernet(NetworkIdentity ident) {
         if (ident.mType == TYPE_ETHERNET) {
             return true;

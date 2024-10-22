@@ -77,17 +77,11 @@ class ContactsActivity : BaseHomeActivity() {
 
         binding.llHeader.setOnClickListener {
             val intent = Intent(this, ContactsActivity2::class.java)
-            val transition_1 =
-                Pair.create<View, String>(
-                    binding.llEditText,
-                    getString(R.string.txt_transition_1)
-                )
-            val options =
-                ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    this,
-                    transition_1
-                )
-            startActivity(intent, options.toBundle())
+//            val transition_1 = Pair.create<View, String>(binding.llEditText, getString(R.string.txt_transition_1))
+//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, transition_1)
+//            startActivity(intent, options.toBundle())
+            startActivity(intent)
+            overridePendingTransition(0, 0);
         }
 
         binding.tvNoContact2.setOnClickListener {
@@ -134,7 +128,6 @@ class ContactsActivity : BaseHomeActivity() {
     private fun fetchContacts() {
         fillSuggestedContacts {
             CoroutineScope(Dispatchers.IO).launch {
-//            SimpleContactsHelperUtils(this).getAvailableContacts(false) {
                 mAllContacts = MainAppClass.mAllContacts.ifEmpty {
                     SimpleContactsHelperUtils(this@ContactsActivity).getAvailableContacts(false)
                 }
@@ -156,7 +149,6 @@ class ContactsActivity : BaseHomeActivity() {
             }
 
         }
-//        }
     }
 
     private fun setupAdapter(contacts: ArrayList<ContactsModel>) {

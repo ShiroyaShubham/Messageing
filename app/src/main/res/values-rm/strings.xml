@@ -289,6 +289,7 @@
     <string name="app_your_arhived_conversation_appear_here">Conversațiile dvs. arhivate vor apărea aici</string>
     <string name="app_exit_app">Ieșiți din aplicație</string>
 
-
+    <string name="start">Начинать</string>
+    <string name="please_select_plan">Пожалуйста, выберите план</string>
 
 </resources>

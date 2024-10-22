@@ -89,11 +89,10 @@
         translatable="false">Terms of use</string>
 
     <string name="app_term_privacy"
-        translatable="false">By joining, you agree to our Privacy Policy and Terms of use.</string>
-    <string name="app_non_privacy_policy"
-        translatable="false">Privacy Policy</string>
-    <string name="app_terms_of_use"
-        translatable="false">Terms of use</string>
+        translatable="false">By joining, you agree to our\n Privacy Policy &amp; Terms of use.</string>
+    <string name="app_non_privacy_policy" translatable="false">Privacy Policy &amp; Terms of use <!--<![CDATA[Privacy Policy & Terms of use]]>--></string>
+<!--    <string name="app_non_privacy_policy" translatable="false">Privacy Policy</string>-->
+    <string name="app_terms_of_use" translatable="false">Terms of use</string>
 
     <string name="cancel">Cancel</string>
     <string name="nothing">Nothing</string>
@@ -307,6 +306,10 @@
     <string name="app_no_archive_message_found">No archived message found.</string>
     <string name="app_your_arhived_conversation_appear_here">Your Archived Conversations Will Appear Here</string>
     <string name="app_exit_app">Exit App</string>
+    <string name="start">Start</string>
+    <string name="please_select_plan">Please Select Plan</string>
+
+    <string name="text_done">Done</string>
 
 
 </resources>

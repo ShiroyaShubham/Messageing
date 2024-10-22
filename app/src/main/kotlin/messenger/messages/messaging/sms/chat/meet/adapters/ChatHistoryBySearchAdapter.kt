@@ -24,7 +24,6 @@ import messenger.messages.messaging.sms.chat.meet.extensions.highlightTextPart
 import messenger.messages.messaging.sms.chat.meet.send_message.Utils
 import messenger.messages.messaging.sms.chat.meet.model.SearchModel
 import messenger.messages.messaging.sms.chat.meet.utils.getContactNameFromPhoneNumber
-import naimishtrivedi.`in`.googleadsmanager.NativeBannerAds
 
 class ChatHistoryBySearchAdapter(
     activity: BaseHomeActivity,
@@ -61,11 +60,11 @@ class ChatHistoryBySearchAdapter(
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
 
-            BANNER_AD -> {
-                Log.d("TAG_NATIVE", "onCreateViewHolder: ")
-                val view1 = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_advance_native_banner, viewGroup, false)
-                MyAdViewHolder1(view1)
-            }
+//            BANNER_AD -> {
+//                Log.d("TAG_NATIVE", "onCreateViewHolder: ")
+//                val view1 = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_advance_native_banner, viewGroup, false)
+//                MyAdViewHolder1(view1)
+//            }
 
             CONTENT -> {
                 val view1 = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_raw_chat_history_by_search, viewGroup, false)
@@ -80,22 +79,23 @@ class ChatHistoryBySearchAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is MyAdViewHolder1) {
-            //                adViewHolder.binding.txtTitle.text = listVideo.get(position).dateString
-
-            Log.d("TAG_NATIVE", "onBindViewHolder: ")
-            holder.bindView(mSearchResults[0], true, false) { itemView, layoutPosition ->
-                Log.d("TAG_NATIVE", "onBindViewHolder: ${!IS_AD_SHOWN}")
-                if (!IS_AD_SHOWN) {
-                    holder.itemView.apply {
-                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById<NativeBannerAds>(R.id.mNativeAds), mActivity)
-                    }
-                    IS_AD_SHOWN = true
-                }
-
-            }
-            holder.itemView.tag = holder
-        } else if (holder is ViewHolder) {
+//        if (holder is MyAdViewHolder1) {
+//            //                adViewHolder.binding.txtTitle.text = listVideo.get(position).dateString
+//
+//            Log.d("TAG_NATIVE", "onBindViewHolder: ")
+//            holder.bindView(mSearchResults[0], true, false) { itemView, layoutPosition ->
+//                Log.d("TAG_NATIVE", "onBindViewHolder: ${!IS_AD_SHOWN}")
+//                if (!IS_AD_SHOWN) {
+//                    holder.itemView.apply {
+//                        messenger.messages.messaging.sms.chat.meet.ads.AdsManager.showNativeBannerAds(findViewById<NativeBannerAds>(R.id.mNativeAds), mActivity)
+//                    }
+//                    IS_AD_SHOWN = true
+//                }
+//
+//            }
+//            holder.itemView.tag = holder
+//        } else
+    if (holder is ViewHolder) {
             val searchResult = mSearchResults[position]
             holder.bindView(searchResult, true, false) { itemView, layoutPosition ->
                 setupView(itemView, searchResult)

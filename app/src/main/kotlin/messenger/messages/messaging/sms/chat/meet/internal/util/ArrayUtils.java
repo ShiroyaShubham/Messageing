@@ -1,31 +1,7 @@
-/*
- * Copyright (C) 2006 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.internal.util;
 
 import java.lang.reflect.Array;
 
-// XXX these should be changed to reflect the actual memory allocator we use.
-// it looks like right now objects want to be powers of 2 minus 8
-// and the array size eats another 4 bytes
-
-/**
- * ArrayUtils contains some methods that you can call to find out
- * the most efficient increments by which to grow arrays.
- */
 public class ArrayUtils {
     private static Object[] EMPTY = new Object[0];
     private static final int CACHE_SIZE = 73;
@@ -69,14 +45,6 @@ public class ArrayUtils {
         return idealByteArraySize(need * 8) / 8;
     }
 
-    /**
-     * Checks if the beginnings of two byte arrays are equal.
-     *
-     * @param array1 the first byte array
-     * @param array2 the second byte array
-     * @param length the number of bytes to check
-     * @return true if they're equal, false otherwise
-     */
     public static boolean equals(byte[] array1, byte[] array2, int length) {
         if (array1 == array2) {
             return true;
@@ -92,11 +60,7 @@ public class ArrayUtils {
         return true;
     }
 
-    /**
-     * Returns an empty array of the specified type.  The intent is that
-     * it will return the same empty array every time to avoid reallocation,
-     * although this is not guaranteed.
-     */
+
     @SuppressWarnings("unchecked")
     public static <T> T[] emptyArray(Class<T> kind) {
         if (kind == Object.class) {
@@ -116,13 +80,6 @@ public class ArrayUtils {
         return (T[]) cache;
     }
 
-    /**
-     * Checks that value is present as at least one of the elements of the array.
-     *
-     * @param array the array to check in
-     * @param value the value to check for
-     * @return true if the value is present in the array
-     */
     public static <T> boolean contains(T[] array, T value) {
         for (T element : array) {
             if (element == null) {
@@ -151,14 +108,7 @@ public class ArrayUtils {
         return total;
     }
 
-    /**
-     * Appends an element to a copy of the array and returns the copy.
-     *
-     * @param array   The original array, or null to represent an empty array.
-     * @param element The element to add.
-     * @return A new array that contains all of the elements of the original array
-     * with the specified element added at the end.
-     */
+
     @SuppressWarnings("unchecked")
     public static <T> T[] appendElement(Class<T> kind, T[] array, T element) {
         final T[] result;
@@ -175,17 +125,7 @@ public class ArrayUtils {
         return result;
     }
 
-    /**
-     * Removes an element from a copy of the array and returns the copy.
-     * If the element is not present, then the original array is returned unmodified.
-     *
-     * @param array   The original array, or null to represent an empty array.
-     * @param element The element to remove.
-     * @return A new array that contains all of the elements of the original array
-     * except the first copy of the specified element removed.  If the specified element
-     * was not present, then returns the original array.  Returns null if the result
-     * would be an empty array.
-     */
+
     @SuppressWarnings("unchecked")
     public static <T> T[] removeElement(Class<T> kind, T[] array, T element) {
         if (array != null) {

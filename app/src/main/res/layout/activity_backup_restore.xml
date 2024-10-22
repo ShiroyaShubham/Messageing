@@ -1,213 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_background_color">
 
 
-    <include
-        android:id="@+id/appTopToolbar"
-        layout="@layout/layout_header" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appTopToolbar"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:orientation="vertical">
-
-
-            <LinearLayout
-                android:id="@+id/llLastBackup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_dotted_round_corner_10"
-                android:foreground="@drawable/logo_ripple"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_10sdp">
-
-                <ImageView
-                    android:id="@+id/tvThumb"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:src="@drawable/ic_last_backup" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        style="@style/Text_manrope_Semi_Bold_12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_last_backup" />
-
-                    <TextView
-                        android:id="@+id/tvBackupDate"
-                        style="@style/Text_manrope_Regular_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/no_backup_available"
-                        android:textColor="@color/text_grey" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llRestore"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:background="@drawable/bg_dotted_round_corner_10"
-                android:foreground="@drawable/logo_ripple"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_10sdp">
-
-                <ImageView
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:src="@drawable/ic_restore" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        style="@style/Text_manrope_Semi_Bold_12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_restore" />
-
-                    <TextView
-                        style="@style/Text_manrope_Regular_10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_select_a_backup"
-                        android:textColor="@color/text_grey" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_8"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
-                style="@style/Text_manrope_Regular_10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15sp"
-                android:gravity="center"
-                android:lineSpacingExtra="@dimen/_3sdp"
-                android:text="@string/app_backup_message"
-                android:textColor="@color/text_grey"
-                android:textSize="@dimen/_10ssp" />
-
-
-        </LinearLayout>
-
-
-        <FrameLayout
-            android:id="@+id/mBannerAds"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginBottom="@dimen/_40sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <LinearLayout
-                android:id="@+id/llNativeShimmer"
-                android:layout_width="300dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center">
-
-                <include layout="@layout/layout_native_video_shimmer" />
-
-
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/mNativeContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-
-        </FrameLayout>
-
-
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/appTopToolbar"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:gravity="bottom">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mBannerAdsContainer">
 
+        <include
+            android:id="@+id/appTopToolbar"
+            layout="@layout/layout_header" />
 
         <LinearLayout
-            android:id="@+id/llBackupNow"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/margin_40"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/margin_24"
-            android:layout_marginEnd="@dimen/margin_24"
-            android:background="@drawable/bg_gradient_round_corner_25"
-            android:elevation="@dimen/margin_5"
-            android:foreground="@drawable/logo_ripple_oval"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/margin_20"
-            android:paddingEnd="@dimen/margin_24">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appTopToolbar"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical">
 
-            <ImageView
-                style="@style/Icon_24DP"
-                android:src="@drawable/ic_upload_backup"
-                app:tint="@android:color/white" />
-
-            <TextView
-                style="@style/Text_manrope_Medium_12"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_10"
-                android:text="@string/backup_now"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/textsize_14" />
+                android:layout_margin="@dimen/_15sdp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/llLastBackup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_dotted_round_corner_10"
+                    android:foreground="@drawable/logo_ripple"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/tvThumb"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_last_backup" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_last_backup" />
+
+                        <TextView
+                            android:id="@+id/tvBackupDate"
+                            style="@style/Text_manrope_Regular_9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/no_backup_available"
+                            android:textColor="@color/text_grey" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llRestore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/bg_dotted_round_corner_10"
+                    android:foreground="@drawable/logo_ripple"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:src="@drawable/ic_restore" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            style="@style/Text_manrope_Semi_Bold_12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_restore" />
+
+                        <TextView
+                            style="@style/Text_manrope_Regular_9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_select_a_backup"
+                            android:textColor="@color/text_grey" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_manrope_Regular_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15sp"
+                    android:gravity="start"
+                    android:lineSpacingExtra="@dimen/_3sdp"
+                    android:text="@string/app_backup_message"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/_10ssp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appTopToolbar"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:id="@+id/llBackupNow"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_40"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_24"
+                android:background="@drawable/bg_gradient_round_corner_25"
+                android:elevation="@dimen/margin_5"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/logo_ripple_oval"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin_20"
+                android:paddingEnd="@dimen/margin_24">
+
+                <ImageView
+                    style="@style/Icon_24DP"
+                    android:src="@drawable/ic_upload_backup"
+                    app:tint="@android:color/white" />
+
+                <TextView
+                    style="@style/Text_manrope_Medium_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:text="@string/backup_now"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/textsize_14" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/mBannerAdsContainer"
+        layout="@layout/ad_banner_shimmer_effect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

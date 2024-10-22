@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 import android.content.Context;
@@ -26,17 +10,8 @@ import messenger.messages.messaging.sms.chat.meet.internal.util.Objects;
 
 import static android.net.ConnectivityManager.TYPE_WIFI;
 
-/**
- * Network definition that includes strong identity. Analogous to combining
- * {@link NetworkInfo} and an IMSI.
- *
- * @hide
- */
 public class NetworkIdentity {
-    /**
-     * When enabled, combine all {@link #mSubType} together under
-     * {@link #SUBTYPE_COMBINED}.
-     */
+
     public static final boolean COMBINE_SUBTYPE_ENABLED = true;
 
     public static final int SUBTYPE_COMBINED = -1;
@@ -56,9 +31,6 @@ public class NetworkIdentity {
         mRoaming = roaming;
     }
 
-    /**
-     * {@hide}
-     */
     public static String getNetworkTypeName(int type) {
         switch (type) {
             case 0:
@@ -94,9 +66,6 @@ public class NetworkIdentity {
         }
     }
 
-    /**
-     * {@hide}
-     */
     public static boolean isNetworkTypeMobile(int networkType) {
         switch (networkType) {
             case 0:
@@ -173,9 +142,6 @@ public class NetworkIdentity {
         return mRoaming;
     }
 
-    /**
-     * Scrub given IMSI on production builds.
-     */
     public static String scrubSubscriberId(String subscriberId) {
         if ("eng".equals(Build.TYPE)) {
             return subscriberId;
@@ -187,10 +153,6 @@ public class NetworkIdentity {
         }
     }
 
-    /**
-     * Build a {@link NetworkIdentity} from the given {@link NetworkState},
-     * assuming that any mobile networks are using the current IMSI.
-     */
     public static NetworkIdentity buildNetworkIdentity(Context context, NetworkState state) {
         final int type = state.networkInfo.getType();
         final int subType = state.networkInfo.getSubtype();

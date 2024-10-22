@@ -580,18 +580,11 @@ fun Context.getConversationsBlockedNumber(
         }
 
         var date = cursor.getLongValue(Threads.DATE)
-        /*if (date.toString().length > 10) {
-            date /= 1000
-        }*/
 
         val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
         val recipientIds = rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
         val phoneNumbers = getThreadPhoneNumbers(recipientIds)
-        /*if (phoneNumbers.any { isNumberBlocked(it, blockedNumbers) }) {
-            return@queryCursor
-        }*/
         Log.e("TAG", "getConversationsBlockedNumber: ${rawIds}")
-
         val i = contactNum.filter { it.normalizedNumber.contains(phoneNumbers.first()) }
 
         if (i.size == 0) {
@@ -632,11 +625,6 @@ fun Context.deleteConversation(threadId: Long) {
     messagesDB.deleteThreadMessagesApp(threadId)
 }
 
-/*
-*
-* shubham aapde evu decide karyu che k aapde block mate aapdu db manage karvanu che content resolver ma koi chnage nathi karvano
-* mara code ma Allsms fragment ma showBlockConfirmationDialog() na btnOK no click check kar aapde aapda db ma nage karvanu che */
-// ha e mai change kri nakhyu che che apde block num no alag
 
 fun Context.deleteMessage(id: Long, isMMS: Boolean) {
     val uri = if (isMMS) Mms.CONTENT_URI else Sms.CONTENT_URI
@@ -873,10 +861,9 @@ fun Context.showMessageNotification(address: String, body: String, threadId: Lon
             }
 
             color = getAdjustedPrimaryColor()
-            setSmallIcon(R.drawable.ic_notification_icon)
-            if (previewType == getString(R.string.app_show_name_and_message)) setStyle(
-                NotificationCompat.BigTextStyle().setSummaryText(summaryText).bigText(body)
-            )
+//            setSmallIcon(R.drawable.ic_notification_icon_new)
+            setSmallIcon(R.drawable.message_icon)
+            if (previewType == getString(R.string.app_show_name_and_message)) setStyle(NotificationCompat.BigTextStyle().setSummaryText(summaryText).bigText(body))
             setContentIntent(pendingIntent)
             priority = NotificationCompat.PRIORITY_MAX
             setDefaults(Notification.DEFAULT_LIGHTS)
@@ -935,13 +922,15 @@ fun Context.showMessageNotification(address: String, body: String, threadId: Lon
                 if (it.number == getPhoneNumberFromThreadId(contentResolver, threadId))
                     isArchivedMsg = true
             }
+            isArchivedMsg = archivedConversation.any {
+                it.number == getPhoneNumberFromThreadId(contentResolver, threadId)
+            }
             withContext(Dispatchers.Main) {
                 if (!isArchivedMsg) {
                     notificationManager.notify(threadId.hashCode(), builder.build())
                     if (isWakeUpScreen) wakeUpScreen(this@showMessageNotification)
                 }
             }
-
         }
     }
 }
@@ -986,15 +975,6 @@ private fun wakeUpScreen(context: Context) {
         }
     }
 }
-
-
-/*fun getFlagFor32(int: Int):Int{
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        PendingIntent.FLAG_MUTABLE or int
-    } else {
-        int
-    }
-}*/
 
 fun Context.removeDiacriticsIfNeeded(text: String): String {
     return if (config.useSimpleCharacters) text.normalizeString() else text
@@ -1219,20 +1199,11 @@ fun Context.getConversationss(): ArrayList<ConversationSmsModel> {
                 if (snippet.isEmpty()) {
                     //  snippet = getThreadSnippet(id)
                 }
-
                 var date = cursor.getLongValue(Threads.DATE)
-
                 val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
-                // val recipientIds = rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
-                // val phoneNumbers = getThreadPhoneNumbers(recipientIds)
-                /* if (phoneNumbers.any { isNumberBlocked2(id, blockedNumbers) }) {
-                     return@queryCursor
-                 }*/
-
                 if (rawIds.isNullOrEmpty()) {
                     return@queryCursor
                 }
-                // val names = getThreadContactNames(phoneNumbers, privateContacts)
                 val title = ""//TextUtils.join(", ", names.toTypedArray())
                 val photoUri = /*if (phoneNumbers.size == 1) simpleContactHelper.getPhotoUriFromPhoneNumber(phoneNumbers.first()) else*/ ""
                 val isGroupConversation = false//phoneNumbers.size > 1
@@ -1443,11 +1414,6 @@ fun Context.getConversationsImportNew(): ArrayList<ConversationSmsModel> {
                 var date = cursor.getLongValue(Threads.DATE)
 
                 val rawIds = cursor.getStringValue(Threads.RECIPIENT_IDS)
-                // val recipientIds = rawIds.split(" ").filter { it.areDigitsOnly() }.map { it.toInt() }.toMutableList()
-                // val phoneNumbers = getThreadPhoneNumbers(recipientIds)
-                /* if (phoneNumbers.any { isNumberBlocked2(id, blockedNumbers) }) {
-                     return@queryCursor
-                 }*/
 
                 if (rawIds.isNullOrEmpty()) {
                     return@queryCursor

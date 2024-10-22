@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "messenger.messages.messaging.sms.chat.meet",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 2004,
+      "versionName": "1.0.2-internal4",
+      "outputFile": "Messeging-V1.0.2-internal4-31-Aug-2024-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

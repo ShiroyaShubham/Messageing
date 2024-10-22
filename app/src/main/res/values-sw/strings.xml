@@ -253,5 +253,7 @@
     <string name="app_your_arhived_conversation_appear_here">Mazungumzo Yako Yaliyohifadhiwa Yataonekana Hapa</string>
     <string name="app_exit_app">Toka Katika App</string>
 
+    <string name="start">Start</string>
+    <string name="please_select_plan">Välj Plan</string>
 
 </resources>

@@ -5,20 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/screen_background_color">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_header" />
+
     <ImageView
         android:id="@+id/ivBanner"
         android:layout_width="match_parent"
         android:padding="@dimen/_50sdp"
+        android:layout_below="@id/header"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true" />
-
-    <ImageView
-        android:id="@+id/ivBack"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        android:padding="@dimen/_7sdp"
-        app:tint="@color/black"
-        android:src="@drawable/icon_back" />
 
 
     <RelativeLayout
@@ -86,8 +83,7 @@
                 <ImageView
                     android:id="@+id/ivPhotoGallery"
                     style="@style/Icon_24DP"
-                    android:src="@drawable/icon_copy"
-                    app:tint="@color/black" />
+                    android:src="@drawable/icon_copy" />
 
                 <TextView
                     style="@style/Text_Regular"
@@ -107,8 +103,7 @@
 
                 <ImageView
                     style="@style/Icon_24DP"
-                    android:src="@drawable/icon_share"
-                    app:tint="@color/black" />
+                    android:src="@drawable/icon_share" />
 
                 <TextView
                     style="@style/Text_Regular"

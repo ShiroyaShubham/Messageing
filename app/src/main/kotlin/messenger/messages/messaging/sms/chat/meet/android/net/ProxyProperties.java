@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2010 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package messenger.messages.messaging.sms.chat.meet.android.net;
 
 
@@ -25,11 +9,6 @@ import android.text.TextUtils;
 
 import java.net.InetSocketAddress;
 
-/**
- * A container class for the http proxy info
- *
- * @hide
- */
 public class ProxyProperties implements Parcelable {
 
     private String mHost;
@@ -159,30 +138,17 @@ public class ProxyProperties implements Parcelable {
         return true;
     }
 
-    /**
-     * Implement the Parcelable interface
-     *
-     * @hide
-     */
     public int describeContents() {
         return 0;
     }
 
     @Override
-    /*
-     * generate hashcode based on significant fields
-     */
     public int hashCode() {
         return ((null == mHost) ? 0 : mHost.hashCode())
                 + ((null == mExclusionList) ? 0 : mExclusionList.hashCode())
                 + mPort;
     }
 
-    /**
-     * Implement the Parcelable interface.
-     *
-     * @hide
-     */
     public void writeToParcel(Parcel dest, int flags) {
         if (mHost != null) {
             dest.writeByte((byte) 1);
@@ -195,11 +161,6 @@ public class ProxyProperties implements Parcelable {
         dest.writeStringArray(mParsedExclusionList);
     }
 
-    /**
-     * Implement the Parcelable interface.
-     *
-     * @hide
-     */
     public static final Creator<ProxyProperties> CREATOR =
             new Creator<ProxyProperties>() {
                 public ProxyProperties createFromParcel(Parcel in) {
